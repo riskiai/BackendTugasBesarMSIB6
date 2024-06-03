@@ -20,7 +20,7 @@
                     </div>
                 </div>
                 <div class="logo" style="order: 2; background-color: black; border-radius: 50%; padding: 20px;">
-                    <img src="asset/img/Logo.png" alt="Logo" style="width: 150px; height: 150px;">
+                    <img src="{{ asset('assets/img/Logo.png') }}" alt="Logo" style="width: 150px; height: 150px;">
                 </div>
             </div>
 
@@ -40,13 +40,13 @@
                     style="margin-left: auto; background-color: #074173; padding: 10px; border-radius: 10px; margin-top: 10px; margin-bottom: 10px; margin-left: 10px;">
                     <h5 style="color: white; margin-bottom: 5px;">Social Media:</h5>
                     <div class="d-flex justify-content-center">
-                        <a href="#" class="youtube" style="margin-right: 10px;"><img src="asset/img/yt.png"
+                        <a href="#" class="youtube" style="margin-right: 10px;"><img src="{{ asset('assets/img/yt.png') }}"
                                 alt="YouTube" style="width: 30px; height: 30px;"></a>
-                        <a href="#" class="instagram" style="margin-right: 10px;"><img src="asset/img/ig.png"
+                        <a href="#" class="instagram" style="margin-right: 10px;"><img src="{{ asset('assets/img/ig.png') }}"
                                 alt="Instagram" style="width: 30px; height: 30px;"></a>
-                        <a href="#" class="facebook" style="margin-right: 10px;"><img src="asset/img/fb.png"
+                        <a href="#" class="facebook" style="margin-right: 10px;"><img src="{{ asset('assets/img/fb.png') }}"
                                 alt="Facebook" style="width: 30px; height: 30px;"></a>
-                        <a href="#" class="linkedin"><img src="asset/img/in.png" alt="LinkedIn"
+                        <a href="#" class="linkedin"><img src="{{ asset('assets/img/in.png') }}" alt="LinkedIn"
                                 style="width: 30px; height: 30px;"></a>
                     </div>
                 </div>

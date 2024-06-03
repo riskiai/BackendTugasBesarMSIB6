@@ -51,7 +51,7 @@
                                     class="btn btn-primary">Submit</a>
                             </div>
                             <div class="col md-6">
-                                <p class="mt-3 mb-2">Sudah memiliki akun?</p>
+                                <p class="mt-3 mb-2">Sudah memiliki akun ? Silahkan Login</p>
                                 <a href="{{ url('login') }}" type="button" class="btn btn-secondary">Masuk</a>
                             </div>
                         </div>
@@ -60,7 +60,7 @@
             </div>
             <div class="col-md-2">
                 <div class="col-md-5 d-flex  mt-5">
-                    <img src="asset/img/Man.png" class="img-fluid mt-5" alt="Man Image"
+                    <img src="{{ asset('assets/img/Man.png') }}" class="img-fluid mt-5" alt="Man Image"
                         style="max-width: 250px; max-height: 267px;" />
                 </div>
             </div>

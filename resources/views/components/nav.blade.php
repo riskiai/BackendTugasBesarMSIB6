@@ -1,7 +1,7 @@
 <nav class="navbar navbar-expand-lg navbar-dark sticky-top">
     <div class="container">
         <a class="navbar-brand" href="{{ url('beranda') }}">
-            <img src="asset/img/Logo.png" alt="" width="30" class="d-inline-block align-text-top" />
+            <img src="{{ asset('assets/img/Logo.png') }}" alt="" width="30" class="d-inline-block align-text-top" />
             ApprenTech
         </a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"

@@ -7,7 +7,7 @@
                 <div class="card shadow-sm p-3">
                     <div class="row">
                         <div class="col-md-5">
-                            <img src="asset/img/Man.png" width="250" height="267" alt=""
+                            <img src="{{ asset('assets/img/Man.png') }}" width="250" height="267" alt=""
                                 style="margin-top: 100px" />
                         </div>
 

@@ -25,7 +25,7 @@
                         <input type="text" class="form-control text-white"
                             placeholder="Studi, lokasi, perusahaan, kriteria lain"
                             style="background-color: #074173; padding-left: 40px;" />
-                        <img src="asset/img/icon_pencarian.png" alt="Search" class="position-absolute"
+                        <img src="{{ asset('assets/img/icon_pencarian.png') }}" alt="Search" class="position-absolute"
                             style="left: 10px; top: 50%; transform: translateY(-50%); width: 20px; height: 20px;" />
                     </form>
                 </div>
