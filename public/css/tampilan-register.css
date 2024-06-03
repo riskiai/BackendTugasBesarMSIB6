@@ -1,0 +1,37 @@
+.login-container {
+    margin-top: 50px;
+  }
+  .login-form {
+    background: #343a40;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    color: white;
+  }
+  .login-form h2 {
+    margin-bottom: 20px;
+    color: white;
+  }
+  .form-control {
+    margin-bottom: 15px;
+  }
+  .btn-primary {
+    width: 100%;
+  }
+  .forgot-password-link {
+    color: white;
+    display: block;
+    text-align: center;
+    margin-top: 10px;
+  }
+  .login-header {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  .login-header h1 {
+    font-size: 24px;
+  }
+  .login-header img {
+    max-width: 100px;
+    margin-bottom: 20px;
+  }

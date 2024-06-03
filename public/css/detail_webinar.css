@@ -1,0 +1,102 @@
+:root {
+  --pr-color: #2092d1;
+}
+
+body {
+  font-family: "Inter", sans-serif;
+}
+
+.navbar.navbar-expand-lg.navbar-dark {
+  background-color: #074173;
+}
+
+.navbar-nav .nav-link,
+.navbar-brand {
+  color: #fff;
+}
+
+.navbar-brand {
+  font-weight: 700;
+  font-size: 20px;
+}
+
+.nav-link {
+  font-size: 16px;
+}
+
+.nav-link.active {
+  font-weight: 700;
+}
+
+.button-primary,
+.button-secundary {
+  width: 78px;
+  height: 40px;
+  background-color: #fff;
+  color: var(--pr-color);
+  border-color: #2092d1;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: 700;
+}
+
+.card-body {
+  background: linear-gradient(to bottom, #2f3437, #004b74);
+  color: white;
+  border-radius: 8px;
+}
+
+.card-body h4 {
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Pusatkan konten secara horizontal */
+  justify-content: center; /* Pusatkan konten secara vertikal */
+  color: white;
+}
+
+.btn-custom {
+  background-color: white;
+  color: #2092d1;
+  font-weight: bold;
+}
+
+.btn-masuk {
+  background-color: transparent;
+  color: #2092d1;
+  border: none;
+  margin-top: -10px;
+}
+
+.fullscreen-bg {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  z-index: -1;
+}
+
+.fullscreen-bg img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Tambahkan style untuk overlay */
+.overlay {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: white;
+  padding: 20px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  width: 1332px;
+  height: 551px;
+  max-width: 1337px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  overflow-y: auto; /* Tambahkan properti overflow-y */
+}

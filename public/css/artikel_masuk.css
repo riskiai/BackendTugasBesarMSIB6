@@ -1,0 +1,149 @@
+:root {
+  --pr-color: #2092d1;
+}
+
+body {
+  font-family: "Inter", sans-serif;
+}
+
+.navbar.navbar-expand-lg.navbar-dark {
+  background-color: #074173;
+}
+
+.navbar-nav .nav-link,
+.navbar-brand {
+  color: #fff;
+}
+
+.navbar-brand {
+  font-weight: 700;
+  font-size: 20px;
+}
+
+.nav-link {
+  font-size: 16px;
+}
+
+.nav-link.active {
+  font-weight: 700;
+}
+
+.button-primary,
+.button-secundary {
+  width: 78px;
+  height: 40px;
+  background-color: #fff;
+  color: var(--pr-color);
+  border-color: #2092d1;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: 700;
+}
+
+.card-body {
+  background: linear-gradient(to bottom, #2f3437, #004b74);
+  color: white;
+  border-radius: 8px;
+}
+
+.card-body h4 {
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Pusatkan konten secara horizontal */
+  justify-content: center; /* Pusatkan konten secara vertikal */
+  color: white;
+}
+
+.btn-custom {
+  background-color: white;
+  color: #2092d1;
+  font-weight: bold;
+}
+
+.btn-masuk {
+  background-color: transparent;
+  color: #2092d1;
+  border: none;
+  margin-top: -10px;
+}
+
+.fullscreen-bg {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  z-index: -1;
+}
+
+.fullscreen-bg img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.visi-content {
+  color: white;
+  max-width: 300px;
+}
+
+.lowongan-container {
+  background-color: #074173;
+  padding: 20px;
+  width: 200px;
+  height: 200px;
+  border-radius: 25px;
+  text-align: center;
+  box-shadow: 0px 0px 20px 5px rgba(0, 0, 0, 0.5);
+  position: relative;
+  z-index: 10; /* Atur z-index di sini */
+}
+
+.lowongan-container .text {
+  position: absolute;
+  bottom: 5px; /* Sesuaikan sesuai kebutuhan */
+  left: 0;
+  right: 0;
+  color: white;
+}
+
+/* Tambahkan style untuk tips-container */
+.tips-container {
+  margin-top: 20px;
+  padding-top: 20px;
+  border-top: 1px solid #ccc;
+}
+
+/* Tambahkan style untuk overlay */
+.overlay {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: white;
+  padding: 20px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  width: 1337px;
+  height: 544px;
+  max-width: 1337px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  overflow-y: auto; /* Tambahkan properti overflow-y */
+}
+
+.image-container {
+  flex: 0 0 auto;
+  margin-left: auto; /* Memindahkan gambar ke sebelah kanan */
+  margin-top: 40px; /* Atur jarak antara gambar dan teks */
+  text-align: center; /* Pusatkan gambar di dalam container */
+  align-items: center;
+  width: 582px;
+  height: 446px;
+}
+
+.side-image {
+  max-width: 100%; /* Pastikan gambar tidak melebihi lebar kontainer */
+  height: auto; /* Pastikan gambar tetap proporsional */
+}

@@ -25,11 +25,13 @@
                 <li class="nav-item mx-2">
                     <a class="nav-link" href="{{ url('webinar') }}">Webinar</a>
                 </li>
-                <li class="nav-item mx-2">
-                    <a class="nav-link" href="{{ url('about') }}">About</a>
-                </li>
             </ul>
 
+            <ul class="navbar-nav mx-auto">
+                <li>
+                    <a href="{{ url('dashboard-mahasisswa') }}" class="btn btn-primary">Dashoard</a>
+                </li>
+            </ul>
             <div>
                 <a href="{{ url('login') }}" class="button-primary btn">Masuk</a>
                 <a href="{{ url('/') }}" class="button-secundary btn">Daftar</a>
