@@ -3,7 +3,7 @@
 @section('content')
     <section>
         <div class="fullscreen-bg">
-            <img src="asset/img/About_as.png" alt="" class="bordered-img" />
+            <img src="{{ asset('assets/img/About_as.png') }}" alt="" class="bordered-img" />
             <div class="overlay">
                 <div class="container mt-5">
                     <form action="#" class="form-search d-flex align-items-center mb-3" data-aos="fade-up"
@@ -11,7 +11,7 @@
                         <input type="text" class="form-control text-white"
                             placeholder="Studi, lokasi, perusahaan, kriteria lain"
                             style="background-color: #074173; padding-left: 40px;">
-                        <img src="asset/img/icon_pencarian.png" alt="Search" class="position-absolute"
+                        <img src="{{ asset('assets/img/icon_pencarian.png') }}" alt="Search" class="position-absolute"
                             style="left: 10px; top: 50%; transform: translateY(-50%); width: 20px; height: 20px;">
                     </form>
                     <div class="date-and-content">
@@ -42,7 +42,7 @@
                                 <div class="card">
                                     <div class="row">
                                         <div class="col-md-5">
-                                            <img src="{{ asset('asset/img/Pngtree.png') }}" alt="">
+                                            <img src="{{ asset('assets/img/Pngtree.png') }}" alt="">
                                         </div>
                                         <div class="col-md-7">
                                             <h3 class="mt-5">Deskripsi Pekerjaan</h3>
@@ -67,7 +67,7 @@
                                     style="height: 50%;">
                                     <button type="button" class="btn btn-light" data-bs-toggle="modal"
                                         data-bs-target="#exampleModal2">
-                                        <img class="rounded mx-auto d-block mt-5" src="{{ asset('asset/img/retting.png') }}"
+                                        <img class="rounded mx-auto d-block mt-5" src="{{ asset('assets/img/retting.png') }}"
                                             alt="" style="width: 75%;">
                                     </button>
                                 </div>

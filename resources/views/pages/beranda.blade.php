@@ -76,7 +76,7 @@
     </section>
 
     {{-- Start --}}
-    <section class="mt-2" style="background-color: #074173; height: 70%;">
+    {{-- <section class="mt-2" style="background-color: #074173; height: 70%;">
         <div id="carouselExampleControls" class="carousel carousel-dark slide" data-bs-ride="carousel">
             <div class="carousel-inner">
                 <div class="carousel-item active">
@@ -188,13 +188,73 @@
                     <span class="visually-hidden">Next</span>
                 </button>
             </div>
-    </section>
+    </section> --}}
     {{-- End --}}
+
+    <section id="testimoni" class="mt-4">
+        <div class="container-fluid text-white py-5" style="background-color: #074173;">
+            <div class="container">
+                <h1 class="text-center font-weight-bold mb-5">Testimoni Mitra Perusahaan</h1>
+                <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
+                    <div class="carousel-inner">
+                        <div class="carousel-item active">
+                            <div class="row justify-content-between">
+                                <!-- Item 1 -->
+                                <div class="col-lg-4">
+                                    <div class="text-center">
+                                        <img src="{{ asset('assets/img/visi.png') }}" class="rounded-circle border border-white mb-3"
+                                            style="width: 50%;" alt="Deskripsi Gambar">
+                                        <h4 class="card-title">Riski A. Ilham</h4>
+                                        <p class="text-white">CEO Dicoding</p>
+                                        <p>“ Portal Magang IT sangat membantu saya menemukan kesempatan magang yang sesuai
+                                            dengan minat dan jurusan saya. ”</p>
+                                    </div>
+                                </div>
+                                <!-- Item 2 -->
+                                <div class="col-lg-4">
+                                    <div class="text-center">
+                                        <img src="{{ asset('assets/img/visi.png') }}" class="rounded-circle border border-white mb-3"
+                                            style="width: 50%;" alt="Deskripsi Gambar">
+                                        <h4 class="card-title">Nadhif L. A. Rahim</h4>
+                                        <p class="text-white">CEO Codepolitan</p>
+                                        <p>“Portal Magang IT sangat mudah digunakan dan informatif. Saya dapat mencari
+                                            magang berdasarkan lokasi, perusahaan, dan jenis pekerjaan.”</p>
+                                    </div>
+                                </div>
+                                <!-- Item 3 -->
+                                <div class="col-lg-4">
+                                    <div class="text-center">
+                                        <img src="{{ asset('assets/img/visi.png') }}" class="rounded-circle border border-white mb-3"
+                                            style="width: 50%;" alt="Deskripsi Gambar">
+                                        <h4 class="card-title">Kristofel S. Lanpada</h4>
+                                        <p class="text-white">CEO PT Amanah Karya Indonesia</p>
+                                        <p>“ Portal Magang IT sangat membantu saya untuk mempersiapkan diri sebelum magang.”
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Additional slides here -->
+                    </div>
+                    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators"
+                        data-bs-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Previous</span>
+                    </button>
+                    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators"
+                        data-bs-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Next</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
 
     <section id="testimoni" class="mt-4">
         <div class="container-fluid bg-primary text-white py-5">
             <div class="container">
-                <h1 class="text-center font-weight-bold mb-5">Testimoni Peserta Magang</h1>
+                <h1 class="text-center font-weight-bold mb-5">Testimoni Mahasiswa</h1>
                 <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
                     <div class="carousel-inner">
                         <div class="carousel-item active">

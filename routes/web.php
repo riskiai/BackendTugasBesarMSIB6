@@ -22,8 +22,7 @@ use App\Http\Controllers\DashboardPerusahaaController;
 //     return redirect('/admin/dashboard');
 // });
 
-Route::get('/admin/dashboard', [DashboardController::class, 'index'])->name('admin.dashboard');
-Route::get('/mahasiswa/profile', [ProfileController::class, 'profile'])->name('mahasiswa.profile');
+
 
 // Di bawah ini dari Front End
 
@@ -31,6 +30,10 @@ Route::get('/', [HomePageController::class, 'index']);
 Route::get('/login', [HomePageController::class, 'login']);
 Route::get('/register', [HomePageController::class, 'register']);
 Route::get('/login-perusahaan', [HomePageController::class, 'authPerusahaan']);
+
+// admin
+Route::get('/admin/dashboard', [DashboardController::class, 'index'])->name('admin.dashboard');
+
 
 // beranda
 Route::get('/beranda', [HomePageController::class, 'beranda'])->name('beranda');
