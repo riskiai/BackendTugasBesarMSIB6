@@ -9,7 +9,7 @@
                 <div class="col-3 mt-5 p-0 border border-dark border-5 rounded">
                     <div class="bg-primary py-3 text-white">
                         <div class="mx-auto rounded-circle" style="background-color: #d9d9d9; height: 100px; width: 100px">
-                            <img class="rounded-circle" src="{{ asset('asset/img/team/team-1.jpg') }}" alt=""
+                            <img class="rounded-circle" src="{{ asset('assets/img/team/team-1.jpg') }}" alt=""
                                 style="height: 100px; width: 100px;">
                         </div>
                         <p class="m-0 text-center">Nama</p>
@@ -38,8 +38,9 @@
                                                 placeholder="Masukkan Judul">
                                         </div>
                                         <div class="d-flex align-items-center gap-3 my-3">
-                                            <div class="rounded-circle"
-                                                style="background-color: #d9d9d9; height: 100px; width: 100px;"></div>
+                                          
+                                                <img class="rounded-circle" src="{{ asset('assets/img/team/team-1.jpg') }}" alt=""
+                                                style="height: 100px; width: 100px;">
                                             <div class="mb-3">
                                                 <input class="form-control form-control-sm" id="profilePicture"
                                                     type="file">
@@ -101,8 +102,8 @@
                                                 placeholder="Judul Pekerjaan">
                                         </div>
                                         <div class="d-flex align-items-center gap-3 my-3">
-                                            <div class="rounded-circle"
-                                                style="background-color: #d9d9d9; height: 100px; width: 100px;"></div>
+                                            <img class="rounded-circle" src="{{ asset('assets/img/team/team-1.jpg') }}" alt=""
+                                            style="height: 100px; width: 100px;">
                                             <div class="mb-3">
                                                 <input class="form-control form-control-sm" id="profilePicture"
                                                     type="file">

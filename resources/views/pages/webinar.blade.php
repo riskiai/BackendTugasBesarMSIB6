@@ -9,7 +9,7 @@
         <div class="row">
             <div class="col-md-4">
                 <div class="card" style="width: 18rem; background-color: #074173">
-                    <img src="{{ asset('asset/img/webinar.png') }}" class="card-img-top" alt="...">
+                    <img src="{{ asset('assets/img/webinar.png') }}" class="card-img-top" alt="...">
                     <div class="card-body">
                         <h5 class="card-title">Deskripsi Singkat</h5>
                         <p class="card-text">
@@ -22,7 +22,7 @@
             </div>
             <div class="col-md-4">
                 <div class="card" style="width: 18rem; background-color: #074173">
-                    <img src="{{ asset('asset/img/webinar.png') }}" class="card-img-top" alt="...">
+                    <img src="{{ asset('assets/img/webinar.png') }}" class="card-img-top" alt="...">
                     <div class="card-body">
                         <h5 class="card-title">Deskripsi Singkat</h5>
                         <p class="card-text">
@@ -35,7 +35,7 @@
             </div>
             <div class="col-md-4">
                 <div class="card" style="width: 18rem; background-color: #074173">
-                    <img src="{{ asset('asset/img/webinar.png') }}" class="card-img-top" alt="...">
+                    <img src="{{ asset('assets/img/webinar.png') }}" class="card-img-top" alt="...">
                     <div class="card-body">
                         <h5 class="card-title">Deskripsi Singkat</h5>
                         <p class="card-text">

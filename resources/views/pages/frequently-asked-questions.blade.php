@@ -16,7 +16,7 @@
             margin-top: 5px; /* Menambahkan margin atas */
           " />
 
-                <img src="asset/img/FAQ.png" alt="Search" class="img-fluid" />
+                <img src="{{ asset('assets/img/FAQ.png') }}" alt="Search" class="img-fluid" />
             </div>
 
 

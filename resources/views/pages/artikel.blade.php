@@ -13,7 +13,7 @@
                                     <div class="col-md-3 my-3">
                                         <div class="rounded" style="background-color: #074173;">
                                             <div class="lowongan-content d-flex justify-content-center align-items-center">
-                                                <img src="asset/img/artikel.png" alt="Deskripsi Gambar"
+                                                <img src="{{ asset('assets/img/artikel.png') }}" alt="Deskripsi Gambar"
                                                     class="img-fluid rounded">
                                             </div>
                                         </div>
@@ -29,7 +29,7 @@
                                     <div class="col-md-3 my-3">
                                         <div class="rounded" style="background-color: #074173;">
                                             <div class="lowongan-content d-flex justify-content-center align-items-center">
-                                                <img src="asset/img/artikel.png" alt="Deskripsi Gambar"
+                                                <img src="{{ asset('assets/img/artikel.png') }}" alt="Deskripsi Gambar"
                                                     class="img-fluid rounded">
                                             </div>
                                         </div>
@@ -45,7 +45,7 @@
                                     <div class="col-md-3 my-3">
                                         <div class="rounded" style="background-color: #074173;">
                                             <div class="lowongan-content d-flex justify-content-center align-items-center">
-                                                <img src="asset/img/artikel.png" alt="Deskripsi Gambar"
+                                                <img src="{{ asset('assets/img/artikel.png') }}" alt="Deskripsi Gambar"
                                                     class="img-fluid rounded">
                                             </div>
                                         </div>
@@ -78,7 +78,7 @@
                                     <div class="col-md-3 my-3">
                                         <div class="rounded" style="background-color: #074173;">
                                             <div class="lowongan-content d-flex justify-content-center align-items-center">
-                                                <img src="asset/img/artikel.png" alt="Deskripsi Gambar"
+                                                <img src="{{ asset('assets/img/artikel.png') }}" alt="Deskripsi Gambar"
                                                     class="img-fluid rounded">
                                             </div>
                                         </div>
@@ -94,7 +94,7 @@
                                     <div class="col-md-3 my-3">
                                         <div class="rounded" style="background-color: #074173;">
                                             <div class="lowongan-content d-flex justify-content-center align-items-center">
-                                                <img src="asset/img/artikel.png" alt="Deskripsi Gambar"
+                                                <img src="{{ asset('assets/img/artikel.png') }}" alt="Deskripsi Gambar"
                                                     class="img-fluid rounded">
                                             </div>
                                         </div>
@@ -110,7 +110,7 @@
                                     <div class="col-md-3 my-3">
                                         <div class="rounded" style="background-color: #074173;">
                                             <div class="lowongan-content d-flex justify-content-center align-items-center">
-                                                <img src="asset/img/artikel.png" alt="Deskripsi Gambar"
+                                                <img src="{{ asset('assets/img/artikel.png') }}" alt="Deskripsi Gambar"
                                                     class="img-fluid rounded">
                                             </div>
                                         </div>
@@ -125,7 +125,7 @@
                                     <!-- Item 8 -->
                                     <div class="col-lg-3 my-3">
                                         <div class="d-flex justify-content-center align-items-center">
-                                            <img src="asset/img/artikel_1.png" alt="Deskripsi Gambar" class="img-fluid"
+                                            <img src="{{ asset('assets/img/artikel_1.png') }}" alt="Deskripsi Gambar" class="img-fluid"
                                                 style="width: 150%; height: 90%">
                                         </div>
                                     </div>

@@ -9,7 +9,7 @@
                     <div class="bg-primary py-3 text-white text-center">
                         <div class="mx-auto rounded-circle bg-secondary d-flex justify-content-center align-items-center"
                             style="height: 100px; width: 100px">
-                            <img class="rounded-circle" src="{{ asset('asset/img/team/team-3.jpg') }}" alt=""
+                            <img class="rounded-circle" src="{{ asset('assets/img/team/team-3.jpg') }}" alt=""
                                 style="height: 100px; width: 100px;">
                         </div>
                         <p class="m-0">Nama</p>

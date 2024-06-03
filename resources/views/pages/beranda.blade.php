@@ -2,9 +2,8 @@
 <style>
     .card {
         /* padding=0; */
-
     }
-
+    
     .card-wrapper {}
 </style>
 
@@ -30,7 +29,7 @@
                     </form>
                 </div>
                 <div class="col-lg-5 order-1 order-lg-2 hero-img" data-aos="zoom-out">
-                    <img src="asset/img/Group 2.png" class="img-fluid mb-3 mb-lg-0" alt="Hero Image" />
+                    <img src="{{ asset('assets/img/Group 2.png') }}" class="img-fluid mb-3 mb-lg-0" alt="Hero Image" />
                 </div>
             </div>
         </div>
@@ -51,7 +50,7 @@
                                 perusahaan ternama di industri IT untuk peluang magang yang berkualitas.”
                             </p>
                         </div>
-                        <img src="asset/img/visi.png" alt="Gambar Visi" class="img-fluid"
+                        <img src="{{ asset('assets/img/visi.png') }}" alt="Gambar Visi" class="img-fluid"
                             style="width: 150px; height: auto;" />
                     </div>
                     <div class="col-lg-6 mb-5 mt-3">
@@ -203,7 +202,7 @@
                                 <!-- Item 1 -->
                                 <div class="col-lg-4">
                                     <div class="text-center">
-                                        <img src="asset/img/visi.png" class="rounded-circle border border-white mb-3"
+                                        <img src="{{ asset('assets/img/visi.png') }}" class="rounded-circle border border-white mb-3"
                                             style="width: 50%;" alt="Deskripsi Gambar">
                                         <h4 class="card-title">Riski A. Ilham</h4>
                                         <p class="text-muted">Jurusan Teknik Informatika, Universitas Indonesia</p>
@@ -214,7 +213,7 @@
                                 <!-- Item 2 -->
                                 <div class="col-lg-4">
                                     <div class="text-center">
-                                        <img src="asset/img/visi.png" class="rounded-circle border border-white mb-3"
+                                        <img src="{{ asset('assets/img/visi.png') }}" class="rounded-circle border border-white mb-3"
                                             style="width: 50%;" alt="Deskripsi Gambar">
                                         <h4 class="card-title">Nadhif L. A. Rahim</h4>
                                         <p class="text-muted">Jurusan Teknik Informatika, Universitas Indonesia</p>
@@ -225,7 +224,7 @@
                                 <!-- Item 3 -->
                                 <div class="col-lg-4">
                                     <div class="text-center">
-                                        <img src="asset/img/visi.png" class="rounded-circle border border-white mb-3"
+                                        <img src="{{ asset('assets/img/visi.png') }}" class="rounded-circle border border-white mb-3"
                                             style="width: 50%;" alt="Deskripsi Gambar">
                                         <h4 class="card-title">Kristofel S. Lanpada</h4>
                                         <p class="text-muted">Jurusan Teknik Informatika, Universitas Indonesia</p>
@@ -262,7 +261,7 @@
                         <div class="col-lg-4 my-4">
                             <div class="card border-0 p-4 text-white" style="background-color: #074173;">
                                 <div class="d-flex align-items-start">
-                                    <img src="asset/img/visi.png" alt="Deskripsi Gambar"
+                                    <img src="{{ asset('assets/img/visi.png') }}" alt="Deskripsi Gambar"
                                         class="rounded-circle border border-primary me-3" style="width: 20%;" />
                                     <div class="d-flex flex-column">
                                         <h5 class="card-title">Marketing Manager</h5>
@@ -298,7 +297,7 @@
                 </h1>
                 <div class="row">
                     <div class="col-lg-5 order-1 hero-img" data-aos="zoom-out" style="position: relative; top: -20px;">
-                        <img src="asset/img/testimoni.png" class="img-fluid mb-3 mb-lg-0" alt="Testimoni">
+                        <img src="{{ asset('assets/img/testimoni.png') }}" class="img-fluid mb-3 mb-lg-0" alt="Testimoni">
                     </div>
                     <div class="col-lg-7 order-2 text-white d-flex flex-column justify-content-center">
                         <ol class="mb-0">
@@ -323,36 +322,36 @@
                 <h5 class="text-center mb-5" style="font-size: 40px; color: #333;">Telah dipercaya oleh:</h5>
                 <div class="row justify-content-center">
                     <div class="col-md-2 mb-4 mb-md-0">
-                        <img src="asset/img/Group 13.png" class="img-fluid" alt="Logo Perusahaan 1">
+                        <img src="{{ asset('assets/img/Group 13.png') }}" class="img-fluid" alt="Logo Perusahaan 1">
                     </div>
                     <div class="col-md-2 mb-4 mb-md-0">
-                        <img src="asset/img/Group 5.png" class="img-fluid" alt="Logo Perusahaan 2">
+                        <img src="{{ asset('assets/img/Group 5.png') }}" class="img-fluid" alt="Logo Perusahaan 2">
                     </div>
                     <div class="col-md-2 mb-4 mb-md-0">
-                        <img src="asset/img/Group 6.png" class="img-fluid" alt="Logo Perusahaan 3">
+                        <img src="{{ asset('assets/img/Group 6.png') }}" class="img-fluid" alt="Logo Perusahaan 3">
                     </div>
                     <div class="col-md-2 mb-4 mb-md-0">
-                        <img src="asset/img/Group 7.png" class="img-fluid" alt="Logo Perusahaan 4">
+                        <img src="{{ asset('assets/img/Group 7.png') }}" class="img-fluid" alt="Logo Perusahaan 4">
                     </div>
                     <div class="col-md-2 mb-4 mb-md-0">
-                        <img src="asset/img/Group 8.png" class="img-fluid" alt="Logo Perusahaan 5">
+                        <img src="{{ asset('assets/img/Group 8.png') }}" class="img-fluid" alt="Logo Perusahaan 5">
                     </div>
                 </div>
                 <div class="row justify-content-center mt-5">
                     <div class="col-md-2 mb-4 mb-md-0">
-                        <img src="asset/img/Group 13.png" class="img-fluid" alt="Logo Perusahaan 6">
+                        <img src="{{ asset('assets/img/Group 13.png') }}" class="img-fluid" alt="Logo Perusahaan 6">
                     </div>
                     <div class="col-md-2 mb-4 mb-md-0">
-                        <img src="asset/img/Group 5.png" class="img-fluid" alt="Logo Perusahaan 7">
+                        <img src="{{ asset('assets/img/Group 5.png') }}" class="img-fluid" alt="Logo Perusahaan 7">
                     </div>
                     <div class="col-md-2 mb-4 mb-md-0">
-                        <img src="asset/img/Group 6.png" class="img-fluid" alt="Logo Perusahaan 8">
+                        <img src="{{ asset('assets/img/Group 6.png') }}" class="img-fluid" alt="Logo Perusahaan 8">
                     </div>
                     <div class="col-md-2 mb-4 mb-md-0">
-                        <img src="asset/img/Group 7.png" class="img-fluid" alt="Logo Perusahaan 9">
+                        <img src="{{ asset('assets/img/Group 7.png') }}" class="img-fluid" alt="Logo Perusahaan 9">
                     </div>
                     <div class="col-md-2 mb-4 mb-md-0">
-                        <img src="asset/img/Group 8.png" class="img-fluid" alt="Logo Perusahaan 10">
+                        <img src="{{ asset('assets/img/Group 8.png') }}" class="img-fluid" alt="Logo Perusahaan 10">
                     </div>
                 </div>
             </div>

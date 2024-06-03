@@ -24,7 +24,7 @@
 @section('content')
     <section>
         <div class="fullscreen-bg">
-            <img src="{{ asset('asset/img/About_as.png') }}" alt="About Us" class="img-fluid w-100" />
+            <img src="{{ asset('assets/img/About_as.png') }}" alt="About Us" class="img-fluid w-100" />
         </div>
 
         <div class="container-fluid" style="margin-top: 10px;">
@@ -37,7 +37,7 @@
                                 <!-- Item 1 -->
                                 <div class="col-lg-4 d-flex justify-content-center" style="margin-top: 20px;">
                                     <div class="lowongan-container text-center">
-                                        <img src="{{ asset('asset/img/team/team-1.jpg') }}" alt="Nadhif L. A. Rahim"
+                                        <img src="{{ asset('assets/img/team/team-1.jpg') }}" alt="Nadhif L. A. Rahim"
                                             class="img-fluid rounded">
                                         <div class="text">
                                             <h6>Nadhif L. A. Rahim</h6>
@@ -48,7 +48,7 @@
                                 <!-- Item 2 -->
                                 <div class="col-lg-4 d-flex justify-content-center" style="margin-top: 20px;">
                                     <div class="lowongan-container text-center">
-                                        <img src="{{ asset('asset/img/team/team-2.jpg') }}" alt="Riski A. Ilham"
+                                        <img src="{{ asset('assets/img/team/team-2.jpg') }}" alt="Riski A. Ilham"
                                             class="img-fluid rounded">
                                         <div class="text">
                                             <h6>Riski A. Ilham</h6>
@@ -59,7 +59,7 @@
                                 <!-- Item 3 -->
                                 <div class="col-lg-4 d-flex justify-content-center" style="margin-top: 20px;">
                                     <div class="lowongan-container text-center">
-                                        <img src="{{ asset('asset/img/team/team-3.jpg') }}" alt="Dito Kurnia"
+                                        <img src="{{ asset('assets/img/team/team-3.jpg') }}" alt="Dito Kurnia"
                                             class="img-fluid rounded">
                                         <div class="text">
                                             <h6>Dito Kurnia</h6>
@@ -72,7 +72,7 @@
                                 <!-- Item 4 -->
                                 <div class="col-lg-4 d-flex justify-content-center" style="margin-top: 20px;">
                                     <div class="lowongan-container text-center">
-                                        <img src="{{ asset('asset/img/team/team-3.jpg') }}" alt="Pascal Z. Maliangkay"
+                                        <img src="{{ asset('assets/img/team/team-3.jpg') }}" alt="Pascal Z. Maliangkay"
                                             class="img-fluid rounded">
                                         <div class="text">
                                             <h6>Pascal Z. Maliangkay</h6>
@@ -83,7 +83,7 @@
                                 <!-- Item 5 -->
                                 <div class="col-lg-4 d-flex justify-content-center" style="margin-top: 20px;">
                                     <div class="lowongan-container text-center">
-                                        <img src="{{ asset('asset/img/team/team-2.jpg') }}" alt="Kristofel S. Lanpada"
+                                        <img src="{{ asset('assets/img/team/team-2.jpg') }}" alt="Kristofel S. Lanpada"
                                             class="img-fluid rounded">
                                         <div class="text">
                                             <h6>Kristofel S. Lanpada</h6>

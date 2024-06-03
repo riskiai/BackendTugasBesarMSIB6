@@ -2,7 +2,7 @@
 @section('content')
     <section>
         <div class="fullscreen-bg">
-            <img src="asset/img/About_as.png" alt="" class="bordered-img" />
+            <img src="{{ asset('assets/img/About_as.png') }}" alt="" class="bordered-img" />
             <div class="overlay">
                 <div class="container">
                     <div class="text">
@@ -87,7 +87,7 @@
                 </div>
 
                 <div class="image-container">
-                    <img src="asset/img/gambarartikel 1.png" alt="Deskripsi Gambar" class="side-image" />
+                    <img src="{{ asset('assets/img/gambarartikel 1.png') }}" alt="Deskripsi Gambar" class="side-image" />
                 </div>
             </div>
         </div>

@@ -2,7 +2,7 @@
 @section('content')
     <section>
         <div class="fullscreen-bg">
-            <img src="asset/img/About_as.png" alt="" class="bordered-img" />
+            <img src="{{ asset('assets/img/About_as.png') }}" alt="" class="bordered-img" />
             <div class="overlay">
                 <div class="container-fluid" style="margin-top: -50px;">
                     <div class="container my-3 py-5">
@@ -15,7 +15,7 @@
                                             <div class="col-lg-4 mb-4">
                                                 <div class="visi-container">
                                                     <div class="visi-content">
-                                                        <img src="asset/img/webinar_masuk.png" alt="Deskripsi Gambar"
+                                                        <img src="{{ asset('assets/img/webinar_masuk.png') }}" alt="Deskripsi Gambar"
                                                             style="width: 295px; height: 200px; border: 2px solid white; background-color: white;" />
                                                     </div>
                                                 </div>

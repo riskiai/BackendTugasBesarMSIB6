@@ -6,7 +6,7 @@
             style="background-color: #074173; position: relative; max-width: 500px; border-radius: 10px; padding-right: 40px;">
             <input type="text" class="form-control text-white" placeholder="Studi, lokasi, perusahaan, kriteria lain"
                 style="background-color: #074173; border: 2px solid #0E46A3; border-radius: 10px; padding-right: 30px;" />
-            <img src="asset/img/icon_pencarian.png" alt="Search"
+            <img src="{{ asset('assets/img/icon_pencarian.png') }}" alt="Search"
                 style="position: absolute; right: 10px; top: 50%; transform: translateY(-50%); width: 20px; height: 20px;" />
         </form>
     </section>
@@ -24,13 +24,13 @@
                                         <div class="col-lg-4 my-4">
                                             <div class="card border-0 p-4 text-white" style="background-color: #074173;">
                                                 <div class="d-flex align-items-start">
-                                                    <img src="asset/img/visi.png" alt="Deskripsi Gambar"
+                                                    <img src="{{ asset('assets/img/visi.png') }}" alt="Deskripsi Gambar"
                                                         class="rounded-circle border border-primary me-3"
                                                         style="width: 20%;" />
                                                     <div class="d-flex flex-column">
                                                         <h5 class="card-title">Analis Data Junior</h5>
                                                         <div class="d-flex align-items-center mt-2">
-                                                            <img src="asset/img/marketeq.png" alt="Logo"
+                                                            <img src="{{ asset('assets/img/marketeq.png') }}" alt="Logo"
                                                                 class="me-2" />
                                                             <p class="mb-0">Marketing</p>
                                                         </div>
@@ -38,7 +38,7 @@
                                                 </div>
                                                 <div class="mt-3 d-flex flex-column align-items-start">
                                                     <div class="d-flex align-items-center mb-2">
-                                                        <img src="asset/img/location.png" alt="Location Icon"
+                                                        <img src="{{ asset('assets/img/location.png') }}" alt="Location Icon"
                                                             class="me-2" />
                                                         <p class="mb-0">Jakarta Selatan</p>
                                                     </div>

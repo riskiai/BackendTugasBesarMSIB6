@@ -54,10 +54,10 @@
 
         </div>
 
-        <div class="container mt-4">
+        <div class="container mt-4 ">
             <div class="row justify-content-center">
                 <div class="col-md-6 text-center">
-                    <p style="color: white;">&copy; Copyright <strong></strong>. @ 2024 All Rights Reserved ApprenTech
+                    <p style="color: white;">&copy;  <strong></strong> 2024 All Rights Reserved ApprenTech
                     </p>
                 </div>
             </div>

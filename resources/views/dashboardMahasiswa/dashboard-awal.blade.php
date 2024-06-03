@@ -8,7 +8,7 @@
                 <div class="col-md-3 mt-5 p-0 border border-dark border-5 rounded">
                     <div class="bg-primary py-3">
                         <div class="mx-auto rounded-circle bg-secondary" style="height: 100px; width: 100px;">
-                            <img class="rounded-circle" src="{{ asset('asset/img/team/team-3.jpg') }}" alt=""
+                            <img class="rounded-circle" src="{{ asset('assets/img/team/team-3.jpg') }}" alt=""
                                 style="height: 100px; width: 100px;">
                         </div>
                         <p class="m-0 text-white">Nama</p>
@@ -48,7 +48,7 @@
                     </div>
                     <div>
                         <div class="d-flex align-items-center gap-3">
-                            <img src="./asset/img/business-bag.png" alt="business bag" width="25px">
+                            <img src="{{ asset('./assets/img/business-bag.png') }}" alt="business bag" width="25px">
                             <h6 class="text-start pt-2">Lowongan Magang Disimpan</h6>
                         </div>
                         <hr>
