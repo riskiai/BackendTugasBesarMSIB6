@@ -24,16 +24,15 @@ use App\Http\Controllers\DashboardPerusahaaController;
 
 
 
-// Di bawah ini dari Front End
-
+// Auth
 Route::get('/', [HomePageController::class, 'index']);
-Route::get('/login', [HomePageController::class, 'login']);
+Route::get('/login', [HomePageController::class, 'login'])->name('login');
 Route::get('/register', [HomePageController::class, 'register']);
+Route::post('/register', [HomePageController::class, 'store'])->name('register.store');
 Route::get('/login-perusahaan', [HomePageController::class, 'authPerusahaan']);
 
 // admin
 Route::get('/admin/dashboard', [DashboardController::class, 'index'])->name('admin.dashboard');
-
 
 // beranda
 Route::get('/beranda', [HomePageController::class, 'beranda'])->name('beranda');

@@ -2,7 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\RegisterRequest;
+use App\Models\User;
 use Illuminate\Http\Request;
+use Spatie\Permission\Models\Role;
 
 class HomePageController extends Controller
 {
@@ -20,6 +23,22 @@ class HomePageController extends Controller
     {
         return view('auth.register');
     }
+
+    public function store(RegisterRequest $request)
+    {
+        // $user = User::create([
+        //     'name' => $request->name,
+        //     'username' => $request->username,
+        //     'email' => $request->email,
+        //     'password' => bcrypt($request->password),
+        // ]);
+        $user = User::create($request->validated());
+
+        $user->assignRole('user');
+
+        return redirect()->route('login')->with('success', 'Registrasi berhasil! Silakan login.');
+    }
+
     public function authPerusahaan()
     {
         return view('auth.auth-perusahaan');

@@ -13,18 +13,16 @@ return new class extends Migration
     {
         Schema::create('users', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('role_id');
             $table->string('name');
             $table->string('email')->unique();
-            $table->string('no_hp')->unique();
-            $table->text('alamat');
-            $table->date('tgl_lahir');
-            $table->enum('gender', ['pria', 'wanita']);
-            $table->string('foto_profil');
-            $table->enum('status', ['bekerja', 'belum bekerja']);
+            $table->string('password');
+            $table->string('no_hp')->unique()->nullable();
+            $table->text('alamat')->nullable();
+            $table->date('tgl_lahir')->nullable();
+            $table->enum('gender', ['pria', 'wanita'])->nullable();
+            $table->string('foto_profil')->nullable();
+            $table->enum('status', ['bekerja', 'belum bekerja'])->nullable();
             $table->timestamps();
-
-            $table->foreign('role_id')->references('id')->on('roles');
         });
     }
 
