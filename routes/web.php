@@ -24,16 +24,16 @@ use App\Http\Controllers\DashboardPerusahaaController;
 
 
 
-// Di bawah ini dari Front End
-
+// Auth
 Route::get('/', [HomePageController::class, 'index']);
-Route::get('/login', [HomePageController::class, 'login']);
+Route::get('/login', [HomePageController::class, 'login'])->name('login');
+Route::post('/login', [HomePageController::class, 'authenticate'])->name('login.authenticate');
 Route::get('/register', [HomePageController::class, 'register']);
+Route::post('/register', [HomePageController::class, 'store'])->name('register.store');
 Route::get('/login-perusahaan', [HomePageController::class, 'authPerusahaan']);
 
 // admin
 Route::get('/admin/dashboard', [DashboardController::class, 'index'])->name('admin.dashboard');
-
 
 // beranda
 Route::get('/beranda', [HomePageController::class, 'beranda'])->name('beranda');
@@ -47,7 +47,7 @@ Route::get('/detail-logowan-kerja-dan-magang', [HomePageController::class, 'deta
 Route::get('/about', [HomePageController::class, 'about']);
 
 // Dashboard Mahasiswa
-Route::get('dashboard-mahasisswa', [DashboardMahasiswaController::class, 'index']);
+Route::get('dashboard-mahasisswa', [DashboardMahasiswaController::class, 'index'])->name('mahasiswa.index');
 Route::get('dashboard-mahasisswa-awal', [DashboardMahasiswaController::class, 'dashboardAwal']);
 Route::get('dashboard-mahasisswa-profil', [DashboardMahasiswaController::class, 'editProfil']);
 Route::get('dashboard-mahasisswa-bantuan', [DashboardMahasiswaController::class, 'bantuan']);

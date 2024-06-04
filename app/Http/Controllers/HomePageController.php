@@ -2,7 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\LoginRequest;
+use App\Http\Requests\RegisterRequest;
+use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Spatie\Permission\Models\Role;
 
 class HomePageController extends Controller
 {
@@ -16,10 +21,32 @@ class HomePageController extends Controller
         return view('auth.login');
     }
 
+    public function authenticate(LoginRequest $request)
+    {
+        $credentials = $request->validated();
+
+        if (Auth::attempt($credentials)) {
+            $request->session()->regenerate();
+            return redirect()->route('mahasiswa.index');
+        } else {
+            return redirect()->route('login')->with('error', 'Login failed! Email or password is incorrect.');
+        }
+    }
+
     public function register()
     {
         return view('auth.register');
     }
+
+    public function store(RegisterRequest $request)
+    {
+        $user = User::create($request->validated());
+
+        $user->assignRole('user');
+
+        return redirect()->route('login')->with('success', 'Registrasi berhasil! Silakan login.');
+    }
+
     public function authPerusahaan()
     {
         return view('auth.auth-perusahaan');
