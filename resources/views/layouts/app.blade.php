@@ -17,7 +17,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
 
     {{-- Icon --}}
-    <link rel="icon" href="{{ asset('asset/img/Logo.png') }}" type="image/x-icon" />
+    <link rel="icon" href="{{ asset('assets/img/Logo.png') }}" type="image/x-icon" />
 
     {{-- Style CSS --}}
     <link rel="stylesheet" href="{{ asset('css/login_perusahaaan.css') }}" />

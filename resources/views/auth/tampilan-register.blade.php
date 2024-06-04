@@ -32,7 +32,7 @@
             <div class="position-absolute text-center"
                 style="top: 50%; left: 50%; transform: translate(-50%, -50%); color: white;">
                 <p class="mb-2" style="color: black; padding: 5px 10px; font-weight: bold;">Daftar sebagai peserta
-                    Perusahaan
+                  Mitra  Perusahaan
                 </p>
                 <a href="{{ url('login-perusahaan') }}" class="btn btn-light"
                     style="padding: 10px 20px; color: black;">Daftar</a>

@@ -19,6 +19,9 @@
   <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}">
   <link rel="stylesheet" href="{{ asset('assets/css/components.css') }}">
 
+   {{-- Icon --}}
+   <link rel="icon" href="{{ asset('assets/img/Logo.png') }}" type="image/x-icon" />
+
   <!-- Template JS File -->
   <script src="{{ asset('assets/js/scripts.js') }}"></script>
   <script src="{{ asset('assets/js/custom.js') }}"></script>
@@ -40,6 +43,7 @@
 
     @yield('content')
 
+    @include('admin.components.footer')
 
 
 <!-- General JS Scripts -->

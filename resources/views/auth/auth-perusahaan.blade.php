@@ -6,7 +6,7 @@
             <div class="col-md-10">
                 <div class="card shadow-lg p-3 border-0">
                     <div class="card-body">
-                        <h4>Daftar Sebagai Perusahaan</h4>
+                        <h4>Daftar Sebagai Mitra Perusahaan</h4>
                         <div class="row">
                             <div class="col-md-6">
                                 <p class="mt-2 mb-2 text-primary text-center font-weight-bold">Informasi Perusahaan</p>
