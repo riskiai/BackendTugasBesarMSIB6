@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\LoginRequest;
 use App\Http\Requests\RegisterRequest;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Spatie\Permission\Models\Role;
 
 class HomePageController extends Controller
@@ -19,6 +21,18 @@ class HomePageController extends Controller
         return view('auth.login');
     }
 
+    public function authenticate(LoginRequest $request)
+    {
+        $credentials = $request->validated();
+
+        if (Auth::attempt($credentials)) {
+            $request->session()->regenerate();
+            return redirect()->route('mahasiswa.index');
+        } else {
+            return redirect()->route('login')->with('error', 'Login failed! Email or password is incorrect.');
+        }
+    }
+
     public function register()
     {
         return view('auth.register');
@@ -26,12 +40,6 @@ class HomePageController extends Controller
 
     public function store(RegisterRequest $request)
     {
-        // $user = User::create([
-        //     'name' => $request->name,
-        //     'username' => $request->username,
-        //     'email' => $request->email,
-        //     'password' => bcrypt($request->password),
-        // ]);
         $user = User::create($request->validated());
 
         $user->assignRole('user');
