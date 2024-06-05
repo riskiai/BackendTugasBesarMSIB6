@@ -61,7 +61,7 @@ Route::get('dashboard-mahasisswa-diskusi', [DashboardMahasiswaController::class,
 Route::get('dashboard-mahasisswa-magang-disimpan', [DashboardMahasiswaController::class, 'magang']);
 
 // Dashboard Perusahaan
-Route::get('dashboard-perusahaan', [DashboardPerusahaaController::class, 'index']);
+Route::get('dashboard-perusahaan', [DashboardPerusahaaController::class, 'index'])->name('perusahaan.index');
 Route::get('dashboard-perusahaan-awal', [DashboardPerusahaaController::class, 'perusahaan']);
 Route::get('dashboard-perusahaan-profil', [DashboardPerusahaaController::class, 'editProfil']);
 Route::get('dashboard-perusahaan-posting-lowongan', [DashboardPerusahaaController::class, 'postingLowongan']);

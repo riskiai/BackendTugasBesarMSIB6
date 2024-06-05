@@ -6,6 +6,14 @@
             <div class="col-md-7 mx-auto" style="margin-left: 30px">
                 <div class="card shadow-sm p-3 border-0">
                     <div class="row">
+                        {{-- error message --}}
+                        @if (session('error'))
+                            <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                                {{ session('error') }}
+                                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                            </div>
+                        @endif
+
                         <div class="col-md-5">
                             <img src="{{ asset('assets/img/Man.png') }}" width="250" height="267" alt=""
                                 style="margin-top: 100px" />
@@ -20,12 +28,18 @@
                                         <label for="email" class="form-label">Email</label>
                                         <input type="email" name="email" class="form-control" id="email"
                                             placeholder="masukkan email kamu" />
+                                        @error('email')
+                                            <div class="text-danger mt-2">{{ $message }}</div>
+                                        @enderror
                                     </div>
 
                                     <div class="mb-3">
                                         <label for="password" class="form-label">Password</label>
                                         <input type="password" name="password" class="form-control" id="password"
                                             placeholder="masukkan password" />
+                                        @error('password')
+                                            <div class="text-danger mt-2">{{ $message }}</div>
+                                        @enderror
                                     </div>
                                     <div style="text-align: center; margin-top: 20px">
                                         <button type="submit" class="btn btn-custom">Submit</button>

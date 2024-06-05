@@ -28,6 +28,9 @@ class AuthController extends Controller
         if (Auth::attempt($credentials)) {
             $request->session()->regenerate();
             return redirect()->route('mahasiswa.index');
+        } elseif (Auth::guard('company')->attempt($credentials)) {
+            $request->session()->regenerate();
+            return redirect()->route('perusahaan.index');
         } else {
             return redirect()->route('login')->with('error', 'Login failed! Email or password is incorrect.');
         }
