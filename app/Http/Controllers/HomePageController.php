@@ -11,48 +11,6 @@ use Spatie\Permission\Models\Role;
 
 class HomePageController extends Controller
 {
-    public function index()
-    {
-        return view('auth.tampilan-register');
-    }
-
-    public function login()
-    {
-        return view('auth.login');
-    }
-
-    public function authenticate(LoginRequest $request)
-    {
-        $credentials = $request->validated();
-
-        if (Auth::attempt($credentials)) {
-            $request->session()->regenerate();
-            return redirect()->route('mahasiswa.index');
-        } else {
-            return redirect()->route('login')->with('error', 'Login failed! Email or password is incorrect.');
-        }
-    }
-
-    public function register()
-    {
-        return view('auth.register');
-    }
-
-    public function store(RegisterRequest $request)
-    {
-        $user = User::create($request->validated());
-
-        $user->assignRole('user');
-
-        return redirect()->route('login')->with('success', 'Registrasi berhasil! Silakan login.');
-    }
-
-    public function authPerusahaan()
-    {
-        return view('auth.auth-perusahaan');
-    }
-
-
     // bagian beranda
     public function beranda()
     {
