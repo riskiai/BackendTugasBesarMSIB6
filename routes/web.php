@@ -6,7 +6,7 @@ use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\Mahasiswa\ProfileController;
 use App\Http\Controllers\DashboardMahasiswaController;
-use App\Http\Controllers\DashboardPerusahaaController;
+use App\Http\Controllers\DashboardPerusahaanController;
 
 /*
 |--------------------------------------------------------------------------
@@ -51,19 +51,26 @@ Route::get('/detail-webinar', [HomePageController::class, 'detailWebinar']);
 Route::get('/detail-logowan-kerja-dan-magang', [HomePageController::class, 'detailLowongan']);
 Route::get('/about', [HomePageController::class, 'about']);
 
-// Dashboard Mahasiswa
-Route::get('dashboard-mahasisswa', [DashboardMahasiswaController::class, 'index'])->name('mahasiswa.index');
-Route::get('dashboard-mahasisswa-awal', [DashboardMahasiswaController::class, 'dashboardAwal']);
-Route::get('dashboard-mahasisswa-profil', [DashboardMahasiswaController::class, 'editProfil'])->name('mahasiswa.profil');
-Route::post('dashboard-mahasisswa-profil', [DashboardMahasiswaController::class, 'updateProfil'])->name('mahasiswa.profil.update');
-Route::get('dashboard-mahasisswa-bantuan', [DashboardMahasiswaController::class, 'bantuan']);
-Route::get('dashboard-mahasisswa-diskusi', [DashboardMahasiswaController::class, 'diskusi']);
-Route::get('dashboard-mahasisswa-magang-disimpan', [DashboardMahasiswaController::class, 'magang']);
-
-// Dashboard Perusahaan
-Route::get('dashboard-perusahaan', [DashboardPerusahaaController::class, 'index'])->name('perusahaan.index');
-Route::get('dashboard-perusahaan-awal', [DashboardPerusahaaController::class, 'perusahaan']);
-Route::get('dashboard-perusahaan-profil', [DashboardPerusahaaController::class, 'editProfil']);
-Route::get('dashboard-perusahaan-posting-lowongan', [DashboardPerusahaaController::class, 'postingLowongan']);
-Route::get('dashboard-perusahaan-informasi-pendaftaran', [DashboardPerusahaaController::class, 'pendaftaran']);
-Route::get('dashboard-perusahaan-webinar', [DashboardPerusahaaController::class, 'webinar']);
+// Dashboard
+Route::prefix('dashboard')->group(function () {
+    // Dashboard Mahasiswa
+    Route::prefix('mahasiswa')->group(function () {
+        Route::get('/', [DashboardMahasiswaController::class, 'index'])->name('mahasiswa.index');
+        Route::get('/awal', [DashboardMahasiswaController::class, 'dashboardAwal']);
+        Route::get('/profil', [DashboardMahasiswaController::class, 'editProfil'])->name('mahasiswa.profil');
+        Route::put('/profil', [DashboardMahasiswaController::class, 'updateProfil'])->name('mahasiswa.profil.update');
+        Route::get('/bantuan', [DashboardMahasiswaController::class, 'bantuan']);
+        Route::get('/diskusi', [DashboardMahasiswaController::class, 'diskusi']);
+        Route::get('/magang-disimpan', [DashboardMahasiswaController::class, 'magang']);
+    });
+    // Dashboard Perusahaan
+    Route::prefix('perusahaan')->group(function () {
+        Route::get('/', [DashboardPerusahaanController::class, 'index'])->name('perusahaan.index');
+        Route::get('/awal', [DashboardPerusahaanController::class, 'perusahaan']);
+        Route::get('/profil', [DashboardPerusahaanController::class, 'editProfil'])->name('perusahaan.profil');
+        Route::put('/profil', [DashboardPerusahaanController::class, 'updateProfil'])->name('perusahaan.profil.update');
+        Route::get('/posting-lowongan', [DashboardPerusahaanController::class, 'postingLowongan']);
+        Route::get('/informasi-pendaftaran', [DashboardPerusahaanController::class, 'pendaftaran']);
+        Route::get('/webinar', [DashboardPerusahaanController::class, 'webinar']);
+    });
+});
