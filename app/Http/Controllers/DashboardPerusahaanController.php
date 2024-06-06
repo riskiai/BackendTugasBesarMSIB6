@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\UpdateProfilPerusahaanRequest;
+use App\Models\Company;
 use Illuminate\Http\Request;
 
-class DashboardPerusahaaController extends Controller
+class DashboardPerusahaanController extends Controller
 {
     public function index()
     {
@@ -18,7 +20,17 @@ class DashboardPerusahaaController extends Controller
 
     public function editProfil()
     {
-        return view('dashboardPerusahaan.edit-profil');
+        $company = auth()->guard('company')->user();
+        return view('dashboardPerusahaan.edit-profil', compact('company'));
+    }
+
+    public function updateProfil(UpdateProfilPerusahaanRequest $request)
+    {
+        $company = Company::find(auth()->guard('company')->user()->id);
+
+        $company->update($request->validated());
+
+        return redirect()->back()->with('success', 'Profil berhasil diupdate');
     }
 
     public function postingLowongan()

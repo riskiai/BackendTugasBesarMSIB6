@@ -1,6 +1,6 @@
 <div class="py-4">
     <p class="mx-5 mb-4 rounded py-1 bg-primary">
-        <a href="{{ url('dashboard-perusahaan-profil') }}" class="text-white text-decoration-none">
+        <a href="{{ route('perusahaan.profil') }}" class="text-white text-decoration-none">
             Edit Profil
         </a>
     </p>

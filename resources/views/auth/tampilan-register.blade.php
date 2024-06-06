@@ -15,7 +15,7 @@
                 <p class="mb-2" style="color: black; padding: 5px 10px; font-weight: bold;">
                     Daftar sebagai peserta magang
                 </p>
-                <a href="{{ url('login') }}" class="btn btn-light" style="padding: 10px 20px; color: black;">
+                <a href="{{ route('register.user') }}" class="btn btn-light" style="padding: 10px 20px; color: black;">
                     Daftar
                 </a>
             </div>
@@ -34,7 +34,7 @@
                 <p class="mb-2" style="color: black; padding: 5px 10px; font-weight: bold;">Daftar sebagai peserta
                   Mitra  Perusahaan
                 </p>
-                <a href="{{ url('login-perusahaan') }}" class="btn btn-light"
+                <a href="{{ route('register.perusahaan') }}" class="btn btn-light"
                     style="padding: 10px 20px; color: black;">Daftar</a>
             </div>
         </div>

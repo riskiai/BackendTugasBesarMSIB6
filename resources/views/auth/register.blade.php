@@ -14,7 +14,7 @@
                         <div class="col-md-7">
                             <div class="card-body">
                                 <h4>Daftar</h4>
-                                <form action="{{ route('register.store') }}" method="POST">
+                                <form action="{{ route('register.user.store') }}" method="POST">
                                     @csrf
                                     <div class="mb-3">
                                         <label for="name" class="form-label">Nama</label>
@@ -43,7 +43,7 @@
                                         <p style="margin-top: 5px; margin-bottom: 5px">
                                             Sudah memiliki akun?
                                         </p>
-                                        <a href="{{ url('login') }}" type="button" class="btn btn-custom btn-masuk">
+                                        <a href="{{ route('login') }}" type="button" class="btn btn-custom btn-masuk">
                                             Masuk
                                         </a>
                                     </div>

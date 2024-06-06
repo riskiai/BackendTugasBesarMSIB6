@@ -21,10 +21,21 @@ class RegisterRequest extends FormRequest
      */
     public function rules(): array
     {
-        return [
-            'name' => 'required|string',
-            'email' => 'required|email|unique:users,email',
-            'password' => 'required|min:8|confirmed',
-        ];
+        // Kalau ada inputan pic_name (person in charge/penanggung jawab), berarti sedang mendaftar sebagai perusahaan
+        if ($this->request->has('pic_name')) {
+            return [
+                'name' => 'required|string',
+                'pic_name' => 'required|string',
+                'email' => 'required|email|unique:companies,email',
+                'password' => 'required|min:8|confirmed',
+                'phone' => 'required|numeric|unique:companies,phone',
+            ];
+        } else {
+            return [
+                'name' => 'required|string',
+                'email' => 'required|email|unique:users,email',
+                'password' => 'required|min:8|confirmed',
+            ];
+        }
     }
 }
