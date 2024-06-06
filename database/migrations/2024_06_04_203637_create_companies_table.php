@@ -22,6 +22,8 @@ return new class extends Migration
             $table->integer('employees')->nullable();
             $table->string('industry')->nullable();
             $table->string('website')->nullable();
+            $table->string('instagram')->nullable();
+            $table->string('facebook')->nullable();
             $table->timestamps();
         });
     }
