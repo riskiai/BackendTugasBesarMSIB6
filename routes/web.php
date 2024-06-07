@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomePageController;
 use App\Http\Controllers\Admin\DashboardController;
+use App\Http\Controllers\Admin\PenggunaPerusahaanController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\Mahasiswa\ProfileController;
 use App\Http\Controllers\DashboardMahasiswaController;
@@ -37,9 +38,6 @@ Route::post('/register/user', [AuthController::class, 'storeUser'])->name('regis
 Route::get('/register/perusahaan', [AuthController::class, 'registerPerusahaan'])->name('register.perusahaan');
 Route::post('/register/perusahaan', [AuthController::class, 'storePerusahaan'])->name('register.perusahaan.store');
 
-// admin
-Route::get('/admin/dashboard', [DashboardController::class, 'index'])->name('admin.dashboard');
-
 // beranda
 Route::get('/beranda', [HomePageController::class, 'beranda'])->name('beranda');
 Route::get('/logowan-kerja-dan-magang', [HomePageController::class, 'lowongan']);
@@ -51,6 +49,10 @@ Route::get('/detail-webinar', [HomePageController::class, 'detailWebinar']);
 Route::get('/detail-logowan-kerja-dan-magang', [HomePageController::class, 'detailLowongan']);
 Route::get('/about', [HomePageController::class, 'about']);
 
+// admin
+Route::get('/admin/dashboard', [DashboardController::class, 'index'])->name('admin.dashboard');
+Route::get('/admin/penggunaperusahaan', [PenggunaPerusahaanController::class, 'index'])->name('admin.pengguna.index');
+
 // Dashboard
 Route::prefix('dashboard')->group(function () {
     // Dashboard Mahasiswa
@@ -58,7 +60,7 @@ Route::prefix('dashboard')->group(function () {
         Route::get('/', [DashboardMahasiswaController::class, 'index'])->name('mahasiswa.index');
         Route::get('/awal', [DashboardMahasiswaController::class, 'dashboardAwal']);
         Route::get('/profil', [DashboardMahasiswaController::class, 'editProfil'])->name('mahasiswa.profil');
-        Route::put('/profil', [DashboardMahasiswaController::class, 'updateProfil'])->name('mahasiswa.profil.update');
+        Route::put('/profil', [DashboardMahasiswaController::class, 'updateProfil'])->name('mahasiswa.profil.update');        
         Route::get('/bantuan', [DashboardMahasiswaController::class, 'bantuan']);
         Route::get('/diskusi', [DashboardMahasiswaController::class, 'diskusi']);
         Route::get('/magang-disimpan', [DashboardMahasiswaController::class, 'magang']);

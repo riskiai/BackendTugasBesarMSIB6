@@ -31,10 +31,13 @@
                 <div class="col-3 mt-4 p-0 border border-dark border-5 rounded">
                     <div class="bg-primary py-3 text-white">
                         <div class="mx-auto rounded-circle" style="background-color: #d9d9d9; height: 100px; width: 100px">
-                            <img class="rounded-circle" src="{{ asset('assets/img/team/team-1.jpg') }}" alt=""
-                                style="height: 100px; width: 100px;">
+                            {{-- <img class="rounded-circle" src="{{ asset('assets/img/team/team-1.jpg') }}" alt=""
+                                style="height: 100px; width: 100px;"> --}}
+                            <img src="{{ $company->foto_profil ? asset('storage/photo-profile/' . $company->foto_profil) : asset('assets/img/team/team-1.jpg') }}" 
+                                alt="Profil Picture" 
+                                class="rounded-circle"  style="height: 100px; width: 100px;">
                         </div>
-                        <p class="m-0 text-center">Nama</p>
+                        <p class="m-0 text-center">{{ $company->name }}</p>
                     </div>
                     <div style="background-color: #d9d9d9">
                         <div class="py-4 text-center">
@@ -51,8 +54,7 @@
                             <h4 class="my-2 text-center">Informasi Diri</h4>
                         </div>
                         <div class="card-body">
-                            <form action="{{ route('perusahaan.profil.update') }}" method="POST"
-                                enctype="multipart/form-data">
+                            <form action="{{ route('perusahaan.profil.update') }}" method="POST" enctype="multipart/form-data">
                                 @csrf
                                 @method('PUT')
                                 <div class="row">
@@ -64,8 +66,7 @@
                                         </div>
                                         <div class="mb-3">
                                             <label for="hp" class="form-label">No. Telepon Penanggung Jawab</label>
-                                            <input type="text" name="phone" class="form-control" id="hp"
-                                                placeholder="Masukkan nomor handphone" value="{{ $company->phone }}">
+                                            <input type="text" name="phone" class="form-control" id="hp" placeholder="Masukkan nomor handphone" value="{{ $company->phone }}">
                                         </div>
                                         <div class="mb-3">
                                             <label for="website" class="form-label">Website Perusahaan (Jika ada)</label>
@@ -101,11 +102,13 @@
                                                 value="{{ $company->industry }}">
                                         </div>
                                         <div class="d-flex align-items-center gap-3 my-3">
-                                            <div class="rounded-circle"
-                                                style="background-color: #d9d9d9; height: 100px; width: 100px;"></div>
+                                            <div class="rounded-circle overflow-hidden" style="background-color: #d9d9d9; height: 100px; width: 100px;">
+                                                <img src="{{ $company->foto_profil ? asset('storage/photo-profile/' . $company->foto_profil) : asset('assets/img/team/team-1.jpg') }}" 
+                                                     alt="Profil Picture" 
+                                                     class="img-fluid h-100 w-100 object-fit-cover">
+                                            </div>
                                             <div class="mb-3">
-                                                <input class="form-control form-control-sm" name="image" id="profilePicture"
-                                                    type="file">
+                                                <input class="form-control form-control-sm" name="foto_profil" id="profilePicture" type="file">
                                             </div>
                                         </div>
                                         <div class="mb-3">

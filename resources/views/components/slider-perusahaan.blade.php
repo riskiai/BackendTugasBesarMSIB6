@@ -1,4 +1,4 @@
-<div class="py-4">
+<div class="" style="padding-bottom: 20%; padding-top:35%;">
     <p class="mx-5 mb-4 rounded py-1 bg-primary">
         <a href="{{ route('perusahaan.profil') }}" class="text-white text-decoration-none">
             Edit Profil

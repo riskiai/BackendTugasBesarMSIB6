@@ -11,7 +11,7 @@
                             <img class="rounded-circle" src="{{ asset('asset/img/team/team-3.jpg') }}" alt=""
                                 style="height: 100px; width: 100px;">
                         </div>
-                        <p class="m-0 text-white">Nama</p>
+                        <p class="m-0 text-white">{{ $company->name }}</p>
                     </div>
                     <div class="bg-light">
                         @include('components.slider-perusahaan')

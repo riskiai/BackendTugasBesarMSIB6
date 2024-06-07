@@ -16,14 +16,22 @@
             <li class=active><a class="nav-link" href="index.html">Ecommerce Dashboard</a></li>
           </ul>
         </li> --}}
-        <li class=" active"><a class="nav-link" href="{{ route('admin.dashboard') }}"><i class="fas fa-fire"></i> <span>Dashboard</span></a></li>
+        <li class="{{ request()->routeIs('admin.dashboard') ? 'active' : '' }}">
+          <a class="nav-link" href="{{ route('admin.dashboard') }}">
+              <i class="fas fa-fire"></i> <span>Dashboard</span>
+          </a>
+        </li>
         <li class="menu-header">Data Website Apprentech</li>
-        <li class="dropdown">
-          <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i class="fas fa-users"></i> <span>Data Pengguna</span></a>
-          <ul class="dropdown-menu">
-            <li><a class="nav-link" href="layout-default.html">Pengguna Perusahaan</a></li>
-            <li><a class="nav-link" href="layout-transparent.html">Pengguna Mahasiswa</a></li>
-          </ul>
+        <li class="dropdown {{ request()->routeIs('admin.pengguna.index') ? 'active' : '' }}">
+            <a href="#" class="nav-link has-dropdown" data-toggle="dropdown">
+                <i class="fas fa-users"></i> <span>Data Pengguna</span>
+            </a>
+            <ul class="dropdown-menu">
+                <li class="{{ request()->routeIs('admin.pengguna.index') ? 'active' : '' }}">
+                    <a class="nav-link" href="{{ route('admin.pengguna.index') }}">Pengguna Perusahaan</a>
+                </li>
+                <li><a class="nav-link" href="layout-transparent.html">Pengguna Mahasiswa</a></li>
+            </ul>
         </li>
         <li class="dropdown">
           <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i class="fas fa-chalkboard-teacher"></i> <span>Data Webinar</span></a>

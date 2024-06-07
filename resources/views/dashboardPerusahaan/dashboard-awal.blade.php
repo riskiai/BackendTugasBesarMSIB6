@@ -8,10 +8,11 @@
                 <div class="col-3 mt-5 p-0 border border-dark border-5 rounded">
                     <div class="bg-primary py-3 text-white">
                         <div class="mx-auto rounded-circle" style="background-color: #d9d9d9; height: 100px; width: 100px">
-                            <img class="rounded-circle" src="{{ asset('assets/img/team/team-1.jpg') }}" alt=""
-                                style="height: 100px; width: 100px;">
+                            <img src="{{ $company->foto_profil ? asset('storage/photo-profile/' . $company->foto_profil) : asset('assets/img/team/team-1.jpg') }}" 
+                            alt="Profil Picture" 
+                            class="rounded-circle"  style="height: 100px; width: 100px;">
                         </div>
-                        <p class="m-0 text-center">Nama</p>
+                        <p class="m-0 text-white">{{ $company->name }}</p>
                     </div>
                     <div style="background-color: #d9d9d9">
                         <div class="py-4">
