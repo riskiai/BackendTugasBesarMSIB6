@@ -11,7 +11,6 @@
 
 @endsection
 
-
 @section('content')
 
 <div id="app">
@@ -19,8 +18,8 @@
         <div class="main-content">
             <section class="section">
               <div class="section-header">
-                <h1>Pengguna Mitra Perusahaan</h1>
-                @include('admin.pengguna.perusahaan.navbarperusahaan')
+                <h1>Pengguna Mahasiswa</h1>
+                @include('admin.pengguna.mahasiswa.navbarmahasiswa')
               </div>
 
               <div class="section-body">
@@ -30,64 +29,58 @@
                             <form action="" method="POST">
                               @csrf
                               <div class="card-header">
-                                <h4>Form Edit Penggunna Perusahaan</h4>
+                                <h4>Form Create Penggunna Mahasiswa</h4>
                               </div>
                               <div class="card-body">
                                 <div class="row">
                                   <div class="col-md-6">
                                     <div class="form-group">
-                                      <label>Company Name</label>
+                                      <label>Name</label>
                                       <input type="text" name="name" class="form-control" required>
-                                    </div>
-                                    <div class="form-group">
-                                      <label>PIC Name</label>
-                                      <input type="text" name="pic_name" class="form-control" required>
                                     </div>
                                     <div class="form-group">
                                       <label>Email</label>
                                       <input type="email" name="email" class="form-control" required>
                                     </div>
                                     <div class="form-group">
-                                      <label>Phone</label>
-                                      <input type="text" name="phone" class="form-control" required>
-                                    </div>
-                                    <div class="form-group">
                                       <label>Password</label>
                                       <input type="password" name="password" class="form-control" required>
                                     </div>
                                     <div class="form-group">
+                                      <label>Phone</label>
+                                      <input type="text" name="no_hp" class="form-control">
+                                    </div>
+                                    <div class="form-group">
                                       <label>Address</label>
-                                      <input type="text" name="address" id="address" class="form-control">
+                                      <textarea name="alamat" id="address" class="form-control"></textarea>
+                                    </div>
+                                    <div class="form-group">
+                                      <label>Birth Date</label>
+                                      <input type="date" name="tgl_lahir" class="form-control">
                                     </div>
                                   </div>
                                   <div class="col-md-6">
+                                    <div class="form-group">
+                                      <label>Gender</label>
+                                      <select name="gender" class="form-control">
+                                        <option value="pria">Pria</option>
+                                        <option value="wanita">Wanita</option>
+                                      </select>
+                                    </div>
                                     <div class="form-group">
                                       <label>Profile Photo</label>
                                       <input type="file" name="foto_profil" class="form-control">
                                     </div>
                                     <div class="form-group">
-                                      <label>Number of Employees</label>
-                                      <input type="number" name="employees" class="form-control">
+                                      <label>Employment Status</label>
+                                      <select name="status" class="form-control">
+                                        <option value="bekerja">Bekerja</option>
+                                        <option value="belum bekerja">Belum Bekerja</option>
+                                      </select>
                                     </div>
                                     <div class="form-group">
-                                      <label>Industry</label>
-                                      <input type="text" name="industry" class="form-control">
-                                    </div>
-                                    <div class="form-group">
-                                      <label>Website</label>
-                                      <input type="text" name="website" class="form-control">
-                                    </div>
-                                    <div class="form-group">
-                                      <label>Instagram</label>
-                                      <input type="text" name="instagram" class="form-control">
-                                    </div>
-                                    <div class="form-group">
-                                      <label>Facebook</label>
-                                      <input type="text" name="facebook" class="form-control">
-                                    </div>
-                                    <div class="form-group">
-                                      <label>Status</label>
-                                      <select name="status" class="form-control" required>
+                                      <label>User Status</label>
+                                      <select name="status_users" class="form-control">
                                         <option value="active">Active</option>
                                         <option value="inactive">Inactive</option>
                                       </select>
@@ -102,7 +95,6 @@
                           </div>
                     </div>
                 </div> 
-            
               </div>
 
             </section>
@@ -117,13 +109,12 @@
 
 <script>
 $(document).ready(function() {
-    // Inisialisasi CKEditor pada modal tambah data
+    // Initialize CKEditor
     ClassicEditor
         .create(document.querySelector('#address'))
         .catch(error => {
             console.error(error);
         });
-
 });
 </script>
 @endsection

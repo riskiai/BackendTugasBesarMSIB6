@@ -2,20 +2,19 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Models\Company;
-use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Http\Request;
 
-class PenggunaPerusahaanController extends Controller
+class WebinarPerusahaanController extends Controller
 {
     public function index(Request $request)
     {
-        return view('admin.pengguna.perusahaan.index');
+        return view('admin.webinar.perusahaan.index');
 
     }
 
     public function create() {
-        return view('admin.pengguna.perusahaan.create');
+        return view('admin.webinar.perusahaan.create');
     }
 
     public function createproses() {
@@ -23,7 +22,7 @@ class PenggunaPerusahaanController extends Controller
     }
 
     public function edit() {
-        return view('admin.pengguna.perusahaan.edit');
+        return view('admin.webinar.perusahaan.edit');
     }
 
     public function update() {

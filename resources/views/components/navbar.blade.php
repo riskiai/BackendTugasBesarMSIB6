@@ -11,22 +11,22 @@
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav mx-auto">
                 <li class="nav-item mx-2">
-                    <a class="nav-link active" aria-current="page" href="{{ url('beranda') }}">Beranda</a>
+                    <a class="nav-link {{ request()->is('beranda') ? 'active' : '' }}" aria-current="page" href="{{ url('beranda') }}">Beranda</a>
                 </li>
                 <li class="nav-item mx-2">
-                    <a class="nav-link" href="{{ url('logowan-kerja-dan-magang') }}">Lowongan Kerja & Magang</a>
+                    <a class="nav-link {{ request()->is('logowan-kerja-dan-magang') ? 'active' : '' }}" href="{{ url('logowan-kerja-dan-magang') }}">Lowongan Kerja & Magang</a>
                 </li>
                 <li class="nav-item mx-2">
-                    <a class="nav-link" href="{{ url('frequently-asked-questions') }}">FAQ</a>
+                    <a class="nav-link {{ request()->is('frequently-asked-questions') ? 'active' : '' }}" href="{{ url('frequently-asked-questions') }}">FAQ</a>
                 </li>
                 <li class="nav-item mx-2">
-                    <a class="nav-link" href="{{ url('artikel') }}">Artikel</a>
+                    <a class="nav-link {{ request()->is('artikel') ? 'active' : '' }}" href="{{ url('artikel') }}">Artikel</a>
                 </li>
                 <li class="nav-item mx-2">
-                    <a class="nav-link" href="{{ url('webinar') }}">Webinar</a>
+                    <a class="nav-link {{ request()->is('webinar') ? 'active' : '' }}" href="{{ url('webinar') }}">Webinar</a>
                 </li>
                 <li class="nav-item mx-2">
-                    <a class="nav-link" href="{{ url('about') }}">About</a>
+                    <a class="nav-link {{ request()->is('about') ? 'active' : '' }}" href="{{ url('about') }}">About</a>
                 </li>
             </ul>
 

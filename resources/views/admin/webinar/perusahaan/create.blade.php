@@ -11,7 +11,6 @@
 
 @endsection
 
-
 @section('content')
 
 <div id="app">
@@ -19,8 +18,8 @@
         <div class="main-content">
             <section class="section">
               <div class="section-header">
-                <h1>Pengguna Mitra Perusahaan</h1>
-                @include('admin.pengguna.perusahaan.navbarperusahaan')
+                <h1>Webinar Perusahaan</h1>
+                @include('admin.webinar.perusahaan.navbarwebinarperusahaan')
               </div>
 
               <div class="section-body">
@@ -30,66 +29,62 @@
                             <form action="" method="POST">
                               @csrf
                               <div class="card-header">
-                                <h4>Form Edit Penggunna Perusahaan</h4>
+                                <h4>Form Create Webinar Perusahaan</h4>
                               </div>
                               <div class="card-body">
                                 <div class="row">
                                   <div class="col-md-6">
                                     <div class="form-group">
-                                      <label>Company Name</label>
-                                      <input type="text" name="name" class="form-control" required>
+                                      <label>Nama Pembicara</label>
+                                      <input type="text" name="name_speaker" class="form-control" required>
                                     </div>
                                     <div class="form-group">
-                                      <label>PIC Name</label>
-                                      <input type="text" name="pic_name" class="form-control" required>
+                                      <label>Short Description</label>
+                                      <input type="text" name="short_description" class="form-control" required>
                                     </div>
                                     <div class="form-group">
-                                      <label>Email</label>
-                                      <input type="email" name="email" class="form-control" required>
+                                      <label>Detail Description</label>
+                                      <textarea name="detail_description" id="detail_description" class="form-control" required></textarea>
                                     </div>
                                     <div class="form-group">
-                                      <label>Phone</label>
-                                      <input type="text" name="phone" class="form-control" required>
+                                      <label>Judul Webinar</label>
+                                      <input type="text" name="judul_webinar" class="form-control" required>
                                     </div>
                                     <div class="form-group">
-                                      <label>Password</label>
-                                      <input type="password" name="password" class="form-control" required>
+                                      <label>Mengadakan Acara</label>
+                                      <input type="text" name="mengadakan_acara" class="form-control">
                                     </div>
                                     <div class="form-group">
-                                      <label>Address</label>
-                                      <input type="text" name="address" id="address" class="form-control">
+                                      <label>Judul Deskripsi</label>
+                                      <input type="text" name="judul_deskripsi" class="form-control">
+                                    </div>
+                                    <div class="form-group">
+                                      <label>Nama Pengada Acara</label>
+                                      <input type="text" name="nama_pengada_acara" class="form-control">
                                     </div>
                                   </div>
                                   <div class="col-md-6">
                                     <div class="form-group">
-                                      <label>Profile Photo</label>
-                                      <input type="file" name="foto_profil" class="form-control">
+                                      <label>Tanggal</label>
+                                      <input type="date" name="tanggal" class="form-control" required>
                                     </div>
                                     <div class="form-group">
-                                      <label>Number of Employees</label>
-                                      <input type="number" name="employees" class="form-control">
+                                      <label>Waktu</label>
+                                      <input type="text" name="waktu" class="form-control" required>
                                     </div>
                                     <div class="form-group">
-                                      <label>Industry</label>
-                                      <input type="text" name="industry" class="form-control">
+                                      <label>Platform</label>
+                                      <input type="text" name="platform" class="form-control" required>
                                     </div>
                                     <div class="form-group">
-                                      <label>Website</label>
-                                      <input type="text" name="website" class="form-control">
+                                      <label>Lokasi</label>
+                                      <input type="text" name="lokasi" class="form-control" required>
                                     </div>
                                     <div class="form-group">
-                                      <label>Instagram</label>
-                                      <input type="text" name="instagram" class="form-control">
-                                    </div>
-                                    <div class="form-group">
-                                      <label>Facebook</label>
-                                      <input type="text" name="facebook" class="form-control">
-                                    </div>
-                                    <div class="form-group">
-                                      <label>Status</label>
-                                      <select name="status" class="form-control" required>
-                                        <option value="active">Active</option>
-                                        <option value="inactive">Inactive</option>
+                                      <label>Status Webinar</label>
+                                      <select name="status_webinar" class="form-control" required>
+                                        <option value="perusahaan">Perusahaan</option>
+                                        <option value="apprentech">Apprentech</option>
                                       </select>
                                     </div>
                                   </div>
@@ -102,7 +97,6 @@
                           </div>
                     </div>
                 </div> 
-            
               </div>
 
             </section>
@@ -117,13 +111,12 @@
 
 <script>
 $(document).ready(function() {
-    // Inisialisasi CKEditor pada modal tambah data
+    // Initialize CKEditor
     ClassicEditor
-        .create(document.querySelector('#address'))
+        .create(document.querySelector('#detail_description'))
         .catch(error => {
             console.error(error);
         });
-
 });
 </script>
 @endsection
