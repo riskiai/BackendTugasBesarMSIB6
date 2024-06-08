@@ -33,8 +33,13 @@
                 </li>
             </ul>
             <div>
-                <a href="{{ url('login') }}" class="button-primary btn">Masuk</a>
-                <a href="{{ url('/') }}" class="button-secundary btn">Daftar</a>
+                @auth
+                    <a href="{{ url('logout') }}" class="button-primary btn">Keluar</a>
+                @endauth
+                @guest
+                    <a href="{{ url('login') }}" class="button-primary btn">Masuk</a>
+                    <a href="{{ url('/') }}" class="button-secundary btn">Daftar</a>
+                @endguest
             </div>
         </div>
     </div>
