@@ -3,14 +3,15 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class PenggunaMahasiswaController extends Controller
 {
-    public function index(Request $request)
+    public function index()
     {
-        return view('admin.pengguna.mahasiswa.index');
-
+        $users = User::role('user')->get();
+        return view('admin.pengguna.mahasiswa.index', compact('users'));
     }
 
     public function create() {
