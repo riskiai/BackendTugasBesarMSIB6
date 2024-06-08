@@ -27,6 +27,10 @@ class AuthController extends Controller
 
         if (Auth::attempt($credentials)) {
             $request->session()->regenerate();
+            // periksa apakah user adalah admin
+            if (Auth::user()->roles[0]->name == 'admin') {
+                return redirect()->route('admin.dashboard');
+            }
             return redirect()->route('mahasiswa.index');
         } elseif (Auth::guard('company')->attempt($credentials)) {
             $request->session()->regenerate();
