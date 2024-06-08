@@ -19,7 +19,7 @@
                 </div>
                 <!-- sidebar end -->
                 <div class="col align-items-center justify-content-center d-flex">
-                    <a href="{{ url('dashboard-mahasisswa-profil') }}" class="btn btn-primary">
+                    <a href="{{ route('mahasiswa.profil') }}" class="btn btn-primary">
                         <img src="{{ asset('./assets/img/pen.png') }}" alt="Icon" class="mx-1" />
                         Lengkapi Profil
                     </a>
