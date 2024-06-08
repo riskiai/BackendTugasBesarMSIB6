@@ -55,8 +55,8 @@
                                                     </div>
                                                     <div class="form-group">
                                                         <label>Phone</label>
-                                                        <input type="text" name="no_hp" class="form-control">
-                                                        @error('no_hp')
+                                                        <input type="text" name="phone" class="form-control">
+                                                        @error('phone')
                                                             <div class="text-danger mt-2">{{ $message }}</div>
                                                         @enderror
                                                     </div>

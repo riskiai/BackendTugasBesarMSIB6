@@ -16,11 +16,13 @@ return new class extends Migration
             $table->string('name');
             $table->string('email')->unique();
             $table->string('password');
-            $table->string('no_hp')->unique()->nullable();
+            $table->string('phone')->unique()->nullable();
             $table->text('alamat')->nullable();
             $table->date('tgl_lahir')->nullable();
-            $table->enum('gender', ['pria', 'wanita'])->nullable();
+            $table->enum('gender', ['pria', 'wanita', ''])->nullable();
             $table->string('foto_profil')->nullable();
+            $table->string('instagram')->nullable();
+            $table->string('facebook')->nullable();
             $table->enum('status', ['bekerja', 'belum bekerja'])->nullable();
             $table->timestamps();
         });

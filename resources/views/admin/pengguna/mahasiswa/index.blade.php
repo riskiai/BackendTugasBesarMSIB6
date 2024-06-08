@@ -72,7 +72,7 @@
                                                     @foreach ($users as $user)
                                                         <tr>
                                                             <td class="text-center">{{ $user->name }}</td>
-                                                            <td class="text-center">{{ $user->no_hp }}</td>
+                                                            <td class="text-center">{{ $user->phone }}</td>
                                                             <td class="text-center">{{ $user->email }}</td>
                                                             <td class="text-center">{{ $user->alamat }}</td>
                                                             <td class="text-center">{{ $user->tgl_lahir }}</td>
