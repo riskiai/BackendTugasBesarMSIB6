@@ -8,10 +8,10 @@ use App\Http\Controllers\Controller;
 
 class PenggunaPerusahaanController extends Controller
 {
-    public function index(Request $request)
+    public function index()
     {
-        return view('admin.pengguna.perusahaan.index');
-
+        $companies = Company::all();
+        return view('admin.pengguna.perusahaan.index', compact('companies'));
     }
 
     public function create() {
@@ -19,7 +19,7 @@ class PenggunaPerusahaanController extends Controller
     }
 
     public function createproses() {
-        
+
     }
 
     public function edit() {

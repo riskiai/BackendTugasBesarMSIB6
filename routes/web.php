@@ -53,6 +53,9 @@ Route::get('/detail-logowan-kerja-dan-magang', [HomePageController::class, 'deta
 Route::get('/about', [HomePageController::class, 'about']);
 
 // admin
+Route::get('/admin', function () {
+    return redirect('/admin/dashboard');
+});
 Route::get('/admin/dashboard', [DashboardController::class, 'index'])->name('admin.dashboard');
 
 /* Pengguna Mitra Perusahaan */
