@@ -110,6 +110,7 @@ Route::prefix('dashboard')->group(function () {
         Route::put('/profil', [DashboardPerusahaanController::class, 'updateProfil'])->name('perusahaan.profil.update');
         Route::get('/posting-lowongan', [DashboardPerusahaanController::class, 'postingLowongan']);
         Route::get('/informasi-pendaftaran', [DashboardPerusahaanController::class, 'pendaftaran']);
-        Route::get('/webinar', [DashboardPerusahaanController::class, 'webinar']);
+        Route::get('/webinar/create', [DashboardPerusahaanController::class, 'createWebinar'])->name('perusahaan.webinar.create');
+        Route::post('/webinar/store', [DashboardPerusahaanController::class, 'storeWebinar'])->name('perusahaan.webinar.store');
     });
 });
