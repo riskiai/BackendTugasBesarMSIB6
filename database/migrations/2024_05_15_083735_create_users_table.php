@@ -24,6 +24,7 @@ return new class extends Migration
             $table->string('instagram')->nullable();
             $table->string('facebook')->nullable();
             $table->enum('status', ['bekerja', 'belum bekerja'])->nullable();
+            $table->enum('status_users', ['active', 'inactive'])->nullable();
             $table->timestamps();
         });
     }
