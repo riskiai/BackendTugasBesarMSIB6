@@ -49,7 +49,7 @@ Route::get('/frequently-asked-questions', [HomePageController::class, 'frequentl
 Route::get('/artikel', [HomePageController::class, 'artikel']);
 Route::get('/detail-artikel', [HomePageController::class, 'detailArtikel']);
 Route::get('/webinar', [HomePageController::class, 'webinar']);
-Route::get('/detail-webinar', [HomePageController::class, 'detailWebinar']);
+Route::get('/webinar/{webinar}', [HomePageController::class, 'detailWebinar']);
 Route::get('/detail-logowan-kerja-dan-magang', [HomePageController::class, 'detailLowongan']);
 Route::get('/about', [HomePageController::class, 'about']);
 
