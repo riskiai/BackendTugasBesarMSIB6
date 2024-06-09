@@ -3,14 +3,16 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Webinar;
 use Illuminate\Http\Request;
 
 class WebinarPerusahaanController extends Controller
 {
-    public function index(Request $request)
+    public function index()
     {
-        return view('admin.webinar.perusahaan.index');
-
+        // Semua webinar yang bukan dari perusahaan Apprentech
+        $webinars = Webinar::where('company_id', '!=', 1)->get();
+        return view('admin.webinar.perusahaan.index', compact('webinars'));
     }
 
     public function create() {
