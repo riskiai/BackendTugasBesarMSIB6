@@ -26,7 +26,6 @@ class CreateWebinarRequest extends FormRequest
         return [
             'company_id' => [
                 'integer',
-                Rule::requiredIf(Auth::user()->roles[0]->name == 'admin'),
                 Rule::exists('companies', 'id'),
             ],
             'judul_webinar' => 'required|string',

@@ -29,7 +29,7 @@
 
             <ul class="navbar-nav mx-auto">
                 <li>
-                    <a href="{{ url('dashboard-mahasisswa') }}" class="btn btn-primary">Dashoard</a>
+                    <a href="{{ route('mahasiswa.index') }}" class="btn btn-primary">Dashboard</a>
                 </li>
             </ul>
             <div>

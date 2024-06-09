@@ -89,11 +89,11 @@
                                                             </td>
                                                             <td class="text-center"
                                                                 style="display: flex; align-items: center; gap:10px;">
-                                                                <a href="{{ route('admin.webinarapprentech.edit') }}"
+                                                                <a href="{{ route('admin.webinarperusahaan.edit') }}"
                                                                     class="btn btn-warning" title="Edit">
                                                                     <i class="fas fa-edit"></i>
                                                                 </a>
-                                                                <a href="{{ route('admin.webinarapprentech.create') }}"
+                                                                <a href="{{ route('admin.webinarperusahaan.create') }}"
                                                                     class="btn btn-success" title="Create">
                                                                     <i class="fas fa-plus-circle"></i>
                                                                 </a>

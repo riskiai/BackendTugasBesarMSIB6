@@ -22,7 +22,7 @@ return new class extends Migration
             $table->date('tanggal');
             $table->time('waktu_mulai');
             $table->time('waktu_selesai');
-            $table->string('platform');
+            $table->string('platform')->nullable();
             $table->string('lokasi');
             $table->string('poster')->nullable();
             $table->timestamps();
