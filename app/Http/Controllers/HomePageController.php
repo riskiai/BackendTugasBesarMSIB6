@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\LoginRequest;
 use App\Http\Requests\RegisterRequest;
+use App\Models\Artikel;
 use App\Models\Lowongan;
 use App\Models\User;
 use App\Models\Webinar;
@@ -16,7 +17,9 @@ class HomePageController extends Controller
     // bagian beranda
     public function beranda()
     {
-        return view('pages.beranda');
+        // mengambil 5 data lowongan terbaru untuk ditampilkan di beranda
+        $lowongans = Lowongan::latest()->limit(5)->get();
+        return view('pages.beranda', compact('lowongans'));
     }
 
     public function lowongan()
@@ -36,12 +39,13 @@ class HomePageController extends Controller
 
     public function artikel()
     {
-        return view('pages.artikel');
+        $artikels = Artikel::all();
+        return view('pages.artikel', compact('artikels'));
     }
 
-    public function detailArtikel()
+    public function detailArtikel(Artikel $artikel)
     {
-        return view('pages.detail-artikel');
+        return view('pages.detail-artikel', compact('artikel'));
     }
 
     public function webinar()
