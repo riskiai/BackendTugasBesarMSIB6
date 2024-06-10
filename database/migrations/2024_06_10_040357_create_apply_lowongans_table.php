@@ -11,15 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('social_networks', function (Blueprint $table) {
+        Schema::create('apply_lowongans', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('lowongan_id');
             $table->unsignedBigInteger('user_id');
-            $table->string('instagram')->nullable();
-            $table->string('twitter')->nullable();
-            $table->string('facebook')->nullable();
+            $table->enum('status', ['pending', 'accepted', 'rejected'])->default('pending');
             $table->timestamps();
-
-            $table->foreign('user_id')->references('id')->on('users');
         });
     }
 
@@ -28,6 +25,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('social_networks');
+        Schema::dropIfExists('apply_lowongans');
     }
 };
