@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\LoginRequest;
 use App\Http\Requests\RegisterRequest;
+use App\Models\Lowongan;
 use App\Models\User;
 use App\Models\Webinar;
 use Illuminate\Http\Request;
@@ -20,11 +21,12 @@ class HomePageController extends Controller
 
     public function lowongan()
     {
-        return view('pages.lowongan');
+        $lowongans = Lowongan::all();
+        return view('pages.lowongan', compact('lowongans'));
     }
-    public function detailLowongan()
+    public function detailLowongan(Lowongan $lowongan)
     {
-        return view('pages.detail-lowongan');
+        return view('pages.detail-lowongan', compact('lowongan'));
     }
 
     public function frequentlyAskedQuestions()

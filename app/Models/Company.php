@@ -37,4 +37,9 @@ class Company extends Authenticatable
     {
         return $this->hasMany(Webinar::class);
     }
+
+    public function lowongans()
+    {
+        return $this->hasMany(Lowongan::class);
+    }
 }

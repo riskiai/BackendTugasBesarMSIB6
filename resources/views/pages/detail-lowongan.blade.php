@@ -18,21 +18,22 @@
                         <div class="bg-primary rounded p-5 border-2">
                             <div class="row align-items-center">
                                 <div class="col-md-4 my-2">
-                                    <button type="button" class="btn btn-light" data-bs-toggle="modal"
-                                        data-bs-target="#exampleModal">
-                                        Daftar
-                                    </button>
-                                    <p class="mb-0">Lokasi : Jakarta - Indonesia</p>
+                                    <button type="button" class="btn btn-light"
+                                        @guest
+data-bs-toggle="modal"
+                                        data-bs-target="#exampleModal"> @endguest
+                                        Daftar </button>
+                                        <p class="mb-0">Lokasi: {{ $lowongan->lokasi }}</p>
                                 </div>
                                 <div class="col-md-4 my-2">
-                                    <h3 class="text-white">Analis Data Junior</h3>
+                                    <h3 class="text-white">{{ $lowongan->judul }}</h3>
                                 </div>
                                 <div class="col-md-4 my-2">
                                     <button type="button" class="btn btn-light" data-bs-toggle="modal"
                                         data-bs-target="#exampleModal1">
                                         Simpan
                                     </button>
-                                    <p class="mb-0">Perusahaan : Tech Innovators</p>
+                                    <p class="mb-0">Perusahaan: {{ $lowongan->company->name }}</p>
                                 </div>
                             </div>
                         </div>
@@ -50,14 +51,7 @@
                                     </div>
                                     <div class="car-body">
                                         <p class="p-3">
-                                            Kami mencari mahasiswa magang yang bersemangat dan termotivasi untuk bergabung
-                                            dengan
-                                            tim
-                                            IT kami. Sebagai bagian dari tim IT Support, Anda akan mendukung operasional
-                                            harian
-                                            departemen IT, membantu dalam pemeliharaan perangkat keras dan perangkat lunak,
-                                            serta
-                                            memberikan bantuan teknis kepada karyawan perusahaan.
+                                            {{ $lowongan->deskripsi_lengkap }}
                                         </p>
                                     </div>
                                 </div>
@@ -67,8 +61,8 @@
                                     style="height: 50%;">
                                     <button type="button" class="btn btn-light" data-bs-toggle="modal"
                                         data-bs-target="#exampleModal2">
-                                        <img class="rounded mx-auto d-block mt-5" src="{{ asset('assets/img/retting.png') }}"
-                                            alt="" style="width: 75%;">
+                                        <img class="rounded mx-auto d-block mt-5"
+                                            src="{{ asset('assets/img/retting.png') }}" alt="" style="width: 75%;">
                                     </button>
                                 </div>
                             </div>
@@ -76,20 +70,7 @@
                                 <div class="card mt-6">
                                     <h3 class="card-header">Kualifikasi</h3>
                                     <div class="">
-                                        <ul>
-                                            <li>Mahasiswa aktif jurusan Teknik Informatika, Sistem Informasi, atau bidang
-                                                terkait
-                                            </li>
-                                            <li>Baik dalam komunikasi dan mampu bekerja dalam tim</li>
-                                            <li>Memiliki pengetahuan dasar tentang jaringan komputer, perangkat keras, dan
-                                                perangkat
-                                                lunak</li>
-                                            <li>Berinisiatif tinggi dan mampu bekerja mandiri</li>
-                                            <li>Pengalaman dengan sistem operasi Windows dan Office Suite</li>
-                                            <li>Keahlian tambahan dalam pemrograman atau keamanan siber merupakan nilai
-                                                tambah
-                                            </li>
-                                        </ul>
+                                        {{ $lowongan->kualifikasi }}
                                     </div>
                                 </div>
                             </div>
@@ -97,13 +78,19 @@
                     </div>
                     <div class="row mt-5 d-flex justify-content-between">
                         <div class="col-md-4">
-                            <p>Tanggal Penutupan : 15 Mei 2024</p>
+                            <p>Tanggal Penutupan: {{ date('d F Y', strtotime($lowongan->deadline)) }}
                         </div>
                         <div class="col-md-4">
-                            <p>Jenis Pekerjaan : Magang</p>
+                            <p>Jenis Pekerjaan: {{ $lowongan->jenis }}</p>
                         </div>
                         <div class="col-md-4">
-                            <p>Periode Kegiatan : Juni 2024 - Agustus 2024</p>
+                            <p>Periode Kegiatan:
+                                {{-- tanggal mulai in dd mm yyyy --}}
+                                {{ date('d/m/Y', strtotime($lowongan->tanggal_mulai)) }}
+                                -
+                                {{-- tanggal berakhir in dd mm yyyy --}}
+                                {{ date('d/m/Y', strtotime($lowongan->tanggal_berakhir)) }}
+                            </p>
                         </div>
                     </div>
                 </div>

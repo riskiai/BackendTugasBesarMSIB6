@@ -11,6 +11,7 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\Mahasiswa\ProfileController;
 use App\Http\Controllers\DashboardMahasiswaController;
 use App\Http\Controllers\DashboardPerusahaanController;
+use App\Http\Controllers\LowonganController;
 
 /*
 |--------------------------------------------------------------------------
@@ -44,14 +45,18 @@ Route::prefix('register')->group(function () {
 
 // beranda
 Route::get('/beranda', [HomePageController::class, 'beranda'])->name('beranda');
-Route::get('/logowan-kerja-dan-magang', [HomePageController::class, 'lowongan']);
-Route::get('/frequently-asked-questions', [HomePageController::class, 'frequentlyAskedQuestions']);
-Route::get('/artikel', [HomePageController::class, 'artikel']);
+Route::get('/lowongan-kerja-dan-magang', [HomePageController::class, 'lowongan'])->name('lowongan');
+Route::get('/detail-lowongan-kerja-dan-magang', [HomePageController::class, 'detailLowongan']);
+Route::get('/lowongan/{lowongan}', [HomePageController::class, 'detailLowongan']);
+Route::get('/frequently-asked-questions', [HomePageController::class, 'frequentlyAskedQuestions'])->name('faq');
+Route::get('/artikel', [HomePageController::class, 'artikel'])->name('artikel');
 Route::get('/detail-artikel', [HomePageController::class, 'detailArtikel']);
-Route::get('/webinar', [HomePageController::class, 'webinar']);
+Route::get('/webinar', [HomePageController::class, 'webinar'])->name('webinar');
 Route::get('/webinar/{webinar}', [HomePageController::class, 'detailWebinar']);
-Route::get('/detail-logowan-kerja-dan-magang', [HomePageController::class, 'detailLowongan']);
-Route::get('/about', [HomePageController::class, 'about']);
+Route::get('/about', [HomePageController::class, 'about'])->name('about');
+
+// lowongan
+Route::post('/lowongan/{lowongan}/apply', [LowonganController::class, 'applyLowongan'])->name('lowongan.apply');
 
 // admin
 Route::prefix('admin')->group(function () {
@@ -122,6 +127,8 @@ Route::prefix('dashboard')->group(function () {
         Route::get('/profil', [DashboardPerusahaanController::class, 'editProfil'])->name('perusahaan.profil');
         Route::put('/profil', [DashboardPerusahaanController::class, 'updateProfil'])->name('perusahaan.profil.update');
         Route::get('/posting-lowongan', [DashboardPerusahaanController::class, 'postingLowongan']);
+        Route::post('lowongan/magang/store', [DashboardPerusahaanController::class, 'storeMagang'])->name('perusahaan.magang.store');
+        Route::post('lowongan/kerja/store', [DashboardPerusahaanController::class, 'storeKerja'])->name('perusahaan.kerja.store');
         Route::get('/informasi-pendaftaran', [DashboardPerusahaanController::class, 'pendaftaran']);
         Route::get('/webinar/create', [DashboardPerusahaanController::class, 'createWebinar'])->name('perusahaan.webinar.create');
         Route::post('/webinar/store', [DashboardPerusahaanController::class, 'storeWebinar'])->name('perusahaan.webinar.store');
