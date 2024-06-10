@@ -26,6 +26,7 @@ class DatabaseSeeder extends Seeder
             UserSeeder::class,
             WebinarSeeder::class,
             LowonganSeeder::class,
+            ArtikelSeeder::class,
         ]);
     }
 }

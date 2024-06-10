@@ -13,7 +13,6 @@ class LowonganSeeder extends Seeder
      */
     public function run(): void
     {
-        // lowongan kerja berdasarkan migration terbaru
         Lowongan::create([
             'company_id' => 1,
             'judul' => 'Junior Web Developer',
@@ -31,7 +30,6 @@ class LowonganSeeder extends Seeder
             'tanggal_berakhir' => '2024-12-31',
         ]);
 
-        // lowongan magang berdasarkan migration terbaru
         Lowongan::create([
             'company_id' => 1,
             'judul' => 'Magang Web Developer',
@@ -49,7 +47,6 @@ class LowonganSeeder extends Seeder
             'tanggal_berakhir' => '2024-12-31',
         ]);
 
-        // lowongan kerja berdasarkan migration terbaru
         Lowongan::create([
             'company_id' => 2,
             'judul' => 'Junior Web Developer',
@@ -67,7 +64,6 @@ class LowonganSeeder extends Seeder
             'tanggal_berakhir' => '2024-12-31',
         ]);
 
-        // lowongan magang online berdasarkan migration terbaru
         Lowongan::create([
             'company_id' => 2,
             'judul' => 'Magang Web Developer',
@@ -79,6 +75,40 @@ class LowonganSeeder extends Seeder
             'tipe' => 'online',
             'gaji' => 2000000,
             'kualifikasi' => 'Mahasiswa semester 5 ke atas, menguasai HTML, CSS, dan JavaScript',
+            'deadline' => '2024-06-30',
+            'tanggal_mulai' => '2024-07-01',
+            'tanggal_berakhir' => '2024-12-31',
+        ]);
+
+        Lowongan::create([
+            'company_id' => 3,
+            'judul' => 'Junior Web Developer',
+            'jenis' => 'kerja',
+            'bidang' => 'Teknologi Informasi',
+            'perusahaan' => 'PT Teknologi Maju',
+            'deskripsi_singkat' => 'Mencari kandidat yang memiliki kemampuan dalam pengembangan web',
+            'deskripsi_lengkap' => 'Mencari kandidat yang memiliki kemampuan dalam pengembangan web, terutama dalam pengembangan front-end',
+            'tipe' => 'online',
+            'gaji' => 5000000,
+            'kualifikasi' => 'Pendidikan minimal D3, menguasai HTML, CSS, dan JavaScript',
+            'deadline' => '2024-06-30',
+            'tanggal_mulai' => '2024-07-01',
+            'tanggal_berakhir' => '2024-12-31',
+        ]);
+
+        // lowongan magang sebagai data analyst
+        Lowongan::create([
+            'company_id' => 3,
+            'judul' => 'Magang Data Analyst',
+            'jenis' => 'magang',
+            'bidang' => 'Data Science',
+            'perusahaan' => 'PT Teknologi Maju',
+            'deskripsi_singkat' => 'Mencari mahasiswa yang ingin magang di perusahaan teknologi',
+            'deskripsi_lengkap' => 'Mencari mahasiswa yang ingin magang di perusahaan teknologi, terutama dalam analisis data',
+            'tipe' => 'hybrid',
+            'lokasi' => 'Jakarta',
+            'gaji' => 2000000,
+            'kualifikasi' => 'Mahasiswa semester 5 ke atas, menguasai analisis data',
             'deadline' => '2024-06-30',
             'tanggal_mulai' => '2024-07-01',
             'tanggal_berakhir' => '2024-12-31',
