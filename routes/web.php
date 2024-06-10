@@ -50,7 +50,7 @@ Route::get('/detail-lowongan-kerja-dan-magang', [HomePageController::class, 'det
 Route::get('/lowongan/{lowongan}', [HomePageController::class, 'detailLowongan']);
 Route::get('/frequently-asked-questions', [HomePageController::class, 'frequentlyAskedQuestions'])->name('faq');
 Route::get('/artikel', [HomePageController::class, 'artikel'])->name('artikel');
-Route::get('/detail-artikel', [HomePageController::class, 'detailArtikel']);
+Route::get('/detail-artikel/{artikel}', [HomePageController::class, 'detailArtikel']);
 Route::get('/webinar', [HomePageController::class, 'webinar'])->name('webinar');
 Route::get('/webinar/{webinar}', [HomePageController::class, 'detailWebinar']);
 Route::get('/about', [HomePageController::class, 'about'])->name('about');

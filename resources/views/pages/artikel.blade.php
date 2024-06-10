@@ -9,55 +9,7 @@
                         <div class="carousel-item active">
                             <div class="container">
                                 <div class="row justify-content-between mx-auto workingspace">
-                                    <!-- Item 1 -->
-                                    <div class="col-md-3 my-3">
-                                        <div class="rounded" style="background-color: #074173;">
-                                            <div class="lowongan-content d-flex justify-content-center align-items-center">
-                                                <img src="{{ asset('assets/img/artikel.png') }}" alt="Deskripsi Gambar"
-                                                    class="img-fluid rounded">
-                                            </div>
-                                        </div>
-                                        <p class="mt-2 text-left">8 Mei 2024</p>
-                                        <a href="{{ url('detail-artikel') }}"
-                                            class="text-primary fw-bold text-left text-decoration-none">Tantangan dan Tips
-                                            Sukses saat Magang di
-                                            Industri Teknologi
-                                        </a>
-                                    </div>
 
-                                    <!-- Item 2 -->
-                                    <div class="col-md-3 my-3">
-                                        <div class="rounded" style="background-color: #074173;">
-                                            <div class="lowongan-content d-flex justify-content-center align-items-center">
-                                                <img src="{{ asset('assets/img/artikel.png') }}" alt="Deskripsi Gambar"
-                                                    class="img-fluid rounded">
-                                            </div>
-                                        </div>
-                                        <p class="mt-2 text-left">9 Mei 2024</p>
-                                        <a href="{{ url('detail-artikel') }}"
-                                            class="text-primary fw-bold text-left text-decoration-none">Tantangan dan Tips
-                                            Sukses saat Magang di
-                                            Industri Teknologi
-                                        </a>
-                                    </div>
-
-                                    <!-- Item 3 -->
-                                    <div class="col-md-3 my-3">
-                                        <div class="rounded" style="background-color: #074173;">
-                                            <div class="lowongan-content d-flex justify-content-center align-items-center">
-                                                <img src="{{ asset('assets/img/artikel.png') }}" alt="Deskripsi Gambar"
-                                                    class="img-fluid rounded">
-                                            </div>
-                                        </div>
-                                        <p class="mt-2 text-left">10 Mei 2024</p>
-                                        <a href="{{ url('detail-artikel') }}"
-                                            class="text-primary fw-bold text-left text-decoration-none">Tantangan dan Tips
-                                            Sukses saat Magang di
-                                            Industri Teknologi
-                                        </a>
-                                    </div>
-
-                                    <!-- Item 4 -->
                                     <div class="col-lg-3 my-3">
                                         <div class="d-flex justify-content-center align-items-center">
                                             <div class="text-end">
@@ -68,65 +20,35 @@
                                                     font-weight: bold;
                                                     border: 6px solid rgb(98, 77, 77);
                                                     border-radius: 10px;
-                                                  ">
+                                                    ">
                                                     Artikel
                                                 </button>
                                             </div>
                                         </div>
                                     </div>
-                                    <!-- Item 6 -->
-                                    <div class="col-md-3 my-3">
-                                        <div class="rounded" style="background-color: #074173;">
-                                            <div class="lowongan-content d-flex justify-content-center align-items-center">
-                                                <img src="{{ asset('assets/img/artikel.png') }}" alt="Deskripsi Gambar"
-                                                    class="img-fluid rounded">
-                                            </div>
-                                        </div>
-                                        <p class="mt-2 text-left">11 Mei 2024</p>
-                                        <a href="{{ url('detail-artikel') }}"
-                                            class="text-primary fw-bold text-left text-decoration-none">Tantangan dan Tips
-                                            Sukses saat Magang di
-                                            Industri Teknologi
-                                        </a>
-                                    </div>
 
-                                    <!-- Item 7 -->
-                                    <div class="col-md-3 my-3">
-                                        <div class="rounded" style="background-color: #074173;">
-                                            <div class="lowongan-content d-flex justify-content-center align-items-center">
-                                                <img src="{{ asset('assets/img/artikel.png') }}" alt="Deskripsi Gambar"
-                                                    class="img-fluid rounded">
+                                    @foreach ($artikels as $artikel)
+                                        <div class="col-md-3 my-3">
+                                            <div class="rounded" style="background-color: #074173;">
+                                                <div
+                                                    class="lowongan-content d-flex justify-content-center align-items-center">
+                                                    <img src="{{ asset('assets/img/artikel.png') }}" alt="Deskripsi Gambar"
+                                                        class="img-fluid rounded">
+                                                </div>
                                             </div>
+                                            <p class="mt-2 text-left">
+                                                {{ $artikel->created_at->diffForHumans() }}
+                                            </p>
+                                            <a href="/detail-artikel/{{ $artikel->id }}"
+                                                class="text-primary fw-bold text-left text-decoration-none">{{ $artikel->judul }}
+                                            </a>
                                         </div>
-                                        <p class="mt-2 text-left">12 Mei 2024</p>
-                                        <a href="{{ url('detail-artikel') }}"
-                                            class="text-primary fw-bold text-left text-decoration-none">Tantangan dan Tips
-                                            Sukses saat Magang di
-                                            Industri Teknologi
-                                        </a>
-                                    </div>
+                                    @endforeach
 
-                                    <!-- Item 8 -->
-                                    <div class="col-md-3 my-3">
-                                        <div class="rounded" style="background-color: #074173;">
-                                            <div class="lowongan-content d-flex justify-content-center align-items-center">
-                                                <img src="{{ asset('assets/img/artikel.png') }}" alt="Deskripsi Gambar"
-                                                    class="img-fluid rounded">
-                                            </div>
-                                        </div>
-                                        <p class="mt-2 text-left">13 Mei 2024</p>
-                                        <a href="{{ url('detail-artikel') }}"
-                                            class="text-primary fw-bold text-left text-decoration-none">Tantangan dan Tips
-                                            Sukses saat Magang di
-                                            Industri Teknologi
-                                        </a>
-                                    </div>
-
-                                    <!-- Item 8 -->
                                     <div class="col-lg-3 my-3">
                                         <div class="d-flex justify-content-center align-items-center">
-                                            <img src="{{ asset('assets/img/artikel_1.png') }}" alt="Deskripsi Gambar" class="img-fluid"
-                                                style="width: 150%; height: 90%">
+                                            <img src="{{ asset('assets/img/artikel_1.png') }}" alt="Deskripsi Gambar"
+                                                class="img-fluid" style="width: 150%; height: 90%">
                                         </div>
                                     </div>
                                 </div>
