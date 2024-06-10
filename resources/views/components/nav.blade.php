@@ -11,19 +11,19 @@
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav mx-auto">
                 <li class="nav-item mx-2">
-                    <a class="nav-link active" aria-current="page" href="{{ url('beranda') }}">Beranda</a>
+                    <a class="nav-link active" aria-current="page" href="{{ route('beranda') }}">Beranda</a>
                 </li>
                 <li class="nav-item mx-2">
-                    <a class="nav-link" href="{{ url('logowan-kerja-dan-magang') }}">Lowongan Kerja & Magang</a>
+                    <a class="nav-link" href="{{ route('lowongan') }}">Lowongan Kerja & Magang</a>
                 </li>
                 <li class="nav-item mx-2">
-                    <a class="nav-link" href="{{ url('frequently-asked-questions') }}">FAQ</a>
+                    <a class="nav-link" href="{{ route('faq') }}">FAQ</a>
                 </li>
                 <li class="nav-item mx-2">
-                    <a class="nav-link" href="{{ url('artikel') }}">Artikel</a>
+                    <a class="nav-link" href="{{ route('artikel') }}">Artikel</a>
                 </li>
                 <li class="nav-item mx-2">
-                    <a class="nav-link" href="{{ url('webinar') }}">Webinar</a>
+                    <a class="nav-link" href="{{ route('webinar') }}">Webinar</a>
                 </li>
             </ul>
 

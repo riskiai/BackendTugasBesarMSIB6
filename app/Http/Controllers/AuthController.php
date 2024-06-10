@@ -13,7 +13,7 @@ class AuthController extends Controller
 {
     public function index()
     {
-        return view('auth.tampilan-register');
+        return redirect()->route('beranda');
     }
 
     public function login()
