@@ -40,12 +40,12 @@
             @if (auth()->check())
                 <div class="d-flex gap-3">
                     <div>
-                        <a href="{{ route('perusahaan.index') }}" class="btn-primary btn">Dashboard</a>
+                        <a href="{{ route('mahasiswa.index') }}" class="btn-primary btn">Dashboard</a>
                     </div>
                     <div class="dropdown">
                         <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton1"
                             data-bs-toggle="dropdown" aria-expanded="false">
-                            {{ auth()->user()->name }}
+                            Hi, {{ auth()->user()->name }}!
                         </button>
                         <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
                             <li>
@@ -65,7 +65,7 @@
                     <div class="dropdown">
                         <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton1"
                             data-bs-toggle="dropdown" aria-expanded="false">
-                            {{ auth('company')->user()->name }}
+                            Hi, {{ auth('company')->user()->name }}!
                         </button>
                         <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
                             <li>

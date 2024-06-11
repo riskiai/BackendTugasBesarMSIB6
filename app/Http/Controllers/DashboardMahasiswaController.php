@@ -10,7 +10,9 @@ class DashboardMahasiswaController extends Controller
 {
     public function index()
     {
-        return view('dashboardMahasiswa.index');
+        // logged user
+        $user = auth()->user();
+        return view('dashboardMahasiswa.index', compact('user'));
     }
 
     public function dashboardAwal()
