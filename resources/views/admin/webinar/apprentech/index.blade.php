@@ -39,6 +39,10 @@
                                 <div class="card">
                                     <div class="card-header">
                                         <h4>List Data Webinars Apprentech</h4>
+                                        <div class="card-header-action" style="margin-right: 10px">
+                                            <a href="{{ route('admin.webinarapprentech.create') }}" class="btn btn-primary">Tambah
+                                                Webinar</a>
+                                        </div>
                                         <div class="card-header-form">
                                             <form>
                                                 <div class="input-group">
@@ -88,7 +92,8 @@
                                                             <td class="text-center">{{ $webinar->deskripsi }}
                                                             </td>
                                                             <td class="text-center">
-                                                                <div class="badge {{ Carbon\Carbon::today() > $webinar->tanggal ? 'badge-danger' : 'badge-success' }}">
+                                                                <div
+                                                                    class="badge {{ Carbon\Carbon::today() > $webinar->tanggal ? 'badge-danger' : 'badge-success' }}">
                                                                     {{ Carbon\Carbon::today() > $webinar->tanggal ? 'Berakhir' : 'Sedang Berjalan' }}
                                                                 </div>
                                                             </td>
@@ -97,10 +102,6 @@
                                                                 <a href="{{ route('admin.webinarapprentech.edit') }}"
                                                                     class="btn btn-warning" title="Edit">
                                                                     <i class="fas fa-edit"></i>
-                                                                </a>
-                                                                <a href="{{ route('admin.webinarapprentech.create') }}"
-                                                                    class="btn btn-success" title="Create">
-                                                                    <i class="fas fa-plus-circle"></i>
                                                                 </a>
                                                                 <a href="#" class="btn btn-danger" title="Delete">
                                                                     <i class="fas fa-trash-alt"></i>

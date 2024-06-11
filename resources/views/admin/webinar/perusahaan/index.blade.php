@@ -39,6 +39,10 @@
                                 <div class="card">
                                     <div class="card-header">
                                         <h4>List Data Webinars Perusahaan</h4>
+                                        <div class="card-header-action" style="margin-right: 10px">
+                                            <a href="{{ route('admin.webinarperusahaan.create') }}" class="btn btn-primary">Tambah
+                                                Webinar</a>
+                                        </div>
                                         <div class="card-header-form">
                                             <form>
                                                 <div class="input-group">
@@ -78,24 +82,25 @@
                                                             <td class="text-center">{{ $webinar->judul_webinar }}</td>
                                                             <td class="text-center">{{ $webinar->tagline }}</td>
                                                             <td class="text-center">{{ $webinar->narasumber }}</td>
-                                                            <td class="text-center">{{ Carbon\Carbon::parse($webinar->tanggal)->format('d/m/Y') }}</td>
-                                                            <td class="text-center">{{ $webinar->waktu_mulai }} - {{ $webinar->waktu_selesai }}</td>
+                                                            <td class="text-center">
+                                                                {{ Carbon\Carbon::parse($webinar->tanggal)->format('d/m/Y') }}
+                                                            </td>
+                                                            <td class="text-center">{{ $webinar->waktu_mulai }} -
+                                                                {{ $webinar->waktu_selesai }}</td>
                                                             <td class="text-center">{{ $webinar->platform }}</td>
                                                             <td class="text-center">{{ $webinar->lokasi }}</td>
                                                             <td class="text-center">{{ $webinar->deskripsi }}
                                                             </td>
                                                             <td class="text-center">
-                                                                <div class="badge badge-success">{{ (Carbon\Carbon::today() > $webinar->tanggal) ? 'Berakhir' : 'Sedang Berjalan'}}</div>
+                                                                <div class="badge {{ Carbon\Carbon::today() > $webinar->tanggal ? 'badge-danger' : 'badge-success' }}">
+                                                                    {{ Carbon\Carbon::today() > $webinar->tanggal ? 'Berakhir' : 'Sedang Berjalan' }}
+                                                                </div>
                                                             </td>
                                                             <td class="text-center"
                                                                 style="display: flex; align-items: center; gap:10px;">
                                                                 <a href="{{ route('admin.webinarperusahaan.edit') }}"
                                                                     class="btn btn-warning" title="Edit">
                                                                     <i class="fas fa-edit"></i>
-                                                                </a>
-                                                                <a href="{{ route('admin.webinarperusahaan.create') }}"
-                                                                    class="btn btn-success" title="Create">
-                                                                    <i class="fas fa-plus-circle"></i>
                                                                 </a>
                                                                 <a href="#" class="btn btn-danger" title="Delete">
                                                                     <i class="fas fa-trash-alt"></i>

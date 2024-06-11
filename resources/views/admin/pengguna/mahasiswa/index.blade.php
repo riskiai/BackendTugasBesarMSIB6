@@ -39,6 +39,10 @@
                                 <div class="card">
                                     <div class="card-header">
                                         <h4>List Data Pengguna Mahasiswa</h4>
+                                        <div class="card-header-action" style="margin-right: 10px">
+                                            <a href="{{ route('admin.penggunamhs.create') }}" class="btn btn-primary">Tambah
+                                                User</a>
+                                        </div>
                                         <div class="card-header-form">
                                             <form>
                                                 <div class="input-group">
@@ -87,7 +91,8 @@
                                                                 <div class="badge badge-success">{{ $user->status }}</div>
                                                             </td>
                                                             <td class="text-center">
-                                                                <div class="badge badge-success">{{ $user->status_users }}</div>
+                                                                <div class="badge badge-success">{{ $user->status_users }}
+                                                                </div>
                                                             </td>
                                                             <td class="text-center"
                                                                 style="display: flex; align-items: center; gap:10px;">
@@ -97,10 +102,6 @@
                                                                 <a href="{{ route('admin.penggunamhs.edit') }}"
                                                                     class="btn btn-warning" title="Edit">
                                                                     <i class="fas fa-edit"></i>
-                                                                </a>
-                                                                <a href="{{ route('admin.penggunamhs.create') }}"
-                                                                    class="btn btn-success" title="Create">
-                                                                    <i class="fas fa-plus-circle"></i>
                                                                 </a>
                                                                 <a href="#" class="btn btn-danger" title="Delete">
                                                                     <i class="fas fa-trash-alt"></i>
