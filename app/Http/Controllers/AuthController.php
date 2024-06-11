@@ -13,7 +13,7 @@ class AuthController extends Controller
 {
     public function index()
     {
-        return redirect()->route('beranda');
+        return view('auth.tampilan-register');
     }
 
     public function login()
@@ -40,9 +40,18 @@ class AuthController extends Controller
         }
     }
 
-    public function logout()
+    public function logout(Request $request)
     {
-        Auth::logout();
+        if (Auth::check()) {
+            Auth::logout();
+        } elseif (Auth::guard('company')->check()) {
+            Auth::guard('company')->logout();
+        }
+
+        // Invalidate the session and regenerate the token to avoid CSRF attacks
+        $request->session()->invalidate();
+        $request->session()->regenerateToken();
+
         return redirect()->route('login');
     }
 

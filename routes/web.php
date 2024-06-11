@@ -31,10 +31,12 @@ use App\Http\Controllers\LowonganController;
 
 
 // Auth
-Route::get('/', [AuthController::class, 'index']);
+Route::get('/', function () {
+    return redirect()->route('beranda');
+});
 Route::get('/login', [AuthController::class, 'login'])->name('login');
 Route::post('/login', [AuthController::class, 'authenticate'])->name('login.authenticate');
-Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
+Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 Route::prefix('register')->group(function () {
     Route::get('/', [AuthController::class, 'index']);
     Route::get('/user', [AuthController::class, 'registerUser'])->name('register.user');

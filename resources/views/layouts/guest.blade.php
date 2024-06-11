@@ -28,7 +28,7 @@
 
 <body>
 
-    <x-nav />
+    <x-navbar />
     @yield('content')
     {{-- <x-footer /> --}}
 
