@@ -11,9 +11,13 @@ class Webinar extends Model
     
     protected $guarded = ['id'];
 
-    // belongs to company
     public function company()
     {
         return $this->belongsTo(Company::class);
+    }
+
+    public function registerWebinars()
+    {
+        return $this->hasMany(RegisterWebinar::class);
     }
 }

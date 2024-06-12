@@ -12,6 +12,7 @@ use App\Http\Controllers\Mahasiswa\ProfileController;
 use App\Http\Controllers\DashboardMahasiswaController;
 use App\Http\Controllers\DashboardPerusahaanController;
 use App\Http\Controllers\LowonganController;
+use App\Http\Controllers\WebinarController;
 
 /*
 |--------------------------------------------------------------------------
@@ -53,9 +54,12 @@ Route::get('/lowongan/{lowongan}', [HomePageController::class, 'detailLowongan']
 Route::get('/frequently-asked-questions', [HomePageController::class, 'frequentlyAskedQuestions'])->name('faq');
 Route::get('/artikel', [HomePageController::class, 'artikel'])->name('artikel');
 Route::get('/detail-artikel/{artikel}', [HomePageController::class, 'detailArtikel']);
-Route::get('/webinar', [HomePageController::class, 'webinar'])->name('webinar');
-Route::get('/webinar/{webinar}', [HomePageController::class, 'detailWebinar']);
 Route::get('/about', [HomePageController::class, 'about'])->name('about');
+
+// webinar
+Route::get('/webinar', [WebinarController::class, 'webinar'])->name('webinar');
+Route::get('/webinar/{webinar}', [WebinarController::class, 'detailWebinar']);
+Route::post('/webinar/{webinar}/register', [WebinarController::class, 'toggleRegisterWebinar'])->name('webinar.register')->middleware('authenticate');
 
 // lowongan
 Route::post('/lowongan/{lowongan}/apply', [LowonganController::class, 'applyLowongan'])->name('lowongan.apply');

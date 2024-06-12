@@ -48,17 +48,6 @@ class HomePageController extends Controller
         return view('pages.detail-artikel', compact('artikel'));
     }
 
-    public function webinar()
-    {
-        $webinars = Webinar::all();
-        return view('pages.webinar', compact('webinars'));
-    }
-
-    public function detailWebinar(Webinar $webinar)
-    {
-        return view('pages.detail-webinar', compact('webinar'));
-    }
-
     public function about()
     {
         return view('pages.about');
