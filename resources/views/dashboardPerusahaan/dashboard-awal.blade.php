@@ -1,4 +1,4 @@
-@extends('layouts.master')
+@extends('layouts.app')
 
 @section('content')
     <section>
@@ -8,9 +8,8 @@
                 <div class="col-3 mt-5 p-0 border border-dark border-5 rounded">
                     <div class="bg-primary py-3 text-white">
                         <div class="mx-auto rounded-circle" style="background-color: #d9d9d9; height: 100px; width: 100px">
-                            <img src="{{ $company->foto_profil ? asset('storage/photo-profile/' . $company->foto_profil) : asset('assets/img/team/team-1.jpg') }}" 
-                            alt="Profil Picture" 
-                            class="rounded-circle"  style="height: 100px; width: 100px;">
+                            <img src="{{ $company->foto_profil ? asset('storage/photo-profile/' . $company->foto_profil) : asset('assets/img/team/team-1.jpg') }}"
+                                alt="Profil Picture" class="rounded-circle" style="height: 100px; width: 100px;">
                         </div>
                         <p class="m-0 text-white">{{ $company->name }}</p>
                     </div>
@@ -32,10 +31,10 @@
                                         <div class="card-body d-flex align-items-center justify-content-between">
                                             <div class="d-flex align-items-center">
                                                 <i class="fas fa-briefcase fa-2x"></i>
-                                                <span class="ms-3"><i class="bi bi-briefcase"></i> Postingan Jumlah
+                                                <span class="ms-3"><i class="bi bi-briefcase"></i> Jumlah Post
                                                     Lowongan</span>
                                             </div>
-                                            <span>20</span>
+                                            <span>{{ $lowonganCount }}</span>
                                         </div>
                                     </div>
                                 </div>
@@ -58,7 +57,7 @@
                                                 <span class="ms-3"><i class="bi bi-shop-window"></i> Jumlah yang Mengikuti
                                                     Webinar</span>
                                             </div>
-                                            <span>30</span>
+                                            <span>{{ $webinarAttendeeCount }}</span>
                                         </div>
                                     </div>
                                 </div>
