@@ -16,7 +16,7 @@
                 <div class="text" style="order: 1; margin-right: 60px;">
                     <h2 style="color: white; margin-bottom: 0;">ApprenTech</h2>
                     <div class="home-link">
-                        <p><a href="#" style="text-decoration: none;">Our Team</a></p>
+                        <p><a href="{{ route('about') }}" style="text-decoration: none;">Our Team</a></p>
                     </div>
                 </div>
                 <div class="logo" style="order: 2; background-color: black; border-radius: 50%; padding: 20px;">

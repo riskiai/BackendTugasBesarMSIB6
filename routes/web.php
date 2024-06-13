@@ -11,6 +11,8 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\Mahasiswa\ProfileController;
 use App\Http\Controllers\DashboardMahasiswaController;
 use App\Http\Controllers\DashboardPerusahaanController;
+use App\Http\Controllers\LowonganController;
+use App\Http\Controllers\WebinarController;
 
 /*
 |--------------------------------------------------------------------------
@@ -30,62 +32,87 @@ use App\Http\Controllers\DashboardPerusahaanController;
 
 
 // Auth
-Route::get('/', [AuthController::class, 'index']);
+Route::get('/', function () {
+    return redirect()->route('beranda');
+});
 Route::get('/login', [AuthController::class, 'login'])->name('login');
 Route::post('/login', [AuthController::class, 'authenticate'])->name('login.authenticate');
-Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
-Route::get('register', [AuthController::class, 'index']);
-Route::get('/register/user', [AuthController::class, 'registerUser'])->name('register.user');
-Route::get('/register/user', [AuthController::class, 'registerUser'])->name('register.user');
-Route::post('/register/user', [AuthController::class, 'storeUser'])->name('register.user.store');
-Route::get('/register/perusahaan', [AuthController::class, 'registerPerusahaan'])->name('register.perusahaan');
-Route::post('/register/perusahaan', [AuthController::class, 'storePerusahaan'])->name('register.perusahaan.store');
+Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
+Route::prefix('register')->group(function () {
+    Route::get('/', [AuthController::class, 'index']);
+    Route::get('/user', [AuthController::class, 'registerUser'])->name('register.user');
+    Route::post('/user/store', [AuthController::class, 'storeUser'])->name('register.user.store');
+    Route::get('/perusahaan', [AuthController::class, 'registerPerusahaan'])->name('register.perusahaan');
+    Route::post('/perusahaan', [AuthController::class, 'storePerusahaan'])->name('register.perusahaan.store');
+});
 
 // beranda
 Route::get('/beranda', [HomePageController::class, 'beranda'])->name('beranda');
-Route::get('/logowan-kerja-dan-magang', [HomePageController::class, 'lowongan']);
-Route::get('/frequently-asked-questions', [HomePageController::class, 'frequentlyAskedQuestions']);
-Route::get('/artikel', [HomePageController::class, 'artikel']);
-Route::get('/detail-artikel', [HomePageController::class, 'detailArtikel']);
-Route::get('/webinar', [HomePageController::class, 'webinar']);
-Route::get('/detail-webinar', [HomePageController::class, 'detailWebinar']);
-Route::get('/detail-logowan-kerja-dan-magang', [HomePageController::class, 'detailLowongan']);
-Route::get('/about', [HomePageController::class, 'about']);
+Route::get('/lowongan-kerja-dan-magang', [HomePageController::class, 'lowongan'])->name('lowongan');
+Route::get('/detail-lowongan-kerja-dan-magang', [HomePageController::class, 'detailLowongan']);
+Route::get('/lowongan/{lowongan}', [HomePageController::class, 'detailLowongan']);
+Route::get('/frequently-asked-questions', [HomePageController::class, 'frequentlyAskedQuestions'])->name('faq');
+Route::get('/artikel', [HomePageController::class, 'artikel'])->name('artikel');
+Route::get('/detail-artikel/{artikel}', [HomePageController::class, 'detailArtikel']);
+Route::get('/about', [HomePageController::class, 'about'])->name('about');
+
+// webinar
+Route::get('/webinar', [WebinarController::class, 'webinar'])->name('webinar');
+Route::get('/webinar/{webinar}', [WebinarController::class, 'detailWebinar']);
+Route::post('/webinar/{webinar}/register', [WebinarController::class, 'toggleRegisterWebinar'])->name('webinar.register')->middleware('authenticate');
+
+// lowongan
+Route::post('/lowongan/{lowongan}/apply', [LowonganController::class, 'applyLowongan'])->name('lowongan.apply');
 
 // admin
-Route::get('/admin/dashboard', [DashboardController::class, 'index'])->name('admin.dashboard');
+Route::prefix('admin')->group(function () {
+    Route::get('/', function () {
+        return redirect()->route('admin.dashboard');
+    });
+    Route::get('/dashboard', [DashboardController::class, 'index'])->name('admin.dashboard');
 
-/* Pengguna Mitra Perusahaan */
-Route::get('/admin/penggunaperusahaan', [PenggunaPerusahaanController::class, 'index'])->name('admin.pengguna.index');
-Route::get('/admin/penggunaperusahaan/create', [PenggunaPerusahaanController::class, 'create'])->name('admin.pengguna.create');
-Route::post('/admin/penggunaperusahaan/createproses', [PenggunaPerusahaanController::class, 'createproses'])->name('admin.pengguna.createproses');
-Route::get('/admin/penggunaperusahaan/edit', [PenggunaPerusahaanController::class, 'edit'])->name('admin.pengguna.edit');
-Route::post('/admin/penggunaperusahaan/update/{id}', [PenggunaPerusahaanController::class, 'update'])->name('admin.pengguna.update');
-Route::delete('/admin/penggunaperusahaan/{id}', [PenggunaPerusahaanController::class, 'delete'])->name('admin.pengguna.delete');
+    Route::prefix('pengguna')->group(function () {
+        /* Pengguna Mitra Perusahaan */
+        Route::prefix('perusahaan')->group(function () {
+            Route::get('/', [PenggunaPerusahaanController::class, 'index'])->name('admin.pengguna.index');
+            Route::get('/create', [PenggunaPerusahaanController::class, 'create'])->name('admin.pengguna.create');
+            Route::post('/createproses', [PenggunaPerusahaanController::class, 'createproses'])->name('admin.pengguna.createproses');
+            Route::get('/edit', [PenggunaPerusahaanController::class, 'edit'])->name('admin.pengguna.edit');
+            Route::post('/update/{id}', [PenggunaPerusahaanController::class, 'update'])->name('admin.pengguna.update');
+            Route::delete('/{id}', [PenggunaPerusahaanController::class, 'delete'])->name('admin.pengguna.delete');
+        });
+        /* Pengguna Mahasiswa */
+        Route::prefix('mahasiswa')->group(function () {
+            Route::get('/', [PenggunaMahasiswaController::class, 'index'])->name('admin.penggunamhs.index');
+            Route::get('/create', [PenggunaMahasiswaController::class, 'create'])->name('admin.penggunamhs.create');
+            Route::post('/createproses', [PenggunaMahasiswaController::class, 'createproses'])->name('admin.penggunamhs.createproses');
+            Route::get('/edit', [PenggunaMahasiswaController::class, 'edit'])->name('admin.penggunamhs.edit');
+            Route::post('/update/{id}', [PenggunaMahasiswaController::class, 'update'])->name('admin.penggunamhs.update');
+            Route::delete('/{id}', [PenggunaMahasiswaController::class, 'delete'])->name('admin.penggunamhs.delete');
+        });
+    });
 
-/* Pengguna Mahasiswa */
-Route::get('/admin/mahasiswa', [PenggunaMahasiswaController::class, 'index'])->name('admin.penggunamhs.index');
-Route::get('/admin/penggunamahasiswa/create', [PenggunaMahasiswaController::class, 'create'])->name('admin.penggunamhs.create');
-Route::post('/admin/penggunamahasiswa/createproses', [PenggunaMahasiswaController::class, 'createproses'])->name('admin.penggunamhs.createproses');
-Route::get('/admin/penggunamahasiswa/edit', [PenggunaMahasiswaController::class, 'edit'])->name('admin.penggunamhs.edit');
-Route::post('/admin/penggunamahasiswa/update/{id}', [PenggunaMahasiswaController::class, 'update'])->name('admin.penggunamhs.update');
-Route::delete('/admin/penggunamahasiswa/{id}', [PenggunaMahasiswaController::class, 'delete'])->name('admin.penggunamhs.delete');
-
-/* Webinar Apprentech */
-Route::get('/admin/webinarapprentech', [WebinarApprentechController::class, 'index'])->name('admin.webinarapprentech.index');
-Route::get('/admin/webinarapprentech/create', [WebinarApprentechController::class, 'create'])->name('admin.webinarapprentech.create');
-Route::post('/admin/webinarapprentech/createproses', [WebinarApprentechController::class, 'createproses'])->name('admin.webinarapprentech.createproses');
-Route::get('/admin/webinarapprentech/edit', [WebinarApprentechController::class, 'edit'])->name('admin.webinarapprentech.edit');
-Route::post('/admin/webinarapprentech/update/{id}', [WebinarApprentechController::class, 'update'])->name('admin.webinarapprentech.update');
-Route::delete('/admin/webinarapprentech/{id}', [WebinarApprentechController::class, 'delete'])->name('admin.webinarapprentech.delete');
-
-/* Webinar Perusahaan */
-Route::get('/admin/webinarperusahaan', [WebinarPerusahaanController::class, 'index'])->name('admin.webinarperusahaan.index');
-Route::get('/admin/webinarperusahaan/create', [WebinarPerusahaanController::class, 'create'])->name('admin.webinarperusahaan.create');
-Route::post('/admin/webinarperusahaan/createproses', [WebinarPerusahaanController::class, 'createproses'])->name('admin.webinarperusahaan.createproses');
-Route::get('/admin/webinarperusahaan/edit', [WebinarPerusahaanController::class, 'edit'])->name('admin.webinarperusahaan.edit');
-Route::post('/admin/webinarperusahaan/update/{id}', [WebinarPerusahaanController::class, 'update'])->name('admin.webinarperusahaan.update');
-Route::delete('/admin/webinarperusahaan/{id}', [WebinarPerusahaanController::class, 'delete'])->name('admin.webinarperusahaan.delete');
+    Route::prefix('webinar')->group(function () {
+        /* Webinar Apprentech */
+        Route::prefix('apprentech')->group(function () {
+            Route::get('/', [WebinarApprentechController::class, 'index'])->name('admin.webinarapprentech.index');
+            Route::get('/create', [WebinarApprentechController::class, 'create'])->name('admin.webinarapprentech.create');
+            Route::post('/createproses', [WebinarApprentechController::class, 'createproses'])->name('admin.webinarapprentech.createproses');
+            Route::get('/edit', [WebinarApprentechController::class, 'edit'])->name('admin.webinarapprentech.edit');
+            Route::post('/update/{id}', [WebinarApprentechController::class, 'update'])->name('admin.webinarapprentech.update');
+            Route::delete('/{id}', [WebinarApprentechController::class, 'delete'])->name('admin.webinarapprentech.delete');
+        });
+        /* Webinar Perusahaan */
+        Route::prefix('perusahaan')->group(function () {
+            Route::get('/', [WebinarPerusahaanController::class, 'index'])->name('admin.webinarperusahaan.index');
+            Route::get('/create', [WebinarPerusahaanController::class, 'create'])->name('admin.webinarperusahaan.create');
+            Route::post('/createproses', [WebinarPerusahaanController::class, 'createproses'])->name('admin.webinarperusahaan.createproses');
+            Route::get('/edit', [WebinarPerusahaanController::class, 'edit'])->name('admin.webinarperusahaan.edit');
+            Route::post('/update/{id}', [WebinarPerusahaanController::class, 'update'])->name('admin.webinarperusahaan.update');
+            Route::delete('/{id}', [WebinarPerusahaanController::class, 'delete'])->name('admin.webinarperusahaan.delete');
+        });
+    });
+});
 
 // Dashboard
 Route::prefix('dashboard')->group(function () {
@@ -94,7 +121,7 @@ Route::prefix('dashboard')->group(function () {
         Route::get('/', [DashboardMahasiswaController::class, 'index'])->name('mahasiswa.index');
         Route::get('/awal', [DashboardMahasiswaController::class, 'dashboardAwal']);
         Route::get('/profil', [DashboardMahasiswaController::class, 'editProfil'])->name('mahasiswa.profil');
-        Route::put('/profil', [DashboardMahasiswaController::class, 'updateProfil'])->name('mahasiswa.profil.update');        
+        Route::put('/profil', [DashboardMahasiswaController::class, 'updateProfil'])->name('mahasiswa.profil.update');
         Route::get('/bantuan', [DashboardMahasiswaController::class, 'bantuan']);
         Route::get('/diskusi', [DashboardMahasiswaController::class, 'diskusi']);
         Route::get('/magang-disimpan', [DashboardMahasiswaController::class, 'magang']);
@@ -106,7 +133,10 @@ Route::prefix('dashboard')->group(function () {
         Route::get('/profil', [DashboardPerusahaanController::class, 'editProfil'])->name('perusahaan.profil');
         Route::put('/profil', [DashboardPerusahaanController::class, 'updateProfil'])->name('perusahaan.profil.update');
         Route::get('/posting-lowongan', [DashboardPerusahaanController::class, 'postingLowongan']);
+        Route::post('lowongan/magang/store', [DashboardPerusahaanController::class, 'storeMagang'])->name('perusahaan.magang.store');
+        Route::post('lowongan/kerja/store', [DashboardPerusahaanController::class, 'storeKerja'])->name('perusahaan.kerja.store');
         Route::get('/informasi-pendaftaran', [DashboardPerusahaanController::class, 'pendaftaran']);
-        Route::get('/webinar', [DashboardPerusahaanController::class, 'webinar']);
+        Route::get('/webinar/create', [DashboardPerusahaanController::class, 'createWebinar'])->name('perusahaan.webinar.create');
+        Route::post('/webinar/store', [DashboardPerusahaanController::class, 'storeWebinar'])->name('perusahaan.webinar.store');
     });
 });

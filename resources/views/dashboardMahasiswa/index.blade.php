@@ -1,4 +1,4 @@
-@extends('layouts.guest')
+@extends('layouts.app')
 
 @section('content')
     <section class="container">
@@ -11,7 +11,7 @@
                             <img class="rounded-circle" src="{{ asset('assets/img/team/team-3.jpg') }}" alt=""
                                 style="height: 100px; width: 100px;">
                         </div>
-                        <p class="m-0 text-white">Nama</p>
+                        <p class="m-0 text-white">{{ $user->name }}</p>
                     </div>
                     <div class="bg-light">
                         @include('components.slider')
@@ -19,7 +19,7 @@
                 </div>
                 <!-- sidebar end -->
                 <div class="col align-items-center justify-content-center d-flex">
-                    <a href="{{ url('dashboard-mahasisswa-profil') }}" class="btn btn-primary">
+                    <a href="{{ route('mahasiswa.profil') }}" class="btn btn-primary">
                         <img src="{{ asset('./assets/img/pen.png') }}" alt="Icon" class="mx-1" />
                         Lengkapi Profil
                     </a>

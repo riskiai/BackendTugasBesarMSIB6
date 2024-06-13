@@ -13,18 +13,21 @@ return new class extends Migration
     {
         Schema::create('webinars', function (Blueprint $table) {
             $table->id();
-            $table->string('name_speaker')->nullable();
-            $table->string('short_description')->nullable();
-            $table->text('detail_description')->nullable();
-            $table->string('judul_webinar')->nullable();
-            $table->string('mengadakan_acara')->nullable();
-            $table->string('judul_deskripsi')->nullable();
-            $table->string('nama_pengada_acara')->nullable();
-            $table->date('tanggal')->nullable();
-            $table->string('waktu')->nullable();
+            $table->unsignedBigInteger('company_id')->nullable();
+            $table->string('judul_webinar');
+            $table->string('narasumber');
+            $table->string('jabatan_narasumber');
+            $table->string('tagline');
+            $table->text('deskripsi');
+            $table->date('tanggal');
+            $table->time('waktu_mulai');
+            $table->time('waktu_selesai');
             $table->string('platform')->nullable();
-            $table->string('lokasi')->nullable();
+            $table->string('lokasi');
+            $table->string('poster')->nullable();
             $table->timestamps();
+
+            $table->foreign('company_id')->references('id')->on('companies');
         });
     }
 

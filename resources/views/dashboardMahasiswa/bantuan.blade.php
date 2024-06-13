@@ -1,4 +1,4 @@
-@extends('layouts.guest')
+@extends('layouts.app')
 
 @section('content')
     <section class="container-fluid">
@@ -27,7 +27,7 @@
                         <h2 class="text-dark mb-4 text-start fw-bold">Bantuan</h2>
                         <div class="row">
                             <!-- Card 1: Panduan Mendaftar Magang -->
-                            <div class="col-md-4">
+                            <div class="col-md-4 d-flex">
                                 <div class="card border-primary mb-3" style="max-width: 18rem;">
                                     <div class="card-header text-white" style="background-color: #074173">
                                         Panduan Mendaftar Magang
@@ -55,7 +55,7 @@
                                 </div>
                             </div>
                             <!-- Card 2: Panduan Mendaftar Magang -->
-                            <div class="col-md-4">
+                            <div class="col-md-4 d-flex">
                                 <div class="card border-primary mb-3" style="max-width: 18rem;">
                                     <div class="card-header text-white" style="background-color: #074173">
                                         Edit Profil
@@ -88,7 +88,7 @@
                                 </div>
                             </div>
                             <!-- Card 3: Panduan Mendaftar Magang -->
-                            <div class="col-md-4">
+                            <div class="col-md-4 d-flex">
                                 <div class="card border-primary mb-3" style="max-width: 18rem;">
                                     <div class="card-header text-white" style="background-color: #074173">
                                         Curiculum Vitae (CV)
@@ -121,7 +121,7 @@
                                 </div>
                             </div>
                             <!-- Card 4: Panduan Mendaftar Magang -->
-                            <div class="col-md-4">
+                            <div class="col-md-4 d-flex">
                                 <div class="card border-primary mb-3" style="max-width: 18rem;">
                                     <div class="card-header text-white" style="background-color: #074173">
                                         Lupa Password ?

@@ -2,11 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\CreateWebinarRequest;
 use App\Models\Company;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 use App\Http\Requests\UpdateProfilPerusahaanRequest;
+use App\Models\Webinar;
 
 class DashboardPerusahaanController extends Controller
 {
@@ -90,8 +92,29 @@ class DashboardPerusahaanController extends Controller
         return view('dashboardPerusahaan.informasi-pendaftaran');
     }
 
-    public function webinar()
+    public function createWebinar()
     {
         return view('dashboardPerusahaan.webinar');
+    }
+
+    public function storeWebinar(CreateWebinarRequest $request)
+    {
+        // Simpan data webinar baru
+        $webinar = new Webinar();
+        $webinar->company_id = auth()->guard('company')->user()->id;
+        $webinar->judul_webinar = $request->judul_webinar;
+        $webinar->narasumber = $request->narasumber;
+        $webinar->jabatan_narasumber = $request->jabatan_narasumber;
+        $webinar->tagline = $request->tagline;
+        $webinar->deskripsi = $request->deskripsi;
+        $webinar->tanggal = $request->tanggal;
+        $webinar->waktu_mulai = $request->waktu_mulai;
+        $webinar->waktu_selesai = $request->waktu_selesai;
+        $webinar->platform = $request->platform;
+        $webinar->lokasi = $request->lokasi;
+        // poster belum ada
+        $webinar->save();
+
+        return redirect()->back()->with('success', 'Webinar berhasil dibuat');
     }
 }

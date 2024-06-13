@@ -30,6 +30,33 @@ class UserSeeder extends Seeder
         $user->assignRole('admin');
 
         $company = Company::create([
+            'name' => 'PT ApprenTech',
+            'pic_name' => 'Admin ApprenTech',
+            'email' => 'apprentech@gmail.com',
+            'password' => bcrypt('asdfasdf'),
+            'phone' => '000000000000',
+        ]);
+        $company->assignRole('company');
+
+        $company = Company::create([
+            'name' => 'PT Amanah Sejahtera',
+            'pic_name' => 'Salahuddin',
+            'email' => 'amanah@gmail.com',
+            'password' => bcrypt('asdfasdf'),
+            'phone' => '081456789012',
+        ]);
+        $company->assignRole('company');
+
+        $company = Company::create([
+            'name' => 'PT Aman Mental',
+            'pic_name' => 'Widianto',
+            'email' => 'amanmental@gmail.com',
+            'password' => bcrypt('asdfasdf'),
+            'phone' => '089987654321',
+        ]);
+        $company->assignRole('company');
+
+        $company = Company::create([
             'name' => 'Company',
             'pic_name' => 'Company PIC',
             'email' => 'company@gmail.com',

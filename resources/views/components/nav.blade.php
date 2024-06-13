@@ -11,30 +11,35 @@
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav mx-auto">
                 <li class="nav-item mx-2">
-                    <a class="nav-link active" aria-current="page" href="{{ url('beranda') }}">Beranda</a>
+                    <a class="nav-link active" aria-current="page" href="{{ route('beranda') }}">Beranda</a>
                 </li>
                 <li class="nav-item mx-2">
-                    <a class="nav-link" href="{{ url('logowan-kerja-dan-magang') }}">Lowongan Kerja & Magang</a>
+                    <a class="nav-link" href="{{ route('lowongan') }}">Lowongan Kerja & Magang</a>
                 </li>
                 <li class="nav-item mx-2">
-                    <a class="nav-link" href="{{ url('frequently-asked-questions') }}">FAQ</a>
+                    <a class="nav-link" href="{{ route('faq') }}">FAQ</a>
                 </li>
                 <li class="nav-item mx-2">
-                    <a class="nav-link" href="{{ url('artikel') }}">Artikel</a>
+                    <a class="nav-link" href="{{ route('artikel') }}">Artikel</a>
                 </li>
                 <li class="nav-item mx-2">
-                    <a class="nav-link" href="{{ url('webinar') }}">Webinar</a>
+                    <a class="nav-link" href="{{ route('webinar') }}">Webinar</a>
                 </li>
             </ul>
 
             <ul class="navbar-nav mx-auto">
                 <li>
-                    <a href="{{ url('dashboard-mahasisswa') }}" class="btn btn-primary">Dashoard</a>
+                    <a href="{{ route('mahasiswa.index') }}" class="btn btn-primary">Dashboard</a>
                 </li>
             </ul>
             <div>
-                <a href="{{ url('login') }}" class="button-primary btn">Masuk</a>
-                <a href="{{ url('/') }}" class="button-secundary btn">Daftar</a>
+                @auth
+                    <a href="{{ url('logout') }}" class="button-primary btn">Keluar</a>
+                @endauth
+                @guest
+                    <a href="{{ url('login') }}" class="button-primary btn">Masuk</a>
+                    <a href="{{ url('/') }}" class="button-secundary btn">Daftar</a>
+                @endguest
             </div>
         </div>
     </div>

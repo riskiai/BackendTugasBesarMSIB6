@@ -11,17 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('bantuan', function (Blueprint $table) {
+        Schema::create('apply_lowongans', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('lowongan_id');
             $table->unsignedBigInteger('user_id');
-            $table->string('faq');
-            $table->string('edit_profil');
-            $table->text('cara_membuat_resume');
-            $table->text('lamaran_kerja');
-            $table->string('job_alert');
+            $table->enum('status', ['pending', 'accepted', 'rejected'])->default('pending');
             $table->timestamps();
-
-            $table->foreign('user_id')->references('id')->on('users');
         });
     }
 
@@ -30,6 +25,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('bantuans');
+        Schema::dropIfExists('apply_lowongans');
     }
 };

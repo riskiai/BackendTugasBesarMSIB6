@@ -48,7 +48,7 @@
                                     </div>
                                     <div class="form-group">
                                       <label>Phone</label>
-                                      <input type="text" name="no_hp" class="form-control">
+                                      <input type="text" name="phone" class="form-control">
                                     </div>
                                     <div class="form-group">
                                       <label>Address</label>

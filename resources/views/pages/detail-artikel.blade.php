@@ -5,21 +5,16 @@
             <img src="{{ asset('assets/img/About_as.png') }}" alt="" class="bordered-img" />
             <div class="overlay">
                 <div class="container">
-                    <div class="text">
+                    <div class="text mt-5">
                         <h2 class="overlay-text">
-                            Tantangan dan Tips Sukses saat Magang di Industri Teknologi
+                            {{ $artikel->judul }}
                         </h2>
                         <div class="date-and-content">
-                            <h6>Desember 20, 2024</h6>
+                            <h6>
+                                {{ $artikel->created_at->diffForHumans() }}
+                            </h6>
                             <p>
-                                Magang di industri teknologi merupakan langkah awal yang
-                                penting bagi para mahasiswa atau lulusan baru yang ingin
-                                memperoleh pengalaman praktis dan wawasan mendalam tentang
-                                industri yang terus berkembang pesat ini. Namun, seperti
-                                halnya dalam setiap pengalaman kerja, magang di industri
-                                teknologi juga memiliki tantangan-tantangan tersendiri.
-                                Berikut adalah beberapa tantangan umum yang mungkin dihadapi
-                                serta tips sukses untuk mengatasinya:
+                                {{ $artikel->konten}}
                             </p>
                         </div>
 

@@ -27,6 +27,10 @@ class AuthController extends Controller
 
         if (Auth::attempt($credentials)) {
             $request->session()->regenerate();
+            // periksa apakah user adalah admin
+            if (Auth::user()->roles[0]->name == 'admin') {
+                return redirect()->route('admin.dashboard');
+            }
             return redirect()->route('mahasiswa.index');
         } elseif (Auth::guard('company')->attempt($credentials)) {
             $request->session()->regenerate();
@@ -36,9 +40,18 @@ class AuthController extends Controller
         }
     }
 
-    public function logout()
+    public function logout(Request $request)
     {
-        Auth::logout();
+        if (Auth::check()) {
+            Auth::logout();
+        } elseif (Auth::guard('company')->check()) {
+            Auth::guard('company')->logout();
+        }
+
+        // Invalidate the session and regenerate the token to avoid CSRF attacks
+        $request->session()->invalidate();
+        $request->session()->regenerateToken();
+
         return redirect()->route('login');
     }
 

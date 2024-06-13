@@ -12,8 +12,6 @@ class Company extends Authenticatable
 
     protected $guarded = ['id'];
 
-    
-
     /**
      * The attributes that should be hidden for serialization.
      *
@@ -34,4 +32,14 @@ class Company extends Authenticatable
     ];
 
     protected $guard_name = 'company';
+
+    public function webinars()
+    {
+        return $this->hasMany(Webinar::class);
+    }
+
+    public function lowongans()
+    {
+        return $this->hasMany(Lowongan::class);
+    }
 }

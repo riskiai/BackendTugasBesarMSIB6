@@ -3,7 +3,7 @@
     .card {
         /* padding=0; */
     }
-    
+
     .card-wrapper {}
 </style>
 
@@ -202,8 +202,9 @@
                                 <!-- Item 1 -->
                                 <div class="col-lg-4">
                                     <div class="text-center">
-                                        <img src="{{ asset('assets/img/visi.png') }}" class="rounded-circle border border-white mb-3"
-                                            style="width: 50%;" alt="Deskripsi Gambar">
+                                        <img src="{{ asset('assets/img/visi.png') }}"
+                                            class="rounded-circle border border-white mb-3" style="width: 50%;"
+                                            alt="Deskripsi Gambar">
                                         <h4 class="card-title">Riski A. Ilham</h4>
                                         <p class="text-white">CEO Dicoding</p>
                                         <p>“ Portal Magang IT sangat membantu saya menemukan kesempatan magang yang sesuai
@@ -213,8 +214,9 @@
                                 <!-- Item 2 -->
                                 <div class="col-lg-4">
                                     <div class="text-center">
-                                        <img src="{{ asset('assets/img/visi.png') }}" class="rounded-circle border border-white mb-3"
-                                            style="width: 50%;" alt="Deskripsi Gambar">
+                                        <img src="{{ asset('assets/img/visi.png') }}"
+                                            class="rounded-circle border border-white mb-3" style="width: 50%;"
+                                            alt="Deskripsi Gambar">
                                         <h4 class="card-title">Nadhif L. A. Rahim</h4>
                                         <p class="text-white">CEO Codepolitan</p>
                                         <p>“Portal Magang IT sangat mudah digunakan dan informatif. Saya dapat mencari
@@ -224,8 +226,9 @@
                                 <!-- Item 3 -->
                                 <div class="col-lg-4">
                                     <div class="text-center">
-                                        <img src="{{ asset('assets/img/visi.png') }}" class="rounded-circle border border-white mb-3"
-                                            style="width: 50%;" alt="Deskripsi Gambar">
+                                        <img src="{{ asset('assets/img/visi.png') }}"
+                                            class="rounded-circle border border-white mb-3" style="width: 50%;"
+                                            alt="Deskripsi Gambar">
                                         <h4 class="card-title">Kristofel S. Lanpada</h4>
                                         <p class="text-white">CEO PT Amanah Karya Indonesia</p>
                                         <p>“ Portal Magang IT sangat membantu saya untuk mempersiapkan diri sebelum magang.”
@@ -262,8 +265,9 @@
                                 <!-- Item 1 -->
                                 <div class="col-lg-4">
                                     <div class="text-center">
-                                        <img src="{{ asset('assets/img/visi.png') }}" class="rounded-circle border border-white mb-3"
-                                            style="width: 50%;" alt="Deskripsi Gambar">
+                                        <img src="{{ asset('assets/img/visi.png') }}"
+                                            class="rounded-circle border border-white mb-3" style="width: 50%;"
+                                            alt="Deskripsi Gambar">
                                         <h4 class="card-title">Riski A. Ilham</h4>
                                         <p class="text-muted">Jurusan Teknik Informatika, Universitas Indonesia</p>
                                         <p>“ Portal Magang IT sangat membantu saya menemukan kesempatan magang yang sesuai
@@ -273,8 +277,9 @@
                                 <!-- Item 2 -->
                                 <div class="col-lg-4">
                                     <div class="text-center">
-                                        <img src="{{ asset('assets/img/visi.png') }}" class="rounded-circle border border-white mb-3"
-                                            style="width: 50%;" alt="Deskripsi Gambar">
+                                        <img src="{{ asset('assets/img/visi.png') }}"
+                                            class="rounded-circle border border-white mb-3" style="width: 50%;"
+                                            alt="Deskripsi Gambar">
                                         <h4 class="card-title">Nadhif L. A. Rahim</h4>
                                         <p class="text-muted">Jurusan Teknik Informatika, Universitas Indonesia</p>
                                         <p>“Portal Magang IT sangat mudah digunakan dan informatif. Saya dapat mencari
@@ -284,8 +289,9 @@
                                 <!-- Item 3 -->
                                 <div class="col-lg-4">
                                     <div class="text-center">
-                                        <img src="{{ asset('assets/img/visi.png') }}" class="rounded-circle border border-white mb-3"
-                                            style="width: 50%;" alt="Deskripsi Gambar">
+                                        <img src="{{ asset('assets/img/visi.png') }}"
+                                            class="rounded-circle border border-white mb-3" style="width: 50%;"
+                                            alt="Deskripsi Gambar">
                                         <h4 class="card-title">Kristofel S. Lanpada</h4>
                                         <p class="text-muted">Jurusan Teknik Informatika, Universitas Indonesia</p>
                                         <p>“ Portal Magang IT sangat membantu saya untuk mempersiapkan diri sebelum magang.”
@@ -317,31 +323,34 @@
                 <h1 class="text-center font-weight-bold mb-5">Rekomendasi Lowongan Kerja</h1>
                 <div class="row justify-content-center">
                     <!-- Item 1 -->
-                    @for ($i = 0; $i < 5; $i++)
+                    @foreach ($lowongans as $lowongan)
                         <div class="col-lg-4 my-4">
                             <div class="card border-0 p-4 text-white" style="background-color: #074173;">
                                 <div class="d-flex align-items-start">
                                     <img src="{{ asset('assets/img/visi.png') }}" alt="Deskripsi Gambar"
                                         class="rounded-circle border border-primary me-3" style="width: 20%;" />
                                     <div class="d-flex flex-column">
-                                        <h5 class="card-title">Marketing Manager</h5>
+                                        <h5 class="card-title">{{ $lowongan->judul }}</h5>
                                         <div class="mt-2">
-                                            <p class="mb-0"><i class="bi bi-shop-window"></i> Marketing</p>
-                                            <p class="mb-0"><i class="bi bi-geo-alt"></i> Jakarta Selatan</p>
+                                            <p class="mb-0"><i class="bi bi-shop-window"></i>{{ $lowongan->bidang }}
+                                            </p>
+                                            <p class="mb-0"><i
+                                                    class="bi bi-geo-alt"></i>{{ $lowongan->lokasi ?? 'Online' }}</p>
+                                            </p>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="mt-4 d-flex justify-content-between">
                                     <p>
-                                        PT. Indonesia Sejahtera
+                                        {{ $lowongan->company->name }}
                                     </p>
-                                    <a href="#" class="bg-light p-2 rounded-3 text-decoration-none">
+                                    <a href="/lowongan/{{ $lowongan->id }}" class="bg-light p-2 rounded-3 text-decoration-none">
                                         Lihat Selengkapnya
                                     </a>
                                 </div>
                             </div>
                         </div>
-                    @endfor
+                    @endforeach
                     <!-- End Item 1 -->
                 </div>
             </div>
@@ -357,7 +366,8 @@
                 </h1>
                 <div class="row">
                     <div class="col-lg-5 order-1 hero-img" data-aos="zoom-out" style="position: relative; top: -20px;">
-                        <img src="{{ asset('assets/img/testimoni.png') }}" class="img-fluid mb-3 mb-lg-0" alt="Testimoni">
+                        <img src="{{ asset('assets/img/testimoni.png') }}" class="img-fluid mb-3 mb-lg-0"
+                            alt="Testimoni">
                     </div>
                     <div class="col-lg-7 order-2 text-white d-flex flex-column justify-content-center">
                         <ol class="mb-0">

@@ -45,4 +45,9 @@ class User extends Authenticatable
     ];
 
     protected $guard_name = 'web';
+
+    public function registerWebinars()
+    {
+        return $this->hasMany(RegisterWebinar::class);
+    }
 }
