@@ -24,9 +24,16 @@
     <link rel="stylesheet" href="{{ asset('css/tampilan-register.css') }}" />
     <link rel="stylesheet" href="{{ asset('css/artikel_masuk.css') }}" />
     <link rel="stylesheet" href="{{ asset('css/detail_webinar.css') }}" />
-
+    <link rel="stylesheet" href="{{ asset('css/app.css') }}" />
+    
     {{-- jquery --}}
-    <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4="
+        crossorigin="anonymous"></script>
+
+    {{-- Font Koulen --}}
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Koulen&display=swap" rel="stylesheet">
 </head>
 
 <body>
