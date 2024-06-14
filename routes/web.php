@@ -124,7 +124,7 @@ Route::prefix('dashboard')->group(function () {
         Route::put('/profil', [DashboardMahasiswaController::class, 'updateProfil'])->name('mahasiswa.profil.update');
         Route::get('/bantuan', [DashboardMahasiswaController::class, 'bantuan']);
         Route::get('/diskusi', [DashboardMahasiswaController::class, 'diskusi']);
-        Route::get('/magang-disimpan', [DashboardMahasiswaController::class, 'magang']);
+        Route::get('/lowongan-disimpan', [DashboardMahasiswaController::class, 'lowonganDisimpan']);
     });
     // Dashboard Perusahaan
     Route::prefix('perusahaan')->group(function () {

@@ -8,6 +8,7 @@ use App\Models\RegisterWebinar;
 use App\Models\SimpanLowongan;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class DashboardMahasiswaController extends Controller
 {
@@ -35,6 +36,20 @@ class DashboardMahasiswaController extends Controller
     {
         $user = User::find(auth()->user()->id);
 
+        // Jika ada file foto profil yang diunggah
+        if ($request->hasFile('image')) {
+            // Hapus foto profil lama jika ada
+            if ($user->foto_profil) {
+                Storage::disk('public')->delete('photo-profile/' . $user->foto_profil);
+            }
+
+            // Simpan foto profil baru dengan nama yang spesifik
+            $file = $request->file('image');
+            $filename = time() . '_' . $file->getClientOriginalName();
+            $file->storeAs('photo-profile', $filename, 'public');
+            $user->foto_profil = $filename;
+        }
+
         // Perbarui informasi mahasiswa
         $user->phone = $request->phone;
         $user->alamat = $request->alamat;
@@ -58,8 +73,9 @@ class DashboardMahasiswaController extends Controller
         return view('dashboardMahasiswa.forum-diskusi');
     }
 
-    public function magang()
+    public function lowonganDisimpan()
     {
-        return view('dashboardMahasiswa.magang-simpan');
+        $savedLowongans = SimpanLowongan::with('lowongan')->where('user_id', auth()->id())->get();
+        return view('dashboardMahasiswa.magang-simpan', compact('savedLowongans'));
     }
 }

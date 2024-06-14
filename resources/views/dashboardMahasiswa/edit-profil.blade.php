@@ -32,10 +32,10 @@
                 <div class="col-3 mt-5 p-0 border border-dark border-5 rounded">
                     <div class="bg-primary py-3 text-white">
                         <div class="mx-auto rounded-circle" style="background-color: #d9d9d9; height: 100px; width: 100px">
-                            <img class="rounded-circle" src="{{ asset('assets/img/team/team-3.jpg') }}" alt=""
-                                style="height: 100px; width: 100px;">
+                            <img src="{{ $user->foto_profil ? asset('storage/photo-profile/' . $user->foto_profil) : asset('assets/img/team/team-1.jpg') }}"
+                                alt="Profil Picture" class="rounded-circle" style="height: 100px; width: 100px;">
                         </div>
-                        <p class="m-0">Nama</p>
+                        <p class="m-0">{{ $user->name }}</p>
                     </div>
                     <div style="background-color: #d9d9d9">
                         <div class="py-4">
@@ -113,8 +113,11 @@
                                             @enderror
                                         </div>
                                         <div class="d-flex align-items-center gap-3 my-3">
-                                            <div class="rounded-circle"
-                                                style="background-color: #d9d9d9; height: 100px; width: 100px;"></div>
+                                            <div class="rounded-circle overflow-hidden"
+                                                style="background-color: #d9d9d9; height: 100px; width: 100px;">
+                                                <img src="{{ $user->foto_profil ? asset('storage/photo-profile/' . $user->foto_profil) : asset('assets/img/team/team-1.jpg') }}"
+                                                    alt="Profil Picture" class="img-fluid h-100 w-100 object-fit-cover">
+                                            </div>
                                             <div class="mb-3">
                                                 <input class="form-control form-control-sm" name="image"
                                                     id="profilePicture" type="file">
@@ -139,7 +142,6 @@
                                             @enderror
                                         </div>
                                         <div id="buttons" class="d-flex justify-content-between">
-                                            <button type="button" class="btn btn-dark">Batal</button>
                                             <button type="submit" class="btn btn-success">Submit</button>
                                         </div>
                                     </div>

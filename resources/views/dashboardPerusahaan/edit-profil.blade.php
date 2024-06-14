@@ -63,16 +63,26 @@
                                             <label for="name" class="form-label">Nama</label>
                                             <input type="text" name="name" class="form-control" id="name"
                                                 placeholder="Masukkan nama kamu" value="{{ $company->name }}" disabled>
+                                            @error('name')
+                                                <div class="text-danger mt-2">{{ $message }}</div>
+                                            @enderror
                                         </div>
                                         <div class="mb-3">
                                             <label for="hp" class="form-label">No. Telepon Penanggung Jawab</label>
                                             <input type="text" name="phone" class="form-control" id="hp"
                                                 placeholder="Masukkan nomor handphone" value="{{ $company->phone }}">
+                                            @error('phone')
+                                                <div class="text-danger mt-2">{{ $message }}</div>
+                                            @enderror
                                         </div>
                                         <div class="mb-3">
                                             <label for="website" class="form-label">Website Perusahaan (Jika ada)</label>
                                             <input type="text" name="website" class="form-control" id="website"
-                                                placeholder="Website Perusahaan (Jika ada)" value="{{ $company->website }}">
+                                                placeholder="Website Perusahaan (Jika ada)"
+                                                value="{{ $company->website }}">
+                                            @error('website')
+                                                <div class="text-danger mt-2">{{ $message }}</div>
+                                            @enderror
                                         </div>
                                         <div class="mt-5">
                                             <h6>Media Sosial</h6>
@@ -81,12 +91,18 @@
                                                 <input type="text" name="instagram" class="form-control" id="instagram"
                                                     placeholder="Masukkan username Instagram"
                                                     value="{{ $company->instagram }}">
+                                                @error('instagram')
+                                                    <div class="text-danger mt-2">{{ $message }}</div>
+                                                @enderror
                                             </div>
                                             <div class="mb-3">
                                                 <label for="facebook" class="form-label">Facebook</label>
                                                 <input type="text" name="facebook" class="form-control" id="facebook"
                                                     placeholder="Masukkan username Facebook"
                                                     value="{{ $company->facebook }}">
+                                                @error('facebook')
+                                                    <div class="text-danger mt-2">{{ $message }}</div>
+                                                @enderror
                                             </div>
                                         </div>
                                     </div>
@@ -95,12 +111,18 @@
                                             <label for="email" class="form-label">Email</label>
                                             <input type="email" name="email" class="form-control" id="email"
                                                 placeholder="Masukkan email kamu" value="{{ $company->email }}" disabled>
+                                            @error('email')
+                                                <div class="text-danger mt-2">{{ $message }}</div>
+                                            @enderror
                                         </div>
                                         <div class="mb-3">
                                             <label for="industry" class="form-label">Perusahaan di Bidang</label>
                                             <input type="text" name="industry" class="form-control" id="industry"
                                                 placeholder="Masukkan Bidang dari perusahaan kamu"
                                                 value="{{ $company->industry }}">
+                                            @error('industry')
+                                                <div class="text-danger mt-2">{{ $message }}</div>
+                                            @enderror
                                         </div>
                                         <div class="d-flex align-items-center gap-3 my-3">
                                             <div class="rounded-circle overflow-hidden"
@@ -111,6 +133,9 @@
                                             <div class="mb-3">
                                                 <input class="form-control form-control-sm" name="foto_profil"
                                                     id="profilePicture" type="file">
+                                                @error('foto_profil')
+                                                    <div class="text-danger mt-2">{{ $message }}</div>
+                                                @enderror
                                             </div>
                                         </div>
                                         <div class="mb-3">
@@ -118,15 +143,20 @@
                                             <input type="text" name="employees" class="form-control" id="employees"
                                                 placeholder="Masukkan Jumlah karyawan di perusahaan"
                                                 value="{{ $company->employees }}">
+                                            @error('employees')
+                                                <div class="text-danger mt-2">{{ $message }}</div>
+                                            @enderror
                                         </div>
                                         <div class="mb-3">
                                             <label for="address" class="form-label">Alamat</label>
                                             <input type="text" name="address" class="form-control" id="address"
                                                 placeholder="Masukkan alamat perusahaan" value="{{ $company->address }}">
+                                            @error('address')
+                                                <div class="text-danger mt-2">{{ $message }}</div>
+                                            @enderror
                                         </div>
                                         <div id="buttons" class="d-flex justify-content-between">
-                                            <button type="button" class="btn btn-dark">Batal</button>
-                                            <button type="submit" class="btn btn-success">Submit</button>
+                                            <button type="submit" class="btn btn-success align-self-end justify-content-end align-content-end">Submit</button>
                                         </div>
                                     </div>
                                 </div>

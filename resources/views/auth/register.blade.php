@@ -18,28 +18,40 @@
                                     @csrf
                                     <div class="mb-3">
                                         <label for="name" class="form-label">Nama</label>
-                                        <input type="text" name="name" class="form-control" id="name"
-                                            placeholder="masukkan nama kamu" />
+                                        <input type="text" name="name" class="form-control mb-1" id="name"
+                                            placeholder="masukkan nama kamu" required/>
+                                        @error('name')
+                                            <div class="text-danger mt-2">{{ $message }}</div>
+                                        @enderror
                                     </div>
                                     <div class="mb-3">
                                         <label for="email" class="form-label">Email</label>
-                                        <input type="email" name="email" class="form-control" id="email"
-                                            placeholder="masukkan email kamu" />
+                                        <input type="email" name="email" class="form-control mb-1" id="email"
+                                            placeholder="masukkan email kamu" required/>
+                                        @error('email')
+                                            <div class="text-danger mt-2">{{ $message }}</div>
+                                        @enderror
                                     </div>
 
                                     <div class="mb-3">
                                         <label for="password" class="form-label">Password</label>
-                                        <input type="password" name="password" class="form-control" id="password"
-                                            placeholder="masukkan password" />
+                                        <input type="password" name="password" class="form-control mb-1" id="password"
+                                            placeholder="masukkan password" required/>
+                                        @error('password')
+                                            <div class="text-danger mt-2">{{ $message }}</div>
+                                        @enderror
                                     </div>
                                     <div class="mb-3">
                                         <label for="password_confirmation" class="form-label">Ketik ulang
                                             password</label>
-                                        <input type="password" name="password_confirmation" class="form-control" id="password_confirmation"
-                                            placeholder="masukkan ulang password kamu" />
+                                        <input type="password" name="password_confirmation" class="form-control mb-1" id="password_confirmation"
+                                            placeholder="masukkan ulang password kamu" required/>
+                                        @error('password_confirmation')
+                                            <div class="text-danger mt-2">{{ $message }}</div>
+                                        @enderror
                                     </div>
                                     <div style="text-align: center; margin-top: 20px">
-                                        <button type="submit" class="btn btn-custom">Masuk</button>
+                                        <button type="submit" class="btn btn-custom">Daftar</button>
                                         <p style="margin-top: 5px; margin-bottom: 5px">
                                             Sudah memiliki akun?
                                         </p>
