@@ -71,7 +71,7 @@ data-bs-toggle="modal"
                     </div>
                 </div>
 
-                <div class="row mt-5">
+                <div class="row mt-5 justify-content-center">
                     <div class="col-md-5">
                         <div class="card">
                             <div class="row">
@@ -87,15 +87,6 @@ data-bs-toggle="modal"
                                     {{ $lowongan->deskripsi_lengkap }}
                                 </p>
                             </div>
-                        </div>
-                    </div>
-                    <div class="col-md-2">
-                        <div class="rounded d-flex justify-content-center align-items-center mt-5" style="height: 50%;">
-                            <button type="button" class="btn btn-light" data-bs-toggle="modal"
-                                data-bs-target="#exampleModal2">
-                                <img class="rounded mx-auto d-block mt-5" src="{{ asset('assets/img/retting.png') }}"
-                                    alt="" style="width: 75%;">
-                            </button>
                         </div>
                     </div>
                     <div class="col-md-5">
@@ -156,54 +147,49 @@ data-bs-toggle="modal"
             </div>
         </div>
     </div>
+
     <!-- Modal 2-->
     <div class="modal fade" id="exampleModal1" tabindex="-1" aria-labelledby="exampleModalLabel1" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
-                <div class="modal-header">
-                    <h1 class="modal-title fs-5" id="exampleModalLabel1">Daftar Magang</h1>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <div class="row container-fluid">
-                        <div class="col-md-8">
-                            <div class="mb-3">
-                                <label for="interest" class="form-label">1. Mengapa Anda tertarik dengan posisi magang
-                                    ini?</label>
-                                <input type="text" class="form-control" id="interest">
+                <form action="{{ route('lowongan.apply', ['lowongan' => $lowongan->id]) }}" method="POST"
+                    enctype="multipart/form-data">
+                    @csrf
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="exampleModalLabel1">Daftar Magang</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="row container-fluid">
+                            <div class="col-md-8">
+                                <div class="mb-3">
+                                    <label for="interest" class="form-label">1. Mengapa Anda tertarik dengan posisi
+                                        ini?</label>
+                                    <input type="text" name="pertanyaan1" class="form-control" id="interest">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="expectedSalary" class="form-label">2. Berapa gaji yang Anda harapkan untuk
+                                        posisi ini?</label>
+                                    <input type="text" name="pertanyaan2" class="form-control" id="expectedSalary">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="skills" class="form-label">3. Apa keterampilan dan keahlian yang bisa
+                                        diunggulkan?</label>
+                                    <input type="text" name="pertanyaan3" class="form-control" id="skills">
+                                </div>
                             </div>
-                            <div class="mb-3">
-                                <label for="expectedSalary" class="form-label">2. Berapa gaji yang Anda harapkan untuk
-                                    posisi magang ini?</label>
-                                <input type="text" class="form-control" id="expectedSalary">
-                            </div>
-                            <div class="mb-3">
-                                <label for="goals" class="form-label">3. Apa yang ingin Anda capai dari magang
-                                    ini?</label>
-                                <input type="text" class="form-control" id="goals">
-                            </div>
-                            <div class="mb-3">
-                                <label for="skills" class="form-label">4. Apa keterampilan dan keahlian yang bisa
-                                    diunggulkan?</label>
-                                <input type="text" class="form-control" id="skills">
-                            </div>
-                        </div>
-                        <div class="col-md-4">
-                            <div class="mb-3">
-                                <label for="formFile" class="form-label">Upload CV (Curiculum Vitae)</label>
-                                {{-- <p>
-                                    Ini adalah dokumen yang merangkum riwayat hidup seseorang, termasuk pendidikan,
-                                    pengalaman kerja, keterampilan, dan prestasi.
-                                </p> --}}
-                                <input class="form-control" type="file" id="formFile">
+                            <div class="col-md-4">
+                                <div class="mb-3">
+                                    <label for="formFile" class="form-label">Upload CV (Curiculum Vitae)</label>
+                                    <input class="form-control" name="cv" type="file" id="formFile">
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-primary">Kirim</button>
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                </div>
+                    <div class="modal-footer">
+                        <button type="submit" class="btn btn-primary">Kirim</button>
+                    </div>
+                </form>
             </div>
         </div>
     </div>

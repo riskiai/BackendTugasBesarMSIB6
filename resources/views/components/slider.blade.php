@@ -1,8 +1,5 @@
 <div class="py-4">
     <p class="mx-5 mb-4 rounded py-1 bg-primary">
-        <a href="{{ url('dashboard/mahasiswa/awal') }}" class="text-white text-decoration-none">Cari Magang</a>
-    </p>
-    <p class="mx-5 mb-4 rounded py-1 bg-primary">
         <a href="{{ url('dashboard/mahasiswa/profil') }}" class="text-white text-decoration-none">Edit
             Profil</a>
     </p>

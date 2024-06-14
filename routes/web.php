@@ -39,7 +39,7 @@ Route::get('/login', [AuthController::class, 'login'])->name('login');
 Route::post('/login', [AuthController::class, 'authenticate'])->name('login.authenticate');
 Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 Route::prefix('register')->group(function () {
-    Route::get('/', [AuthController::class, 'index']);
+    Route::get('/', [AuthController::class, 'index'])->name('register');
     Route::get('/user', [AuthController::class, 'registerUser'])->name('register.user');
     Route::post('/user/store', [AuthController::class, 'storeUser'])->name('register.user.store');
     Route::get('/perusahaan', [AuthController::class, 'registerPerusahaan'])->name('register.perusahaan');
@@ -57,7 +57,7 @@ Route::get('/about', [HomePageController::class, 'about'])->name('about');
 Route::get('/lowongan-kerja-dan-magang', [LowonganController::class, 'lowongan'])->name('lowongan');
 Route::get('/lowongan/{lowongan}', [LowonganController::class, 'detailLowongan'])->name('lowongan.detail');
 Route::post('/lowongan/{lowongan}/bookmark', [LowonganController::class, 'toggleSimpanLowongan'])->name('lowongan.bookmark');
-Route::post('/lowongan/{lowongan}/apply', [LowonganController::class, 'applyLowongan'])->name('lowongan.apply')->middleware('authenticate');
+Route::post('/lowongan/{lowongan}/apply', [LowonganController::class, 'applyLowongan'])->name('lowongan.apply');
 
 // webinar
 Route::get('/webinar', [WebinarController::class, 'webinar'])->name('webinar');
@@ -119,8 +119,7 @@ Route::prefix('admin')->group(function () {
 Route::prefix('dashboard')->group(function () {
     // Dashboard Mahasiswa
     Route::prefix('mahasiswa')->group(function () {
-        Route::get('/', [DashboardMahasiswaController::class, 'index'])->name('mahasiswa.index');
-        Route::get('/awal', [DashboardMahasiswaController::class, 'dashboardAwal']);
+        Route::get('/', [DashboardMahasiswaController::class, 'dashboardAwal'])->name('mahasiswa.index');
         Route::get('/profil', [DashboardMahasiswaController::class, 'editProfil'])->name('mahasiswa.profil');
         Route::put('/profil', [DashboardMahasiswaController::class, 'updateProfil'])->name('mahasiswa.profil.update');
         Route::get('/bantuan', [DashboardMahasiswaController::class, 'bantuan']);

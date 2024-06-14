@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\ApplyLowonganRequest;
+use App\Models\ApplyLowongan;
 use App\Models\Lowongan;
 use App\Models\SimpanLowongan;
 use Illuminate\Http\Request;
@@ -45,5 +47,13 @@ class LowonganController extends Controller
             ]);
             return redirect()->back()->with('success', 'Berhasil menyimpan lowongan');
         }
+    }
+
+    public function applyLowongan(ApplyLowonganRequest $request)
+    {
+        dd($request->all());
+        $application = $request->validated();
+        
+        return redirect()->back()->with('success', 'Berhasil melamar lowongan');
     }
 }

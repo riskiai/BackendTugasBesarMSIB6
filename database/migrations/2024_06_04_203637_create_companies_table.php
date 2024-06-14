@@ -20,7 +20,7 @@ return new class extends Migration
             $table->string('password');
             $table->string('address')->nullable();
             $table->string('foto_profil')->nullable();
-            $table->integer('employees')->nullable();
+            $table->integer('employees')->nullable()->default(0);
             $table->string('industry')->nullable();
             $table->string('website')->nullable();
             $table->string('instagram')->nullable();

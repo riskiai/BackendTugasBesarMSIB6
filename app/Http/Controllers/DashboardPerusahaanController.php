@@ -69,7 +69,7 @@ class DashboardPerusahaanController extends Controller
             if ($company->foto_profil) {
                 Storage::disk('public')->delete('photo-profile/' . $company->foto_profil);
             }
-    
+
             // Simpan foto profil baru dengan nama yang spesifik
             $file = $request->file('foto_profil');
             $filename = time() . '_' . $file->getClientOriginalName();

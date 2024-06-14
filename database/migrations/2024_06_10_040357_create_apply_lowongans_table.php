@@ -15,8 +15,15 @@ return new class extends Migration
             $table->id();
             $table->unsignedBigInteger('lowongan_id');
             $table->unsignedBigInteger('user_id');
+            $table->string('pertanyaan1');
+            $table->string('pertanyaan2');
+            $table->string('pertanyaan3');
+            $table->string('cv');
             $table->enum('status', ['pending', 'accepted', 'rejected'])->default('pending');
             $table->timestamps();
+
+            $table->foreign('lowongan_id')->references('id')->on('lowongans')->onDelete('cascade');
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
         });
     }
 
