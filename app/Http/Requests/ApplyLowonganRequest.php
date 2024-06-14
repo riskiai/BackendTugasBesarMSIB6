@@ -22,10 +22,10 @@ class ApplyLowonganRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'pertanyaan1' => ['required', 'string'],
-            'pertanyaan2' => ['required', 'string'],
-            'pertanyaan3' => ['required', 'string'],
-            'cv' => ['required', 'mimes:pdf', 'max:2048'],
+            'pertanyaan1' => ['string'],
+            'pertanyaan2' => ['string'],
+            'pertanyaan3' => ['string'],
+            'cv' => ['mimes:pdf', 'max:2048'],
         ];
     }
 }

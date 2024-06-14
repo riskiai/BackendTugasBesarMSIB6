@@ -49,10 +49,27 @@ class LowonganController extends Controller
         }
     }
 
-    public function applyLowongan(ApplyLowonganRequest $request)
+    public function applyLowongan(ApplyLowonganRequest $request, Lowongan $lowongan)
     {
-        dd($request->all());
-        $application = $request->validated();
+        // kalau ada file cv
+        if ($request->hasFile('cv')) {
+            // simpan file cv
+            $cv = $request->file('cv');
+            $cvFileName = time() . '_' . $cv->getClientOriginalName();
+            $cv->storeAs('cv', $cvFileName, 'public');
+        } else {
+            $cvFileName = null;
+        }
+
+        // Simpan data lamaran
+        ApplyLowongan::create([
+            'user_id' => auth()->id(),
+            'lowongan_id' => $lowongan->id,
+            'pertanyaan1' => $request->pertanyaan1,
+            'pertanyaan2' => $request->pertanyaan2,
+            'pertanyaan3' => $request->pertanyaan3,
+            'cv' => $cvFileName,
+        ]);
         
         return redirect()->back()->with('success', 'Berhasil melamar lowongan');
     }
