@@ -49,23 +49,30 @@
                     <div>
                         <div class="d-flex align-items-center gap-3">
                             <img src="{{ asset('./assets/img/business-bag.png') }}" alt="business bag" width="25px">
-                            <h6 class="text-start pt-2">Lowongan Magang Disimpan</h6>
+                            <h6 class="text-start pt-2">Lowongan Disimpan</h6>
                         </div>
                         <hr>
                         <table class="table table-striped table-bordered border-dark">
                             <thead class="bg-primary text-white">
                                 <tr>
-                                    <th scope="col">Magang</th>
+                                    <th scope="col">Lowongan</th>
                                     <th scope="col">Perusahaan</th>
                                     <th scope="col">Lokasi</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
-                                    <th scope="row"></th>
-                                    <td></td>
-                                    <td></td>
-                                </tr>
+                                @foreach ($savedLowongans as $savedLowongan)
+                                    <tr>
+                                        <td scope="row">
+                                            <a href="{{ route('lowongan.detail', ['lowongan' => $savedLowongan->lowongan->id ]) }}">
+                                                {{ $savedLowongan->lowongan->judul }}</td>
+                                            </a>
+                                        <td>{{ $savedLowongan->lowongan->company->name }}</td>
+                                        <td>
+                                            {{ $savedLowongan->lowongan->lokasi ?? 'Online' }}
+                                        </td>
+                                    </tr>
+                                @endforeach
                             </tbody>
                         </table>
                     </div>

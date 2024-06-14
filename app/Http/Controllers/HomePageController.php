@@ -22,16 +22,6 @@ class HomePageController extends Controller
         return view('pages.beranda', compact('lowongans'));
     }
 
-    public function lowongan()
-    {
-        $lowongans = Lowongan::all();
-        return view('pages.lowongan', compact('lowongans'));
-    }
-    public function detailLowongan(Lowongan $lowongan)
-    {
-        return view('pages.detail-lowongan', compact('lowongan'));
-    }
-
     public function frequentlyAskedQuestions()
     {
         return view('pages.frequently-asked-questions');

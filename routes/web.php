@@ -53,6 +53,12 @@ Route::get('/artikel', [HomePageController::class, 'artikel'])->name('artikel');
 Route::get('/detail-artikel/{artikel}', [HomePageController::class, 'detailArtikel']);
 Route::get('/about', [HomePageController::class, 'about'])->name('about');
 
+// lowongan
+Route::get('/lowongan-kerja-dan-magang', [LowonganController::class, 'lowongan'])->name('lowongan');
+Route::get('/lowongan/{lowongan}', [LowonganController::class, 'detailLowongan'])->name('lowongan.detail');
+Route::post('/lowongan/{lowongan}/bookmark', [LowonganController::class, 'toggleSimpanLowongan'])->name('lowongan.bookmark');
+Route::post('/lowongan/{lowongan}/apply', [LowonganController::class, 'applyLowongan'])->name('lowongan.apply')->middleware('authenticate');
+
 // webinar
 Route::get('/webinar', [WebinarController::class, 'webinar'])->name('webinar');
 Route::get('/webinar/{webinar}', [WebinarController::class, 'detailWebinar']);
