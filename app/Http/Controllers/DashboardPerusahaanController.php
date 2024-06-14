@@ -17,9 +17,20 @@ class DashboardPerusahaanController extends Controller
         // Ambil data perusahaan yang sedang login
         $company = auth()->guard('company')->user();
 
+        // Menghitung jumlah lowongan yang dibuat perusahaan
+        $lowonganCount = $company->lowongans->count();
+
+        // Menghitung jumlah peserta webinar yang dibuat perusahaan
+        $webinarAttendeeCount = 
+            Webinar::where('company_id', $company->id)
+            ->join('register_webinars', 'webinars.id', '=', 'register_webinars.webinar_id')
+            ->count();
+
+        
+
         // Pastikan bahwa $company adalah instance dari model Company
         if ($company instanceof Company) {
-            return view('dashboardPerusahaan.dashboard-awal', compact('company'));
+            return view('dashboardPerusahaan.dashboard-awal', compact('company', 'lowonganCount', 'webinarAttendeeCount'));
         } else {
             // Jika bukan perusahaan, redirect atau lakukan tindakan lain
             return redirect()->route('login')->with('error', 'Anda harus login sebagai perusahaan.');
