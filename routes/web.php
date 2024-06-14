@@ -48,9 +48,6 @@ Route::prefix('register')->group(function () {
 
 // beranda
 Route::get('/beranda', [HomePageController::class, 'beranda'])->name('beranda');
-Route::get('/lowongan-kerja-dan-magang', [HomePageController::class, 'lowongan'])->name('lowongan');
-Route::get('/detail-lowongan-kerja-dan-magang', [HomePageController::class, 'detailLowongan']);
-Route::get('/lowongan/{lowongan}', [HomePageController::class, 'detailLowongan']);
 Route::get('/frequently-asked-questions', [HomePageController::class, 'frequentlyAskedQuestions'])->name('faq');
 Route::get('/artikel', [HomePageController::class, 'artikel'])->name('artikel');
 Route::get('/detail-artikel/{artikel}', [HomePageController::class, 'detailArtikel']);
@@ -61,8 +58,6 @@ Route::get('/webinar', [WebinarController::class, 'webinar'])->name('webinar');
 Route::get('/webinar/{webinar}', [WebinarController::class, 'detailWebinar']);
 Route::post('/webinar/{webinar}/register', [WebinarController::class, 'toggleRegisterWebinar'])->name('webinar.register')->middleware('authenticate');
 
-// lowongan
-Route::post('/lowongan/{lowongan}/apply', [LowonganController::class, 'applyLowongan'])->name('lowongan.apply');
 
 // admin
 Route::prefix('admin')->group(function () {
