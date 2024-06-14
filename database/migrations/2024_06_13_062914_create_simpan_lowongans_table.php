@@ -11,19 +11,13 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('apply_lowongans', function (Blueprint $table) {
+        Schema::create('simpan_lowongans', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('lowongan_id');
             $table->unsignedBigInteger('user_id');
-            $table->string('pertanyaan1')->nullable();
-            $table->string('pertanyaan2')->nullable();
-            $table->string('pertanyaan3')->nullable();
-            $table->string('cv')->nullable();
-            $table->enum('status', ['pending', 'accepted', 'rejected'])->default('pending');
-            $table->timestamps();
-
             $table->foreign('lowongan_id')->references('id')->on('lowongans')->onDelete('cascade');
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+            $table->timestamps();
         });
     }
 
@@ -32,6 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('apply_lowongans');
+        Schema::dropIfExists('simpan_lowongans');
     }
 };

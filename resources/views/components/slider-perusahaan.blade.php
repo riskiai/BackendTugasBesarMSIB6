@@ -10,7 +10,7 @@
         </a>
     </p>
     <p class="mx-5 mb-4 rounded py-1 bg-primary">
-        <a href="{{ url('dashboard/perusahaan-informasi-pendaftaran') }}" class="text-white text-decoration-none">
+        <a href="{{ url('dashboard/perusahaan/informasi-pendaftaran') }}" class="text-white text-decoration-none">
             Informasi Pendaftar
         </a>
     </p>

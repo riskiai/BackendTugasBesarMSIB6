@@ -50,4 +50,9 @@ class User extends Authenticatable
     {
         return $this->hasMany(RegisterWebinar::class);
     }
+
+    public function simpanLowongans()
+    {
+        return $this->hasMany(SimpanLowongan::class);
+    }
 }

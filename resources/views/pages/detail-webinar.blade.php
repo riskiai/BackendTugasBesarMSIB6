@@ -56,14 +56,20 @@
                                 </div>
                                 <form action="{{ route('webinar.register', ['webinar' => $webinar->id]) }}" method="POST">
                                     @csrf
-                                    @if (in_array($webinar->id, $registeredWebinars))
-                                        <button type="submit" class="btn text-white w-100 text-center fw-semibold mb-2"
-                                            style="background-color: #ff5483">Batalkan
-                                            Pendaftaran</button>
+                                    @auth
+                                        @if (in_array($webinar->id, $registeredWebinars))
+                                            <button type="submit" class="btn text-white w-100 text-center fw-semibold mb-2"
+                                                style="background-color: #ff5483">Batalkan
+                                                Pendaftaran</button>
+                                        @else
+                                            <button type="submit" class="btn w-100 text-white fw-semibold mb-2"
+                                                style="background-color: #074173">Daftar</button>
+                                        @endif
                                     @else
                                         <button type="submit" class="btn w-100 text-white fw-semibold mb-2"
                                             style="background-color: #074173">Daftar</button>
-                                    @endif
+                                    @endauth
+
                                 </form>
                                 @auth
                                     @if (in_array($webinar->id, $registeredWebinars))

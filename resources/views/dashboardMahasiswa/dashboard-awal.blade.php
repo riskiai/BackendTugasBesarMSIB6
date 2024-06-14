@@ -20,55 +20,79 @@
                 <!-- sidebar end -->
 
                 <!-- main start -->
-                <div class="col-md-9 d-flex flex-column justify-content-center gap-5">
-                    <div>
-                        <table class="table table-striped table-bordered border-dark">
-                            <thead class="bg-primary text-white">
-                                <tr>
-                                    <th scope="col">ID</th>
-                                    <th scope="col">Nama</th>
-                                    <th scope="col">Dibuat</th>
-                                    <th scope="col">Aksi</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <th scope="row">12345</th>
-                                    <td>Alberto</td>
-                                    <td>Sabtu, 20 April 2024</td>
-                                    <td>
-                                        <div class="d-flex gap-2 justify-content-center">
-                                            <a href="" class="text-danger text-decoration-none">Hapus</a>
-                                            <a href="" class="text-primary text-decoration-none">Tambahkan</a>
-                                        </div>
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                    <div>
+                <div class="col-md-9 d-flex flex-column justify-content-center">
+
+                    {{-- Lowongan Tersimpan start --}}
+                    <div class="mt-3">
                         <div class="d-flex align-items-center gap-3">
                             <img src="{{ asset('./assets/img/business-bag.png') }}" alt="business bag" width="25px">
-                            <h6 class="text-start pt-2">Lowongan Magang Disimpan</h6>
+                            <h6 class="text-start pt-2">Lowongan Disimpan</h6>
                         </div>
                         <hr>
                         <table class="table table-striped table-bordered border-dark">
                             <thead class="bg-primary text-white">
                                 <tr>
-                                    <th scope="col">Magang</th>
+                                    <th scope="col">Lowongan</th>
                                     <th scope="col">Perusahaan</th>
                                     <th scope="col">Lokasi</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
-                                    <th scope="row"></th>
-                                    <td></td>
-                                    <td></td>
-                                </tr>
+                                @foreach ($savedLowongans as $savedLowongan)
+                                    <tr>
+                                        <td scope="row">
+                                            <a
+                                                href="{{ route('lowongan.detail', ['lowongan' => $savedLowongan->lowongan->id]) }}">
+                                                {{ $savedLowongan->lowongan->judul }}
+                                            </a>
+                                        </td>
+                                        <td>{{ $savedLowongan->lowongan->company->name }}</td>
+                                        <td>
+                                            {{ $savedLowongan->lowongan->lokasi ?? 'Online' }}
+                                        </td>
+                                    </tr>
+                                @endforeach
                             </tbody>
                         </table>
                     </div>
+                    {{-- Lowongan Tersimpan end --}}
+
+                    {{-- Webinar Diikuti start --}}
+                    <div>
+                        <div class="d-flex align-items-center gap-3">
+                            <img src="{{ asset('./assets/img/business-bag.png') }}" alt="business bag" width="25px">
+                            <h6 class="text-start pt-2">Webinar Diikuti</h6>
+                        </div>
+                        <hr>
+                        <table class="table table-striped table-bordered border-dark">
+                            <thead class="bg-primary text-white">
+                                <tr>
+                                    <th scope="col">Tanggal</th>
+                                    <th scope="col">Webinar</th>
+                                    <th scope="col">Lokasi</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach ($registeredWebinars as $registeredWebinar)
+                                    <tr>
+                                        <td scope="row">
+                                            {{ $registeredWebinar->webinar->tanggal }}
+                                        </td>
+                                        <td>
+                                            <a href="/webinar/{{ $registeredWebinar->webinar->id }}">
+                                                {{ $registeredWebinar->webinar->judul_webinar }}
+                                            </a>
+                                        </td>
+                                        <td>
+                                            {{ $registeredWebinar->webinar->lokasi ?? 'Online' }}
+                                        </td>
+                                    </tr>
+                                @endforeach
+                            </tbody>
+                        </table>
+                    </div>
+                    {{-- Lowongan Tersimpan end --}}
+
                 </div>
                 <!-- main end -->
             </div>

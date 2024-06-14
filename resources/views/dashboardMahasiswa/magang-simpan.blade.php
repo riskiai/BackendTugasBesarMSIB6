@@ -24,24 +24,40 @@
 
                 <!-- main start -->
                 <div class="col-md-9 mt-5">
-                    <div class="card w-100" style="background-color: #008DDA; padding: 10px;">
+                    {{-- Lowongan Tersimpan start --}}
+                    <div class="mt-3">
+                        <div class="d-flex align-items-center gap-3">
+                            <img src="{{ asset('./assets/img/business-bag.png') }}" alt="business bag" width="25px">
+                            <h6 class="text-start pt-2">Lowongan Disimpan</h6>
+                        </div>
+                        <hr>
                         <table class="table table-striped table-bordered border-dark">
-                            <thead class="bg-primary text-white" style="background-color: #008DDA;">
-                                <tr style="background-color: #008DDA;">
-                                    <th scope="col">Magang</th>
+                            <thead class="bg-primary text-white">
+                                <tr>
+                                    <th scope="col">Lowongan</th>
                                     <th scope="col">Perusahaan</th>
                                     <th scope="col">Lokasi</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
-                                    <th scope="row">12345</th>
-                                    <td>Alberto</td>
-                                    <td>Sabtu, 20 April 2024</td>
-                                </tr>
+                                @foreach ($savedLowongans as $savedLowongan)
+                                    <tr>
+                                        <td scope="row">
+                                            <a
+                                                href="{{ route('lowongan.detail', ['lowongan' => $savedLowongan->lowongan->id]) }}">
+                                                {{ $savedLowongan->lowongan->judul }}
+                                            </a>
+                                        </td>
+                                        <td>{{ $savedLowongan->lowongan->company->name }}</td>
+                                        <td>
+                                            {{ $savedLowongan->lowongan->lokasi ?? 'Online' }}
+                                        </td>
+                                    </tr>
+                                @endforeach
                             </tbody>
                         </table>
                     </div>
+                    {{-- Lowongan Tersimpan end --}}
                 </div>
                 <!-- main end -->
             </div>

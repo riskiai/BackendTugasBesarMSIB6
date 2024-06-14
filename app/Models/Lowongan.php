@@ -14,4 +14,10 @@ class Lowongan extends Model
     {
         return $this->belongsTo(Company::class);
     }
+
+    // has many simpan lowongan
+    public function simpanLowongans()
+    {
+        return $this->hasMany(SimpanLowongan::class);
+    }
 }

@@ -45,7 +45,7 @@
                                                 <i class="fas fa-users fa-2x"></i>
                                                 <span class="ms-3"><i class="bi bi-people"></i> Jumlah Pendaftar</span>
                                             </div>
-                                            <span>50</span>
+                                            <span>{{ $applyCount }}</span>
                                         </div>
                                     </div>
                                 </div>

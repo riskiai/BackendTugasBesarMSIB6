@@ -1,9 +1,11 @@
-<nav class="navbar navbar-expand-lg navbar-dark sticky-top">
-    <div class="container">
+<nav class="navbar navbar-expand-lg navbar-dark sticky-top p-0">
+    <div class="container" style="min-height: 60px">
         <a class="navbar-brand" href="{{ url('beranda') }}">
-            <img src="{{ asset('assets/img/Logo.png') }}" alt="" width="30"
-                class="d-inline-block align-text-top" />
-            ApprenTech
+            <div class="d-flex align-items-center">
+                <img src="{{ asset('assets/img/Logo.png') }}" alt="" width="50"
+                    class="d-inline-block align-text-top" />
+                ApprenTech
+            </div>
         </a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
             aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -30,10 +32,6 @@
                 <li class="nav-item mx-2">
                     <a class="nav-link {{ request()->is('webinar') ? 'active' : '' }}"
                         href="{{ route('webinar') }}">Webinar</a>
-                </li>
-                <li class="nav-item mx-2">
-                    <a class="nav-link {{ request()->is('about') ? 'active' : '' }}"
-                        href="{{ route('about') }}">About</a>
                 </li>
             </ul>
 
@@ -78,9 +76,9 @@
                     </div>
                 </div>
             @else
-                <div>
-                    <a href="{{ url('login') }}" class="button-primary btn">Masuk</a>
-                    <a href="{{ url('/') }}" class="button-secundary btn">Daftar</a>
+                <div class="d-flex gap-2">
+                    <a href="{{ route('login') }}" class="btn text-dark fw-semibold px-4" style="border-radius: 20px; background-color: #CEDDE6;">Masuk</a>
+                    <a href="{{ route('register') }}" class="btn text-dark fw-semibold px-4" style="border-radius: 20px; background-color: #CEDDE6;">Daftar</a>
                 </div>
             @endif
 

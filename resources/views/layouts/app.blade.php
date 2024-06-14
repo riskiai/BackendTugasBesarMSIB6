@@ -48,6 +48,7 @@
     <script>
         $(document).ready(function() {
             $("#webinarRegistrationModal").modal('show');
+            $("#lowonganSaveModal").modal('show');
         });
     </script>
 </body>

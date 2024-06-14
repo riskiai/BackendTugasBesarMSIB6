@@ -2,97 +2,118 @@
 
 @section('content')
     <section>
-        <div class="fullscreen-bg">
-            <img src="{{ asset('assets/img/About_as.png') }}" alt="" class="bordered-img" />
-            <div class="overlay">
-                <div class="container mt-5">
-                    <form action="#" class="form-search d-flex align-items-center mb-3" data-aos="fade-up"
-                        data-aos-delay="200" style="background-color: #074173; position: relative;">
-                        <input type="text" class="form-control text-white"
-                            placeholder="Studi, lokasi, perusahaan, kriteria lain"
-                            style="background-color: #074173; padding-left: 40px;">
-                        <img src="{{ asset('assets/img/icon_pencarian.png') }}" alt="Search" class="position-absolute"
-                            style="left: 10px; top: 50%; transform: translateY(-50%); width: 20px; height: 20px;">
-                    </form>
-                    <div class="date-and-content">
-                        <div class="bg-primary rounded p-5 border-2">
-                            <div class="row align-items-center">
-                                <div class="col-md-4 my-2">
-                                    <button type="button" class="btn btn-light"
-                                        @guest
+        <div class="container mt-2">
+            <div class="date-and-content">
+                <div class="bg-primary rounded p-5 border-2">
+                    <div class="row align-items-center">
+                        <div class="col-md-4 my-2">
+                            <button type="button" class="btn btn-light"
+                                @guest
 data-bs-toggle="modal"
                                         data-bs-target="#exampleModal"> @endguest
-                                        Daftar </button>
-                                        <p class="mb-0">Lokasi: {{ $lowongan->lokasi }}</p>
-                                </div>
-                                <div class="col-md-4 my-2">
-                                    <h3 class="text-white">{{ $lowongan->judul }}</h3>
-                                </div>
-                                <div class="col-md-4 my-2">
-                                    <button type="button" class="btn btn-light" data-bs-toggle="modal"
-                                        data-bs-target="#exampleModal1">
+                                Daftar </button>
+                                <p class="mb-0">Lokasi: {{ $lowongan->lokasi }}</p>
+                        </div>
+                        <div class="col-md-4 my-2">
+                            <h3 class="text-white">{{ $lowongan->judul }}</h3>
+                        </div>
+                        <div class="col-md-4 my-2">
+                            <form action="{{ route('lowongan.bookmark', ['lowongan' => $lowongan->id]) }}" method="POST">
+                                @csrf
+                                <button type="submit"
+                                    class="btn 
+                                        {{ in_array($lowongan->id, $lowonganTersimpan) ? 'btn-danger' : 'btn-dark' }} rounded-pill">
+                                    @auth
+                                        @if (in_array($lowongan->id, $lowonganTersimpan))
+                                            Batal Simpan
+                                        @else
+                                            Simpan
+                                        @endif
+                                    @else
                                         Simpan
-                                    </button>
-                                    <p class="mb-0">Perusahaan: {{ $lowongan->company->name }}</p>
-                                </div>
-                            </div>
-                        </div>
+                                    @endauth
+                                </button>
+                            </form>
 
-                        <div class="row mt-5">
-                            <div class="col-md-5">
-                                <div class="card">
-                                    <div class="row">
-                                        <div class="col-md-5">
-                                            <img src="{{ asset('assets/img/Pngtree.png') }}" alt="">
-                                        </div>
-                                        <div class="col-md-7">
-                                            <h3 class="mt-5">Deskripsi Pekerjaan</h3>
+                            <!-- Modal Simpan Lowongan -->
+                            @if (session('success'))
+                                <div class="modal fade" id="lowonganSaveModal" tabindex="-1"
+                                    aria-labelledby="lowonganSaveModalLabel" aria-hidden="true">
+                                    <div class="modal-dialog modal-dialog-centered">
+                                        <div class="modal-content">
+                                            <div class="modal-header d-flex justify-content-between">
+                                                <h1 class="modal-title fs-5" id="lowonganSaveModalLabel">
+                                                    Informasi</h1>
+                                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                    aria-label="Close"></button>
+                                            </div>
+                                            <div class="modal-body">
+                                                {{-- alert success berisi "Anda telah terdaftar ke webinar ini. Cek email untuk informasi lebih lanjut." --}}
+                                                <div class="alert alert-success" role="alert" style="font-size: 0.8rem">
+                                                    {{ session('success') }}
+                                                </div>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-secondary"
+                                                    data-bs-dismiss="modal">Close</button>
+                                            </div>
                                         </div>
                                     </div>
-                                    <div class="car-body">
-                                        <p class="p-3">
-                                            {{ $lowongan->deskripsi_lengkap }}
-                                        </p>
-                                    </div>
+                                </div>
+                            @endif
+
+                            <button type="button" class="btn btn-light" data-bs-toggle="modal"
+                                data-bs-target="#exampleModal1">
+                                Daftar
+                            </button>
+                            <p class="mb-0">Perusahaan: {{ $lowongan->company->name }}</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row mt-5 justify-content-center">
+                    <div class="col-md-5">
+                        <div class="card">
+                            <div class="row">
+                                <div class="col-md-5">
+                                    <img src="{{ asset('assets/img/Pngtree.png') }}" alt="">
+                                </div>
+                                <div class="col-md-7">
+                                    <h3 class="mt-5">Deskripsi Pekerjaan</h3>
                                 </div>
                             </div>
-                            <div class="col-md-2">
-                                <div class="rounded d-flex justify-content-center align-items-center mt-5"
-                                    style="height: 50%;">
-                                    <button type="button" class="btn btn-light" data-bs-toggle="modal"
-                                        data-bs-target="#exampleModal2">
-                                        <img class="rounded mx-auto d-block mt-5"
-                                            src="{{ asset('assets/img/retting.png') }}" alt="" style="width: 75%;">
-                                    </button>
-                                </div>
-                            </div>
-                            <div class="col-md-5">
-                                <div class="card mt-6">
-                                    <h3 class="card-header">Kualifikasi</h3>
-                                    <div class="">
-                                        {{ $lowongan->kualifikasi }}
-                                    </div>
-                                </div>
+                            <div class="car-body">
+                                <p class="p-3">
+                                    {{ $lowongan->deskripsi_lengkap }}
+                                </p>
                             </div>
                         </div>
                     </div>
-                    <div class="row mt-5 d-flex justify-content-between">
-                        <div class="col-md-4">
-                            <p>Tanggal Penutupan: {{ date('d F Y', strtotime($lowongan->deadline)) }}
-                        </div>
-                        <div class="col-md-4">
-                            <p>Jenis Pekerjaan: {{ $lowongan->jenis }}</p>
-                        </div>
-                        <div class="col-md-4">
-                            <p>Periode Kegiatan:
-                                {{-- tanggal mulai in dd mm yyyy --}}
-                                {{ date('d/m/Y', strtotime($lowongan->tanggal_mulai)) }}
-                                -
-                                {{-- tanggal berakhir in dd mm yyyy --}}
-                                {{ date('d/m/Y', strtotime($lowongan->tanggal_berakhir)) }}
-                            </p>
+                    <div class="col-md-5">
+                        <div class="card mt-6">
+                            <h3 class="card-header">Kualifikasi</h3>
+                            <div class="">
+                                {{ $lowongan->kualifikasi }}
+                            </div>
                         </div>
                     </div>
+                </div>
+            </div>
+            <div class="row mt-5 d-flex justify-content-between">
+                <div class="col-md-4">
+                    <p>Tanggal Penutupan: {{ date('d F Y', strtotime($lowongan->deadline)) }}
+                </div>
+                <div class="col-md-4">
+                    <p>Jenis Pekerjaan: {{ $lowongan->jenis }}</p>
+                </div>
+                <div class="col-md-4">
+                    <p>Periode Kegiatan:
+                        {{-- tanggal mulai in dd mm yyyy --}}
+                        {{ date('d/m/Y', strtotime($lowongan->tanggal_mulai)) }}
+                        -
+                        {{-- tanggal berakhir in dd mm yyyy --}}
+                        {{ date('d/m/Y', strtotime($lowongan->tanggal_berakhir)) }}
+                    </p>
                 </div>
             </div>
         </div>
@@ -126,54 +147,49 @@ data-bs-toggle="modal"
             </div>
         </div>
     </div>
+
     <!-- Modal 2-->
     <div class="modal fade" id="exampleModal1" tabindex="-1" aria-labelledby="exampleModalLabel1" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
-                <div class="modal-header">
-                    <h1 class="modal-title fs-5" id="exampleModalLabel1">Daftar Magang</h1>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <div class="row container-fluid">
-                        <div class="col-md-8">
-                            <div class="mb-3">
-                                <label for="interest" class="form-label">1. Mengapa Anda tertarik dengan posisi magang
-                                    ini?</label>
-                                <input type="text" class="form-control" id="interest">
+                <form action="{{ route('lowongan.apply', ['lowongan' => $lowongan->id]) }}" method="POST"
+                    enctype="multipart/form-data">
+                    @csrf
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="exampleModalLabel1">Daftar Magang</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="row container-fluid">
+                            <div class="col-md-8">
+                                <div class="mb-3">
+                                    <label for="interest" class="form-label">1. Mengapa Anda tertarik dengan posisi
+                                        ini?</label>
+                                    <input type="text" name="pertanyaan1" class="form-control" id="interest">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="expectedSalary" class="form-label">2. Berapa gaji yang Anda harapkan untuk
+                                        posisi ini?</label>
+                                    <input type="text" name="pertanyaan2" class="form-control" id="expectedSalary">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="skills" class="form-label">3. Apa keterampilan dan keahlian yang bisa
+                                        diunggulkan?</label>
+                                    <input type="text" name="pertanyaan3" class="form-control" id="skills">
+                                </div>
                             </div>
-                            <div class="mb-3">
-                                <label for="expectedSalary" class="form-label">2. Berapa gaji yang Anda harapkan untuk
-                                    posisi magang ini?</label>
-                                <input type="text" class="form-control" id="expectedSalary">
-                            </div>
-                            <div class="mb-3">
-                                <label for="goals" class="form-label">3. Apa yang ingin Anda capai dari magang
-                                    ini?</label>
-                                <input type="text" class="form-control" id="goals">
-                            </div>
-                            <div class="mb-3">
-                                <label for="skills" class="form-label">4. Apa keterampilan dan keahlian yang bisa
-                                    diunggulkan?</label>
-                                <input type="text" class="form-control" id="skills">
-                            </div>
-                        </div>
-                        <div class="col-md-4">
-                            <div class="mb-3">
-                                <label for="formFile" class="form-label">Upload CV (Curiculum Vitae)</label>
-                                {{-- <p>
-                                    Ini adalah dokumen yang merangkum riwayat hidup seseorang, termasuk pendidikan,
-                                    pengalaman kerja, keterampilan, dan prestasi.
-                                </p> --}}
-                                <input class="form-control" type="file" id="formFile">
+                            <div class="col-md-4">
+                                <div class="mb-3">
+                                    <label for="formFile" class="form-label">Upload CV (Curiculum Vitae)</label>
+                                    <input class="form-control" name="cv" type="file" id="formFile">
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-primary">Kirim</button>
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                </div>
+                    <div class="modal-footer">
+                        <button type="submit" class="btn btn-primary">Kirim</button>
+                    </div>
+                </form>
             </div>
         </div>
     </div>
