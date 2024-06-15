@@ -1,12 +1,15 @@
 <nav class="navbar navbar-expand-lg navbar-dark sticky-top p-0">
-    <div class="container" style="min-height: 60px">
-        <a class="navbar-brand" href="{{ url('beranda') }}">
-            <div class="d-flex align-items-center">
-                <img src="{{ asset('assets/img/Logo.png') }}" alt="" width="50"
-                    class="d-inline-block align-text-top" />
-                ApprenTech
-            </div>
-        </a>
+    <div class="w-100 d-flex justify-content-between px-5" style="min-height: 70px">
+        <div class="d-flex justify-content-center align-items-center">
+            <a class="navbar-brand" href="{{ url('beranda') }}">
+                <div class="d-flex align-items-center">
+                    <img src="{{ asset('assets/img/Logo.png') }}" alt="" width="50"
+                        class="d-inline-block align-text-top" />
+                    ApprenTech
+                </div>
+            </a>
+        </div>
+        
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
             aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -35,53 +38,61 @@
                 </li>
             </ul>
 
-            @if (auth()->check())
-                <div class="d-flex gap-3">
-                    <div>
-                        <a href="{{ route('mahasiswa.index') }}" class="btn-primary btn">Dashboard</a>
+            <div>
+                @if (auth()->check())
+                    <div class="d-flex gap-3">
+                        <div class="dropdown">
+                            <button class="btn dropdown-toggle d-flex align-items-center gap-3 py-1" type="button"
+                                id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false"
+                                style="background-color: #CEDDE6; border-radius: 30px">
+                                <div class="d-flex align-items-center justify-content-center gap-3">
+                                    <div class="rounded-circle" style="height: 40px; width: 40px;"
+                                        style="background-image: url('assets/img/team/team-3.jpg')">
+                                        <img class="rounded-circle" src="{{ asset('assets/img/team/team-3.jpg') }}"
+                                            alt="" style="height: 40px; width: 40px;">
+                                    </div>
+                                    {{ auth()->user()->name }}
+                                </div>
+                            </button>
+                            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                                <li>
+                                    <form method="POST" action="{{ route('logout') }}">
+                                        @csrf
+                                        <button type="submit" class="dropdown-item">Logout</button>
+                                    </form>
+                                </li>
+                            </ul>
+                        </div>
                     </div>
-                    <div class="dropdown">
-                        <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton1"
-                            data-bs-toggle="dropdown" aria-expanded="false">
-                            Hi, {{ auth()->user()->name }}!
-                        </button>
-                        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                            <li>
-                                <form method="POST" action="{{ route('logout') }}">
-                                    @csrf
-                                    <button type="submit" class="dropdown-item">Logout</button>
-                                </form>
-                            </li>
-                        </ul>
+                @elseif (auth('company')->check())
+                    <div class="d-flex gap-3">
+                        <div>
+                            <a href="{{ route('perusahaan.index') }}" class="btn-primary btn">Dashboard</a>
+                        </div>
+                        <div class="dropdown">
+                            <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton1"
+                                data-bs-toggle="dropdown" aria-expanded="false">
+                                Hi, {{ auth('company')->user()->name }}!
+                            </button>
+                            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                                <li>
+                                    <form method="POST" action="{{ route('logout') }}">
+                                        @csrf
+                                        <button type="submit" class="dropdown-item">Logout</button>
+                                    </form>
+                                </li>
+                            </ul>
+                        </div>
                     </div>
-                </div>
-            @elseif (auth('company')->check())
-                <div class="d-flex gap-3">
-                    <div>
-                        <a href="{{ route('perusahaan.index') }}" class="btn-primary btn">Dashboard</a>
+                @else
+                    <div class="d-flex gap-2">
+                        <a href="{{ route('login') }}" class="btn text-dark fw-semibold px-4"
+                            style="border-radius: 20px; background-color: #CEDDE6;">Masuk</a>
+                        <a href="{{ route('register') }}" class="btn text-dark fw-semibold px-4"
+                            style="border-radius: 20px; background-color: #CEDDE6;">Daftar</a>
                     </div>
-                    <div class="dropdown">
-                        <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton1"
-                            data-bs-toggle="dropdown" aria-expanded="false">
-                            Hi, {{ auth('company')->user()->name }}!
-                        </button>
-                        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                            <li>
-                                <form method="POST" action="{{ route('logout') }}">
-                                    @csrf
-                                    <button type="submit" class="dropdown-item">Logout</button>
-                                </form>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            @else
-                <div class="d-flex gap-2">
-                    <a href="{{ route('login') }}" class="btn text-dark fw-semibold px-4" style="border-radius: 20px; background-color: #CEDDE6;">Masuk</a>
-                    <a href="{{ route('register') }}" class="btn text-dark fw-semibold px-4" style="border-radius: 20px; background-color: #CEDDE6;">Daftar</a>
-                </div>
-            @endif
-
+                @endif
+            </div>
         </div>
     </div>
 </nav>
