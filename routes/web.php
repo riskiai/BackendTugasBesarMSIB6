@@ -11,6 +11,7 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\Mahasiswa\ProfileController;
 use App\Http\Controllers\DashboardMahasiswaController;
 use App\Http\Controllers\DashboardPerusahaanController;
+use App\Http\Controllers\LamaranController;
 use App\Http\Controllers\LowonganController;
 use App\Http\Controllers\WebinarController;
 
@@ -63,7 +64,6 @@ Route::post('/lowongan/{lowongan}/apply', [LowonganController::class, 'applyLowo
 Route::get('/webinar', [WebinarController::class, 'webinar'])->name('webinar');
 Route::get('/webinar/{webinar}', [WebinarController::class, 'detailWebinar']);
 Route::post('/webinar/{webinar}/register', [WebinarController::class, 'toggleRegisterWebinar'])->name('webinar.register')->middleware('authenticate');
-
 
 // admin
 Route::prefix('admin')->group(function () {
@@ -120,23 +120,34 @@ Route::prefix('dashboard')->group(function () {
     // Dashboard Mahasiswa
     Route::prefix('mahasiswa')->group(function () {
         Route::get('/', [DashboardMahasiswaController::class, 'dashboardAwal'])->name('mahasiswa.index');
-        Route::get('/profil', [DashboardMahasiswaController::class, 'editProfil'])->name('mahasiswa.profil');
-        Route::put('/profil', [DashboardMahasiswaController::class, 'updateProfil'])->name('mahasiswa.profil.update');
-        Route::get('/bantuan', [DashboardMahasiswaController::class, 'bantuan']);
+        Route::get('/profil/edit', [DashboardMahasiswaController::class, 'editProfil'])->name('mahasiswa.profil');
+        Route::put('/profil/update', [DashboardMahasiswaController::class, 'updateProfil'])->name('mahasiswa.profil.update');
+        Route::get('/bantuan', [DashboardMahasiswaController::class, 'bantuan'])->name('bantuan');
         Route::get('/diskusi', [DashboardMahasiswaController::class, 'diskusi']);
-        Route::get('/lowongan-disimpan', [DashboardMahasiswaController::class, 'lowonganDisimpan']);
+        Route::get('/lowongan-disimpan', [DashboardMahasiswaController::class, 'lowonganDisimpan'])->name('mahasiswa.lowongan-disimpan');
     });
     // Dashboard Perusahaan
     Route::prefix('perusahaan')->group(function () {
         Route::get('/', [DashboardPerusahaanController::class, 'index'])->name('perusahaan.index');
         Route::get('/awal', [DashboardPerusahaanController::class, 'perusahaan']);
-        Route::get('/profil', [DashboardPerusahaanController::class, 'editProfil'])->name('perusahaan.profil');
-        Route::put('/profil', [DashboardPerusahaanController::class, 'updateProfil'])->name('perusahaan.profil.update');
+        Route::get('/profil/edit', [DashboardPerusahaanController::class, 'editProfil'])->name('perusahaan.profil');
+        Route::put('/profil/update', [DashboardPerusahaanController::class, 'updateProfil'])->name('perusahaan.profil.update');
         Route::get('/posting-lowongan', [DashboardPerusahaanController::class, 'postingLowongan']);
-        Route::post('lowongan/magang/store', [DashboardPerusahaanController::class, 'storeMagang'])->name('perusahaan.magang.store');
-        Route::post('lowongan/kerja/store', [DashboardPerusahaanController::class, 'storeKerja'])->name('perusahaan.kerja.store');
+        Route::post('/lowongan/magang/store', [DashboardPerusahaanController::class, 'storeMagang'])->name('perusahaan.magang.store');
+        Route::post('/lowongan/kerja/store', [DashboardPerusahaanController::class, 'storeKerja'])->name('perusahaan.kerja.store');
         Route::get('/informasi-pendaftaran', [DashboardPerusahaanController::class, 'pendaftaran']);
         Route::get('/webinar/create', [DashboardPerusahaanController::class, 'createWebinar'])->name('perusahaan.webinar.create');
         Route::post('/webinar/store', [DashboardPerusahaanController::class, 'storeWebinar'])->name('perusahaan.webinar.store');
+        Route::prefix('lamaran')->group(function () {
+            Route::get('/', [LamaranController::class, 'lamaran'])->name('perusahaan.lamaran');
+            Route::get('/{id}', [LamaranController::class, 'detailLamaran'])->name('perusahaan.lamaran.detail');
+            Route::post('/{id}/terima', [LamaranController::class, 'terimaLamaran'])->name('perusahaan.lamaran.terima');
+            Route::post('/{id}/tolak', [LamaranController::class, 'tolakLamaran'])->name('perusahaan.lamaran.tolak');
+        });
     });
+});
+
+// make a route /testing where I can see mahasiswa.blade.php
+Route::get('/testing', function () {
+    return view('dashboardMahasiswa.index');
 });

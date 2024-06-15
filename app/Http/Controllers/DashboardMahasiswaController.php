@@ -21,9 +21,10 @@ class DashboardMahasiswaController extends Controller
 
     public function dashboardAwal()
     {
+        $user = auth()->user();
         $savedLowongans = SimpanLowongan::with('lowongan')->where('user_id', auth()->id())->get();
         $registeredWebinars = RegisterWebinar::with('webinar')->where('user_id', auth()->id())->get();
-        return view('dashboardMahasiswa.dashboard-awal', compact('savedLowongans', 'registeredWebinars'));
+        return view('dashboardMahasiswa.index', compact('user', 'savedLowongans', 'registeredWebinars'));
     }
 
     public function editProfil()

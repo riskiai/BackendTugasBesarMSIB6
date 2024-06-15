@@ -9,7 +9,7 @@
                 </div>
             </a>
         </div>
-        
+
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
             aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -48,13 +48,17 @@
                                 <div class="d-flex align-items-center justify-content-center gap-3">
                                     <div class="rounded-circle" style="height: 40px; width: 40px;"
                                         style="background-image: url('assets/img/team/team-3.jpg')">
-                                        <img class="rounded-circle" src="{{ asset('assets/img/team/team-3.jpg') }}"
-                                            alt="" style="height: 40px; width: 40px;">
+                                        <img src="{{ Auth::user()->foto_profil ? asset('storage/photo-profile/' . Auth::user()->foto_profil) : asset('assets/img/team/team-1.jpg') }}"
+                                            alt="Profil Picture"
+                                            class="img-fluid rounded-circle h-100 w-100 object-fit-cover">
                                     </div>
                                     {{ auth()->user()->name }}
                                 </div>
                             </button>
                             <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                                <li>
+                                    <a href="{{ route('mahasiswa.index') }}" class="dropdown-item">Dashboard</a>
+                                </li>
                                 <li>
                                     <form method="POST" action="{{ route('logout') }}">
                                         @csrf
@@ -72,7 +76,7 @@
                         <div class="dropdown">
                             <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton1"
                                 data-bs-toggle="dropdown" aria-expanded="false">
-                                Hi, {{ auth('company')->user()->name }}!
+                                {{ auth('company')->user()->name }}!
                             </button>
                             <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
                                 <li>

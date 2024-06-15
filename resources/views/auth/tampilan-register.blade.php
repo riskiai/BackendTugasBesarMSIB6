@@ -7,7 +7,8 @@
             <div class="w-100 h-100 d-flex flex-column justify-content-center align-items-center"
                 style="background-color: rgba(30, 30, 30, 0.7)">
                 <h1 class="text-white font-koulen" style="letter-spacing: 3px">Daftar Sebagai Mahasiswa</h1>
-                <a href="{{ route('register.user') }}" class="btn px-5" style="padding: 10px 20px; color: black; background-color: #CEDDE6; border-radius: 30px;">
+                <a href="{{ route('register.user') }}" class="btn px-5"
+                    style="padding: 10px 20px; color: black; background-color: #CEDDE6; border-radius: 30px;">
                     Daftar
                 </a>
             </div>
@@ -18,7 +19,8 @@
             <div class="w-100 h-100 d-flex flex-column justify-content-center align-items-center"
                 style="background-color: rgba(30, 30, 30, 0.7)">
                 <h1 class="text-white font-koulen" style="letter-spacing: 3px">Daftar Sebagai Perusahaan</h1>
-                <a href="{{ route('register.user') }}" class="btn px-5" style="padding: 10px 20px; color: black; background-color: #CEDDE6; border-radius: 30px;">
+                <a href="{{ route('register.perusahaan') }}" class="btn px-5"
+                    style="padding: 10px 20px; color: black; background-color: #CEDDE6; border-radius: 30px;">
                     Daftar
                 </a>
             </div>

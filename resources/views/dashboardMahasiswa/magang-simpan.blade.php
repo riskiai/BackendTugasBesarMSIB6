@@ -1,66 +1,53 @@
-@extends('layouts.app')
+@extends('layouts.mahasiswa')
 
-@section('content')
-    <section class="container-fluid">
-        <div class="text-center p-0 w-100">
-            <div class="row">
-                <!-- sidebar start -->
-                <div class="col-md-3 mt-5 p-0 border border-dark border-5 rounded">
-                    <div class="bg-primary py-3 text-white text-center">
-                        <div class="mx-auto rounded-circle bg-secondary d-flex justify-content-center align-items-center"
-                            style="height: 100px; width: 100px">
-                            <img class="rounded-circle" src="{{ asset('assets/img/team/team-3.jpg') }}" alt=""
-                                style="height: 100px; width: 100px;">
-                        </div>
-                        <p class="m-0">Nama</p>
-                    </div>
-                    <div class="bg-secondary">
-                        <div class="py-4">
-                            @include('components.slider')
-                        </div>
-                    </div>
-                </div>
-                <!-- sidebar end -->
+@section('main-content')
+    <section>
+        <h1 class="font-koulen">Lowongan Disimpan</h1>
 
-                <!-- main start -->
-                <div class="col-md-9 mt-5">
-                    {{-- Lowongan Tersimpan start --}}
-                    <div class="mt-3">
-                        <div class="d-flex align-items-center gap-3">
-                            <img src="{{ asset('./assets/img/business-bag.png') }}" alt="business bag" width="25px">
-                            <h6 class="text-start pt-2">Lowongan Disimpan</h6>
-                        </div>
-                        <hr>
-                        <table class="table table-striped table-bordered border-dark">
-                            <thead class="bg-primary text-white">
-                                <tr>
-                                    <th scope="col">Lowongan</th>
-                                    <th scope="col">Perusahaan</th>
-                                    <th scope="col">Lokasi</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                @foreach ($savedLowongans as $savedLowongan)
-                                    <tr>
-                                        <td scope="row">
-                                            <a
-                                                href="{{ route('lowongan.detail', ['lowongan' => $savedLowongan->lowongan->id]) }}">
-                                                {{ $savedLowongan->lowongan->judul }}
-                                            </a>
-                                        </td>
-                                        <td>{{ $savedLowongan->lowongan->company->name }}</td>
-                                        <td>
-                                            {{ $savedLowongan->lowongan->lokasi ?? 'Online' }}
-                                        </td>
-                                    </tr>
-                                @endforeach
-                            </tbody>
-                        </table>
-                    </div>
-                    {{-- Lowongan Tersimpan end --}}
-                </div>
-                <!-- main end -->
-            </div>
+        {{-- Lowongan Tersimpan start --}}
+        <div class="mt-3">
+            <table class="table">
+                <thead class="bg-primary text-white">
+                    <tr>
+                        <th scope="col" class="p-0" style="border-radius: 20px 0 0 0">
+                            <div class="py-2 my-2 ms-2 ps-3" style="background-color: #EEF5FF; border-radius: 20px 0 0 20px">
+                                Lowongan</div>
+                        </th>
+                        <th scope="col" class="p-0">
+                            <div class="py-2 my-2" style="background-color: #EEF5FF;">Perusahaan</div>
+                        </th>
+                        <th scope="col" class="p-0" style="border-radius: 0 20px 0 0">
+                            <div class="py-2 my-2 me-2" style="background-color: #EEF5FF; border-radius: 0 20px 20px 0">
+                                Lokasi
+                            </div>
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach ($savedLowongans as $savedLowongan)
+                        <tr style="vertical-align: middle">
+                            <td class="px-0" scope="row" style="{{ $loop->last ? 'border-radius: 0 0 0 20px' : '' }}">
+                                <a href="{{ route('lowongan.detail', ['lowongan' => $savedLowongan->lowongan->id]) }}"
+                                    class="text-decoration-none">
+                                    <div class="ms-2 ps-3 d-flex align-items-center gap-3">
+                                        <img src="{{ asset('assets/img/Building.png') }}" alt="" width="100px">
+                                        <div>
+                                            <p class="m-0 fs-5">{{ $savedLowongan->lowongan->judul }}</p>
+                                            <p class="m-0 text-secondary">Rp3 - 4 Juta</p>
+                                        </div>
+                                    </div>
+                                </a>
+                            </td>
+                            <td class="px-0 text-secondary fs-5">{{ $savedLowongan->lowongan->company->name }}</td>
+                            <td class="px-0 text-secondary fs-5"
+                                style="{{ $loop->last ? 'border-radius: 0 0 20px 0' : '' }}">
+                                {{ $savedLowongan->lowongan->lokasi ?? 'Online' }}
+                            </td>
+                        </tr>
+                    @endforeach
+                </tbody>
+            </table>
         </div>
+        {{-- Lowongan Tersimpan end --}}
     </section>
 @endsection
