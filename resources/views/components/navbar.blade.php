@@ -70,15 +70,24 @@
                     </div>
                 @elseif (auth('company')->check())
                     <div class="d-flex gap-3">
-                        <div>
-                            <a href="{{ route('perusahaan.index') }}" class="btn-primary btn">Dashboard</a>
-                        </div>
                         <div class="dropdown">
-                            <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton1"
-                                data-bs-toggle="dropdown" aria-expanded="false">
-                                {{ auth('company')->user()->name }}!
+                            <button class="btn dropdown-toggle d-flex align-items-center gap-3 py-1" type="button"
+                                id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false"
+                                style="background-color: #CEDDE6; border-radius: 30px">
+                                <div class="d-flex align-items-center justify-content-center gap-3">
+                                    <div class="rounded-circle" style="height: 40px; width: 40px;"
+                                        style="background-image: url('assets/img/team/team-3.jpg')">
+                                        <img src="{{ auth()->guard('company')->user()->foto_profil ? asset('storage/photo-profile/' . auth()->guard('company')->user()->foto_profil) : asset('assets/img/team/team-1.jpg') }}"
+                                            alt="Profil Picture"
+                                            class="img-fluid rounded-circle h-100 w-100 object-fit-cover">
+                                    </div>
+                                    {{ auth()->guard('company')->user()->name }}
+                                </div>
                             </button>
                             <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                                <li>
+                                    <a href="{{ route('perusahaan.index') }}" class="dropdown-item">Dashboard</a>
+                                </li>
                                 <li>
                                     <form method="POST" action="{{ route('logout') }}">
                                         @csrf

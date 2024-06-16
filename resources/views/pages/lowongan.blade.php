@@ -40,10 +40,6 @@
                                         </p>
                                     </div>
                                 </div>
-                                <div>
-                                    <h5>Deskripsi Singkat</h5>
-                                    <p>{{ $lowongan->deskripsi_singkat }}</p>
-                                </div>
                                 <a href="/lowongan/{{ $lowongan->id }}" class="btn mt-2 w-50 rounded-5 text-white" style="background-color: #008DDA">Detail Lengkap</a>
                             </div>
                         </div>

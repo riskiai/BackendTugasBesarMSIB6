@@ -54,16 +54,20 @@ Route::get('/artikel', [HomePageController::class, 'artikel'])->name('artikel');
 Route::get('/detail-artikel/{artikel}', [HomePageController::class, 'detailArtikel']);
 Route::get('/about', [HomePageController::class, 'about'])->name('about');
 
-// lowongan
-Route::get('/lowongan-kerja-dan-magang', [LowonganController::class, 'lowongan'])->name('lowongan');
-Route::get('/lowongan/{lowongan}', [LowonganController::class, 'detailLowongan'])->name('lowongan.detail');
-Route::post('/lowongan/{lowongan}/bookmark', [LowonganController::class, 'toggleSimpanLowongan'])->name('lowongan.bookmark');
-Route::post('/lowongan/{lowongan}/apply', [LowonganController::class, 'applyLowongan'])->name('lowongan.apply');
+// 
+Route::prefix('lowongan')->group(function () {
+    Route::get('/', [LowonganController::class, 'lowongan'])->name('lowongan');
+    Route::get('/{lowongan}', [LowonganController::class, 'detailLowongan'])->name('lowongan.detail');
+    Route::post('/{lowongan}/bookmark', [LowonganController::class, 'toggleSimpanLowongan'])->name('lowongan.bookmark');
+    Route::post('/{lowongan}/apply', [LowonganController::class, 'applyLowongan'])->name('lowongan.apply');
+});
 
 // webinar
-Route::get('/webinar', [WebinarController::class, 'webinar'])->name('webinar');
-Route::get('/webinar/{webinar}', [WebinarController::class, 'detailWebinar']);
-Route::post('/webinar/{webinar}/register', [WebinarController::class, 'toggleRegisterWebinar'])->name('webinar.register')->middleware('authenticate');
+Route::prefix('webinar')->group(function () {
+    Route::get('/', [WebinarController::class, 'webinar'])->name('webinar');
+    Route::get('/{webinar}', [WebinarController::class, 'detailWebinar']);
+    Route::post('/{webinar}/register', [WebinarController::class, 'toggleRegisterWebinar'])->name('webinar.register')->middleware('authenticate');
+});
 
 // admin
 Route::prefix('admin')->group(function () {
@@ -126,20 +130,34 @@ Route::prefix('dashboard')->group(function () {
         Route::get('/diskusi', [DashboardMahasiswaController::class, 'diskusi']);
         Route::get('/lowongan-disimpan', [DashboardMahasiswaController::class, 'lowonganDisimpan'])->name('mahasiswa.lowongan-disimpan');
     });
+
     // Dashboard Perusahaan
     Route::prefix('perusahaan')->group(function () {
         Route::get('/', [DashboardPerusahaanController::class, 'index'])->name('perusahaan.index');
         Route::get('/awal', [DashboardPerusahaanController::class, 'perusahaan']);
         Route::get('/profil/edit', [DashboardPerusahaanController::class, 'editProfil'])->name('perusahaan.profil');
         Route::put('/profil/update', [DashboardPerusahaanController::class, 'updateProfil'])->name('perusahaan.profil.update');
-        Route::get('/posting-lowongan', [DashboardPerusahaanController::class, 'postingLowongan']);
-        Route::post('/lowongan/magang/store', [DashboardPerusahaanController::class, 'storeMagang'])->name('perusahaan.magang.store');
-        Route::post('/lowongan/kerja/store', [DashboardPerusahaanController::class, 'storeKerja'])->name('perusahaan.kerja.store');
-        Route::get('/informasi-pendaftaran', [DashboardPerusahaanController::class, 'pendaftaran']);
-        Route::get('/webinar/create', [DashboardPerusahaanController::class, 'createWebinar'])->name('perusahaan.webinar.create');
-        Route::post('/webinar/store', [DashboardPerusahaanController::class, 'storeWebinar'])->name('perusahaan.webinar.store');
+        Route::get('/posting-lowongan', [DashboardPerusahaanController::class, 'postingLowongan'])->name('perusahaan.lowongan.posting');
+        Route::prefix('lowongan')->group(function () {
+            Route::get('/pendaftar', [DashboardPerusahaanController::class, 'lamaran'])->name('perusahaan.lamaran');
+            Route::prefix('magang')->group(function () {
+                Route::get('/', [DashboardPerusahaanController::class, 'lowonganMagang'])->name('perusahaan.magang');
+                Route::get('/create', [DashboardPerusahaanController::class, 'createLowonganMagang'])->name('perusahaan.magang.create');
+                Route::post('/store', [LowonganController::class, 'storeMagang'])->name('perusahaan.magang.store');
+            });
+            Route::prefix('kerja')->group(function () {
+                Route::get('/', [DashboardPerusahaanController::class, 'lowonganKerja'])->name('perusahaan.kerja');
+                Route::get('/create', [DashboardPerusahaanController::class, 'createLowonganKerja'])->name('perusahaan.kerja.create');
+                Route::post('/store', [LowonganController::class, 'storeKerja'])->name('perusahaan.kerja.store');
+            });
+        });
+        Route::prefix('webinar')->group(function () {
+            Route::get('/', [DashboardPerusahaanController::class, 'webinar'])->name('perusahaan.webinar');
+            Route::get('/create', [DashboardPerusahaanController::class, 'createWebinar'])->name('perusahaan.webinar.create');
+            Route::post('/store', [DashboardPerusahaanController::class, 'storeWebinar'])->name('perusahaan.webinar.store');
+        });
         Route::prefix('lamaran')->group(function () {
-            Route::get('/', [LamaranController::class, 'lamaran'])->name('perusahaan.lamaran');
+            // Route::get('/', [LamaranController::class, 'lamaran'])->name('perusahaan');
             Route::get('/{id}', [LamaranController::class, 'detailLamaran'])->name('perusahaan.lamaran.detail');
             Route::post('/{id}/terima', [LamaranController::class, 'terimaLamaran'])->name('perusahaan.lamaran.terima');
             Route::post('/{id}/tolak', [LamaranController::class, 'tolakLamaran'])->name('perusahaan.lamaran.tolak');

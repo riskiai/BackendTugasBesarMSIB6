@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\ApplyLowonganRequest;
+use App\Http\Requests\CreateKerjaRequest;
+use App\Http\Requests\CreateMagangRequest;
 use App\Models\ApplyLowongan;
 use App\Models\Lowongan;
 use App\Models\SimpanLowongan;
@@ -72,5 +74,43 @@ class LowonganController extends Controller
         ]);
         
         return redirect()->back()->with('success', 'Berhasil melamar lowongan');
+    }
+
+    public function storeMagang(CreateMagangRequest $request)
+    {
+        // Simpan data lowongan
+        Lowongan::create([
+            'company_id' => auth()->guard('company')->user()->id,
+            'judul' => $request->judul,
+            'jenis' => 'magang',
+            'deskripsi' => $request->deskripsi,
+            'tipe' => $request->tipe,
+            'lokasi' => $request->lokasi,
+            'gaji' => $request->gaji,
+            'kualifikasi' => $request->kualifikasi,
+            'deadline' => $request->deadline,
+            'tanggal_mulai' => $request->tanggal_mulai,
+            'tanggal_berakhir' => $request->tanggal_berakhir,
+        ]);
+
+        return redirect()->route('perusahaan.magang')->with('success', 'Berhasil membuat lowongan magang');
+    }
+
+    public function storekerja(CreateKerjaRequest $request)
+    {
+        // Simpan data lowongan
+        Lowongan::create([
+            'company_id' => auth()->guard('company')->user()->id,
+            'judul' => $request->judul,
+            'jenis' => 'kerja',
+            'deskripsi' => $request->deskripsi,
+            'tipe' => $request->tipe,
+            'lokasi' => $request->lokasi,
+            'gaji' => $request->gaji,
+            'kualifikasi' => $request->kualifikasi,
+            'deadline' => $request->deadline,
+        ]);
+
+        return redirect()->route('perusahaan.kerja')->with('success', 'Berhasil membuat lowongan magang');
     }
 }

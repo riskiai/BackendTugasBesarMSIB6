@@ -86,7 +86,7 @@ data-bs-toggle="modal"
                             </div>
                             <div class="car-body">
                                 <p class="p-3">
-                                    {{ $lowongan->deskripsi_lengkap }}
+                                    {{ $lowongan->deskripsi }}
                                 </p>
                             </div>
                         </div>

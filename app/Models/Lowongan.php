@@ -9,6 +9,8 @@ class Lowongan extends Model
 {
     use HasFactory;
 
+    protected $guarded = ['id'];
+
     // belongs to company
     public function company()
     {
