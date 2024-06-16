@@ -20,19 +20,21 @@ data-bs-toggle="modal"
                         <div class="col-md-4 my-2">
                             <form action="{{ route('lowongan.bookmark', ['lowongan' => $lowongan->id]) }}" method="POST">
                                 @csrf
-                                <button type="submit"
-                                    class="btn 
+                                @auth
+                                    <button type="submit"
+                                        class="btn 
                                         {{ in_array($lowongan->id, $lowonganTersimpan) ? 'btn-danger' : 'btn-dark' }} rounded-pill">
-                                    @auth
                                         @if (in_array($lowongan->id, $lowonganTersimpan))
                                             Batal Simpan
                                         @else
                                             Simpan
                                         @endif
-                                    @else
+                                    </button>
+                                @else
+                                    <button type="submit" class="btn btn-dark rounded-pill">
                                         Simpan
-                                    @endauth
-                                </button>
+                                    </button>
+                                @endauth
                             </form>
 
                             <!-- Modal Simpan Lowongan -->

@@ -13,13 +13,13 @@
         <div class="container text-white">
             <div class="row gy-4 d-flex justify-content-between mb-5">
                 <div class="col-lg-6 order-2 order-lg-1 d-flex flex-column justify-content-center mb-4">
-                    <h2 data-aos="fade-up" class="fw-bold">
-                        Portal Magang di Industri IT khusus untuk mahasiswa dan fresh graduate
-                    </h2>
-                    <p data-aos="fade-up" data-aos-delay="100">
+                    <h1 data-aos="fade-up" class="fw-bold">
+                        Portal Magang di Industri IT Khusus untuk Mahasiswa dan Fresh Graduate
+                    </h1>
+                    <h3 data-aos="fade-up" data-aos-delay="100">
                         Portal magang di Industri IT bagi mahasiswa mampu mengatasi tantangan penting dalam dunia pendidikan
                         dan karir
-                    </p>
+                    </h3>
                 </div>
                 <div class="col-lg-5 order-1 order-lg-2 hero-img" data-aos="zoom-out">
                     <img src="{{ asset('assets/img/Group 2.png') }}" class="img-fluid mb-3 mb-lg-0" alt="Hero Image" />
@@ -78,7 +78,7 @@
                     </h1>
                     <h3 style="color: #0C71C7; letter-spacing: 3px">Our positive social impact</h3>
                 </div>
-                <div class="row justify-content-center">
+                <div class="row justify-content-center gap-5">
                     <!-- Item 1 -->
                     <div class="col-lg-4">
                         <div class="text-center bg-light py-5 px-3" style="min-height: 250px; border-radius: 20px">
@@ -87,7 +87,8 @@
                                     alt="profile picture" height="50px">
                                 <div>
                                     <h4 class="card-title text-start">Riski A. Ilham</h4>
-                                    <p class="text-muted m-0 text-start">Teknik Informatika | Universitas Amandemy</p>
+                                    <p class="text-muted m-0 text-start" style="font-size: 0.8rem">Teknik Informatika |
+                                        Universitas Amandemy</p>
                                 </div>
                             </div>
                             <p>“ Portal Magang IT sangat membantu saya menemukan kesempatan magang yang sesuai
@@ -102,7 +103,8 @@
                                     alt="profile picture" height="50px">
                                 <div>
                                     <h4 class="card-title text-start">Nadhif L. A. Rahim</h4>
-                                    <p class="text-muted m-0 text-start">Teknik Informatika | Universitas Amandemy</p>
+                                    <p class="text-muted m-0 text-start" style="font-size: 0.8rem">Teknik Informatika |
+                                        Universitas Amandemy</p>
                                 </div>
                             </div>
                             <p>“Portal Magang IT sangat mudah digunakan dan informatif. Saya dapat mencari
@@ -110,14 +112,16 @@
                         </div>
                     </div>
                     <!-- Item 3 -->
-                    <div class="col-lg-4">
-                        <div class="text-center bg-light py-5 px-3" style="min-height: 250px; border-radius: 20px">
+                    <div class="col-lg-4 d-flex flex-column">
+                        <div class="text-center bg-light py-5 px-3 flex-grow-1"
+                            style="min-height: 250px; border-radius: 20px">
                             <div class="d-flex align-items-center justify-content-center gap-3 mb-4">
                                 <img class="rounded-circle" src="{{ asset('assets/img/team/team-1.jpg') }}"
                                     alt="profile picture" height="50px">
                                 <div>
                                     <h4 class="card-title text-start">Kristofel S. Lanpada</h4>
-                                    <p class="text-muted m-0 text-start">Teknik Informatika | Universitas Amandemy</p>
+                                    <p class="text-muted m-0 text-start" style="font-size: 0.8rem">Teknik Informatika |
+                                        Universitas Amandemy</p>
                                 </div>
                             </div>
                             <p>“ Portal Magang IT sangat membantu saya untuk mempersiapkan diri sebelum magang.”
@@ -200,27 +204,29 @@
                     <!-- Item 1 -->
                     @foreach ($lowongans as $lowongan)
                         <div class="col-lg-4 my-4">
-                            <div class="card border-0 p-4 text-white" style="background-color: #074173;">
-                                <div class="d-flex align-items-start">
+                            <div class="border-0 p-4 rounded-4" style="background-color: #008DDA;">
+                                <div class="d-flex align-items-start mb-5">
                                     <img src="{{ asset('assets/img/visi.png') }}" alt="Deskripsi Gambar"
                                         class="rounded-circle border border-primary me-3" style="width: 20%;" />
                                     <div class="d-flex flex-column">
-                                        <h5 class="card-title">{{ $lowongan->judul }}</h5>
+                                        <h5 class="card-title fw-bold">{{ $lowongan->judul }}</h5>
                                         <div class="mt-2">
-                                            <p class="mb-0"><i class="bi bi-shop-window"></i>{{ $lowongan->bidang }}
+                                            <p class="mb-0 d-flex gap-2 align-items-center fw-semibold">
+                                                <i class="bi bi-shop-window"></i>{{ $lowongan->bidang }}
                                             </p>
-                                            <p class="mb-0"><i
-                                                    class="bi bi-geo-alt"></i>{{ $lowongan->lokasi ?? 'Online' }}</p>
+                                            <p class="mb-0 d-flex gap-2 align-items-center fw-semibold">
+                                                <i class="bi bi-geo-alt"></i>{{ $lowongan->lokasi ?? 'Online' }}
                                             </p>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="mt-4 d-flex justify-content-between">
-                                    <p>
+                                <div class="mt-4 d-flex justify-content-between align-items-center">
+                                    <p class="m-0 fw-bold">
                                         {{ $lowongan->company->name }}
                                     </p>
                                     <a href="/lowongan/{{ $lowongan->id }}"
-                                        class="bg-light p-2 rounded-3 text-decoration-none">
+                                        class="bg-light py-2 px-3 fw-bold rounded-5 text-decoration-none text-dark"
+                                        style="font-size: 0.8rem">
                                         Lihat Selengkapnya
                                     </a>
                                 </div>
@@ -235,7 +241,7 @@
 
 
     <section>
-        <div class="container-fluid bg-primary" style="background-color: #074173; margin-top: 10px;">
+        <div class="container-fluid" style="background-color: #074173; margin-top: 10px;">
             <div class="container my-3 py-5">
                 <h1 class="text-center font-weight-bold text-white mb-5" style="font-size: 40px;">
                     Tahapan Pendaftaran Magang
@@ -246,16 +252,14 @@
                             alt="Testimoni">
                     </div>
                     <div class="col-lg-7 order-2 text-white d-flex flex-column justify-content-center">
-                        <ol class="mb-0">
-                            <li class="font-weight-bold mb-2">Pendaftaran</li>
-                            <p>Calon peserta mendaftarkan akun</p>
-                            <li class="font-weight-bold mb-2">Pilih lowongan</li>
-                            <p>Calon peserta memilih dan mendaftar pada lowongan magang yang dibuka</p>
-                            <li class="font-weight-bold mb-2">Seleksi</li>
-                            <p>Proses seleksi calon peserta magang oleh perusahaan penyelenggara program magang</p>
-                            <li class="font-weight-bold mb-2">Proses Magang</li>
-                            <p>Proses penyelenggaraan magang di perusahaan</p>
-                        </ol>
+                        <h4 class="font-weight-bold mb-2">Pendaftaran</h4>
+                        <p class="mb-4 ms-3">Calon peserta mendaftarkan akun</p>
+                        <h4 class="font-weight-bold mb-2">Pilih lowongan</h4>
+                        <p class="mb-4 ms-3">Calon peserta memilih dan mendaftar pada lowongan magang yang dibuka</p>
+                        <h4 class="font-weight-bold mb-2">Seleksi</h4>
+                        <p class="mb-4 ms-3">Proses seleksi calon peserta magang oleh perusahaan penyelenggara program magang</p>
+                        <h4 class="font-weight-bold mb-2">Proses Magang</h4>
+                        <p class="mb-4 ms-3">Proses penyelenggaraan magang di perusahaan</p>
                     </div>
                 </div>
             </div>
