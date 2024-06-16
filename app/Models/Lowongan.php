@@ -22,4 +22,10 @@ class Lowongan extends Model
     {
         return $this->hasMany(SimpanLowongan::class);
     }
+
+    // has many apply lowongan
+    public function applyLowongans()
+    {
+        return $this->hasMany(ApplyLowongan::class);
+    }
 }

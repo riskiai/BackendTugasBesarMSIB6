@@ -139,7 +139,7 @@ Route::prefix('dashboard')->group(function () {
         Route::put('/profil/update', [DashboardPerusahaanController::class, 'updateProfil'])->name('perusahaan.profil.update');
         Route::get('/posting-lowongan', [DashboardPerusahaanController::class, 'postingLowongan'])->name('perusahaan.lowongan.posting');
         Route::prefix('lowongan')->group(function () {
-            Route::get('/pendaftar', [DashboardPerusahaanController::class, 'lamaran'])->name('perusahaan.lamaran');
+            // Route::get('/pendaftar', [DashboardPerusahaanController::class, 'lamaran'])->name('perusahaan.lamaran');
             Route::prefix('magang')->group(function () {
                 Route::get('/', [DashboardPerusahaanController::class, 'lowonganMagang'])->name('perusahaan.magang');
                 Route::get('/create', [DashboardPerusahaanController::class, 'createLowonganMagang'])->name('perusahaan.magang.create');
@@ -157,15 +157,11 @@ Route::prefix('dashboard')->group(function () {
             Route::post('/store', [DashboardPerusahaanController::class, 'storeWebinar'])->name('perusahaan.webinar.store');
         });
         Route::prefix('lamaran')->group(function () {
-            // Route::get('/', [LamaranController::class, 'lamaran'])->name('perusahaan');
+            Route::get('/', [LamaranController::class, 'lamaran'])->name('perusahaan.lamaran');
             Route::get('/{id}', [LamaranController::class, 'detailLamaran'])->name('perusahaan.lamaran.detail');
             Route::post('/{id}/terima', [LamaranController::class, 'terimaLamaran'])->name('perusahaan.lamaran.terima');
             Route::post('/{id}/tolak', [LamaranController::class, 'tolakLamaran'])->name('perusahaan.lamaran.tolak');
+            Route::get('/{id}/cv/download', [LamaranController::class, 'downloadCV'])->name('perusahaan.lamaran.cv.download');
         });
     });
-});
-
-// make a route /testing where I can see mahasiswa.blade.php
-Route::get('/testing', function () {
-    return view('dashboardMahasiswa.index');
 });

@@ -183,7 +183,7 @@ data-bs-toggle="modal"
                             <div class="col-md-4">
                                 <div class="mb-3">
                                     <label for="formFile" class="form-label">Upload CV (Curiculum Vitae)</label>
-                                    <input class="form-control" name="cv" type="file" id="formFile">
+                                    <input class="form-control" name="cv" required type="file" id="formFile">
                                 </div>
                             </div>
                         </div>

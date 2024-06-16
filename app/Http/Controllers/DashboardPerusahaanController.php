@@ -127,26 +127,6 @@ class DashboardPerusahaanController extends Controller
         return view('dashboardPerusahaan.posting-lowongan-kerja');
     }
 
-    public function lamaran()
-    {
-        // get all ApplyLowongan with lowongan_id related to logged in company
-        $lamarans = ApplyLowongan::whereHas('lowongan', function ($query) {
-            $query->where('company_id', auth()->guard('company')->user()->id);
-        })->with('lowongan')->get();
-
-        // get lamaran related to logged in company with type magang
-        $internApplications = $lamarans->filter(function ($lamaran) {
-            return $lamaran->lowongan->type == 'magang';
-        });
-
-        // get lamaran related to logged in company with type kerja
-        $workApplications = $lamarans->filter(function ($lamaran) {
-            return $lamaran->lowongan->type == 'kerja';
-        });
-
-        return view('dashboardPerusahaan.informasi-pendaftar', compact('internApplications', 'workApplications'));
-    }
-
     public function pendaftaran()
     {
         return view('dashboardPerusahaan.informasi-pendaftaran');

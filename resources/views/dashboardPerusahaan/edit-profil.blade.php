@@ -36,7 +36,7 @@
                     <div class="col">
                         <div class="mb-3">
                             <label for="name" class="form-label">Nama</label>
-                            <input type="text" name="name" class="form-control" id="name"
+                            <input type="text" name="name" class="form-control rounded-5" id="name"
                                 placeholder="Masukkan nama kamu" value="{{ $company->name }}" disabled>
                             @error('name')
                                 <div class="text-danger mt-2">{{ $message }}</div>
@@ -44,7 +44,7 @@
                         </div>
                         <div class="mb-3">
                             <label for="hp" class="form-label">No. Telepon Penanggung Jawab</label>
-                            <input type="text" name="phone" class="form-control" id="hp"
+                            <input type="text" name="phone" class="form-control rounded-5" id="hp"
                                 placeholder="Masukkan nomor handphone" value="{{ $company->phone }}">
                             @error('phone')
                                 <div class="text-danger mt-2">{{ $message }}</div>
@@ -52,7 +52,7 @@
                         </div>
                         <div class="mb-3">
                             <label for="website" class="form-label">Website Perusahaan (Jika ada)</label>
-                            <input type="text" name="website" class="form-control" id="website"
+                            <input type="text" name="website" class="form-control rounded-5" id="website"
                                 placeholder="Website Perusahaan (Jika ada)" value="{{ $company->website }}">
                             @error('website')
                                 <div class="text-danger mt-2">{{ $message }}</div>
@@ -62,7 +62,7 @@
                             <h6>Media Sosial</h6>
                             <div class="mb-3">
                                 <label for="instagram" class="form-label">Instagram</label>
-                                <input type="text" name="instagram" class="form-control" id="instagram"
+                                <input type="text" name="instagram" class="form-control rounded-5" id="instagram"
                                     placeholder="Masukkan username Instagram" value="{{ $company->instagram }}">
                                 @error('instagram')
                                     <div class="text-danger mt-2">{{ $message }}</div>
@@ -70,7 +70,7 @@
                             </div>
                             <div class="mb-3">
                                 <label for="facebook" class="form-label">Facebook</label>
-                                <input type="text" name="facebook" class="form-control" id="facebook"
+                                <input type="text" name="facebook" class="form-control rounded-5" id="facebook"
                                     placeholder="Masukkan username Facebook" value="{{ $company->facebook }}">
                                 @error('facebook')
                                     <div class="text-danger mt-2">{{ $message }}</div>
@@ -81,7 +81,7 @@
                     <div class="col">
                         <div class="mb-3">
                             <label for="email" class="form-label">Email</label>
-                            <input type="email" name="email" class="form-control" id="email"
+                            <input type="email" name="email" class="form-control rounded-5" id="email"
                                 placeholder="Masukkan email kamu" value="{{ $company->email }}" disabled>
                             @error('email')
                                 <div class="text-danger mt-2">{{ $message }}</div>
@@ -89,7 +89,7 @@
                         </div>
                         <div class="mb-3">
                             <label for="industry" class="form-label">Perusahaan di Bidang</label>
-                            <input type="text" name="industry" class="form-control" id="industry"
+                            <input type="text" name="industry" class="form-control rounded-5" id="industry"
                                 placeholder="Masukkan Bidang dari perusahaan kamu" value="{{ $company->industry }}">
                             @error('industry')
                                 <div class="text-danger mt-2">{{ $message }}</div>
@@ -111,7 +111,7 @@
                         </div>
                         <div class="mb-3">
                             <label for="employees" class="form-label">Jumlah Karyawan</label>
-                            <input type="text" name="employees" class="form-control" id="employees"
+                            <input type="text" name="employees" class="form-control rounded-5" id="employees"
                                 placeholder="Masukkan Jumlah karyawan di perusahaan" value="{{ $company->employees }}">
                             @error('employees')
                                 <div class="text-danger mt-2">{{ $message }}</div>
@@ -119,7 +119,7 @@
                         </div>
                         <div class="mb-3">
                             <label for="address" class="form-label">Alamat</label>
-                            <input type="text" name="address" class="form-control" id="address"
+                            <input type="text" name="address" class="form-control rounded-5" id="address"
                                 placeholder="Masukkan alamat perusahaan" value="{{ $company->address }}">
                             @error('address')
                                 <div class="text-danger mt-2">{{ $message }}</div>
