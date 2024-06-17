@@ -66,8 +66,12 @@
                                                 style="background-color: #074173">Daftar</button>
                                         @endif
                                     @else
-                                        <button type="submit" class="btn w-100 text-white fw-semibold mb-2"
-                                            style="background-color: #074173">Daftar</button>
+                                        @auth('company')
+                                            <div class="pb-5"></div>
+                                        @else
+                                            <button type="submit" class="btn w-100 text-white fw-semibold mb-2"
+                                                style="background-color: #074173">Daftar</button>
+                                        @endauth
                                     @endauth
 
                                 </form>
@@ -82,9 +86,13 @@
                                         </div>
                                     @endif
                                 @else
-                                    <div class="alert alert-danger text-center" role="alert" style="font-size: 0.8rem">
-                                        Anda belum terdaftar pada Webinar ini.
-                                    </div>
+                                    @auth('company')
+                                        <div class="mb-5"></div>
+                                    @else
+                                        <div class="alert alert-danger text-center" role="alert" style="font-size: 0.8rem">
+                                            Anda belum terdaftar pada Webinar ini.
+                                        </div>
+                                    @endauth
                                 @endauth
 
                                 @if (session('success'))
