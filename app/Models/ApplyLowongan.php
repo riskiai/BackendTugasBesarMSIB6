@@ -10,4 +10,14 @@ class ApplyLowongan extends Model
     use HasFactory;
 
     protected $guarded = ['id'];
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
+
+    public function lowongan()
+    {
+        return $this->belongsTo(Lowongan::class);
+    }
 }

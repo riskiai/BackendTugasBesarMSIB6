@@ -16,17 +16,14 @@ return new class extends Migration
             $table->unsignedBigInteger('company_id');
             $table->string('judul');
             $table->enum('jenis', ['kerja', 'magang']);
-            $table->string('bidang');
-            $table->string('perusahaan');
-            $table->text('deskripsi_singkat');
-            $table->text('deskripsi_lengkap');
+            $table->text('deskripsi');
             $table->enum('tipe', ['onsite', 'online', 'hybrid']);
             $table->string('lokasi')->nullable();
             $table->integer('gaji')->nullable();
             $table->text('kualifikasi')->nullable();
             $table->date('deadline')->nullable();
-            $table->date('tanggal_mulai');
-            $table->date('tanggal_berakhir');
+            $table->date('tanggal_mulai')->nullable();
+            $table->date('tanggal_berakhir')->nullable();
             $table->timestamps();
 
             $table->foreign('company_id')->references('id')->on('companies')->onDelete('cascade')->onUpdate('cascade');

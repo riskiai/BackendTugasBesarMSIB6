@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\UpdateProfilMahasiswaRequest;
+use App\Models\ApplyLowongan;
 use App\Models\Lowongan;
 use App\Models\RegisterWebinar;
 use App\Models\SimpanLowongan;
@@ -21,9 +22,11 @@ class DashboardMahasiswaController extends Controller
 
     public function dashboardAwal()
     {
+        $user = auth()->user();
         $savedLowongans = SimpanLowongan::with('lowongan')->where('user_id', auth()->id())->get();
         $registeredWebinars = RegisterWebinar::with('webinar')->where('user_id', auth()->id())->get();
-        return view('dashboardMahasiswa.dashboard-awal', compact('savedLowongans', 'registeredWebinars'));
+        $appliedLowongans = ApplyLowongan::with('lowongan')->where('user_id', auth()->id())->get();
+        return view('dashboardMahasiswa.index', compact('user', 'savedLowongans', 'registeredWebinars', 'appliedLowongans'));
     }
 
     public function editProfil()

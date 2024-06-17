@@ -20,19 +20,21 @@ data-bs-toggle="modal"
                         <div class="col-md-4 my-2">
                             <form action="{{ route('lowongan.bookmark', ['lowongan' => $lowongan->id]) }}" method="POST">
                                 @csrf
-                                <button type="submit"
-                                    class="btn 
+                                @auth
+                                    <button type="submit"
+                                        class="btn 
                                         {{ in_array($lowongan->id, $lowonganTersimpan) ? 'btn-danger' : 'btn-dark' }} rounded-pill">
-                                    @auth
                                         @if (in_array($lowongan->id, $lowonganTersimpan))
                                             Batal Simpan
                                         @else
                                             Simpan
                                         @endif
-                                    @else
+                                    </button>
+                                @else
+                                    <button type="submit" class="btn btn-dark rounded-pill">
                                         Simpan
-                                    @endauth
-                                </button>
+                                    </button>
+                                @endauth
                             </form>
 
                             <!-- Modal Simpan Lowongan -->
@@ -84,7 +86,7 @@ data-bs-toggle="modal"
                             </div>
                             <div class="car-body">
                                 <p class="p-3">
-                                    {{ $lowongan->deskripsi_lengkap }}
+                                    {{ $lowongan->deskripsi }}
                                 </p>
                             </div>
                         </div>
@@ -181,7 +183,7 @@ data-bs-toggle="modal"
                             <div class="col-md-4">
                                 <div class="mb-3">
                                     <label for="formFile" class="form-label">Upload CV (Curiculum Vitae)</label>
-                                    <input class="form-control" name="cv" type="file" id="formFile">
+                                    <input class="form-control" name="cv" required type="file" id="formFile">
                                 </div>
                             </div>
                         </div>

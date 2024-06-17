@@ -9,6 +9,8 @@ class Lowongan extends Model
 {
     use HasFactory;
 
+    protected $guarded = ['id'];
+
     // belongs to company
     public function company()
     {
@@ -19,5 +21,11 @@ class Lowongan extends Model
     public function simpanLowongans()
     {
         return $this->hasMany(SimpanLowongan::class);
+    }
+
+    // has many apply lowongan
+    public function applyLowongans()
+    {
+        return $this->hasMany(ApplyLowongan::class);
     }
 }

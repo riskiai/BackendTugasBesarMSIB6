@@ -55,4 +55,9 @@ class User extends Authenticatable
     {
         return $this->hasMany(SimpanLowongan::class);
     }
+
+    public function applyLowongans()
+    {
+        return $this->hasMany(ApplyLowongan::class);
+    }
 }

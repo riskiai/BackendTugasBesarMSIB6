@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 use App\Http\Requests\UpdateProfilPerusahaanRequest;
+use App\Models\ApplyLowongan;
 use App\Models\Lowongan;
 use App\Models\Webinar;
 
@@ -102,14 +103,45 @@ class DashboardPerusahaanController extends Controller
         return view('dashboardPerusahaan.posting-lowogan');
     }
 
+    public function lowonganMagang()
+    {
+        $company = auth()->guard('company')->user();
+        $lowongans = Lowongan::where('company_id', $company->id)->where('jenis', 'magang')->get();
+        return view('dashboardPerusahaan.lowongan-magang', compact('lowongans'));
+    }
+
+    public function createLowonganMagang()
+    {
+        return view('dashboardPerusahaan.posting-lowongan-magang');
+    }
+
+    public function lowonganKerja()
+    {
+        $company = auth()->guard('company')->user();
+        $lowongans = Lowongan::where('company_id', $company->id)->where('jenis', 'kerja')->get();
+        return view('dashboardPerusahaan.lowongan-kerja', compact('lowongans'));
+    }
+
+    public function createLowonganKerja()
+    {
+        return view('dashboardPerusahaan.posting-lowongan-kerja');
+    }
+
     public function pendaftaran()
     {
         return view('dashboardPerusahaan.informasi-pendaftaran');
     }
 
+    public function webinar()
+    {
+        $company = auth()->guard('company')->user();
+        $webinars = Webinar::where('company_id', $company->id)->get();
+        return view('dashboardPerusahaan.webinar', compact('webinars'));
+    }
+
     public function createWebinar()
     {
-        return view('dashboardPerusahaan.webinar');
+        return view('dashboardPerusahaan.posting-webinar');
     }
 
     public function storeWebinar(CreateWebinarRequest $request)

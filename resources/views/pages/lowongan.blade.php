@@ -1,83 +1,95 @@
 @extends('layouts.app')
 
-@section('content')
-    <section class="mt-5">
-        <form action="#" class="form-search d-flex align-items-center mb-3 mx-auto" data-aos="fade-up" data-aos-delay="200"
-            style="background-color: #074173; position: relative; max-width: 500px; border-radius: 10px; padding-right: 40px;">
-            <input type="text" class="form-control text-white" placeholder="Studi, lokasi, perusahaan, kriteria lain"
-                style="background-color: #074173; border: 2px solid #0E46A3; border-radius: 10px; padding-right: 30px;" />
-            <img src="{{ asset('assets/img/icon_pencarian.png') }}" alt="Search"
-                style="position: absolute; right: 10px; top: 50%; transform: translateY(-50%); width: 20px; height: 20px;" />
-        </form>
-    </section>
+{{-- <style>
+    ::placeholder {
+        color: white !important;
+    }
 
-    <section>
-        <div class="container-fluid">
-            <div class="container my-3 ">
-                <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
-                    <div class="carousel-inner">
-                        <div class="carousel-item active">
-                            <div class="container my-3">
-                                <div class="row justify-content-between mx-auto">
-                                    <!-- Item 1 -->
-                                    @foreach ($lowongans as $lowongan)
-                                        <div class="col-lg-4 my-4">
-                                            <div class="card border-0 p-4 text-white" style="background-color: #074173;">
-                                                <div class="d-flex align-items-start">
-                                                    <img src="{{ asset('assets/img/visi.png') }}" alt="Deskripsi Gambar"
-                                                        class="rounded-circle border border-primary me-3"
-                                                        style="width: 20%;" />
-                                                    <div class="d-flex flex-column">
-                                                        <h5 class="card-title">{{ $lowongan->judul }}</h5>
-                                                        <div class="d-flex align-items-center mt-2">
-                                                            <img src="{{ asset('assets/img/marketeq.png') }}" alt="Logo"
-                                                                class="me-2" />
-                                                            <p class="mb-0">{{ $lowongan->bidang }}</p>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="mt-3 d-flex flex-column align-items-start">
-                                                    <div class="d-flex align-items-center mb-2">
-                                                        <img src="{{ asset('assets/img/location.png') }}"
-                                                            alt="Location Icon" class="me-2" />
-                                                        <p class="mb-0">
-                                                            {{ $lowongan->lokasi ?? 'Online' }}
-                                                        </p>
-                                                    </div>
-                                                    <div>
-                                                        <h5>Deskripsi Singkat</h5>
-                                                        <p>{{ $lowongan->deskripsi_singkat }}</p>
-                                                    </div>
-                                                    <a href="/lowongan/{{ $lowongan->id }}"
-                                                        class="btn btn-primary mt-2">Lihat Details</a>
-                                                </div>
+    :-ms-input-placeholder {
+        /* Internet Explorer 10-11 */
+        color: white !important;
+    }
+
+    ::-ms-input-placeholder {
+        /* Microsoft Edge */
+        color: white !important;
+    }
+
+    .no-outline:focus {
+        outline: none;
+        box-shadow: none;
+        /* Optional: This removes any box shadow (if any) that might be applied on focus */
+    }
+</style> --}}
+
+@section('content')
+    {{-- <section class="mt-5 d-flex justify-content-center">
+        <div class="w-25 rounded-4 d-flex align-items-center p-3 gap-3" style="background-color: #0E46A3">
+            <div class="w-100 h-100 rounded-4" style="background-color: #074173">
+                <form action="#" class="form-search d-flex align-items-center mx-auto w-100" data-aos="fade-up"
+                    data-aos-delay="200"
+                    style="background-color: #074173; position: relative; max-width: 500px; border-radius: 10px; padding-right: 40px;">
+                    <input type="text" class="form-control text-white py-3 m-0 no-outline"
+                        placeholder="Studi, lokasi, perusahaan, kriteria lain"
+                        style="background-color: #074173; border: none; border-radius: 10px;" />
+                </form>
+            </div>
+            <img src="{{ asset('assets/img/icon_pencarian.png') }}" alt="Search" style="width: 20px; height: 20px;" />
+        </div>
+    </section> --}}
+
+    <div class="d-flex flex-column justify-content-center">
+        <section>
+            <div class="container my-3">
+                <div class="row justify-content-between mx-auto">
+                    @foreach ($lowongans as $lowongan)
+                        <div class="col-lg-4 my-4">
+                            <div class="card border-0 p-4 text-white" style="background-color: #074173;">
+                                <div class="d-flex align-items-start">
+                                    <img src="{{ asset('assets/img/visi.png') }}" alt="Deskripsi Gambar"
+                                        class="rounded-circle border border-primary me-3" style="width: 20%;" />
+                                    <div class="d-flex flex-column">
+                                        <h5 class="card-title fw-bold">{{ $lowongan->judul }}</h5>
+                                        <div>
+                                            <div class="d-flex align-items-center mt-2">
+                                                <img src="{{ asset('assets/img/marketeq.png') }}" alt="Logo"
+                                                    class="me-2" />
+                                                <p class="mb-0">{{ $lowongan->company->name }}</p>
                                             </div>
+                                            <p class="m-0 ps-4" style="font-size: 0.9rem">
+                                                {{ 'Rp' . number_format($lowongan->gaji, 0, ',', '.') }}
+                                            </p>
                                         </div>
-                                    @endforeach
-                                    <!-- End Item 1 -->
+                                    </div>
+                                </div>
+                                <div class="mt-3 d-flex flex-column align-items-start">
+                                    <div class="w-100 d-flex align-items-center my-3">
+                                        <img src="{{ asset('assets/img/location.png') }}" alt="Location Icon"
+                                            class="me-2" />
+                                        <div class="w-100 d-flex align-items-center justify-content-between">
+                                            <p class="mb-0">
+                                                {{ $lowongan->lokasi ?? 'Online' }}
+                                            </p>
+                                            <p class="mb-0">
+                                                Tipe: {{ $lowongan->jenis }}
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <a href="/lowongan/{{ $lowongan->id }}" class="btn mt-2 w-50 rounded-5 text-white"
+                                        style="background-color: #008DDA">Detail Lengkap</a>
                                 </div>
                             </div>
                         </div>
-                        <!-- Tambahkan slide lainnya di sini -->
-                    </div>
+                    @endforeach
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <section class="mt-2">
-        <nav aria-label="Page navigation">
-            <ul class="pagination justify-content-center">
-                <li class="page-item disabled">
-                    <a class="page-link" href="#" tabindex="-1" aria-disabled="true">Previous</a>
-                </li>
-                <li class="page-item"><a class="page-link" href="#">1</a></li>
-                <li class="page-item"><a class="page-link" href="#">2</a></li>
-                <li class="page-item"><a class="page-link" href="#">3</a></li>
-                <li class="page-item">
-                    <a class="page-link" href="#">Next</a>
-                </li>
-            </ul>
-        </nav>
-    </section>
+        <section class="mt-2">
+            <!-- Pagination Links -->
+            <div class="d-flex justify-content-center mt-4">
+                {{ $lowongans->links() }}
+            </div>
+        </section>
+    </div>
 @endsection
