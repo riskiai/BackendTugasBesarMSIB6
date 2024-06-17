@@ -14,7 +14,7 @@ class LowonganController extends Controller
 {
     public function lowongan()
     {
-        $lowongans = Lowongan::all();
+        $lowongans = Lowongan::paginate(6);
         return view('pages.lowongan', compact('lowongans'));
     }
 
