@@ -52,7 +52,7 @@ Route::get('/beranda', [HomePageController::class, 'beranda'])->name('beranda');
 Route::get('/frequently-asked-questions', [HomePageController::class, 'frequentlyAskedQuestions'])->name('faq');
 Route::get('/artikel', [HomePageController::class, 'artikel'])->name('artikel');
 Route::get('/detail-artikel/{artikel}', [HomePageController::class, 'detailArtikel']);
-Route::get('/about', [HomePageController::class, 'about'])->name('about');
+Route::get('/tentang-kami', [HomePageController::class, 'about'])->name('about');
 
 // 
 Route::prefix('lowongan')->group(function () {

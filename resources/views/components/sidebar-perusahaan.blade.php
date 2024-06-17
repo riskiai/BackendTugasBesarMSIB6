@@ -4,8 +4,13 @@
     <div class="py-3" style="margin-top: 60px">
         <div class="mx-auto rounded-circle bg-secondary mb-3" style="height: 120px; width: 120px;"
             style="background-image: url('assets/img/team/team-3.jpg')">
-            <img src="{{ auth()->guard('company')->user()->foto_profil ? asset('storage/photo-profile/' . auth()->guard('company')->user()->foto_profil) : asset('assets/img/team/team-1.jpg') }}"
-                alt="Profil Picture" class="img-fluid rounded-circle h-100 w-100 object-fit-cover">
+            @auth('company')
+                <img src="{{ auth()->guard('company')->user()->foto_profil ? asset('storage/photo-profile/' . auth()->guard('company')->user()->foto_profil) : asset('assets/img/team/team-1.jpg') }}"
+                    alt="Profil Picture" class="img-fluid rounded-circle h-100 w-100 object-fit-cover">
+            @else
+                <img src="{{ asset('assets/img/team/team-1.jpg') }}" alt="Profil Picture"
+                    class="img-fluid rounded-circle h-100 w-100 object-fit-cover">
+            @endauth
         </div>
         <div class="text-start px-4">
             <p class="m-0 text-white fs-5">{{ auth()->guard('company')->user()->pic_name }}</p>

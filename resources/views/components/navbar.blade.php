@@ -21,7 +21,7 @@
                         href="{{ route('beranda') }}">Beranda</a>
                 </li>
                 <li class="nav-item mx-2">
-                    <a class="nav-link {{ request()->is('logowan-kerja-dan-magang') ? 'active' : '' }}"
+                    <a class="nav-link {{ request()->is('lowongan') ? 'active' : '' }}"
                         href="{{ route('lowongan') }}">Lowongan Kerja & Magang</a>
                 </li>
                 <li class="nav-item mx-2">
@@ -35,6 +35,10 @@
                 <li class="nav-item mx-2">
                     <a class="nav-link {{ request()->is('webinar') ? 'active' : '' }}"
                         href="{{ route('webinar') }}">Webinar</a>
+                </li>
+                <li class="nav-item mx-2">
+                    <a class="nav-link {{ request()->is('tentang-kami') ? 'active' : '' }}"
+                        href="{{ route('about') }}">Tentang Kami</a>
                 </li>
             </ul>
 
