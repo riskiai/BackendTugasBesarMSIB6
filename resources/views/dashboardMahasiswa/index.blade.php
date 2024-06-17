@@ -56,11 +56,9 @@
                             <td class="px-0 text-secondary fs-5"
                                 style="{{ $loop->last ? 'border-radius: 0 0 20px 0' : '' }}">
                                 <span
-                                    @if ($appliedLowongan->status == 'accepted') class="badge text-bg-success"
-                                @elseif ($appliedLowongan->status == 'rejected')
-                                    class="badge text-bg-danger"
-                                @else
-                                    class="badge text-bg-warning" @endif>
+                                    @if ($appliedLowongan->status == 'accepted') class="rounded-pill px-3 py-2 badge text-bg-success"
+                                @elseif ($appliedLowongan->status == 'rejected') class="rounded-pill px-3 py-2 badge text-bg-danger"
+                                @else class="rounded-pill px-3 py-2 badge text-bg-warning" @endif>
                                     {{ $appliedLowongan->status }}
                                 </span>
                             </td>
@@ -103,7 +101,9 @@
                 <tbody>
                     @foreach ($savedLowongans as $savedLowongan)
                         <tr style="vertical-align: middle">
-                            <td class="px-0 ms-2 ps-3 text-secondary" scope="row" style="{{ $loop->last ? 'border-radius: 0 0 0 20px' : '' }}">{{ date('d-m-Y', strtotime($savedLowongan->lowongan->deadline)) }}</td>
+                            <td class="px-0 ms-2 ps-3 text-secondary" scope="row"
+                                style="{{ $loop->last ? 'border-radius: 0 0 0 20px' : '' }}">
+                                {{ date('d-m-Y', strtotime($savedLowongan->lowongan->deadline)) }}</td>
                             <td class="px-0 text-secondary fs-5">
                                 <a href="{{ route('lowongan.detail', ['lowongan' => $savedLowongan->lowongan->id]) }}"
                                     class="text-decoration-none">
