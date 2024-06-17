@@ -2,157 +2,124 @@
 
 @section('content')
     <section>
-        <div class="container mt-2">
-            <div class="date-and-content">
-                <div class="bg-primary rounded p-5 border-2">
-                    <div class="row align-items-center">
-                        <div class="col-md-4 my-2">
-                            <button type="button" class="btn btn-light"
-                                @guest
-data-bs-toggle="modal"
-                                        data-bs-target="#exampleModal"> @endguest
-                                Daftar </button>
-                                <p class="mb-0">Lokasi: {{ $lowongan->lokasi }}</p>
-                        </div>
-                        <div class="col-md-4 my-2">
-                            <h3 class="text-white">{{ $lowongan->judul }}</h3>
-                        </div>
-                        <div class="col-md-4 my-2">
-                            <form action="{{ route('lowongan.bookmark', ['lowongan' => $lowongan->id]) }}" method="POST">
-                                @csrf
-                                @auth
-                                    <button type="submit"
-                                        class="btn 
-                                        {{ in_array($lowongan->id, $lowonganTersimpan) ? 'btn-danger' : 'btn-dark' }} rounded-pill">
-                                        @if (in_array($lowongan->id, $lowonganTersimpan))
-                                            Batal Simpan
-                                        @else
-                                            Simpan
-                                        @endif
-                                    </button>
-                                @else
-                                    <button type="submit" class="btn btn-dark rounded-pill">
-                                        Simpan
-                                    </button>
-                                @endauth
-                            </form>
+        <div style="margin-top: 70px; background-image: linear-gradient(#074173, #0C71C7);">
+            <div class="p-2" style="height: 100vh; margin-top: -70px">
+                <div class="container rounded-4 py-4 px-4" style="background-color: #CEDDE6; margin-top: 75px">
+                    <div class="row">
+                        <div class="d-flex justify-content-around">
+                            <div class="col-5 px-4">
+                                <div class="bg-light p-3 rounded-4">
+                                    <img class="rounded-4 img-fluid" src="{{ asset('images/lowongan.jpeg') }}"
+                                        alt="laptop">
+                                    <h2 class="font-kufam mt-4">{{ $lowongan->judul }}</h2>
+                                    <p>{{ $lowongan->deskripsi }}</p>
+                                </div>
+                            </div>
+                            <div class="col-7 d-flex flex-column gap-3 px-4">
+                                <div class="row bg-light rounded-4 px-4 py-4">
+                                    <div class="d-flex align-items-center justify-content-between">
+                                        <div>
+                                            <h2 class="font-kufam">{{ $lowongan->company->name }}</h2>
+                                            <h4 class="text-secondary">{{ $lowongan->lokasi }}</h4>
+                                        </div>
+                                        <div class="d-flex gap-3">
 
-                            <!-- Modal Simpan Lowongan -->
-                            @if (session('success'))
-                                <div class="modal fade" id="lowonganSaveModal" tabindex="-1"
-                                    aria-labelledby="lowonganSaveModalLabel" aria-hidden="true">
-                                    <div class="modal-dialog modal-dialog-centered">
-                                        <div class="modal-content">
-                                            <div class="modal-header d-flex justify-content-between">
-                                                <h1 class="modal-title fs-5" id="lowonganSaveModalLabel">
-                                                    Informasi</h1>
-                                                <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                                    aria-label="Close"></button>
-                                            </div>
-                                            <div class="modal-body">
-                                                {{-- alert success berisi "Anda telah terdaftar ke webinar ini. Cek email untuk informasi lebih lanjut." --}}
-                                                <div class="alert alert-success" role="alert" style="font-size: 0.8rem">
-                                                    {{ session('success') }}
-                                                </div>
-                                            </div>
-                                            <div class="modal-footer">
-                                                <button type="button" class="btn btn-secondary"
-                                                    data-bs-dismiss="modal">Close</button>
-                                            </div>
+                                            {{-- Apabila user klik daftar akan muncul modal form, apabila klik simpan akan tersimpan --}}
+                                            {{-- Company tidak dapat melihat tombol daftar dan simpan --}}
+                                            {{-- Apabila guest klik daftar atau simpan, akan muncul modal login --}}
+                                            @if (auth()->check())
+                                                <button class="btn text-white rounded-pill" data-bs-toggle="modal"
+                                                    data-bs-target="#applyModal"
+                                                    style="background-color: #074173; width: 123px;">
+                                                    Daftar
+                                                </button>
+                                                <form
+                                                    action="{{ route('lowongan.bookmark', ['lowongan' => $lowongan->id]) }}"
+                                                    method="POST">
+                                                    @csrf
+                                                    <button class="btn rounded-pill px-4 fw-semibold"
+                                                        style="background-color: #CEDDE6">
+                                                        <i class="fa-regular fa-bookmark"></i>
+                                                        @if (in_array($lowongan->id, $lowonganTersimpan))
+                                                            Batal Simpan
+                                                        @else
+                                                            Simpan
+                                                        @endif
+                                                    </button>
+                                                </form>
+                                            @elseif (auth()->guard('company')->check())
+                                                <div></div>
+                                                <div></div>
+                                            @else
+                                                <button class="btn text-white rounded-pill" data-bs-toggle="modal"
+                                                    data-bs-target="#loginModal"
+                                                    style="background-color: #074173; width: 123px;">
+                                                    Daftar
+                                                </button>
+                                                <button class="btn rounded-pill px-4 fw-semibold" data-bs-toggle="modal"
+                                                    data-bs-target="#loginModal" style="background-color: #CEDDE6">
+                                                    <i class="fa-regular fa-bookmark"></i>
+                                                    Simpan
+                                                </button>
+                                            @endif
                                         </div>
                                     </div>
                                 </div>
-                            @endif
-
-                            <button type="button" class="btn btn-light" data-bs-toggle="modal"
-                                data-bs-target="#exampleModal1">
-                                Daftar
-                            </button>
-                            <p class="mb-0">Perusahaan: {{ $lowongan->company->name }}</p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="row mt-5 justify-content-center">
-                    <div class="col-md-5">
-                        <div class="card">
-                            <div class="row">
-                                <div class="col-md-5">
-                                    <img src="{{ asset('assets/img/Pngtree.png') }}" alt="">
+                                <div class="row bg-light rounded-4 px-4 py-4">
+                                    <div class="d-flex gap-3 fw-semibold" style="color: #074173">
+                                        <div>
+                                            <p class="m-0">Tanggal Penutupan</p>
+                                            <p class="m-0">Jenis Pekerjaan</p>
+                                            <p class="m-0">Periode Kegiatan</p>
+                                        </div>
+                                        <div>
+                                            <p class="m-0">: {{ date('d F Y', strtotime($lowongan->deadline)) }}</p>
+                                            <p class="m-0">: {{ $lowongan->jenis }}</p>
+                                            <p class="m-0">:
+                                                {{ date('d/m/Y', strtotime($lowongan->tanggal_mulai)) }} -
+                                                {{ date('d/m/Y', strtotime($lowongan->tanggal_berakhir)) }}
+                                            </p>
+                                        </div>
+                                    </div>
                                 </div>
-                                <div class="col-md-7">
-                                    <h3 class="mt-5">Deskripsi Pekerjaan</h3>
+                                <div class="row bg-light rounded-4 px-4 py-4" style="color: #074173">
+                                    <h2 class="font-kufam">Kualifikasi</h2>
+                                    <p class="m-o">{{ $lowongan->kualifikasi }}</p>
                                 </div>
                             </div>
-                            <div class="car-body">
-                                <p class="p-3">
-                                    {{ $lowongan->deskripsi }}
-                                </p>
-                            </div>
                         </div>
                     </div>
-                    <div class="col-md-5">
-                        <div class="card mt-6">
-                            <h3 class="card-header">Kualifikasi</h3>
-                            <div class="">
-                                {{ $lowongan->kualifikasi }}
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="row mt-5 d-flex justify-content-between">
-                <div class="col-md-4">
-                    <p>Tanggal Penutupan: {{ date('d F Y', strtotime($lowongan->deadline)) }}
-                </div>
-                <div class="col-md-4">
-                    <p>Jenis Pekerjaan: {{ $lowongan->jenis }}</p>
-                </div>
-                <div class="col-md-4">
-                    <p>Periode Kegiatan:
-                        {{-- tanggal mulai in dd mm yyyy --}}
-                        {{ date('d/m/Y', strtotime($lowongan->tanggal_mulai)) }}
-                        -
-                        {{-- tanggal berakhir in dd mm yyyy --}}
-                        {{ date('d/m/Y', strtotime($lowongan->tanggal_berakhir)) }}
-                    </p>
                 </div>
             </div>
         </div>
     </section>
 
-
     {{-- Modal / pop up --}}
-    <!-- Button trigger modal -->
-
-    <!-- Modal 1-->
-    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h1 class="modal-title fs-5" id="exampleModalLabel">
+    <!-- Modal Login -->
+    <div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content rounded-4">
+                <div class="modal-body p-5">
+                    <h1 class="modal-title fs-4 text-center font-kufam fw-bold" id="loginModalLabel" style="color: #074173">
                         Login menggunakan akun ApprenTech
                     </h1>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    Anda bisa mendaftar lowongan ini ketika anda sudah login dan
-                    mendaftar menggunakan akun ApprenTech. Lengkapi Profile dan Daftar Lowongan
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-primary">Login</button>
-                    <div class="ms-2">
-                        <p>Belum punya akun?</p>
-                        <button type="button" class="btn btn-primary">Daftar</button>
+                    <p class="m-0 text-center" style="color: #074173">
+                        Anda bisa melakukan aksi ini ketika Anda sudah login dan
+                        menggunakan akun ApprenTech.
+                    </p>
+                    <div class="d-flex flex-column align-items-center mt-4">
+                        <a href="{{ route('login') }}" class="btn text-white rounded-pill px-5 mb-3" style="background-color: #2092D1">Login</a>
+                        <p class="m-0" style="color: #074173">Belum punya akun?</p>
+                        <a href="{{ route('register') }}" class="btn text-white rounded-pill px-5" style="background-color: #074173;">Daftar</a>
                     </div>
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- Modal 2-->
-    <div class="modal fade" id="exampleModal1" tabindex="-1" aria-labelledby="exampleModalLabel1" aria-hidden="true">
-        <div class="modal-dialog">
+    <!-- Modal Daftar-->
+    <div class="modal fade" id="applyModal" tabindex="-1" aria-labelledby="exampleModalLabel1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" style="min-width: 700px">
             <div class="modal-content">
                 <form action="{{ route('lowongan.apply', ['lowongan' => $lowongan->id]) }}" method="POST"
                     enctype="multipart/form-data">
@@ -192,62 +159,6 @@ data-bs-toggle="modal"
                         <button type="submit" class="btn btn-primary">Kirim</button>
                     </div>
                 </form>
-            </div>
-        </div>
-    </div>
-    <!-- Modal 3-->
-    <div class="modal fade" id="exampleModal2" tabindex="-1" aria-labelledby="exampleModalLabel2" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h1 class="modal-title fs-5" id="exampleModalLabel2">Berikan Rating & Komentar</h1>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <div class="container-fluid">
-                        <h2>Rating</h2>
-                        <div class="bintang">
-                            <p>
-                                Sangat Baik :
-                                <i class="bi bi-star-fill"></i>
-                                <i class="bi bi-star-fill"></i>
-                                <i class="bi bi-star-fill"></i>
-                                <i class="bi bi-star-fill"></i>
-                                <i class="bi bi-star-fill"></i>
-                            </p>
-                            <p>
-                                Baik :
-                                <i class="bi bi-star-fill"></i>
-                                <i class="bi bi-star-fill"></i>
-                                <i class="bi bi-star-fill"></i>
-                                <i class="bi bi-star-fill"></i>
-                            </p>
-                            <p>
-                                Cukup/Netral :
-                                <i class="bi bi-star-fill"></i>
-                                <i class="bi bi-star-fill"></i>
-                                <i class="bi bi-star-fill"></i>
-                            </p>
-                            <p>
-                                Buruk :
-                                <i class="bi bi-star-fill"></i>
-                                <i class="bi bi-star-fill"></i>
-                            </p>
-                            <p>
-                                Sangat Buruk :
-                                <i class="bi bi-star-fill"></i>
-                            </p>
-                        </div>
-                        <div class="mb-3">
-                            <label for="exampleFormControlTextarea1" class="form-label">Komentar</label>
-                            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
-                        </div>
-                    </div>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-primary">Kirim</button>
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
-                </div>
             </div>
         </div>
     </div>
