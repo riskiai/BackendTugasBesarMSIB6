@@ -11,8 +11,8 @@
     <section id="hero" class="hero d-flex align-items-center py-5"
         style="background-image: linear-gradient(#074173, #0C71C7); border-radius: 0 0 0 200px">
         <div class="container text-white">
-            <div class="row gy-4 d-flex justify-content-between mb-5">
-                <div class="col-lg-6 order-2 order-lg-1 d-flex flex-column justify-content-center mb-4">
+            <div class="row px-5 d-flex justify-content-between mb-5">
+                <div class="col-lg-6 d-flex flex-column justify-content-center mb-4">
                     <h1 data-aos="fade-up" class="fw-bold">
                         Portal Magang di Industri IT Khusus untuk Mahasiswa dan Fresh Graduate
                     </h1>
@@ -38,7 +38,7 @@
                 <div class="d-flex justify-content-center mb-3">
                     <p class="mb-0 text-center fs-5" style="max-width: 750px; color: #074173">
                         “Menjadi platform terdepan dalam menghubungkan mahasiswa dan fresh graduate dengan
-                        perusahaan ternama di industri IT untuk peluang magang yang berkualitas.”
+                        perusahaan ternama di industri IT untuk peluang karir yang berkualitas.”
                     </p>
                 </div>
                 <div class="d-flex justify-content-center">
@@ -57,7 +57,7 @@
                                 <li>Membangun kerjasama yang erat dengan perusahaan IT untuk menyediakan program magang yang
                                     berkualitas dan bermanfaat.</li>
                                 <li>Memberikan pelatihan dan persiapan yang komprehensif bagi mahasiswa dan fresh graduate
-                                    untuk sukses dalam magang.</li>
+                                    untuk sukses dalam berkarir.</li>
                                 <li>Mengembangkan platform yang user-friendly dan mudah digunakan oleh mahasiswa, fresh
                                     graduate, dan perusahaan.</li>
                                 <li>Menjadi sumber informasi dan edukasi terpercaya tentang industri IT dan peluang magang.
@@ -107,8 +107,8 @@
                                         Universitas Amandemy</p>
                                 </div>
                             </div>
-                            <p>“Portal Magang IT sangat mudah digunakan dan informatif. Saya dapat mencari
-                                magang berdasarkan lokasi, perusahaan, dan jenis pekerjaan.”</p>
+                            <p>“Portal Magang IT yang digunakan dan informatif. Saya dapat mencari
+                                magang berdasarkan lokasi dan jenis pekerjaan.”</p>
                         </div>
                     </div>
                     <!-- Item 3 -->
@@ -200,7 +200,7 @@
         <div class="container-fluid">
             <div class="container">
                 <h1 class="text-center font-weight-bold mb-5">Rekomendasi Lowongan Kerja</h1>
-                <div class="row justify-content-center">
+                <div class="row justify-content-center px-5">
                     <!-- Item 1 -->
                     @foreach ($lowongans as $lowongan)
                         <div class="col-lg-4 my-4">
@@ -212,7 +212,7 @@
                                         <h5 class="card-title fw-bold">{{ $lowongan->judul }}</h5>
                                         <div class="mt-2">
                                             <p class="mb-0 d-flex gap-2 align-items-center fw-semibold">
-                                                <i class="bi bi-shop-window"></i>{{ $lowongan->bidang }}
+                                                <i class="bi bi-shop-window"></i>{{ $lowongan->company->name }}
                                             </p>
                                             <p class="mb-0 d-flex gap-2 align-items-center fw-semibold">
                                                 <i class="bi bi-geo-alt"></i>{{ $lowongan->lokasi ?? 'Online' }}
@@ -222,7 +222,7 @@
                                 </div>
                                 <div class="mt-4 d-flex justify-content-between align-items-center">
                                     <p class="m-0 fw-bold">
-                                        {{ $lowongan->company->name }}
+                                        {{ Str::ucfirst($lowongan->tipe) }}
                                     </p>
                                     <a href="/lowongan/{{ $lowongan->id }}"
                                         class="bg-light py-2 px-3 fw-bold rounded-5 text-decoration-none text-dark"
