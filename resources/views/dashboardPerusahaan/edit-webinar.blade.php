@@ -27,13 +27,16 @@
                 </div>
             @endif
 
-            <form action="{{ route('perusahaan.webinar.store') }}" method="POST" enctype="multipart/form-data">
+            <form action="{{ route('perusahaan.webinar.update', ['webinar' => $webinar->id]) }}" method="POST" enctype="multipart/form-data">
                 @csrf
+                @method('PUT')
                 <div class="row gap-5">
                     <div class="col">
                         <div class="mb-3">
                             <label for="judulWebinar" class="form-label">Judul Webinar:</label>
-                            <input type="text" name="judul_webinar" class="form-control rounded-4" style="background-color: #EEF5FF" placeholder="Masukkan judul webinar" id="judulWebinar" value="{{ old('judul_webinar') }}" required>
+                            <input type="text" name="judul_webinar" class="form-control rounded-4"
+                                style="background-color: #EEF5FF" placeholder="Masukkan judul webinar" id="judulWebinar"
+                                value="{{ $webinar->judul_webinar }}" required>
                             @error('judul_webinar')
                                 <div class="text-danger mt-2">{{ $message }}</div>
                             @enderror
@@ -41,14 +44,18 @@
                         <div class="mb-3 ">
                             <label for="tagline" class="form-label">Tagline
                                 Webinar:</label>
-                            <input type="text" name="tagline" class="form-control rounded-4" style="background-color: #EEF5FF" placeholder="Masukkan tagline webinar" id="tagline" value="{{ old('tagline') }}" required>
+                            <input type="text" name="tagline" class="form-control rounded-4"
+                                style="background-color: #EEF5FF" placeholder="Masukkan tagline webinar" id="tagline"
+                                value="{{ $webinar->tagline }}" required>
                             @error('tagline')
                                 <div class="text-danger mt-2">{{ $message }}</div>
                             @enderror
                         </div>
                         <div class="mb-3 ">
                             <label for="narasumber" class="form-label">Narasumber:</label>
-                            <input type="text" name="narasumber" class="form-control rounded-4" style="background-color: #EEF5FF" placeholder="Masukkan narasumber webinar" id="narasumber" value="{{ old('narasumber') }}" required>
+                            <input type="text" name="narasumber" class="form-control rounded-4"
+                                style="background-color: #EEF5FF" placeholder="Masukkan narasumber webinar" id="narasumber"
+                                value="{{ $webinar->narasumber }}" required>
                             @error('narasumber')
                                 <div class="text-danger mt-2">{{ $message }}</div>
                             @enderror
@@ -56,14 +63,17 @@
                         <div class="mb-3 ">
                             <label for="jabatan_narasumber" class="form-label">Jabatan
                                 Narasumber:</label>
-                            <input type="text" name="jabatan_narasumber" class="form-control rounded-4" style="background-color: #EEF5FF" placeholder="Masukkan jabatan narasumber webinar" id="jabatan_narasumber" value="{{ old('jabatan_narasumber') }}" required>
+                            <input type="text" name="jabatan_narasumber" class="form-control rounded-4"
+                                style="background-color: #EEF5FF" placeholder="Masukkan jabatan narasumber webinar"
+                                id="jabatan_narasumber" value="{{ $webinar->jabatan_narasumber }}" required>
                             @error('jabatan_narasumber')
                                 <div class="text-danger mt-2">{{ $message }}</div>
                             @enderror
                         </div>
                         <div class="mb-3 ">
                             <label for="deskripsi" class="form-label">Deskripsi Webinar:</label>
-                            <textarea class="form-control rounded-4" style="background-color: #EEF5FF" name="deskripsi" id="deskripsi" placeholder="Masukkan deskripsi webinar" rows="2">{{ old('deskripsi') }}</textarea>
+                            <textarea class="form-control rounded-4" style="background-color: #EEF5FF" name="deskripsi" id="deskripsi"
+                                placeholder="Masukkan deskripsi webinar" rows="2">{{ $webinar->deskripsi }}</textarea>
                             @error('deskripsi')
                                 <div class="text-danger mt-2">{{ $message }}</div>
                             @enderror
@@ -72,7 +82,8 @@
                     <div class="col">
                         <div class="mb-3 ">
                             <label for="poster" class="form-label">Poster Webinar:</label>
-                            <input type="file" name="poster" class="form-control rounded-4" style="background-color: #EEF5FF" id="poster">
+                            <input type="file" name="poster" class="form-control rounded-4"
+                                style="background-color: #EEF5FF" id="poster">
                             @error('poster')
                                 <div class="text-danger mt-2">{{ $message }}</div>
                             @enderror
@@ -82,7 +93,9 @@
                             <div class="row mb-2">
                                 <div class="col-sm-6">
                                     <label for="tanggal" class="form-label">Tanggal:</label>
-                                    <input type="date" name="tanggal" class="form-control rounded-4" style="background-color: #EEF5FF" id="tanggal" value="{{ old('tanggal') }}" required>
+                                    <input type="date" name="tanggal" class="form-control rounded-4"
+                                        style="background-color: #EEF5FF" id="tanggal" value="{{ $webinar->tanggal }}"
+                                        required>
                                     @error('tanggal')
                                         <div class="text-danger mt-2">{{ $message }}</div>
                                     @enderror
@@ -91,14 +104,18 @@
                             <div class="row mb-2">
                                 <div class="col-sm-6">
                                     <label for="waktu" class="form-label">Waktu Mulai:</label>
-                                    <input type="time" name="waktu_mulai" class="form-control rounded-4" style="background-color: #EEF5FF" id="waktu" value="{{ old('waktu_mulai') }}" required>
+                                    <input type="time" name="waktu_mulai" class="form-control rounded-4"
+                                        style="background-color: #EEF5FF" id="waktu"
+                                        value="{{ $webinar->waktu_mulai }}" required>
                                     @error('waktu_mulai')
                                         <div class="text-danger mt-2">{{ $message }}</div>
                                     @enderror
                                 </div>
                                 <div class="col-sm-6">
                                     <label for="waktu" class="form-label">Waktu Selesai:</label>
-                                    <input type="time" name="waktu_selesai" class="form-control rounded-4" style="background-color: #EEF5FF" id="waktu" value="{{ old('waktu_selesai') }}" required>
+                                    <input type="time" name="waktu_selesai" class="form-control rounded-4"
+                                        style="background-color: #EEF5FF" id="waktu"
+                                        value="{{ $webinar->waktu_selesai }}" required>
                                     @error('waktu_selesai')
                                         <div class="text-danger mt-2">{{ $message }}</div>
                                     @enderror
@@ -107,7 +124,9 @@
                             <div class="row mb-2">
                                 <div class="col-sm-6">
                                     <label for="platform" class="form-label">Platform:</label>
-                                    <input type="text" name="platform" class="form-control rounded-4" style="background-color: #EEF5FF" id="platform" placeholder="Masukkan platform webinar" value="{{ old('platform') }}" required>
+                                    <input type="text" name="platform" class="form-control rounded-4"
+                                        style="background-color: #EEF5FF" id="platform"
+                                        placeholder="Masukkan platform webinar" value="{{ $webinar->platform }}" required>
                                     @error('platform')
                                         <div class="text-danger mt-2">{{ $message }}</div>
                                     @enderror

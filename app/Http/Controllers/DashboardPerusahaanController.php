@@ -11,6 +11,8 @@ use App\Http\Requests\UpdateProfilPerusahaanRequest;
 use App\Models\ApplyLowongan;
 use App\Models\Lowongan;
 use App\Models\Webinar;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Log;
 
 class DashboardPerusahaanController extends Controller
 {
@@ -65,36 +67,43 @@ class DashboardPerusahaanController extends Controller
 
     public function updateProfil(UpdateProfilPerusahaanRequest $request)
     {
-        $company = auth()->guard('company')->user();
+        DB::beginTransaction();
+        try {
+            $company = Company::find(auth()->guard('company')->user()->id);
 
-        $company = Company::find($company->id);
-        // Jika ada file foto profil yang diunggah
-        if ($request->hasFile('foto_profil')) {
-            // Hapus foto profil lama jika ada
-            if ($company->foto_profil) {
-                Storage::disk('public')->delete('photo-profile/' . $company->foto_profil);
+            // Jika ada file foto profil yang diunggah
+            if ($request->hasFile('foto_profil')) {
+                // Hapus foto profil lama jika ada
+                if ($company->foto_profil) {
+                    Storage::disk('public')->delete('photo-profile/' . $company->foto_profil);
+                }
+
+                // Simpan foto profil baru dengan nama yang spesifik
+                $file = $request->file('foto_profil');
+                $filename = time() . '_' . $file->getClientOriginalName();
+                $file->storeAs('photo-profile', $filename, 'public');
+                $company->foto_profil = $filename;
             }
 
-            // Simpan foto profil baru dengan nama yang spesifik
-            $file = $request->file('foto_profil');
-            $filename = time() . '_' . $file->getClientOriginalName();
-            $file->storeAs('photo-profile', $filename, 'public');
-            $company->foto_profil = $filename;
-        }
+            // Perbarui informasi perusahaan
+            $company->phone = $request->phone;
+            $company->website = $request->website;
+            $company->industry = $request->industry;
+            $company->instagram = $request->instagram;
+            $company->facebook = $request->facebook;
+            $company->employees = $request->employees;
+            $company->address = $request->address;
 
-        // Perbarui informasi perusahaan
-        $company->phone = $request->phone;
-        $company->website = $request->website;
-        $company->industry = $request->industry;
-        $company->instagram = $request->instagram;
-        $company->facebook = $request->facebook;
-        $company->employees = $request->employees;
-        $company->address = $request->address;
+            // Simpan perubahan
+            $company->save();
 
-        // Simpan perubahan
-        $company->save();
-
-        return redirect()->back()->with('success', 'Profil berhasil diupdate');
+            DB::commit();
+            return redirect()->back()->with('success', 'Profil berhasil diupdate');
+        } catch (\Exception $e) {
+            DB::rollBack();
+            Log::debug($e);
+            abort(400, 'Gagal memperbarui profil');
+            }
     }
 
 
@@ -137,31 +146,5 @@ class DashboardPerusahaanController extends Controller
         $company = auth()->guard('company')->user();
         $webinars = Webinar::where('company_id', $company->id)->get();
         return view('dashboardPerusahaan.webinar', compact('webinars'));
-    }
-
-    public function createWebinar()
-    {
-        return view('dashboardPerusahaan.posting-webinar');
-    }
-
-    public function storeWebinar(CreateWebinarRequest $request)
-    {
-        // Simpan data webinar baru
-        $webinar = new Webinar();
-        $webinar->company_id = auth()->guard('company')->user()->id;
-        $webinar->judul_webinar = $request->judul_webinar;
-        $webinar->narasumber = $request->narasumber;
-        $webinar->jabatan_narasumber = $request->jabatan_narasumber;
-        $webinar->tagline = $request->tagline;
-        $webinar->deskripsi = $request->deskripsi;
-        $webinar->tanggal = $request->tanggal;
-        $webinar->waktu_mulai = $request->waktu_mulai;
-        $webinar->waktu_selesai = $request->waktu_selesai;
-        $webinar->platform = $request->platform;
-        $webinar->lokasi = $request->lokasi;
-        // poster belum ada
-        $webinar->save();
-
-        return redirect()->back()->with('success', 'Webinar berhasil dibuat');
     }
 }

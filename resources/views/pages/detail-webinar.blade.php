@@ -46,17 +46,15 @@
                                             {{ date('g:i A', strtotime($webinar->waktu_selesai)) }}
                                             (GMT+7)
                                         </p>
-                                        <p style="margin-top: -5px;">Lokasi: {{ $webinar->lokasi }}</p>
-                                        {{-- kalau lokasi webinar online, tunjukkan platform --}}
-                                        @if ($webinar->lokasi == 'Online')
-                                            <p style="margin-top: -5px;">Platform:
-                                                {{ $webinar->platform }}</p>
-                                        @endif
+                                        <p style="margin-top: -5px;">Platform:
+                                            {{ $webinar->platform }}</p>
                                     </div>
                                 </div>
-                                <form action="{{ route('webinar.register', ['webinar' => $webinar->id]) }}" method="POST">
-                                    @csrf
-                                    @auth
+
+                                @if (auth()->check())
+                                    <form action="{{ route('webinar.register', ['webinar' => $webinar->id]) }}"
+                                        method="POST">
+                                        @csrf
                                         @if (in_array($webinar->id, $registeredWebinars))
                                             <button type="submit" class="btn text-white w-100 text-center fw-semibold mb-2"
                                                 style="background-color: #ff5483">Batalkan
@@ -65,35 +63,35 @@
                                             <button type="submit" class="btn w-100 text-white fw-semibold mb-2"
                                                 style="background-color: #074173">Daftar</button>
                                         @endif
-                                    @else
-                                        @auth('company')
-                                            <div class="pb-5"></div>
-                                        @else
-                                            <button type="submit" class="btn w-100 text-white fw-semibold mb-2"
-                                                style="background-color: #074173">Daftar</button>
-                                        @endauth
-                                    @endauth
+                                    </form>
+                                @elseif (auth()->guard('company')->check())
+                                    <div class="pb-5"></div>
+                                @else
+                                    <button class="btn w-100 text-white fw-semibold mb-2" data-bs-toggle="modal"
+                                        data-bs-target="#loginModal" style="background-color: #074173">
+                                        Daftar
+                                    </button>
+                                @endif
 
-                                </form>
-                                @auth
+                                @if (auth()->check())
                                     @if (in_array($webinar->id, $registeredWebinars))
-                                        <div class="alert alert-success text-center" role="alert" style="font-size: 0.8rem">
+                                        <div class="alert alert-success text-center" role="alert"
+                                            style="font-size: 0.8rem">
                                             Anda sudah terdaftar pada Webinar ini.
                                         </div>
                                     @else
-                                        <div class="alert alert-danger text-center" role="alert" style="font-size: 0.8rem">
+                                        <div class="alert alert-danger text-center" role="alert"
+                                            style="font-size: 0.8rem">
                                             Anda belum terdaftar pada Webinar ini.
                                         </div>
                                     @endif
+                                @elseif (auth()->guard('company')->check())
+                                    <div class="mb-5"></div>
                                 @else
-                                    @auth('company')
-                                        <div class="mb-5"></div>
-                                    @else
-                                        <div class="alert alert-danger text-center" role="alert" style="font-size: 0.8rem">
-                                            Anda belum terdaftar pada Webinar ini.
-                                        </div>
-                                    @endauth
-                                @endauth
+                                    <div class="alert alert-danger text-center" role="alert" style="font-size: 0.8rem">
+                                        Anda belum terdaftar pada Webinar ini.
+                                    </div>
+                                @endif
 
                                 @if (session('success'))
                                     <!-- Modal Pendaftaran Webinar -->
@@ -133,5 +131,41 @@
                 </div>
             </div>
         </div>
+
+        <!-- Modal Login -->
+        <div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content rounded-4" style="background-color: #CEDDE6">
+                    <div class="modal-body p-5">
+                        <h1 class="modal-title fs-4 text-center font-kufam fw-bold" id="loginModalLabel"
+                            style="color: #074173">
+                            Login menggunakan akun ApprenTech
+                        </h1>
+                        <p class="m-0 text-center" style="color: #074173">
+                            Anda bisa melakukan aksi ini ketika Anda sudah login dan
+                            menggunakan akun ApprenTech.
+                        </p>
+                        <div class="d-flex flex-column align-items-center mt-4">
+                            <a href="{{ route('login') }}" class="btn text-white rounded-pill px-5"
+                                style="background-color: #074173">Login</a>
+                            <p class="m-0 my-3" style="color: #074173">Belum punya akun?</p>
+                            <a href="{{ route('login.google') }}" class="btn text-white rounded-pill px-3 py-2"
+                                style="background-color: #EEF5FF; color: #074173">
+                                <div class="d-flex align-items-center gap-3">
+                                    <img class="rounded-circle" src="{{ asset('assets/img/google_logo.png') }}"
+                                        alt="Google Logo" width="35px">
+                                    <p class="m-0" style="color: #074173">Daftar dengan Google</p>
+                                </div>
+                            </a>
+                            <div class="d-flex justify-content-start w-100 mt-4">
+                                <a href="{{ route('register') }}" class="text-decoration-none"
+                                    style="color: #074173">Sudah punya akun?</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Modal Login End -->
     </section>
 @endsection
