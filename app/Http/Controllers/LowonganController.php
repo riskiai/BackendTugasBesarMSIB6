@@ -24,7 +24,8 @@ class LowonganController extends Controller
 
         if ($user) {
             $lowonganTersimpan = $user->simpanLowongans->pluck('lowongan_id')->toArray();
-            return view('pages.detail-lowongan', compact('lowongan', 'lowonganTersimpan'));
+            $appliedLowongan = $user->applyLowongans->pluck('lowongan_id')->toArray();
+            return view('pages.detail-lowongan', compact('lowongan', 'lowonganTersimpan', 'appliedLowongan'));
         } else {
             return view('pages.detail-lowongan', compact('lowongan'));
         }
