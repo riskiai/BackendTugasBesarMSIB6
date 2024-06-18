@@ -10,6 +10,14 @@
                 <a href="{{ route('perusahaan.kerja.create') }}" class="btn px-3 py-2 text-white rounded-pill"
                     style="background-color: #074173;">Tambah Lowongan Kerja</a>
             </div>
+
+            @if (session('success'))
+                <div class="alert alert-success alert-dismissible fade show" role="alert">
+                    <strong>{{ session('success') }}</strong>
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+            @endif
+
             <table class="table">
                 <thead class="bg-primary text-white">
                     <tr>
@@ -55,8 +63,11 @@
                             <td class="px-0 text-secondary fs-5"
                                 style="{{ $loop->last ? 'border-radius: 0 0 20px 0' : '' }}">
                                 <div class="d-flex gap-3 justify-content-center">
-                                    <a href="" class="btn btn-warning px-4">Edit</a>
-                                    <a href="" class="btn btn-danger">Delete</a>
+                                    <a href="{{ route('perusahaan.kerja.edit', ['lowongan' => $lowongan->id]) }}" class="fw-semibold btn btn-warning px-4">Edit</a>
+                                    <form action="{{ route('perusahaan.kerja.delete', ['lowongan' => $lowongan->id]) }}" method="POST">
+                                        @csrf
+                                        <button type="submit" class="fw-semibold btn btn-danger">Delete</button>
+                                    </form>
                                 </div>
                             </td>
                         </tr>

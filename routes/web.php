@@ -68,7 +68,7 @@ Route::prefix('lowongan')->group(function () {
 Route::prefix('webinar')->group(function () {
     Route::get('/', [WebinarController::class, 'webinar'])->name('webinar');
     Route::get('/{webinar}', [WebinarController::class, 'detailWebinar']);
-    Route::post('/{webinar}/register', [WebinarController::class, 'toggleRegisterWebinar'])->name('webinar.register')->middleware('authenticate');
+    Route::post('/{webinar}/register', [WebinarController::class, 'toggleRegisterWebinar'])->name('webinar.register');
 });
 
 // admin
@@ -146,11 +146,17 @@ Route::prefix('dashboard')->group(function () {
                 Route::get('/', [DashboardPerusahaanController::class, 'lowonganMagang'])->name('perusahaan.magang');
                 Route::get('/create', [DashboardPerusahaanController::class, 'createLowonganMagang'])->name('perusahaan.magang.create');
                 Route::post('/store', [LowonganController::class, 'storeMagang'])->name('perusahaan.magang.store');
+                Route::get('/{lowongan}/edit', [LowonganController::class, 'editMagang'])->name('perusahaan.magang.edit');
+                Route::put('/{lowongan}/update', [LowonganController::class, 'updateMagang'])->name('perusahaan.magang.update');
+                Route::post('/{lowongan}/delete', [LowonganController::class, 'deleteMagang'])->name('perusahaan.magang.delete');
             });
             Route::prefix('kerja')->group(function () {
                 Route::get('/', [DashboardPerusahaanController::class, 'lowonganKerja'])->name('perusahaan.kerja');
                 Route::get('/create', [DashboardPerusahaanController::class, 'createLowonganKerja'])->name('perusahaan.kerja.create');
                 Route::post('/store', [LowonganController::class, 'storeKerja'])->name('perusahaan.kerja.store');
+                Route::get('/{lowongan}/edit', [LowonganController::class, 'editKerja'])->name('perusahaan.kerja.edit');
+                Route::put('/{lowongan}/update', [LowonganController::class, 'updateKerja'])->name('perusahaan.kerja.update');
+                Route::post('/{lowongan}/delete', [LowonganController::class, 'deleteKerja'])->name('perusahaan.kerja.delete');
             });
         });
         Route::prefix('webinar')->group(function () {
