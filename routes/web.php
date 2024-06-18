@@ -124,7 +124,7 @@ Route::prefix('admin')->middleware(['authenticate', 'role:admin'])->group(functi
 // Dashboard
 Route::prefix('dashboard')->group(function () {
     // Dashboard Mahasiswa
-    Route::prefix('mahasiswa')->middleware(['authenticate', 'role:user,admin'])->group(function () {
+    Route::prefix('mahasiswa')->middleware(['authenticate', 'role:user|admin'])->group(function () {
         Route::get('/', [DashboardMahasiswaController::class, 'dashboardAwal'])->name('mahasiswa.index');
         Route::get('/profil/edit', [DashboardMahasiswaController::class, 'editProfil'])->name('mahasiswa.profil');
         Route::put('/profil/update', [DashboardMahasiswaController::class, 'updateProfil'])->name('mahasiswa.profil.update');
