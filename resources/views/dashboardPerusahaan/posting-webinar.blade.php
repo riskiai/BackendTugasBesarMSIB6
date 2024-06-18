@@ -33,7 +33,7 @@
                     <div class="col">
                         <div class="mb-3">
                             <label for="judulWebinar" class="form-label">Judul Webinar:</label>
-                            <input type="text" name="judul_webinar" class="form-control" id="judulWebinar" value="{{ old('judul_webinar') }}">
+                            <input type="text" name="judul_webinar" class="form-control rounded-4" style="background-color: #EEF5FF" placeholder="Masukkan judul webinar" id="judulWebinar" value="{{ old('judul_webinar') }}" required>
                             @error('judul_webinar')
                                 <div class="text-danger mt-2">{{ $message }}</div>
                             @enderror
@@ -41,14 +41,14 @@
                         <div class="mb-3 ">
                             <label for="tagline" class="form-label">Tagline
                                 Webinar:</label>
-                            <input type="text" name="tagline" class="form-control" id="tagline" value="{{ old('tagline') }}">
+                            <input type="text" name="tagline" class="form-control rounded-4" style="background-color: #EEF5FF" placeholder="Masukkan tagline webinar" id="tagline" value="{{ old('tagline') }}" required>
                             @error('tagline')
                                 <div class="text-danger mt-2">{{ $message }}</div>
                             @enderror
                         </div>
                         <div class="mb-3 ">
                             <label for="narasumber" class="form-label">Narasumber:</label>
-                            <input type="text" name="narasumber" class="form-control" id="narasumber" value="{{ old('narasumber') }}">
+                            <input type="text" name="narasumber" class="form-control rounded-4" style="background-color: #EEF5FF" placeholder="Masukkan narasumber webinar" id="narasumber" value="{{ old('narasumber') }}" required>
                             @error('narasumber')
                                 <div class="text-danger mt-2">{{ $message }}</div>
                             @enderror
@@ -56,14 +56,14 @@
                         <div class="mb-3 ">
                             <label for="jabatan_narasumber" class="form-label">Jabatan
                                 Narasumber:</label>
-                            <input type="text" name="jabatan_narasumber" class="form-control" id="jabatan_narasumber" value="{{ old('jabatan_narasumber') }}">
+                            <input type="text" name="jabatan_narasumber" class="form-control rounded-4" style="background-color: #EEF5FF" placeholder="Masukkan jabatan narasumber webinar" id="jabatan_narasumber" value="{{ old('jabatan_narasumber') }}" required>
                             @error('jabatan_narasumber')
                                 <div class="text-danger mt-2">{{ $message }}</div>
                             @enderror
                         </div>
                         <div class="mb-3 ">
                             <label for="deskripsi" class="form-label">Deskripsi Webinar:</label>
-                            <textarea class="form-control" name="deskripsi" id="deskripsi" rows="2">{{ old('deskripsi') }}</textarea>
+                            <textarea class="form-control rounded-4" style="background-color: #EEF5FF" name="deskripsi" id="deskripsi" placeholder="Masukkan deskripsi webinar" rows="2">{{ old('deskripsi') }}</textarea>
                             @error('deskripsi')
                                 <div class="text-danger mt-2">{{ $message }}</div>
                             @enderror
@@ -72,7 +72,7 @@
                     <div class="col">
                         <div class="mb-3 ">
                             <label for="poster" class="form-label">Poster Webinar:</label>
-                            <input type="file" name="poster" class="form-control" id="poster">
+                            <input type="file" name="poster" class="form-control rounded-4" style="background-color: #EEF5FF" id="poster">
                             @error('poster')
                                 <div class="text-danger mt-2">{{ $message }}</div>
                             @enderror
@@ -82,7 +82,7 @@
                             <div class="row mb-2">
                                 <div class="col-sm-6">
                                     <label for="tanggal" class="form-label">Tanggal:</label>
-                                    <input type="date" name="tanggal" class="form-control" id="tanggal" value="{{ old('tanggal') }}">
+                                    <input type="date" name="tanggal" class="form-control rounded-4" style="background-color: #EEF5FF" id="tanggal" value="{{ old('tanggal') }}" required>
                                     @error('tanggal')
                                         <div class="text-danger mt-2">{{ $message }}</div>
                                     @enderror
@@ -91,14 +91,14 @@
                             <div class="row mb-2">
                                 <div class="col-sm-6">
                                     <label for="waktu" class="form-label">Waktu Mulai:</label>
-                                    <input type="time" name="waktu_mulai" class="form-control" id="waktu" value="{{ old('waktu_mulai') }}">
+                                    <input type="time" name="waktu_mulai" class="form-control rounded-4" style="background-color: #EEF5FF" id="waktu" value="{{ old('waktu_mulai') }}" required>
                                     @error('waktu_mulai')
                                         <div class="text-danger mt-2">{{ $message }}</div>
                                     @enderror
                                 </div>
                                 <div class="col-sm-6">
                                     <label for="waktu" class="form-label">Waktu Selesai:</label>
-                                    <input type="time" name="waktu_selesai" class="form-control" id="waktu" value="{{ old('waktu_selesai') }}">
+                                    <input type="time" name="waktu_selesai" class="form-control rounded-4" style="background-color: #EEF5FF" id="waktu" value="{{ old('waktu_selesai') }}" required>
                                     @error('waktu_selesai')
                                         <div class="text-danger mt-2">{{ $message }}</div>
                                     @enderror
@@ -106,15 +106,8 @@
                             </div>
                             <div class="row mb-2">
                                 <div class="col-sm-6">
-                                    <label for="lokasi" class="form-label">Lokasi:</label>
-                                    <input type="text" name="lokasi" class="form-control" id="lokasi" value="{{ old('lokasi') }}">
-                                    @error('lokasi')
-                                        <div class="text-danger mt-2">{{ $message }}</div>
-                                    @enderror
-                                </div>
-                                <div class="col-sm-6">
                                     <label for="platform" class="form-label">Platform:</label>
-                                    <input type="text" name="platform" class="form-control" id="platform" placeholder="Diisi jika lokasi online" value="{{ old('platform') }}">
+                                    <input type="text" name="platform" class="form-control rounded-4" style="background-color: #EEF5FF" id="platform" placeholder="Masukkan platform webinar" value="{{ old('platform') }}" required>
                                     @error('platform')
                                         <div class="text-danger mt-2">{{ $message }}</div>
                                     @enderror
