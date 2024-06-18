@@ -36,12 +36,12 @@ use App\Http\Controllers\WebinarController;
 Route::get('/', function () {
     return redirect()->route('beranda');
 });
-Route::get('/login', [AuthController::class, 'login'])->name('login');
+Route::get('/login', [AuthController::class, 'login'])->name('login')->middleware('stayLogged');
 Route::post('/login', [AuthController::class, 'authenticate'])->name('login.authenticate');
 Route::get('/login/google', [AuthController::class, 'loginGoogle'])->name('login.google');
 Route::get('/login/google/callback', [AuthController::class, 'loginGoogleCallback'])->name('login.google.callback');
 Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
-Route::prefix('register')->group(function () {
+Route::prefix('register')->middleware('stayLogged')->group(function () {
     Route::get('/', [AuthController::class, 'index'])->name('register');
     Route::get('/user', [AuthController::class, 'registerUser'])->name('register.user');
     Route::post('/user/store', [AuthController::class, 'storeUser'])->name('register.user.store');
@@ -72,7 +72,7 @@ Route::prefix('webinar')->group(function () {
 });
 
 // admin
-Route::prefix('admin')->group(function () {
+Route::prefix('admin')->middleware(['authenticate', 'role:admin'])->group(function () {
     Route::get('/', function () {
         return redirect()->route('admin.dashboard');
     });
@@ -124,7 +124,7 @@ Route::prefix('admin')->group(function () {
 // Dashboard
 Route::prefix('dashboard')->group(function () {
     // Dashboard Mahasiswa
-    Route::prefix('mahasiswa')->group(function () {
+    Route::prefix('mahasiswa')->middleware(['authenticate', 'role:user,admin'])->group(function () {
         Route::get('/', [DashboardMahasiswaController::class, 'dashboardAwal'])->name('mahasiswa.index');
         Route::get('/profil/edit', [DashboardMahasiswaController::class, 'editProfil'])->name('mahasiswa.profil');
         Route::put('/profil/update', [DashboardMahasiswaController::class, 'updateProfil'])->name('mahasiswa.profil.update');
@@ -134,7 +134,7 @@ Route::prefix('dashboard')->group(function () {
     });
 
     // Dashboard Perusahaan
-    Route::prefix('perusahaan')->group(function () {
+    Route::prefix('perusahaan')->middleware(['authenticate'])->group(function () {
         Route::get('/', [DashboardPerusahaanController::class, 'index'])->name('perusahaan.index');
         Route::get('/awal', [DashboardPerusahaanController::class, 'perusahaan']);
         Route::get('/profil/edit', [DashboardPerusahaanController::class, 'editProfil'])->name('perusahaan.profil');

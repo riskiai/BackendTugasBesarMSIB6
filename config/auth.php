@@ -42,7 +42,7 @@ return [
         ],
         'company' => [  // New guard for company login
             'driver' => 'session',
-            'provider' => 'companies', // Assuming your provider is 'companies'
+            'provider' => 'companies',
         ],
     ],
 
