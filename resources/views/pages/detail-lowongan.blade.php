@@ -19,7 +19,10 @@
                                     <div class="d-flex align-items-center justify-content-between">
                                         <div>
                                             <h2 class="font-kufam">{{ $lowongan->company->name }}</h2>
-                                            <h4 class="text-secondary">{{ $lowongan->lokasi }}</h4>
+                                            <div class="d-flex align-items-center gap-3">
+                                                <i class="fa-solid fa-location-dot fs-4"></i>
+                                                <h4 class="text-secondary m-0">{{ $lowongan->lokasi ? $lowongan->lokasi : 'Online' }}</h4>
+                                            </div>
                                         </div>
                                         <div class="d-flex gap-3 align-items-center">
 

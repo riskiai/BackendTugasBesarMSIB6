@@ -34,28 +34,28 @@
             <a href="{{ route('perusahaan.magang') }}" class="w-100 text-decoration-none text-white">
                 <div class="w-100 h-100 sidebar-button ps-3 py-2 d-flex align-items-center gap-2"
                     style="border-radius: 20px 0 0 20px; {{ request()->is('dashboard/perusahaan/lowongan/magang') ? 'background-color: #CEDDE6; color: #074173;' : '' }}">
-                    <i style="width: 20px" class="fa-solid fa-user-pen"></i>
+                    <i style="width: 20px" class="fa-solid fa-suitcase"></i>
                     Lowongan Magang
                 </div>
             </a>
             <a href="{{ route('perusahaan.kerja') }}" class="w-100 text-decoration-none text-white">
                 <div class="w-100 h-100 sidebar-button ps-3 py-2 d-flex align-items-center gap-2"
                     style="border-radius: 20px 0 0 20px; {{ request()->is('dashboard/perusahaan/lowongan/kerja') ? 'background-color: #CEDDE6; color: #074173;' : '' }}">
-                    <i style="width: 20px" class="fa-solid fa-user-pen"></i>
+                    <i style="width: 20px" class="fa-solid fa-briefcase"></i>
                     Lowongan Kerja
                 </div>
             </a>
             <a href="{{ route('perusahaan.webinar') }}" class="w-100 text-decoration-none text-white">
                 <div class="w-100 h-100 sidebar-button ps-3 py-2 d-flex align-items-center gap-2"
                     style="border-radius: 20px 0 0 20px; {{ request()->is('dashboard/perusahaan/webinar') ? 'background-color: #CEDDE6; color: #074173;' : '' }}">
-                    <i style="width: 20px" class="fa-solid fa-user-pen"></i>
+                    <i style="width: 20px" class="fa-solid fa-desktop"></i>
                     Webinar Perusahaan
                 </div>
             </a>
             <a href="{{ route('perusahaan.lamaran') }}" class="w-100 text-decoration-none text-white">
                 <div class="w-100 h-100 sidebar-button ps-3 py-2 d-flex align-items-center gap-2"
-                    style="border-radius: 20px 0 0 20px; {{ request()->is('dashboard/perusahaan/lowongan/pendaftar') ? 'background-color: #CEDDE6; color: #074173;' : '' }}">
-                    <i style="width: 20px" class="fa-solid fa-user-pen"></i>
+                    style="border-radius: 20px 0 0 20px; {{ request()->is('dashboard/perusahaan/lamaran') ? 'background-color: #CEDDE6; color: #074173;' : '' }}">
+                    <i style="width: 20px" class="fa-solid fa-newspaper"></i>
                     Informasi Pendaftar
                 </div>
             </a>

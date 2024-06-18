@@ -34,7 +34,7 @@
                     <div class="col">
                         <div class="mb-3">
                             <label for="Judul" class="form-label">Judul</label>
-                            <input type="text" name="judul" class="form-control" id="Judul"
+                            <input type="text" name="judul" class="form-control rounded-4" style="background-color: #EEF5FF" id="Judul"
                                 placeholder="Masukkan Judul" value="{{ old('judul') }}">
                             @error('judul')
                                 <div class="text-danger mt-2">{{ $message }}</div>
@@ -42,7 +42,7 @@
                         </div>
                         <div class="mb-3">
                             <label for="Lokasi" class="form-label">Lokasi</label>
-                            <input type="text" name="lokasi" class="form-control" id="Lokasi" placeholder="Lokasi"
+                            <input type="text" name="lokasi" class="form-control rounded-4" style="background-color: #EEF5FF" id="Lokasi" placeholder="Lokasi (Kosongkan apabila online)"
                                 value="{{ old('lokasi') }}">
                             @error('lokasi')
                                 <div class="text-danger mt-2">{{ $message }}</div>
@@ -50,7 +50,7 @@
                         </div>
                         <div class="mb-3">
                             <label for="Tipe" class="form-label">Tipe</label>
-                            <select class="form-select" name="tipe" id="Tipe" value="{{ old('tipe') }}">
+                            <select class="form-select rounded-4" name="tipe" id="Tipe" style="background-color: #EEF5FF" value="{{ old('tipe') }}">
                                 <option selected>Pilih Tipe</option>
                                 <option value="onsite">Onsite</option>
                                 <option value="hybrid">Hybrid</option>
@@ -62,7 +62,7 @@
                         </div>
                         <div class="mb-3">
                             <label for="gaji" class="form-label">Gaji</label>
-                            <input type="text" name="gaji" class="form-control" id="gaji" placeholder="Gaji"
+                            <input type="text" name="gaji" class="form-control rounded-4" style="background-color: #EEF5FF" id="gaji" placeholder="Gaji"
                                 value="{{ old('gaji') }}">
                             @error('gaji')
                                 <div class="text-danger mt-2">{{ $message }}</div>
@@ -71,7 +71,7 @@
                         <div class="mb-3">
                             <label for="deskripsi" class="form-label">Deskripsi
                                 Pekerjaan</label>
-                            <textarea class="form-control" name="deskripsi" id="deskripsi" rows="3">{{ old('deskripsi') }}</textarea>
+                            <textarea class="form-control rounded-4" style="background-color: #EEF5FF" name="deskripsi" id="deskripsi" rows="3">{{ old('deskripsi') }}</textarea>
                             @error('deskripsi')
                                 <div class="text-danger mt-2">{{ $message }}</div>
                             @enderror
@@ -80,7 +80,7 @@
                     <div class="col">
                         <div class="mb-3">
                             <label for="Deadline" class="form-label">Deadline Penutupan Pendaftaran</label>
-                            <input type="date" name="deadline" class="form-control" id="Deadline"
+                            <input type="date" name="deadline" class="form-control rounded-4" style="background-color: #EEF5FF" id="Deadline"
                                 value="{{ old('deadline') }}">
                             @error('deadline')
                                 <div class="text-danger mt-2">{{ $message }}</div>
@@ -88,7 +88,7 @@
                         </div>
                         <div class="mb-3">
                             <label for="kualifikasi" class="form-label">Kualifikasi</label>
-                            <textarea class="form-control" name="kualifikasi" id="kualifikasi" rows="3">{{ old('kualifikasi') }}</textarea>
+                            <textarea class="form-control rounded-4" style="background-color: #EEF5FF" name="kualifikasi" id="kualifikasi" rows="3">{{ old('kualifikasi') }}</textarea>
                             @error('kualifikasi')
                                 <div class="text-danger mt-2">{{ $message }}</div>
                             @enderror
@@ -98,7 +98,7 @@
                             <div class="d-flex justify-content-between">
                                 <div class="mb-3" style="width: 45%">
                                     <label for="tanggal_mulai" class="form-label">Tanggal Mulai</label>
-                                    <input type="date" name="tanggal_mulai" class="form-control" id="tanggal_mulai"
+                                    <input type="date" name="tanggal_mulai" class="form-control rounded-4" style="background-color: #EEF5FF" id="tanggal_mulai"
                                         value="{{ old('tanggal_mulai') }}">
                                     @error('tanggal_mulai')
                                         <div class="text-danger mt-2">{{ $message }}</div>
@@ -106,7 +106,7 @@
                                 </div>
                                 <div class="mb-3" style="width: 45%">
                                     <label for="tanggal_berakhir" class="form-label">Tanggal Selesai</label>
-                                    <input type="date" name="tanggal_berakhir" class="form-control"
+                                    <input type="date" name="tanggal_berakhir" class="form-control rounded-4" style="background-color: #EEF5FF"
                                         id="tanggal_berakhir" value="{{ old('tanggal_berakhir') }}">
                                     @error('tanggal_berakhir')
                                         <div class="text-danger mt-2">{{ $message }}</div>

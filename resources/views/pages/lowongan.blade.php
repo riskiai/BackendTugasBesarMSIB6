@@ -46,14 +46,14 @@
                         <div class="col-lg-4 my-4">
                             <div class="card border-0 p-4 text-white" style="background-color: #074173;">
                                 <div class="d-flex align-items-start">
-                                    <img src="{{ asset('assets/img/visi.png') }}" alt="Deskripsi Gambar"
+                                    <img src="{{ $lowongan->company->foto_profil ? asset('storage/photo-profile/' . $lowongan->company->foto_profil) :  asset('assets/img/visi.png') }}" alt="Deskripsi Gambar"
                                         class="rounded-circle border border-primary me-3" style="width: 20%;" />
                                     <div class="d-flex flex-column">
                                         <h5 class="card-title fw-bold">{{ $lowongan->judul }}</h5>
                                         <div>
                                             <div class="d-flex align-items-center mt-2">
-                                                <img src="{{ asset('assets/img/marketeq.png') }}" alt="Logo"
-                                                    class="me-2" />
+                                                <img src="{{ asset('assets/img/marketeq.png') }}"
+                                                    alt="Logo" class="me-2" />
                                                 <p class="mb-0">{{ $lowongan->company->name }}</p>
                                             </div>
                                             <p class="m-0 ps-4" style="font-size: 0.9rem">
@@ -68,7 +68,7 @@
                                             class="me-2" />
                                         <div class="w-100 d-flex align-items-center justify-content-between">
                                             <p class="mb-0">
-                                                {{ $lowongan->lokasi ?? 'Online' }}
+                                                {{ $lowongan->lokasi ? $lowongan->lokasi : 'Online' }}
                                             </p>
                                             <p class="mb-0">
                                                 Tipe: {{ $lowongan->jenis }}
