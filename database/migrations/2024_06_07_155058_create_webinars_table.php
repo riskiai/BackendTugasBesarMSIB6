@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('webinars', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('company_id')->nullable();
+            $table->unsignedBigInteger('company_id');
             $table->string('judul_webinar');
             $table->string('narasumber');
             $table->string('jabatan_narasumber');
@@ -22,9 +22,8 @@ return new class extends Migration
             $table->date('tanggal');
             $table->time('waktu_mulai');
             $table->time('waktu_selesai');
-            $table->string('platform')->nullable();
-            $table->string('lokasi');
-            $table->string('poster')->nullable();
+            $table->string('platform');
+            $table->text('poster')->nullable();
             $table->timestamps();
 
             $table->foreign('company_id')->references('id')->on('companies');

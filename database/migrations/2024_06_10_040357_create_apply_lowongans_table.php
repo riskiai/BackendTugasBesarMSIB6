@@ -15,10 +15,10 @@ return new class extends Migration
             $table->id();
             $table->unsignedBigInteger('lowongan_id');
             $table->unsignedBigInteger('user_id');
-            $table->string('pertanyaan1')->nullable();
-            $table->string('pertanyaan2')->nullable();
-            $table->string('pertanyaan3')->nullable();
-            $table->string('cv')->nullable();
+            $table->text('pertanyaan1')->nullable();
+            $table->text('pertanyaan2')->nullable();
+            $table->text('pertanyaan3')->nullable();
+            $table->text('cv');
             $table->enum('status', ['pending', 'accepted', 'rejected'])->default('pending');
             $table->timestamps();
 

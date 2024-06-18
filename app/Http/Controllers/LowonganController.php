@@ -14,7 +14,7 @@ class LowonganController extends Controller
 {
     public function lowongan()
     {
-        $lowongans = Lowongan::paginate(6);
+        $lowongans = Lowongan::latest()->paginate(6);
         return view('pages.lowongan', compact('lowongans'));
     }
 
@@ -24,7 +24,8 @@ class LowonganController extends Controller
 
         if ($user) {
             $lowonganTersimpan = $user->simpanLowongans->pluck('lowongan_id')->toArray();
-            return view('pages.detail-lowongan', compact('lowongan', 'lowonganTersimpan'));
+            $appliedLowongan = $user->applyLowongans->pluck('lowongan_id')->toArray();
+            return view('pages.detail-lowongan', compact('lowongan', 'lowonganTersimpan', 'appliedLowongan'));
         } else {
             return view('pages.detail-lowongan', compact('lowongan'));
         }
@@ -96,6 +97,34 @@ class LowonganController extends Controller
         return redirect()->route('perusahaan.magang')->with('success', 'Berhasil membuat lowongan magang');
     }
 
+    public function editMagang(Lowongan $lowongan)
+    {
+        return view('dashboardPerusahaan.edit-lowongan-magang', compact('lowongan'));
+    }
+
+    public function updateMagang(CreateMagangRequest $request, Lowongan $lowongan)
+    {
+        $lowongan->update([
+            'judul' => $request->judul,
+            'deskripsi' => $request->deskripsi,
+            'tipe' => $request->tipe,
+            'lokasi' => $request->lokasi,
+            'gaji' => $request->gaji,
+            'kualifikasi' => $request->kualifikasi,
+            'deadline' => $request->deadline,
+            'tanggal_mulai' => $request->tanggal_mulai,
+            'tanggal_berakhir' => $request->tanggal_berakhir,
+        ]);
+
+        return redirect()->route('perusahaan.magang')->with('success', 'Berhasil mengubah lowongan magang');
+    }
+
+    public function deleteMagang(Lowongan $lowongan)
+    {
+        $lowongan->delete();
+        return redirect()->back()->with('success', 'Berhasil menghapus lowongan');
+    }
+
     public function storekerja(CreateKerjaRequest $request)
     {
         // Simpan data lowongan
@@ -112,5 +141,31 @@ class LowonganController extends Controller
         ]);
 
         return redirect()->route('perusahaan.kerja')->with('success', 'Berhasil membuat lowongan magang');
+    }
+
+    public function editKerja(Lowongan $lowongan)
+    {
+        return view('dashboardPerusahaan.edit-lowongan-kerja', compact('lowongan'));
+    }
+
+    public function updateKerja(CreateKerjaRequest $request, Lowongan $lowongan)
+    {
+        $lowongan->update([
+            'judul' => $request->judul,
+            'deskripsi' => $request->deskripsi,
+            'tipe' => $request->tipe,
+            'lokasi' => $request->lokasi,
+            'gaji' => $request->gaji,
+            'kualifikasi' => $request->kualifikasi,
+            'deadline' => $request->deadline,
+        ]);
+
+        return redirect()->route('perusahaan.kerja')->with('success', 'Berhasil mengubah lowongan kerja');
+    }
+
+    public function deleteKerja(Lowongan $lowongan)
+    {
+        $lowongan->delete();
+        return redirect()->back()->with('success', 'Berhasil menghapus lowongan');
     }
 }

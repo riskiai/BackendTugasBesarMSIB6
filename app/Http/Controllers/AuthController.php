@@ -8,6 +8,7 @@ use App\Models\Company;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Laravel\Socialite\Facades\Socialite;
 
 class AuthController extends Controller
 {
@@ -38,6 +39,33 @@ class AuthController extends Controller
         } else {
             return redirect()->route('login')->with('error', 'Login failed! Email or password is incorrect.');
         }
+    }
+
+    public function loginGoogle()
+    {
+        return Socialite::driver('google')->redirect();
+    }
+
+    public function loginGoogleCallback(Request $request)
+    {
+        $user = Socialite::driver('google')->user();
+
+        $existingUser = User::where('google_id', $user->id)->first();
+        if ($existingUser) {
+            Auth::login($existingUser, true);
+        } else {
+            $newUser = new User();
+            $newUser->google_id = $user->id;
+            $newUser->name = $user->name;
+            $newUser->email = $user->email;
+            $newUser->password = bcrypt('asdfasdf');
+            $newUser->assignRole('user');
+            $newUser->save();
+
+            Auth::login($newUser, true);
+        }
+
+        return redirect()->route('mahasiswa.index');
     }
 
     public function logout(Request $request)

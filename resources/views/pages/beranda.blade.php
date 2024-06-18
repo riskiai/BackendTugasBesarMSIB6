@@ -17,8 +17,7 @@
                         Portal Magang di Industri IT Khusus untuk Mahasiswa dan Fresh Graduate
                     </h1>
                     <h3 data-aos="fade-up" data-aos-delay="100">
-                        Portal magang di Industri IT bagi mahasiswa mampu mengatasi tantangan penting dalam dunia pendidikan
-                        dan karir
+                        Portal magang di Industri IT bagi mahasiswa untuk mengatasi tantangan karir
                     </h3>
                 </div>
                 <div class="col-lg-5 order-1 order-lg-2 hero-img" data-aos="zoom-out">
@@ -149,8 +148,8 @@
                                             alt="Deskripsi Gambar">
                                         <h4 class="card-title">Riski A. Ilham</h4>
                                         <p class="text-white">CEO Dicoding</p>
-                                        <p>“ Portal Magang IT sangat membantu saya menemukan kesempatan magang yang sesuai
-                                            dengan minat dan jurusan saya. ”</p>
+                                        <p>“Portal Magang IT mempermudah kami dalam menemukan kandidat magang yang
+                                            berkualitas dan sesuai dengan kebutuhan perusahaan.”</p>
                                     </div>
                                 </div>
                                 <!-- Item 2 -->
@@ -161,8 +160,8 @@
                                             alt="Deskripsi Gambar">
                                         <h4 class="card-title">Nadhif L. A. Rahim</h4>
                                         <p class="text-white">CEO Codepolitan</p>
-                                        <p>“Portal Magang IT sangat mudah digunakan dan informatif. Saya dapat mencari
-                                            magang berdasarkan lokasi, perusahaan, dan jenis pekerjaan.”</p>
+                                        <p>“Portal Magang IT memberikan akses yang mudah untuk memasang lowongan magang,
+                                            sehingga kami dapat menjangkau lebih banyak mahasiswa berbakat.”</p>
                                     </div>
                                 </div>
                                 <!-- Item 3 -->
@@ -173,7 +172,8 @@
                                             alt="Deskripsi Gambar">
                                         <h4 class="card-title">Kristofel S. Lanpada</h4>
                                         <p class="text-white">CEO PT Amanah Karya Indonesia</p>
-                                        <p>“ Portal Magang IT sangat membantu saya untuk mempersiapkan diri sebelum magang.”
+                                        <p>“Kami sangat terbantu dengan fitur-fitur yang ada di Portal Magang IT, yang
+                                            memungkinkan proses rekrutmen menjadi lebih cepat dan terorganisir.”
                                         </p>
                                     </div>
                                 </div>
@@ -206,7 +206,7 @@
                         <div class="col-lg-4 my-4">
                             <div class="border-0 p-4 rounded-4" style="background-color: #008DDA;">
                                 <div class="d-flex align-items-start mb-5">
-                                    <img src="{{ asset('assets/img/visi.png') }}" alt="Deskripsi Gambar"
+                                    <img src="{{ $lowongan->company->foto_profil ? asset('storage/photo-profile/' . $lowongan->company->foto_profil) : asset('assets/img/visi.png') }}" alt="Deskripsi Gambar"
                                         class="rounded-circle border border-primary me-3" style="width: 20%;" />
                                     <div class="d-flex flex-column">
                                         <h5 class="card-title fw-bold">{{ $lowongan->judul }}</h5>
@@ -257,7 +257,8 @@
                         <h4 class="font-weight-bold mb-2">Pilih lowongan</h4>
                         <p class="mb-4 ms-3">Calon peserta memilih dan mendaftar pada lowongan magang yang dibuka</p>
                         <h4 class="font-weight-bold mb-2">Seleksi</h4>
-                        <p class="mb-4 ms-3">Proses seleksi calon peserta magang oleh perusahaan penyelenggara program magang</p>
+                        <p class="mb-4 ms-3">Proses seleksi calon peserta magang oleh perusahaan penyelenggara program
+                            magang</p>
                         <h4 class="font-weight-bold mb-2">Proses Magang</h4>
                         <p class="mb-4 ms-3">Proses penyelenggaraan magang di perusahaan</p>
                     </div>

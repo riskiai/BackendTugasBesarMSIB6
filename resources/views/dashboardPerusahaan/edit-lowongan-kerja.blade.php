@@ -28,33 +28,37 @@
                 </div>
             @endif
 
-            <form action="{{ route('perusahaan.kerja.store') }}" method="POST" enctype="multipart/form-data">
+            <form action="{{ route('perusahaan.kerja.update', ['lowongan' => $lowongan->id]) }}" method="POST" enctype="multipart/form-data">
                 @csrf
+                @method('PUT')
                 <div class="row">
                     <div class="col">
                         <div class="mb-3">
                             <label for="Judul" class="form-label">Judul</label>
-                            <input type="text" name="judul" class="form-control rounded-4" style="background-color: #EEF5FF" id="Judul"
-                                placeholder="Masukkan Judul" value="{{ old('judul') }}">
+                            <input type="text" name="judul" class="form-control rounded-4"
+                                style="background-color: #EEF5FF" id="Judul" placeholder="Masukkan Judul"
+                                value="{{ $lowongan->judul }}">
                             @error('judul')
                                 <div class="text-danger mt-2">{{ $message }}</div>
                             @enderror
                         </div>
                         <div class="mb-3">
                             <label for="Lokasi" class="form-label">Lokasi</label>
-                            <input type="text" name="lokasi" class="form-control rounded-4" style="background-color: #EEF5FF" id="Lokasi" placeholder="Lokasi"
-                                value="{{ old('lokasi') }}">
+                            <input type="text" name="lokasi" class="form-control rounded-4"
+                                style="background-color: #EEF5FF" id="Lokasi" placeholder="Lokasi"
+                                value="{{ $lowongan->lokasi }}">
                             @error('lokasi')
                                 <div class="text-danger mt-2">{{ $message }}</div>
                             @enderror
                         </div>
                         <div class="mb-3">
                             <label for="Tipe" class="form-label">Tipe</label>
-                            <select class="form-select rounded-4" style="background-color: #EEF5FF" name="tipe" id="Tipe" value="{{ old('tipe') }}">
-                                <option selected>Pilih Tipe</option>
-                                <option value="onsite">Onsite</option>
-                                <option value="hybrid">Hybrid</option>
-                                <option value="online">Online</option>
+                            <select class="form-select rounded-4" style="background-color: #EEF5FF" name="tipe"
+                                id="Tipe" value="{{ old('tipe') }}">
+                                <option>Pilih Tipe</option>
+                                <option {{ $lowongan->tipe == 'onsite' ? 'selected' : '' }} value="onsite">Onsite</option>
+                                <option {{ $lowongan->tipe == 'hybrid' ? 'selected' : '' }} value="hybrid">Hybrid</option>
+                                <option {{ $lowongan->tipe == 'online' ? 'selected' : '' }} value="online">Online</option>
                             </select>
                             @error('tipe')
                                 <div class="text-danger mt-2">{{ $message }}</div>
@@ -63,7 +67,8 @@
                         <div class="mb-3">
                             <label for="deskripsi" class="form-label">Deskripsi
                                 Pekerjaan</label>
-                            <textarea class="form-control rounded-4" style="background-color: #EEF5FF" name="deskripsi" id="deskripsi" rows="3">{{ old('deskripsi') }}</textarea>
+                            <textarea class="form-control rounded-4" style="background-color: #EEF5FF" name="deskripsi" id="deskripsi"
+                                rows="3">{{ $lowongan->deskripsi }}</textarea>
                             @error('deskripsi')
                                 <div class="text-danger mt-2">{{ $message }}</div>
                             @enderror
@@ -72,23 +77,25 @@
                     <div class="col">
                         <div class="mb-3">
                             <label for="gaji" class="form-label">Gaji</label>
-                            <input type="text" name="gaji" class="form-control rounded-4" style="background-color: #EEF5FF" id="gaji" placeholder="Gaji"
-                                value="{{ old('gaji') }}">
+                            <input type="text" name="gaji" class="form-control rounded-4"
+                                style="background-color: #EEF5FF" id="gaji" placeholder="Gaji"
+                                value="{{ $lowongan->gaji }}">
                             @error('gaji')
                                 <div class="text-danger mt-2">{{ $message }}</div>
                             @enderror
                         </div>
                         <div class="mb-3">
                             <label for="Deadline" class="form-label">Deadline Penutupan Pendaftaran</label>
-                            <input type="date" name="deadline" class="form-control rounded-4" style="background-color: #EEF5FF" id="Deadline"
-                                value="{{ old('deadline') }}">
+                            <input type="date" name="deadline" class="form-control rounded-4"
+                                style="background-color: #EEF5FF" id="Deadline" value="{{ $lowongan->deadline }}">
                             @error('deadline')
                                 <div class="text-danger mt-2">{{ $message }}</div>
                             @enderror
                         </div>
                         <div class="mb-3">
                             <label for="kualifikasi" class="form-label">Kualifikasi</label>
-                            <textarea class="form-control rounded-4" style="background-color: #EEF5FF" name="kualifikasi" id="kualifikasi" rows="3">{{ old('kualifikasi') }}</textarea>
+                            <textarea class="form-control rounded-4" style="background-color: #EEF5FF" name="kualifikasi" id="kualifikasi"
+                                rows="3">{{ $lowongan->kualifikasi }}</textarea>
                             @error('kualifikasi')
                                 <div class="text-danger mt-2">{{ $message }}</div>
                             @enderror

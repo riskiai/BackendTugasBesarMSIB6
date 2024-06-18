@@ -23,7 +23,7 @@ class CreateKerjaRequest extends FormRequest
     {
         return [
             'judul' => 'required|string',
-            'lokasi' => 'required|string',
+            'lokasi' => 'string',
             'tipe' => 'required|in:online,onsite,hybrid',
             'gaji' => 'required|integer',
             'deskripsi' => 'required|string',

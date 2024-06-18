@@ -41,7 +41,7 @@
                                             class="img-fluid rounded">
                                         <div class="text">
                                             <h6>Nadhif L. A. Rahim</h6>
-                                            <p style="font-size: smaller;">Back-End</p>
+                                            <p style="font-size: smaller;">Full-Stack</p>
                                         </div>
                                     </div>
                                 </div>
