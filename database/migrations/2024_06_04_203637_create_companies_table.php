@@ -18,8 +18,8 @@ return new class extends Migration
             $table->string('email')->unique();
             $table->string('phone')->unique();
             $table->string('password');
-            $table->string('address')->nullable();
-            $table->string('foto_profil')->nullable();
+            $table->text('address')->nullable();
+            $table->text('foto_profil')->nullable();
             $table->integer('employees')->nullable()->default(0);
             $table->string('industry')->nullable();
             $table->string('website')->nullable();

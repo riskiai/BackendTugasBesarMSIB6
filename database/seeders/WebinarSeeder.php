@@ -24,7 +24,6 @@ class WebinarSeeder extends Seeder
             'tanggal' => Carbon::parse('2024-07-01'),
             'waktu_mulai' => Carbon::parse('10:00:00')->format('H:i:s'),
             'waktu_selesai' => Carbon::parse('12:00:00')->format('H:i:s'),
-            'lokasi' => 'Online',
             'platform' => 'Zoom'
         ]);
 
@@ -38,8 +37,7 @@ class WebinarSeeder extends Seeder
             'tanggal' => Carbon::parse('2024-07-05'),
             'waktu_mulai' => Carbon::parse('14:00:00')->format('H:i:s'),
             'waktu_selesai' => Carbon::parse('16:00:00')->format('H:i:s'),
-            'lokasi' => 'Gedung Serbaguna',
-            'platform' => null
+            'platform' => 'Google Meet'
         ]);
 
         Webinar::create([
@@ -52,7 +50,6 @@ class WebinarSeeder extends Seeder
             'tanggal' => Carbon::parse('2024-07-10'),
             'waktu_mulai' => Carbon::parse('09:00:00')->format('H:i:s'),
             'waktu_selesai' => Carbon::parse('11:00:00')->format('H:i:s'),
-            'lokasi' => 'Online',
             'platform' => 'Microsoft Teams'
         ]);
     }
