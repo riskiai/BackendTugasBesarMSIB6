@@ -38,6 +38,8 @@ Route::get('/', function () {
 });
 Route::get('/login', [AuthController::class, 'login'])->name('login');
 Route::post('/login', [AuthController::class, 'authenticate'])->name('login.authenticate');
+Route::get('/login/google', [AuthController::class, 'loginGoogle'])->name('login.google');
+Route::get('/login/google/callback', [AuthController::class, 'loginGoogleCallback'])->name('login.google.callback');
 Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 Route::prefix('register')->group(function () {
     Route::get('/', [AuthController::class, 'index'])->name('register');

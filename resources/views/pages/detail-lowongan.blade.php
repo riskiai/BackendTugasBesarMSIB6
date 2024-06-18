@@ -108,9 +108,20 @@
                         menggunakan akun ApprenTech.
                     </p>
                     <div class="d-flex flex-column align-items-center mt-4">
-                        <a href="{{ route('login') }}" class="btn text-white rounded-pill px-5 mb-3" style="background-color: #2092D1">Login</a>
-                        <p class="m-0" style="color: #074173">Belum punya akun?</p>
-                        <a href="{{ route('register') }}" class="btn text-white rounded-pill px-5" style="background-color: #074173;">Daftar</a>
+                        <a href="{{ route('login') }}" class="btn text-white rounded-pill px-5"
+                            style="background-color: #074173">Login</a>
+                        <p class="m-0 my-3" style="color: #074173">Belum punya akun?</p>
+                        <a href="{{ route('login.google') }}" class="btn text-white rounded-pill px-3 py-2"
+                            style="background-color: #EEF5FF; color: #074173">
+                            <div class="d-flex align-items-center gap-3">
+                                <img class="rounded-circle" src="{{ asset('assets/img/google_logo.png') }}"
+                                    alt="Google Logo" width="35px">
+                                <p class="m-0" style="color: #074173">Daftar dengan Google</p>
+                            </div>
+                        </a>
+                        <div class="d-flex justify-content-start w-100 mt-4">
+                            <a href="{{ route('register') }}" class="text-decoration-none" style="color: #074173">Sudah punya akun?</a>
+                        </div>
                     </div>
                 </div>
             </div>
