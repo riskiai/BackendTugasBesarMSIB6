@@ -24,7 +24,6 @@ class UpdateProfilMahasiswaRequest extends FormRequest
     {
         return [
             'phone' => [
-                'required',
                 'numeric',
                 Rule::unique('users')->ignore(auth()->user()->id),
             ],
