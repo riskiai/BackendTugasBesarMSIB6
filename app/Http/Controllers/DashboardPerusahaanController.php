@@ -11,6 +11,8 @@ use App\Http\Requests\UpdateProfilPerusahaanRequest;
 use App\Models\ApplyLowongan;
 use App\Models\Lowongan;
 use App\Models\Webinar;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Log;
 
 class DashboardPerusahaanController extends Controller
 {
@@ -65,36 +67,43 @@ class DashboardPerusahaanController extends Controller
 
     public function updateProfil(UpdateProfilPerusahaanRequest $request)
     {
-        $company = auth()->guard('company')->user();
+        DB::beginTransaction();
+        try {
+            $company = Company::find(auth()->guard('company')->user()->id);
 
-        $company = Company::find($company->id);
-        // Jika ada file foto profil yang diunggah
-        if ($request->hasFile('foto_profil')) {
-            // Hapus foto profil lama jika ada
-            if ($company->foto_profil) {
-                Storage::disk('public')->delete('photo-profile/' . $company->foto_profil);
+            // Jika ada file foto profil yang diunggah
+            if ($request->hasFile('foto_profil')) {
+                // Hapus foto profil lama jika ada
+                if ($company->foto_profil) {
+                    Storage::disk('public')->delete('photo-profile/' . $company->foto_profil);
+                }
+
+                // Simpan foto profil baru dengan nama yang spesifik
+                $file = $request->file('foto_profil');
+                $filename = time() . '_' . $file->getClientOriginalName();
+                $file->storeAs('photo-profile', $filename, 'public');
+                $company->foto_profil = $filename;
             }
 
-            // Simpan foto profil baru dengan nama yang spesifik
-            $file = $request->file('foto_profil');
-            $filename = time() . '_' . $file->getClientOriginalName();
-            $file->storeAs('photo-profile', $filename, 'public');
-            $company->foto_profil = $filename;
-        }
+            // Perbarui informasi perusahaan
+            $company->phone = $request->phone;
+            $company->website = $request->website;
+            $company->industry = $request->industry;
+            $company->instagram = $request->instagram;
+            $company->facebook = $request->facebook;
+            $company->employees = $request->employees;
+            $company->address = $request->address;
 
-        // Perbarui informasi perusahaan
-        $company->phone = $request->phone;
-        $company->website = $request->website;
-        $company->industry = $request->industry;
-        $company->instagram = $request->instagram;
-        $company->facebook = $request->facebook;
-        $company->employees = $request->employees;
-        $company->address = $request->address;
+            // Simpan perubahan
+            $company->save();
 
-        // Simpan perubahan
-        $company->save();
-
-        return redirect()->back()->with('success', 'Profil berhasil diupdate');
+            DB::commit();
+            return redirect()->back()->with('success', 'Profil berhasil diupdate');
+        } catch (\Exception $e) {
+            DB::rollBack();
+            Log::debug($e);
+            abort(400, 'Gagal memperbarui profil');
+            }
     }
 
 

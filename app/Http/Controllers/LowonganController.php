@@ -9,6 +9,8 @@ use App\Models\ApplyLowongan;
 use App\Models\Lowongan;
 use App\Models\SimpanLowongan;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Log;
 
 class LowonganController extends Controller
 {
@@ -54,47 +56,62 @@ class LowonganController extends Controller
 
     public function applyLowongan(ApplyLowonganRequest $request, Lowongan $lowongan)
     {
-        // kalau ada file cv
-        if ($request->hasFile('cv')) {
-            // simpan file cv
-            $cv = $request->file('cv');
-            $cvFileName = time() . '_' . $cv->getClientOriginalName();
-            $cv->storeAs('cv', $cvFileName, 'public');
-        } else {
-            $cvFileName = null;
-        }
+        DB::beginTransaction();
+        try {
+            // kalau ada file cv
+            if ($request->hasFile('cv')) {
+                // simpan file cv
+                $cv = $request->file('cv');
+                $cvFileName = time() . '_' . $cv->getClientOriginalName();
+                $cv->storeAs('cv', $cvFileName, 'public');
+            } else {
+                $cvFileName = null;
+            }
 
-        // Simpan data lamaran
-        ApplyLowongan::create([
-            'user_id' => auth()->id(),
-            'lowongan_id' => $lowongan->id,
-            'pertanyaan1' => $request->pertanyaan1,
-            'pertanyaan2' => $request->pertanyaan2,
-            'pertanyaan3' => $request->pertanyaan3,
-            'cv' => $cvFileName,
-        ]);
-        
-        return redirect()->back()->with('success', 'Berhasil melamar lowongan');
+            // Simpan data lamaran
+            ApplyLowongan::create([
+                'user_id' => auth()->id(),
+                'lowongan_id' => $lowongan->id,
+                'pertanyaan1' => $request->pertanyaan1,
+                'pertanyaan2' => $request->pertanyaan2,
+                'pertanyaan3' => $request->pertanyaan3,
+                'cv' => $cvFileName,
+            ]);
+
+            DB::commit();
+            return redirect()->back()->with('success', 'Berhasil melamar lowongan');
+        } catch (\Exception $e) {
+            DB::rollBack();
+            Log::debug($e);
+            abort(400, 'Gagal melamar lowongan');
+        }
     }
 
     public function storeMagang(CreateMagangRequest $request)
     {
-        // Simpan data lowongan
-        Lowongan::create([
-            'company_id' => auth()->guard('company')->user()->id,
-            'judul' => $request->judul,
-            'jenis' => 'magang',
-            'deskripsi' => $request->deskripsi,
-            'tipe' => $request->tipe,
-            'lokasi' => $request->lokasi,
-            'gaji' => $request->gaji,
-            'kualifikasi' => $request->kualifikasi,
-            'deadline' => $request->deadline,
-            'tanggal_mulai' => $request->tanggal_mulai,
-            'tanggal_berakhir' => $request->tanggal_berakhir,
-        ]);
+        DB::beginTransaction();
+        try {
+            // Simpan data lowongan
+            Lowongan::create([
+                'company_id' => auth()->guard('company')->user()->id,
+                'judul' => $request->judul,
+                'jenis' => 'magang',
+                'deskripsi' => $request->deskripsi,
+                'tipe' => $request->tipe,
+                'lokasi' => $request->lokasi,
+                'gaji' => $request->gaji,
+                'kualifikasi' => $request->kualifikasi,
+                'deadline' => $request->deadline,
+                'tanggal_mulai' => $request->tanggal_mulai,
+                'tanggal_berakhir' => $request->tanggal_berakhir,
+            ]);
 
-        return redirect()->route('perusahaan.magang')->with('success', 'Berhasil membuat lowongan magang');
+            DB::commit();
+            return redirect()->route('perusahaan.magang')->with('success', 'Berhasil membuat lowongan magang');
+        } catch (\Exception $e) {
+            DB::rollBack();
+            Log::debug($e);
+            abort(400, 'Gagal membuat lowongan magang');}
     }
 
     public function editMagang(Lowongan $lowongan)
@@ -104,19 +121,27 @@ class LowonganController extends Controller
 
     public function updateMagang(CreateMagangRequest $request, Lowongan $lowongan)
     {
-        $lowongan->update([
-            'judul' => $request->judul,
-            'deskripsi' => $request->deskripsi,
-            'tipe' => $request->tipe,
-            'lokasi' => $request->lokasi,
-            'gaji' => $request->gaji,
-            'kualifikasi' => $request->kualifikasi,
-            'deadline' => $request->deadline,
-            'tanggal_mulai' => $request->tanggal_mulai,
-            'tanggal_berakhir' => $request->tanggal_berakhir,
-        ]);
+        DB::beginTransaction();
+        try {
+            $lowongan->update([
+                'judul' => $request->judul,
+                'deskripsi' => $request->deskripsi,
+                'tipe' => $request->tipe,
+                'lokasi' => $request->lokasi,
+                'gaji' => $request->gaji,
+                'kualifikasi' => $request->kualifikasi,
+                'deadline' => $request->deadline,
+                'tanggal_mulai' => $request->tanggal_mulai,
+                'tanggal_berakhir' => $request->tanggal_berakhir,
+            ]);
 
-        return redirect()->route('perusahaan.magang')->with('success', 'Berhasil mengubah lowongan magang');
+            DB::commit();
+            return redirect()->route('perusahaan.magang')->with('success', 'Berhasil mengubah lowongan magang');
+        } catch (\Exception $e) {
+            DB::rollBack();
+            Log::debug($e);
+            abort(400, 'Gagal mengubah lowongan magang');
+        }
     }
 
     public function deleteMagang(Lowongan $lowongan)
@@ -127,20 +152,26 @@ class LowonganController extends Controller
 
     public function storekerja(CreateKerjaRequest $request)
     {
-        // Simpan data lowongan
-        Lowongan::create([
-            'company_id' => auth()->guard('company')->user()->id,
-            'judul' => $request->judul,
-            'jenis' => 'kerja',
-            'deskripsi' => $request->deskripsi,
-            'tipe' => $request->tipe,
-            'lokasi' => $request->lokasi,
-            'gaji' => $request->gaji,
-            'kualifikasi' => $request->kualifikasi,
-            'deadline' => $request->deadline,
-        ]);
+        DB::beginTransaction();
+        try {
+            Lowongan::create([
+                'company_id' => auth()->guard('company')->user()->id,
+                'judul' => $request->judul,
+                'jenis' => 'kerja',
+                'deskripsi' => $request->deskripsi,
+                'tipe' => $request->tipe,
+                'lokasi' => $request->lokasi,
+                'gaji' => $request->gaji,
+                'kualifikasi' => $request->kualifikasi,
+                'deadline' => $request->deadline,
+            ]);
 
-        return redirect()->route('perusahaan.kerja')->with('success', 'Berhasil membuat lowongan magang');
+            DB::commit();
+            return redirect()->route('perusahaan.kerja')->with('success', 'Berhasil membuat lowongan magang');
+        } catch (\Exception $e) {
+            DB::rollBack();
+            Log::debug($e);
+            abort(400, 'Gagal membuat lowongan kerja');}
     }
 
     public function editKerja(Lowongan $lowongan)
@@ -150,17 +181,25 @@ class LowonganController extends Controller
 
     public function updateKerja(CreateKerjaRequest $request, Lowongan $lowongan)
     {
-        $lowongan->update([
-            'judul' => $request->judul,
-            'deskripsi' => $request->deskripsi,
-            'tipe' => $request->tipe,
-            'lokasi' => $request->lokasi,
-            'gaji' => $request->gaji,
-            'kualifikasi' => $request->kualifikasi,
-            'deadline' => $request->deadline,
-        ]);
+        DB::beginTransaction();
+        try {
+            $lowongan->update([
+                'judul' => $request->judul,
+                'deskripsi' => $request->deskripsi,
+                'tipe' => $request->tipe,
+                'lokasi' => $request->lokasi,
+                'gaji' => $request->gaji,
+                'kualifikasi' => $request->kualifikasi,
+                'deadline' => $request->deadline,
+            ]);
 
-        return redirect()->route('perusahaan.kerja')->with('success', 'Berhasil mengubah lowongan kerja');
+            DB::commit();
+            return redirect()->route('perusahaan.kerja')->with('success', 'Berhasil mengubah lowongan kerja');
+        } catch (\Exception $e) {
+            DB::rollBack();
+            Log::debug($e);
+            abort(400, 'Gagal mengubah lowongan kerja');
+        }
     }
 
     public function deleteKerja(Lowongan $lowongan)

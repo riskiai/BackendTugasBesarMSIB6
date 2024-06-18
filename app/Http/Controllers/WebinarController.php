@@ -7,6 +7,8 @@ use App\Models\RegisterWebinar;
 use App\Models\Webinar;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Storage;
 
 class WebinarController extends Controller
@@ -57,31 +59,37 @@ class WebinarController extends Controller
 
     public function storeWebinar(CreateWebinarRequest $request)
     {
-        // Simpan data webinar baru
-        $webinar = new Webinar();
+        DB::beginTransaction();
+        try {
+            // Simpan data webinar baru
+            $webinar = new Webinar();
 
-        // handle webinar poster
-        if ($request->hasFile('poster')) {
-            $poster = $request->file('poster');
-            $filename = time() . '_' . $poster->getClientOriginalName();
-            $poster->storeAs('webinar-posters', $filename, 'public');
-            $webinar->poster = $filename;
-        }
+            // handle webinar poster
+            if ($request->hasFile('poster')) {
+                $poster = $request->file('poster');
+                $filename = time() . '_' . $poster->getClientOriginalName();
+                $poster->storeAs('webinar-posters', $filename, 'public');
+                $webinar->poster = $filename;
+            }
 
-        $webinar->company_id = auth()->guard('company')->user()->id;
-        $webinar->judul_webinar = $request->judul_webinar;
-        $webinar->narasumber = $request->narasumber;
-        $webinar->jabatan_narasumber = $request->jabatan_narasumber;
-        $webinar->tagline = $request->tagline;
-        $webinar->deskripsi = $request->deskripsi;
-        $webinar->tanggal = $request->tanggal;
-        $webinar->waktu_mulai = $request->waktu_mulai;
-        $webinar->waktu_selesai = $request->waktu_selesai;
-        $webinar->platform = $request->platform;
-        // poster belum ada
-        $webinar->save();
+            $webinar->company_id = auth()->guard('company')->user()->id;
+            $webinar->judul_webinar = $request->judul_webinar;
+            $webinar->narasumber = $request->narasumber;
+            $webinar->jabatan_narasumber = $request->jabatan_narasumber;
+            $webinar->tagline = $request->tagline;
+            $webinar->deskripsi = $request->deskripsi;
+            $webinar->tanggal = $request->tanggal;
+            $webinar->waktu_mulai = $request->waktu_mulai;
+            $webinar->waktu_selesai = $request->waktu_selesai;
+            $webinar->platform = $request->platform;
+            $webinar->save();
 
-        return redirect()->back()->with('success', 'Webinar berhasil dibuat');
+            DB::commit();
+            return redirect()->back()->with('success', 'Webinar berhasil dibuat');
+        } catch (\Exception $e) {
+            DB::rollBack();
+            Log::debug($e);
+            abort(400, 'Gagal membuat webinar');}
     }
 
     public function editWebinar(Webinar $webinar)
@@ -91,36 +99,41 @@ class WebinarController extends Controller
 
     public function updateWebinar(CreateWebinarRequest $request, Webinar $webinar)
     {
-        $webinar = Webinar::find($webinar->id);
+        DB::beginTransaction();
+        try {
+            // handle webinar poster
+            if ($request->hasFile('poster')) {
 
-        // handle webinar poster
-        if ($request->hasFile('poster')) {
+                // Hapus foto profil lama jika ada
+                if ($webinar->poster) {
+                    Storage::disk('public')->delete('webinar-posters/' . $webinar->poster);
+                }
 
-            // Hapus foto profil lama jika ada
-            if ($webinar->poster) {
-                Storage::disk('public')->delete('webinar-posters/' . $webinar->poster);
+                $poster = $request->file('poster');
+                $filename = time() . '_' . $poster->getClientOriginalName();
+                $poster->storeAs('webinar-posters', $filename, 'public');
+                $webinar->poster = $filename;
             }
 
-            $poster = $request->file('poster');
-            $filename = time() . '_' . $poster->getClientOriginalName();
-            $poster->storeAs('webinar-posters', $filename, 'public');
-            $webinar->poster = $filename;
+            // handle update
+            $webinar->judul_webinar = $request->judul_webinar;
+            $webinar->narasumber = $request->narasumber;
+            $webinar->jabatan_narasumber = $request->jabatan_narasumber;
+            $webinar->tagline = $request->tagline;
+            $webinar->deskripsi = $request->deskripsi;
+            $webinar->tanggal = $request->tanggal;
+            $webinar->waktu_mulai = $request->waktu_mulai;
+            $webinar->waktu_selesai = $request->waktu_selesai;
+            $webinar->platform = $request->platform;
+            $webinar->save();
+
+            DB::commit();
+            return redirect()->back()->with('success', 'Berhasil mengubah webinar');
+        } catch (\Exception $e) {
+            DB::rollBack();
+            Log::debug($e);
+            abort(400, 'Gagal mengubah webinar');
         }
-
-        // handle update
-        $webinar->judul_webinar = $request->judul_webinar;
-        $webinar->narasumber = $request->narasumber;
-        $webinar->jabatan_narasumber = $request->jabatan_narasumber;
-        $webinar->tagline = $request->tagline;
-        $webinar->deskripsi = $request->deskripsi;
-        $webinar->tanggal = $request->tanggal;
-        $webinar->waktu_mulai = $request->waktu_mulai;
-        $webinar->waktu_selesai = $request->waktu_selesai;
-        $webinar->platform = $request->platform;
-        
-        $webinar->save();
-
-        return redirect()->back()->with('success', 'Berhasil mengubah webinar');
     }
 
     public function deleteWebinar(Webinar $webinar)

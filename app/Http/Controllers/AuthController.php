@@ -8,6 +8,8 @@ use App\Models\Company;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Log;
 use Laravel\Socialite\Facades\Socialite;
 
 class AuthController extends Controller
@@ -43,12 +45,20 @@ class AuthController extends Controller
 
     public function loginGoogle()
     {
+        Log::info('Reached loginGoogle method');
         return Socialite::driver('google')->redirect();
     }
 
-    public function loginGoogleCallback(Request $request)
+    public function loginGoogleCallback()
     {
-        $user = Socialite::driver('google')->user();
+        Log::info('Reached loginGoogleCallback method');
+
+        try {
+            $user = Socialite::driver('google')->user();
+            Log::info($user);
+        } catch (\Exception $e) {
+            return redirect()->route('login')->with('error', 'Login failed! ' . $e->getMessage());
+        }
 
         $existingUser = User::where('google_id', $user->id)->first();
         if ($existingUser) {
@@ -59,6 +69,8 @@ class AuthController extends Controller
             $newUser->name = $user->name;
             $newUser->email = $user->email;
             $newUser->password = bcrypt('asdfasdf');
+            $newUser->save();
+
             $newUser->assignRole('user');
             $newUser->save();
 
@@ -90,11 +102,17 @@ class AuthController extends Controller
 
     public function storeUser(RegisterRequest $request)
     {
-        $user = User::create($request->validated());
-
-        $user->assignRole('user');
-
-        return redirect()->route('login')->with('success', 'Registrasi user berhasil! Silakan login.');
+        DB::beginTransaction();
+        try {
+            $user = User::create($request->validated());
+            $user->assignRole('user');
+            DB::commit();
+            return redirect()->route('login')->with('success', 'Registrasi user berhasil! Silakan login.');
+        } catch (\Exception $e) {
+            DB::rollBack();
+            Log::debug($e);
+            abort(400, 'Gagal mendaftar user');
+        }
     }
 
     public function registerPerusahaan()
@@ -104,10 +122,16 @@ class AuthController extends Controller
 
     public function storePerusahaan(RegisterRequest $request)
     {
-        $user = Company::create($request->validated());
-
-        $user->assignRole('company');
-
-        return redirect()->route('login')->with('success', 'Registrasi perusahaan berhasil! Silakan login.');
+        DB::beginTransaction();
+        try {
+            $user = Company::create($request->validated());
+            $user->assignRole('company');
+            DB::commit();
+            return redirect()->route('login')->with('success', 'Registrasi perusahaan berhasil! Silakan login.');
+        } catch (\Exception $e) {
+            DB::rollBack();
+            Log::debug($e);
+            abort(400, 'Gagal mendaftar perusahaan');
+        }
     }
 }

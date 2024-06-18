@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\ApplyLowongan;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Storage;
 
 class LamaranController extends Controller
@@ -36,27 +38,42 @@ class LamaranController extends Controller
 
     public function terimaLamaran($id)
     {
-        $lamaran = ApplyLowongan::find($id);
-        $lamaran->status = 'accepted';
-        $lamaran->save();
+        DB::beginTransaction();
+        try {
+            $lamaran = ApplyLowongan::find($id);
+            $lamaran->status = 'accepted';
+            $lamaran->save();
 
-        return redirect()->back()->with('success', 'Berhasil menerima lamaran.');
+            DB::commit();
+            return redirect()->back()->with('success', 'Berhasil menerima lamaran.');
+        } catch (\Exception $e) {
+            DB::rollBack();
+            Log::debug($e);
+            abort(400, 'Gagal menerima lamaran.');}
     }
 
     public function tolakLamaran($id)
     {
-        $lamaran = ApplyLowongan::find($id);
-        $lamaran->status = 'rejected';
-        $lamaran->save();
+        DB::beginTransaction();
+        try {
+            $lamaran = ApplyLowongan::find($id);
+            $lamaran->status = 'rejected';
+            $lamaran->save();
 
-        return redirect()->back()->with('success', 'Berhasil menolak lamaran.');
+            DB::commit();
+            return redirect()->back()->with('success', 'Berhasil menolak lamaran.');
+        } catch (\Exception $e) {
+            DB::rollBack();
+            Log::debug($e);
+            abort(400, 'Gagal menolak lamaran.');
+        }
     }
 
     public function downloadCV($id)
     {
         $lamaran = ApplyLowongan::find($id);
         $path = asset('storage/cv/' . $lamaran->cv);
-        
+
         return response()->file($path);
     }
 }
