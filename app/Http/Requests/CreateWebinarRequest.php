@@ -34,10 +34,9 @@ class CreateWebinarRequest extends FormRequest
             'jabatan_narasumber' => 'required|string',
             'deskripsi' => 'required|string',
             'tanggal' => 'required|date',
-            'waktu_mulai' => 'required|date_format:H:i',
-            'waktu_selesai' => 'required|date_format:H:i',
-            'platform' => 'string',
-            'lokasi' => 'required|string',
+            'waktu_mulai' => 'required',
+            'waktu_selesai' => 'required',
+            'platform' => 'required|string',
             'poster' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ];
     }

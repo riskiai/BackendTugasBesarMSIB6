@@ -138,30 +138,4 @@ class DashboardPerusahaanController extends Controller
         $webinars = Webinar::where('company_id', $company->id)->get();
         return view('dashboardPerusahaan.webinar', compact('webinars'));
     }
-
-    public function createWebinar()
-    {
-        return view('dashboardPerusahaan.posting-webinar');
-    }
-
-    public function storeWebinar(CreateWebinarRequest $request)
-    {
-        // Simpan data webinar baru
-        $webinar = new Webinar();
-        $webinar->company_id = auth()->guard('company')->user()->id;
-        $webinar->judul_webinar = $request->judul_webinar;
-        $webinar->narasumber = $request->narasumber;
-        $webinar->jabatan_narasumber = $request->jabatan_narasumber;
-        $webinar->tagline = $request->tagline;
-        $webinar->deskripsi = $request->deskripsi;
-        $webinar->tanggal = $request->tanggal;
-        $webinar->waktu_mulai = $request->waktu_mulai;
-        $webinar->waktu_selesai = $request->waktu_selesai;
-        $webinar->platform = $request->platform;
-        $webinar->lokasi = $request->lokasi;
-        // poster belum ada
-        $webinar->save();
-
-        return redirect()->back()->with('success', 'Webinar berhasil dibuat');
-    }
 }

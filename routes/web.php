@@ -161,8 +161,11 @@ Route::prefix('dashboard')->group(function () {
         });
         Route::prefix('webinar')->group(function () {
             Route::get('/', [DashboardPerusahaanController::class, 'webinar'])->name('perusahaan.webinar');
-            Route::get('/create', [DashboardPerusahaanController::class, 'createWebinar'])->name('perusahaan.webinar.create');
-            Route::post('/store', [DashboardPerusahaanController::class, 'storeWebinar'])->name('perusahaan.webinar.store');
+            Route::get('/create', [WebinarController::class, 'createWebinar'])->name('perusahaan.webinar.create');
+            Route::post('/store', [WebinarController::class, 'storeWebinar'])->name('perusahaan.webinar.store');
+            Route::get('/{webinar}/edit', [WebinarController::class, 'editWebinar'])->name('perusahaan.webinar.edit');
+            Route::put('/{webinar}/update', [WebinarController::class, 'updateWebinar'])->name('perusahaan.webinar.update');
+            Route::post('/{webinar}/delete', [WebinarController::class, 'deleteWebinar'])->name('perusahaan.webinar.delete');
         });
         Route::prefix('lamaran')->group(function () {
             Route::get('/', [LamaranController::class, 'lamaran'])->name('perusahaan.lamaran');
