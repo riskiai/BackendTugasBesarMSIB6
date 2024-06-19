@@ -23,7 +23,7 @@
 </style> --}}
 
 @section('content')
-    <section class="mt-5 d-flex justify-content-center">
+    {{-- <section class="mt-5 d-flex justify-content-center">
         <div class="w-25 rounded-4 d-flex align-items-center p-3" style="background-color:  #074173">
             <div class="w-100 h-100 rounded-4">
                 <form action="{{ route('lowongan.search') }}" method="GET" class="form-search d-flex justify-content-between align-items-center gap-5 w-100" data-aos="fade-up"
@@ -36,7 +36,7 @@
                 </form>
             </div>
         </div>
-    </section>
+    </section> --}}
 
     <div class="d-flex flex-column justify-content-center">
         <section>
