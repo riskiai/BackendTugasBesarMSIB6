@@ -80,6 +80,7 @@ Route::prefix('admin')->middleware(['authenticate', 'role:admin'])->group(functi
         return redirect()->route('admin.dashboard');
     });
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('admin.dashboard');
+    Route::get('/lamaran', [DashboardController::class, 'lamaran'])->name('admin.lamaran');
 
     Route::prefix('artikel')->group(function () {
         Route::get('/', [ArtikelController::class, 'index'])->name('admin.artikel.index');

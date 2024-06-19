@@ -8,13 +8,6 @@
         </div>
         <ul class="sidebar-menu">
             <li class="menu-header">Dashboard</li>
-            {{-- <li class="dropdown active">
-          <a href="#" class="nav-link has-dropdown"><i class="fas fa-fire"></i><span>Dashboard</span></a>
-          <ul class="dropdown-menu">
-            <li><a class="nav-link" href="index-0.html">General Dashboardd</a></li>
-            <li class=active><a class="nav-link" href="index.html">Ecommerce Dashboard</a></li>
-          </ul>
-        </li> --}}
             <li class="{{ request()->routeIs('admin.dashboard') ? 'active' : '' }}">
                 <a class="nav-link" href="{{ route('admin.dashboard') }}">
                     <i class="fas fa-fire"></i> <span>Dashboard</span>
@@ -63,15 +56,13 @@
 
 
             <li class="menu-header">Data Mitra Perusahaan</li>
-            <li><a class="nav-link" href="{{ route('admin.lowongan.index') }}"><i class="fas fa-briefcase {{ request()->routeIs('admin.lowongan.index') ? 'active' : '' }}"></i> <span>Data Lowongan</span></a>
+            <li><a class="nav-link" href="{{ route('admin.lowongan.index') }}"><i
+                        class="fas fa-briefcase {{ request()->routeIs('admin.lowongan.index') ? 'active' : '' }}"></i>
+                    <span>Data Lowongan</span></a>
             </li>
-            <li><a class="nav-link" href="blank.html"><i class="fas fa-clipboard-list"></i> <span>Data
-                        Pendaftar</span></a></li>
-
-            <li class="menu-header">Data Mahasiswa</li>
-            <li><a class="nav-link" href="blank.html"><i class="fas fa-briefcase"></i> <span>Melihat Data Pendaftar
-                        Mahasiswa</span></a></li>
-
+            <li><a class="nav-link" href="{{ route('admin.lamaran') }}"><i class="fas fa-clipboard-list"></i>
+                    <span>Data
+                        Pendaftaran</span></a></li>
         </ul>
 
 
