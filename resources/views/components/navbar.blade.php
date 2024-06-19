@@ -38,7 +38,7 @@
                 </li>
                 <li class="nav-item mx-2">
                     <a class="nav-link {{ request()->is('pendiri-apprentech') ? 'active' : '' }}"
-                        href="{{ route('about') }}">Pendiri ApprenTech</a>
+                        href="{{ route('about') }}">Our Team</a>
                 </li>
             </ul>
 
