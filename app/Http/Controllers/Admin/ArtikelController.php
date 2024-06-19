@@ -46,4 +46,10 @@ class ArtikelController extends Controller
     {
         return view('admin.artikel.edit');
     }
+
+    public function delete(Artikel $artikel)
+    {
+        $artikel->delete();
+        return redirect()->route('admin.artikel.index')->with('success', 'Artikel berhasil dihapus');
+    }
 }
