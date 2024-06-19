@@ -61,10 +61,6 @@
                                                         @enderror
                                                     </div>
                                                     <div class="form-group">
-                                                        <label>Address</label>
-                                                        <textarea name="alamat" id="address" class="form-control"></textarea>
-                                                    </div>
-                                                    <div class="form-group">
                                                         <label>Birth Date</label>
                                                         <input type="date" name="tgl_lahir" class="form-control">
                                                     </div>
@@ -82,18 +78,8 @@
                                                         <input type="file" name="foto_profil" class="form-control">
                                                     </div>
                                                     <div class="form-group">
-                                                        <label>Employment Status</label>
-                                                        <select name="status" class="form-control">
-                                                            <option value="bekerja">Bekerja</option>
-                                                            <option value="belum bekerja">Belum Bekerja</option>
-                                                        </select>
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <label>User Status</label>
-                                                        <select name="status_users" class="form-control">
-                                                            <option value="active">Active</option>
-                                                            <option value="inactive">Inactive</option>
-                                                        </select>
+                                                        <label>Address</label>
+                                                        <textarea name="alamat" id="address" class="form-control"></textarea>
                                                     </div>
                                                 </div>
                                             </div>
