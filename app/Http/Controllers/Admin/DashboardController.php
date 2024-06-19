@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\ApplyLowongan;
+use App\Models\Artikel;
 use App\Models\Company;
 use App\Models\Lowongan;
 use App\Models\User;
@@ -27,6 +28,14 @@ class DashboardController extends Controller
 
         $successApplyCount = ApplyLowongan::where('status', 'accepted')->get()->count();
         return view('admin.dashboard', compact('mahasiswaCount', 'perusahaanCount', 'lowonganCount', 'successApplyCount'));
+    }
+
+    public function lamaran()
+    {
+        $artikels = Artikel::all();
+        $lamarans = ApplyLowongan::get();
+
+        return view('admin.lamaran.index', compact('lamarans', 'artikels'));
     }
 
     public function getall() {
