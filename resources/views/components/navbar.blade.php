@@ -37,8 +37,8 @@
                         href="{{ route('webinar') }}">Webinar</a>
                 </li>
                 <li class="nav-item mx-2">
-                    <a class="nav-link {{ request()->is('tentang-kami') ? 'active' : '' }}"
-                        href="{{ route('about') }}">Tentang Kami</a>
+                    <a class="nav-link {{ request()->is('pendiri-apprentech') ? 'active' : '' }}"
+                        href="{{ route('about') }}">Pendiri ApprenTech</a>
                 </li>
             </ul>
 

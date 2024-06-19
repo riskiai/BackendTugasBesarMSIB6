@@ -23,20 +23,20 @@
 </style> --}}
 
 @section('content')
-    {{-- <section class="mt-5 d-flex justify-content-center">
-        <div class="w-25 rounded-4 d-flex align-items-center p-3 gap-3" style="background-color: #0E46A3">
-            <div class="w-100 h-100 rounded-4" style="background-color: #074173">
-                <form action="#" class="form-search d-flex align-items-center mx-auto w-100" data-aos="fade-up"
+    <section class="mt-5 d-flex justify-content-center">
+        <div class="w-25 rounded-4 d-flex align-items-center p-3" style="background-color:  #074173">
+            <div class="w-100 h-100 rounded-4">
+                <form action="{{ route('lowongan.search') }}" method="GET" class="form-search d-flex justify-content-between align-items-center gap-5 w-100" data-aos="fade-up"
                     data-aos-delay="200"
-                    style="background-color: #074173; position: relative; max-width: 500px; border-radius: 10px; padding-right: 40px;">
-                    <input type="text" class="form-control text-white py-3 m-0 no-outline"
-                        placeholder="Studi, lokasi, perusahaan, kriteria lain"
-                        style="background-color: #074173; border: none; border-radius: 10px;" />
+                    style="background-color: #074173; position: relative; max-width: 500px; border-radius: 10px;">
+                    <input name="query" type="search" class="form-control py-3 m-0 no-outline"
+                        placeholder="Cari Lowongan"
+                        style="background-color: white; border: none; border-radius: 10px;" />
+                    <button class="btn btn-light btn-outline-dark" type="submit">Search</button>
                 </form>
             </div>
-            <img src="{{ asset('assets/img/icon_pencarian.png') }}" alt="Search" style="width: 20px; height: 20px;" />
         </div>
-    </section> --}}
+    </section>
 
     <div class="d-flex flex-column justify-content-center">
         <section>

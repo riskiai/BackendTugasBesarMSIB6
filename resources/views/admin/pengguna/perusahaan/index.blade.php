@@ -72,7 +72,6 @@
                                                         <th class="text-center">Website</th>
                                                         <th class="text-center">Instagram</th>
                                                         <th class="text-center">Facebook</th>
-                                                        <th class="text-center">Status</th>
                                                         <th class="text-center">Action</th>
                                                     </tr>
                                                 </thead>
@@ -97,10 +96,6 @@
                                                             </td>
                                                             <td class="text-left">{{ $company->instagram }}</td>
                                                             <td class="text-left">{{ $company->facebook }}</td>
-                                                            <td class="text-left">
-                                                                <div class="badge badge-success">
-                                                                    {{ $company->statuscompanies }}</div>
-                                                            </td>
                                                             <td class="text-left"
                                                                 style="display: flex; align-items: center; gap:10px;">
                                                                 {{-- <a href="#" class="btn btn-secondary" title="Detail">

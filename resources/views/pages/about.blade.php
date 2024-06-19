@@ -37,19 +37,19 @@
                                 <!-- Item 1 -->
                                 <div class="col-lg-4 d-flex justify-content-center" style="margin-top: 20px;">
                                     <div class="lowongan-container text-center">
-                                        <img src="{{ asset('assets/img/team/team-1.jpg') }}" alt="Nadhif L. A. Rahim"
-                                            class="img-fluid rounded">
+                                        <img src="{{ asset('founders/Nadhif.jpg') }}" alt="Nadhif L. A. Rahim"
+                                            class="img-fluid rounded" style="height: 160px; object-fit: cover">
                                         <div class="text">
                                             <h6>Nadhif L. A. Rahim</h6>
-                                            <p style="font-size: smaller;">Full-Stack</p>
+                                            <p style="font-size: smaller;">Back-End</p>
                                         </div>
                                     </div>
                                 </div>
                                 <!-- Item 2 -->
                                 <div class="col-lg-4 d-flex justify-content-center" style="margin-top: 20px;">
                                     <div class="lowongan-container text-center">
-                                        <img src="{{ asset('assets/img/team/team-2.jpg') }}" alt="Riski A. Ilham"
-                                            class="img-fluid rounded">
+                                        <img src="{{ asset('founders/Riski.webp') }}" alt="Riski A. Ilham"
+                                            class="img-fluid rounded" style="max-height: 160px; object-fit: cover">
                                         <div class="text">
                                             <h6>Riski A. Ilham</h6>
                                             <p style="font-size: smaller;">Project Manager</p>
@@ -59,7 +59,7 @@
                                 <!-- Item 3 -->
                                 <div class="col-lg-4 d-flex justify-content-center" style="margin-top: 20px;">
                                     <div class="lowongan-container text-center">
-                                        <img src="{{ asset('assets/img/team/team-3.jpg') }}" alt="Dito Kurnia"
+                                        <img src="{{ asset('founders/Dito.jpg') }}" alt="Dito Kurnia"
                                             class="img-fluid rounded">
                                         <div class="text">
                                             <h6>Dito Kurnia</h6>
@@ -72,8 +72,8 @@
                                 <!-- Item 4 -->
                                 <div class="col-lg-4 d-flex justify-content-center" style="margin-top: 20px;">
                                     <div class="lowongan-container text-center">
-                                        <img src="{{ asset('assets/img/team/team-3.jpg') }}" alt="Pascal Z. Maliangkay"
-                                            class="img-fluid rounded">
+                                        <img src="{{ asset('founders/Pascal.jpg') }}" alt="Pascal Z. Maliangkay"
+                                            class="img-fluid rounded" style="max-height: 160px; object-fit: cover">
                                         <div class="text">
                                             <h6>Pascal Z. Maliangkay</h6>
                                             <p style="font-size: smaller;">UI/UX Designer</p>
@@ -83,8 +83,8 @@
                                 <!-- Item 5 -->
                                 <div class="col-lg-4 d-flex justify-content-center" style="margin-top: 20px;">
                                     <div class="lowongan-container text-center">
-                                        <img src="{{ asset('assets/img/team/team-2.jpg') }}" alt="Kristofel S. Lanpada"
-                                            class="img-fluid rounded">
+                                        <img src="{{ asset('founders/Stepen.jpg') }}" alt="Kristofel S. Lanpada"
+                                            class="img-fluid rounded" style="max-height: 160px; object-fit: cover">
                                         <div class="text">
                                             <h6>Kristofel S. Lanpada</h6>
                                             <p style="font-size: smaller;">Dev-Ops</p>

@@ -68,7 +68,6 @@
                                                         <th class="text-center">Gender</th>
                                                         <th class="text-center">Profile Photo</th>
                                                         <th class="text-center">Employment Status</th>
-                                                        <th class="text-center">User Status</th>
                                                         <th class="text-center">Action</th>
                                                     </tr>
                                                 </thead>
@@ -89,10 +88,6 @@
                                                             </td>
                                                             <td class="text-center">
                                                                 <div class="badge badge-success">{{ $user->status }}</div>
-                                                            </td>
-                                                            <td class="text-center">
-                                                                <div class="badge badge-success">{{ $user->status_users }}
-                                                                </div>
                                                             </td>
                                                             <td class="text-center"
                                                                 style="display: flex; align-items: center; gap:10px;">
