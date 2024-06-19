@@ -16,8 +16,20 @@ class LowonganController extends Controller
 {
     public function lowongan()
     {
-        $lowongans = Lowongan::latest()->paginate(6);
+        $lowongans = Lowongan::with('company')->latest()->paginate(6);
         return view('pages.lowongan', compact('lowongans'));
+    }
+
+    public function searchLowongan()
+    {
+        $searchText = $_GET['query'];
+        $lowongans = Lowongan::with('company')->where('judul', 'LIKE', '%' . $searchText . '%')
+            ->orWhere('deskripsi', 'LIKE', '%' . $searchText . '%')
+            ->orWhere('lokasi', 'LIKE', '%' . $searchText . '%')
+            ->latest()
+            ->paginate(6);
+
+        return view('pages.lowongan-search', compact('lowongans'));
     }
 
     public function detailLowongan(Lowongan $lowongan)

@@ -61,6 +61,7 @@ Route::get('/pendiri-apprentech', [HomePageController::class, 'about'])->name('a
 // 
 Route::prefix('lowongan')->group(function () {
     Route::get('/', [LowonganController::class, 'lowongan'])->name('lowongan');
+    Route::get('/search', [LowonganController::class, 'searchLowongan'])->name('lowongan.search');
     Route::get('/{lowongan}', [LowonganController::class, 'detailLowongan'])->name('lowongan.detail');
     Route::post('/{lowongan}/bookmark', [LowonganController::class, 'toggleSimpanLowongan'])->name('lowongan.bookmark');
     Route::post('/{lowongan}/apply', [LowonganController::class, 'applyLowongan'])->name('lowongan.apply');

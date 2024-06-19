@@ -26,12 +26,12 @@
     <section class="mt-5 d-flex justify-content-center">
         <div class="w-25 rounded-4 d-flex align-items-center p-3" style="background-color:  #074173">
             <div class="w-100 h-100 rounded-4">
-                <form action="{{ route('lowongan.search') }}" method="GET" class="form-search d-flex justify-content-between align-items-center gap-5 w-100" data-aos="fade-up"
+                <form action="{{ route('lowongan.search') }}" method="GET"
+                    class="form-search d-flex justify-content-between align-items-center gap-5 w-100" data-aos="fade-up"
                     data-aos-delay="200"
                     style="background-color: #074173; position: relative; max-width: 500px; border-radius: 10px;">
                     <input name="query" type="search" class="form-control py-3 m-0 no-outline"
-                        placeholder="Cari Lowongan"
-                        style="background-color: white; border: none; border-radius: 10px;" />
+                        placeholder="Cari Lowongan" style="background-color: white; border: none; border-radius: 10px;" />
                     <button class="btn btn-light btn-outline-dark" type="submit">Search</button>
                 </form>
             </div>
@@ -46,14 +46,15 @@
                         <div class="col-lg-4 my-4">
                             <div class="card border-0 p-4 text-white" style="background-color: #074173;">
                                 <div class="d-flex align-items-start">
-                                    <img src="{{ $lowongan->company->foto_profil ? asset('storage/photo-profile/' . $lowongan->company->foto_profil) :  asset('assets/img/visi.png') }}" alt="Deskripsi Gambar"
-                                        class="rounded-circle border border-primary me-3" style="width: 20%;" />
+                                    <img src="{{ $lowongan->company->foto_profil ? asset('storage/photo-profile/' . $lowongan->company->foto_profil) : asset('assets/img/visi.png') }}"
+                                        alt="Deskripsi Gambar" class="rounded-circle border border-primary me-3"
+                                        style="width: 20%;" />
                                     <div class="d-flex flex-column">
                                         <h5 class="card-title fw-bold">{{ $lowongan->judul }}</h5>
                                         <div>
                                             <div class="d-flex align-items-center mt-2">
-                                                <img src="{{ asset('assets/img/marketeq.png') }}"
-                                                    alt="Logo" class="me-2" />
+                                                <img src="{{ asset('assets/img/marketeq.png') }}" alt="Logo"
+                                                    class="me-2" />
                                                 <p class="mb-0">{{ $lowongan->company->name }}</p>
                                             </div>
                                             <p class="m-0 ps-4" style="font-size: 0.9rem">
