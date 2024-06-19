@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\AdminLowonganController;
 use App\Http\Controllers\Admin\ArtikelController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomePageController;
@@ -80,12 +81,21 @@ Route::prefix('admin')->middleware(['authenticate', 'role:admin'])->group(functi
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('admin.dashboard');
 
     Route::prefix('artikel')->group(function () {
-        Route::get('', [ArtikelController::class, 'index'])->name('admin.artikel.index');
+        Route::get('/', [ArtikelController::class, 'index'])->name('admin.artikel.index');
         Route::get('/create', [ArtikelController::class, 'create'])->name('admin.artikel.create');
         Route::post('/store', [ArtikelController::class, 'store'])->name('admin.artikel.store');
         Route::get('/{artikel}/edit', [ArtikelController::class, 'edit'])->name('admin.artikel.edit');
         Route::put('/{artikel}/update', [ArtikelController::class, 'update'])->name('admin.artikel.update');
         Route::delete('/{artikel}', [ArtikelController::class, 'delete'])->name('admin.artikel.delete');
+    });
+
+    Route::prefix('lowongan')->group(function() {
+        Route::get('/', [AdminLowonganController::class, 'index'])->name('admin.lowongan.index');
+        Route::get('/create', [AdminLowonganController::class, 'create'])->name('admin.lowongan.create');
+        Route::post('/store', [AdminLowonganController::class, 'store'])->name('admin.lowongan.store');
+        Route::get('/{lowongan}/edit', [AdminLowonganController::class, 'edit'])->name('admin.lowongan.edit');
+        Route::put('/{lowongan}/update', [AdminLowonganController::class, 'update'])->name('admin.lowongan.update');
+        Route::delete('/{lowongan}', [AdminLowonganController::class, 'delete'])->name('admin.lowongan.delete');
     });
 
     Route::prefix('pengguna')->group(function () {

@@ -63,7 +63,7 @@
 
 
             <li class="menu-header">Data Mitra Perusahaan</li>
-            <li><a class="nav-link" href="blank.html"><i class="fas fa-briefcase"></i> <span>Data Lowongan</span></a>
+            <li><a class="nav-link" href="{{ route('admin.lowongan.index') }}"><i class="fas fa-briefcase {{ request()->routeIs('admin.lowongan.index') ? 'active' : '' }}"></i> <span>Data Lowongan</span></a>
             </li>
             <li><a class="nav-link" href="blank.html"><i class="fas fa-clipboard-list"></i> <span>Data
                         Pendaftar</span></a></li>
