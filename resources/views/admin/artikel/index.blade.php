@@ -36,6 +36,17 @@
                         <p class="section-lead"></p>
                         <div class="row">
                             <div class="col-12">
+                                
+                                {{-- display success --}}
+                                @if (session('success'))
+                                    <div class="alert alert-success alert-dismissible fade show" role="alert">
+                                        <strong>{{ session('success') }}</strong>
+                                        <button type="button" class="btn-close" data-bs-dismiss="alert"
+                                            aria-label="Close"></button>
+                                    </div>
+                                @endif
+                                {{-- end display success --}}
+
                                 <div class="card">
                                     <div class="card-header">
                                         <h4>List Data Artikel</h4>
@@ -63,7 +74,6 @@
                                                         <th class="text-center" style="min-width: 170px;">No.</th>
                                                         <th class="text-center" style="min-width: 170px;">Judul</th>
                                                         <th class="text-center" style="min-width: 150px;">Konten</th>
-                                                        <th class="text-center">Gambar</th>
                                                         <th class="text-center">Action</th>
                                                     </tr>
                                                 </thead>
@@ -77,21 +87,22 @@
                                                                 </a>
                                                             </td>
                                                             <td class="text-center">{{ $artikel->konten }}</td>
-                                                            <td class="text-center">
-                                                                <img alt="image"
-                                                                    src="{{ asset('assets/img/avatar/avatar-5.png') }}"
-                                                                    class="rounded-circle" width="35"
-                                                                    data-toggle="tooltip" title="Profile Photo">
-                                                            </td>
                                                             <td class="text-center"
                                                                 style="display: flex; align-items: center; gap:10px;">
                                                                 <a href="{{ route('admin.penggunamhs.edit') }}"
                                                                     class="btn btn-warning" title="Edit">
                                                                     <i class="fas fa-edit"></i>
                                                                 </a>
-                                                                <a href="#" class="btn btn-danger" title="Delete">
-                                                                    <i class="fas fa-trash-alt"></i>
-                                                                </a>
+                                                                <form
+                                                                    action="{{ route('admin.artikel.delete', ['artikel' => $artikel->id]) }}"
+                                                                    method="POST">
+                                                                    @csrf
+                                                                    @method('DELETE')
+                                                                    <button type="submit" class="btn btn-danger"
+                                                                        title="Delete">
+                                                                        <i class="fas fa-trash-alt"></i>
+                                                                    </button>
+                                                                </form>
                                                             </td>
                                                         </tr>
                                                     @endforeach
