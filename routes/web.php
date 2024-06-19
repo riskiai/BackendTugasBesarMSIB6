@@ -38,11 +38,13 @@ use App\Http\Controllers\WebinarController;
 Route::get('/', function () {
     return redirect()->route('beranda');
 });
+
 Route::get('/login', [AuthController::class, 'login'])->name('login')->middleware('stayLogged');
 Route::post('/login', [AuthController::class, 'authenticate'])->name('login.authenticate');
 Route::get('/login/google', [AuthController::class, 'loginGoogle'])->name('login.google');
 Route::get('/login/google/callback', [AuthController::class, 'loginGoogleCallback'])->name('login.google.callback');
 Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
+
 Route::prefix('register')->middleware('stayLogged')->group(function () {
     Route::get('/', [AuthController::class, 'index'])->name('register');
     Route::get('/user', [AuthController::class, 'registerUser'])->name('register.user');
