@@ -66,7 +66,7 @@
     </div>
 @endsection
 
-{{-- CKEDITOR
+CKEDITOR
 @section('scripts')
     <script>
         $(document).ready(function() {
@@ -78,4 +78,4 @@
                 });
         });
     </script>
-@endsection --}}
+@endsection
