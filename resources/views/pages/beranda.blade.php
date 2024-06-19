@@ -143,8 +143,8 @@
                                 <!-- Item 1 -->
                                 <div class="col-lg-4">
                                     <div class="text-center">
-                                        <img src="{{ asset('assets/img/visi.png') }}"
-                                            class="rounded-circle border border-white mb-3" style="width: 50%;"
+                                        <img src="{{ asset('images/dicoding-square.jpeg') }}"
+                                            class="rounded-circle border border-white mb-3 img-fluid" style="width: 175px;"
                                             alt="Deskripsi Gambar">
                                         <h4 class="card-title">Riski A. Ilham</h4>
                                         <p class="text-white">CEO Dicoding</p>
@@ -155,8 +155,8 @@
                                 <!-- Item 2 -->
                                 <div class="col-lg-4">
                                     <div class="text-center">
-                                        <img src="{{ asset('assets/img/visi.png') }}"
-                                            class="rounded-circle border border-white mb-3" style="width: 50%;"
+                                        <img src="{{ asset('images/codepolitan-logo.png') }}"
+                                            class="rounded-circle border border-white mb-3" style="width: 175px;"
                                             alt="Deskripsi Gambar">
                                         <h4 class="card-title">Nadhif L. A. Rahim</h4>
                                         <p class="text-white">CEO Codepolitan</p>
@@ -167,8 +167,8 @@
                                 <!-- Item 3 -->
                                 <div class="col-lg-4">
                                     <div class="text-center">
-                                        <img src="{{ asset('assets/img/visi.png') }}"
-                                            class="rounded-circle border border-white mb-3" style="width: 50%;"
+                                        <img src="{{ asset('images/amanah-logo.png') }}"
+                                            class="rounded-circle border border-white mb-3" style="width: 175px;"
                                             alt="Deskripsi Gambar">
                                         <h4 class="card-title">Kristofel S. Lanpada</h4>
                                         <p class="text-white">CEO PT Amanah Karya Indonesia</p>
@@ -181,16 +181,6 @@
                         </div>
                         <!-- Additional slides here -->
                     </div>
-                    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators"
-                        data-bs-slide="prev">
-                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                        <span class="visually-hidden">Previous</span>
-                    </button>
-                    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators"
-                        data-bs-slide="next">
-                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                        <span class="visually-hidden">Next</span>
-                    </button>
                 </div>
             </div>
         </div>
