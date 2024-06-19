@@ -9,7 +9,7 @@
                 Nama: {{ $lamaran->user->name }}
             </h4>
             <h4>
-                CV (Curriculum Vitae): <a href="" class="btn text-white rounded-5 px-3 py-2"
+                CV (Curriculum Vitae): <a href="{{ asset('storage/cv/' . $lamaran->cv) }}" download class="btn text-white rounded-5 px-3 py-2"
                     style="background-color: #074173">
                     Download
                     <i class="fa-solid fa-download"></i>
