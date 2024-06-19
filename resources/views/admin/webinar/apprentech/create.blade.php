@@ -32,7 +32,8 @@
                                         <div class="alert alert-success">{{ session('success') }}</div>
                                     @endif
 
-                                    <form action="{{ route('admin.webinarapprentech.createproses') }}" method="POST" enctype="multipart/form-data">
+                                    <form action="{{ route('admin.webinarapprentech.createproses') }}" method="POST"
+                                        enctype="multipart/form-data">
                                         @csrf
                                         <div class="card-header">
                                             <h4>Form Create Webinar Apprentech</h4>
@@ -81,10 +82,7 @@
                                                     </div>
                                                     <div class="form-group">
                                                         <label>Deskripsi Webinar</label>
-                                                        <textarea name="deskripsi" id="deskripsi" class="form-control" required></textarea>
-                                                        @error('deskripsi')
-                                                            <div class="text-danger mt-2">{{ $message }}</div>
-                                                        @enderror
+                                                        <textarea name="deskripsi" id="description" class="form-control"></textarea>
                                                     </div>
                                                 </div>
                                                 <div class="col-md-6">
@@ -108,13 +106,6 @@
                                                         <input type="time" name="waktu_selesai" class="form-control"
                                                             required>
                                                         @error('waktu_selesai')
-                                                            <div class="text-danger mt-2">{{ $message }}</div>
-                                                        @enderror
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <label>Lokasi</label>
-                                                        <input type="text" name="lokasi" class="form-control" required>
-                                                        @error('lokasi')
                                                             <div class="text-danger mt-2">{{ $message }}</div>
                                                         @enderror
                                                     </div>
@@ -156,7 +147,7 @@
         $(document).ready(function() {
             // Initialize CKEditor
             ClassicEditor
-                .create(document.querySelector('#detail_description'))
+                .create(document.querySelector('#description'))
                 .catch(error => {
                     console.error(error);
                 });
