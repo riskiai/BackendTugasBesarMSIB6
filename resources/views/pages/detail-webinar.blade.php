@@ -93,7 +93,8 @@
                                     </div>
                                 @endif
 
-                                @if (session('success'))
+                                {{-- Modal success daftar webinar --}}
+                                {{-- @if (session('success'))
                                     <!-- Modal Pendaftaran Webinar -->
                                     <div class="modal fade" id="webinarRegistrationModal" tabindex="-1"
                                         aria-labelledby="webinarRegistrationModalLabel" aria-hidden="true">
@@ -106,7 +107,6 @@
                                                         aria-label="Close"></button>
                                                 </div>
                                                 <div class="modal-body">
-                                                    {{-- alert success berisi "Anda telah terdaftar ke webinar ini. Cek email untuk informasi lebih lanjut." --}}
                                                     <div class="alert alert-success" role="alert"
                                                         style="font-size: 0.8rem">
                                                         {{ session('success') }}
@@ -119,7 +119,8 @@
                                             </div>
                                         </div>
                                     </div>
-                                @endif
+                                @endif --}}
+                                
                             </div>
                         </div>
                     </div>
