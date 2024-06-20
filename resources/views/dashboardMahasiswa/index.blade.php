@@ -39,8 +39,8 @@
                                 <a href="{{ route('lowongan.detail', ['lowongan' => $appliedLowongan->lowongan->id]) }}"
                                     class="text-decoration-none">
                                     <div class="ms-2 ps-3 d-flex align-items-center gap-3">
-                                        <img src="{{ $appliedLowongan->lowongan->company->foto_profil ? asset('storage/photo-profile/' . $appliedLowongan->lowongan->company->foto_profil) : asset('assets/img/Building.png') }}"
-                                            alt="" width="100px">
+                                        <img class="rounded-circle" src="{{ $appliedLowongan->lowongan->company->foto_profil ? asset('storage/photo-profile/' . $appliedLowongan->lowongan->company->foto_profil) : asset('assets/img/Building.png') }}"
+                                            alt="Foto Profil perusahaan" width="100px">
                                         <div>
                                             <p class="m-0 fs-5">{{ $appliedLowongan->lowongan->judul }}</p>
                                             <p class="m-0 text-secondary">

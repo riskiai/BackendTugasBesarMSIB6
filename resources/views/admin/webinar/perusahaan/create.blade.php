@@ -113,13 +113,6 @@
                                                         @enderror
                                                     </div>
                                                     <div class="form-group">
-                                                        <label>Lokasi</label>
-                                                        <input type="text" name="lokasi" class="form-control" required>
-                                                        @error('lokasi')
-                                                            <div class="text-danger mt-2">{{ $message }}</div>
-                                                        @enderror
-                                                    </div>
-                                                    <div class="form-group">
                                                         <label>Platform</label>
                                                         <input type="text" name="platform" class="form-control" required>
                                                         @error('platform')
@@ -157,7 +150,7 @@
         $(document).ready(function() {
             // Initialize CKEditor
             ClassicEditor
-                .create(document.querySelector('#detail_description'))
+                .create(document.querySelector('#deskripsi'))
                 .catch(error => {
                     console.error(error);
                 });
