@@ -30,10 +30,12 @@
                                 <a href="{{ route('lowongan.detail', ['lowongan' => $savedLowongan->lowongan->id]) }}"
                                     class="text-decoration-none">
                                     <div class="ms-2 ps-3 d-flex align-items-center gap-3">
-                                        <img src="{{ asset('assets/img/Building.png') }}" alt="" width="100px">
+                                        <img src="{{ $savedLowongan->lowongan->company->foto_profil ? asset('storage/photo-profile/' . $savedLowongan->lowongan->company->foto_profil) : asset('assets/img/Building.png') }}"
+                                            alt="" width="100px">
                                         <div>
                                             <p class="m-0 fs-5">{{ $savedLowongan->lowongan->judul }}</p>
-                                            <p class="m-0 text-secondary">Rp3 - 4 Juta</p>
+                                            <p class="m-0 text-secondary">
+                                                {{ 'Rp' . number_format($savedLowongan->lowongan->gaji, 0, ',', '.') }}</p>
                                         </div>
                                     </div>
                                 </a>
